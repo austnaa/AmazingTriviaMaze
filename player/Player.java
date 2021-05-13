@@ -11,8 +11,7 @@ import java.awt.Rectangle;
  */
 // Tutorial source: https://www.youtube.com/watch?v=Yem67dViGSw
 // TODO - We can probably merge the PlayerActions into here.
-public class Player extends Rectangle
-{
+public class Player extends Rectangle {
     /**
      * The initial player velocity on the x-axis.
      */
@@ -30,8 +29,7 @@ public class Player extends Rectangle
      * @param thePlayerWidth The width of the player model.
      * @param thePlayerHeight The height of the player model.
      */
-    public Player(final int theStartingX, final int theStartingY, final int thePlayerWidth, final int thePlayerHeight)
-    {
+    public Player(final int theStartingX, final int theStartingY, final int thePlayerWidth, final int thePlayerHeight) {
         // TODO | We can probably merge thePlayerWidth and thePlayerHeight into one parameter named thePlayerDimension as height x width
         // TODO | since thePlayerWidth and thePlayerHeight should be the same value conceptually
         setBounds(theStartingX, theStartingY, thePlayerWidth, thePlayerHeight);
@@ -40,8 +38,7 @@ public class Player extends Rectangle
     /**
      * Updates the player tick.
      */
-    public void updatePlayerTick()
-    {
+    public void updatePlayerTick() {
         this.x += myPlayerVelocityX;
         this.y += myPlayerVelocityY;
     }
@@ -54,8 +51,7 @@ public class Player extends Rectangle
      *  height| the height of the rectangle
      * @param theGraphics
      */
-    public void draw(final Graphics theGraphics)
-    {
+    public void draw(final Graphics theGraphics) {
         theGraphics.fillRect(this.x, this.y, this.width, this.height);
     }
 
@@ -63,8 +59,7 @@ public class Player extends Rectangle
      * Setter for the player velocity on the x-axis.
      * @param thePlayerVelocityX The new value for the player's velocity on the x-axis.
      */
-    public void setPlayerVelocityX(final int thePlayerVelocityX)
-    {
+    public void setPlayerVelocityX(final int thePlayerVelocityX) {
         this.myPlayerVelocityX = thePlayerVelocityX;
     }
 
@@ -72,8 +67,7 @@ public class Player extends Rectangle
      * Setter for the player velocity on the y-axis.
      * @param thePlayerVelocityY The new value for the player's velocity on the y-axis.
      */
-    public void setPlayerVelocityY(final int thePlayerVelocityY)
-    {
+    public void setPlayerVelocityY(final int thePlayerVelocityY) {
         this.myPlayerVelocityY = thePlayerVelocityY;
     }
 }

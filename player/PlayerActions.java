@@ -15,8 +15,7 @@ import javax.swing.Timer;
  * Updated: May 13, 2021
  * The class for the Player model's movement.
  */
-public class PlayerActions extends JPanel implements ActionListener, KeyListener
-{
+public class PlayerActions extends JPanel implements ActionListener, KeyListener {
     /**
      * The internal game timer.
      * Param1 = the initial and between-event delay in milliseconds.
@@ -46,8 +45,7 @@ public class PlayerActions extends JPanel implements ActionListener, KeyListener
     /**
      * Adds a key listener to the player movement and starts the game timer.
      */
-    public PlayerActions()
-    {
+    public PlayerActions() {
         addKeyListener(this);
         setFocusable(true);
 
@@ -58,8 +56,7 @@ public class PlayerActions extends JPanel implements ActionListener, KeyListener
      * Updates the player tick and repaints the panel.
      * @param theActionEvent The action event.
      */
-    public void actionPerformed(final ActionEvent theActionEvent)
-    {
+    public void actionPerformed(final ActionEvent theActionEvent) {
         player.updatePlayerTick();
         repaint();
     }
@@ -68,8 +65,7 @@ public class PlayerActions extends JPanel implements ActionListener, KeyListener
      * Paints the panel and draws the player.
      * @param theGraphics The graphics.
      */
-    public void paint(final Graphics theGraphics)
-    {
+    public void paint(final Graphics theGraphics) {
         // Param1 = the x-coordinate of the rectangle to clear
         // Param2 = the y-coordinate of the rectangle to clear
         // Param3 = the width of the panel
@@ -83,10 +79,8 @@ public class PlayerActions extends JPanel implements ActionListener, KeyListener
      * TODO - Later also handles the player interact between doors and items.
      * @param theKeyEvent The key event that is being listened for.
      */
-    public void keyPressed(final KeyEvent theKeyEvent)
-    {
-        switch(theKeyEvent.getKeyCode())
-        {
+    public void keyPressed(final KeyEvent theKeyEvent) {
+        switch(theKeyEvent.getKeyCode()) {
             case KeyEvent.VK_W: // Up
                 player.setPlayerVelocityY(-PLAYER_SPEED);
                 break;
@@ -108,10 +102,8 @@ public class PlayerActions extends JPanel implements ActionListener, KeyListener
      * TODO - Later also handles the player interact between doors and items.
      * @param theKeyEvent The key event that is being listened for.
      */
-    public void keyReleased(final KeyEvent theKeyEvent)
-    {
-        switch(theKeyEvent.getKeyCode())
-        {
+    public void keyReleased(final KeyEvent theKeyEvent) {
+        switch(theKeyEvent.getKeyCode()) {
             case KeyEvent.VK_W: // Up
                 player.setPlayerVelocityY(PLAYER_HALT);
                 break;
@@ -132,8 +124,7 @@ public class PlayerActions extends JPanel implements ActionListener, KeyListener
      * The type PlayerActions must implement the inherited abstract method KeyListener.keyTyped(KeyEvent).
      * @param theKeyEvent The key event that is being listened for.
      */
-    public void keyTyped(final KeyEvent theKeyEvent)
-    {
+    public void keyTyped(final KeyEvent theKeyEvent) {
 
     }
 }
