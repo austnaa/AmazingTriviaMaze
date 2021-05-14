@@ -1,125 +1,153 @@
+/**
+ * Amazing Trivial Maze 
+ * TCSS 360 Spring 2021
+ */
+
 package model;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
-
 /**
+ * Contains state and behavior specific to the Player character.
+ * 
  * @author Daniel Jiang
  * @author Austn Attaway
  * @version Spring 2021
- * Updated: May 13, 2021
+ * Updated: May 14, 2021
  * The class for the Player model.
  */
 // Tutorial source: https://www.youtube.com/watch?v=Yem67dViGSw
 // TODO - We can probably merge the PlayerActions into here.
-public class Player extends Rectangle {
+public class Player {
     
-    private static final int INITIAL_X_VELOCITY = 0;
-    private static final int INITIAL_Y_VELOCITY = 0;
+    /** The initial x speed of the player. */
+    private static final int INITIAL_SPEED = 0;
     
+    /** THe initial x position of the player. */
     private static final int START_X = 100;
+    
+    /** The initial y position of the player. */
     private static final int START_Y = 100;
+    
+    /** The minimum allowed x position of the player. */
+    private static final int MIN_X = 25;
+    
+    /** The minimum allowed y position of the player. */
+    private static final int MIN_Y = 25;
+    
+    /** The maximum allowed x position of the player. */
+    private static final int MAX_X = 550;
+    
+    /** The maximum allowed y position of the player. */
+    private static final int MAX_Y = 500;
+    
     
     /**
      * The value for the player's speed. Represents how many pixels the 
      * player will move each game tick.
      */
-    private static final int MOVE_SPEED = 3;
+    private static final int MOVE_SPEED = 4;
     
+    /**
+     * This Player's x current x position.
+     */
     private int myX;
+    
+    /**
+     * This Player's x current x position.
+     */
     private int myY;
     
-    
-    
-    
- 
     /**
-     * The initial player velocity on the x-axis.
+     * The velocity of the player along the x axis. 
      */
     private int myVelocityX;
 
     /**
-     * The initial player velocity on the y-axis.
+     * The velocity of the player along the y axis. 
      */
     private int myVelocityY;
     
+    /**
+     * Constructs a new Player with default values.
+     */
     public Player() {
+        super();
         myX = START_X;
         myY = START_Y;
-        myVelocityX = INITIAL_X_VELOCITY;
-        myVelocityY = INITIAL_Y_VELOCITY;
+        myVelocityX = INITIAL_SPEED;
+        myVelocityY = INITIAL_SPEED;
     }
 
-//    /**
-//     * This constructs the Player model with the current parameters.
-//     * @param theStartingX The starting x-coordinate where the player will begin at.
-//     * @param theStartingY The starting y-coordinate where the player will begin at.
-//     * @param thePlayerWidth The width of the player model.
-//     * @param thePlayerHeight The height of the player model.
-//     */
-//    public Player(final int theStartingX, final int theStartingY, final int thePlayerWidth, final int thePlayerHeight) {
-//        
-//        // TODO | We can probably merge thePlayerWidth and thePlayerHeight into one parameter named thePlayerDimension as height x width
-//        // TODO | since thePlayerWidth and thePlayerHeight should be the same value conceptually
-//        setBounds(theStartingX, theStartingY, thePlayerWidth, thePlayerHeight);
-//    }
-
+    
     /**
-     * Updates the player tick.
+     * Updates this Player's game state after one tick.
      */
     public void updatePlayerTick() {
-        this.myX += myVelocityX;
+        this.myX += myVelocityX; 
         this.myY += myVelocityY;
+        
+        // ensures the x and y position of the player
+        // stays within the bounds
+        myX = Math.max(Math.min(myX,  MAX_X), MIN_X);
+        myY = Math.max(Math.min(myY, MAX_Y), MIN_Y);
     }
     
     /**
-     * Draws the player model with:
-     *    x   | the x-coordinate of the rectangle to be filled
-     *    y   | the y-coordinate of the rectangle to be filled
-     *  width | the width of the rectangle
-     *  height| the height of the rectangle
-     * @param theGraphics
+     * Returns the x position of this player.
+     * @return the x position
      */
-    public void draw(final Graphics theGraphics) {
-        theGraphics.fillRect(this.x, this.y, this.width, this.height);
+    public int getXPosition() {
+        return myX;
     }
     
     
+    /**
+     * Returns the y position of this player.
+     * @return the y position
+     */
+    public int getYPosition() {
+        return myY;
+    }
     
+    /**
+     * Sets the y axis velocity so the player will start moving upwards.  
+     */
     public void moveUp() {
+        myVelocityY = -MOVE_SPEED;
+    }
+    
+    /**
+     * Sets the y axis velocity so the player will start moving downwards.  
+     */
+    public void moveDown() {
+        myVelocityY = MOVE_SPEED;
+    }
+    
+    /**
+     * Sets the x axis velocity so the player will start moving left.  
+     */
+    public void moveLeft() {
+        myVelocityX = -MOVE_SPEED;
+    }
+    
+    /**
+     * Sets the x axis velocity so the player will start moving right.  
+     */
+    public void moveRight() {
         this.myVelocityX = MOVE_SPEED;
     }
     
-    public void moveDown() {
-        
+    /**
+     * Halts the Player's movement along the x axis.
+     */
+    public void stopMovingX() {
+        myVelocityX = INITIAL_SPEED;
     }
     
-    public void moveLeft() {
-        
+    /**
+     * Halts the Player's movement along the y axis.
+     */
+    public void stopMovingY() {
+        myVelocityY = INITIAL_SPEED;
     }
     
-    public void moveRight() {
-        
-    }
-    
-    public void stopMoving() {
-        
-    }
-    
-
-//    /**
-//     * Setter for the player velocity on the x-axis.
-//     * @param thePlayerVelocityX The new value for the player's velocity on the x-axis.
-//     */
-//    public void setPlayerVelocityX(final int thePlayerVelocityX) {
-//        this.myPlayerVelocityX = thePlayerVelocityX;
-//    }
-//
-//    /**
-//     * Setter for the player velocity on the y-axis.
-//     * @param thePlayerVelocityY The new value for the player's velocity on the y-axis.
-//     */
-//    public void setPlayerVelocityY(final int thePlayerVelocityY) {
-//        this.myPlayerVelocityY = thePlayerVelocityY;
-//    }
 }

@@ -1,3 +1,8 @@
+/**
+ * Amazing Trivial Maze 
+ * TCSS 360 Spring 2021
+ */
+
 package view;
 
 import java.awt.event.ActionEvent;
@@ -12,51 +17,49 @@ import javax.swing.Timer;
 import model.Player;
 
 /**
+ * The panel that paints the graphics of the program. 
+ * 
  * @author Daniel Jiang
+ * @author Austn Attaway
  * @version Spring 2021
- * Updated: May 13, 2021
+ * Updated: May 14, 2021
  * The class for the Player model's movement.
  */
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
     
     /** An auto-generated serial version UID for object Serialization */
     private static final long serialVersionUID = 86445190678492115L;
+    
+    /** The delay between each game tick. */
+    private static final int TICK_DELAY = 10;
 
     /**
      * The internal game timer.
-     * Param1 = the initial and between-event delay in milliseconds.
-     * Param2 = the action listener associated with it.
+     * 
      */
-    final Timer gameTimer = new Timer(10, this);
+    final Timer myGameTimer;
 
     /**
-     * The player model.
-     * Param1 = starting x-coordinate.
-     * Param2 = starting y-coordinate.
-     * Param3 = player width.
-     * Param4 = player height.
-     */
-    //final Player player = new Player(300, 300, 10, 10);
-    final Player player = new Player();
+     * This Panel's Player 
+     */ 
+    final Player myPlayer; 
 
+    
     /**
-     * The value for the player's speed/velocity.
-     */
-    //final static int PLAYER_SPEED = 3;
-
-    /**
-     * The value for halting the player on key release.
-     */
-    final static int PLAYER_HALT = 0;
-
-    /**
+     * Constructs a new GamePanel. 
      * Adds a key listener to the player movement and starts the game timer.
      */
     public GamePanel() {
         addKeyListener(this);
         setFocusable(true);
+        
+        myPlayer = new Player();
+        
+        // Param1 = the initial and between-event delay in milliseconds.
+        // Param2 = the action listener associated with it.
+        myGameTimer = new Timer(TICK_DELAY, this);
 
-        gameTimer.start();
+        myGameTimer.start();
     }
 
     /**
@@ -64,8 +67,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
      * @param theActionEvent The action event.
      */
     public void actionPerformed(final ActionEvent theActionEvent) {
-        player.updatePlayerTick();
+        myPlayer.updatePlayerTick();
         repaint();
+        requestFocus();        
     }
 
     /**
@@ -77,8 +81,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         // Param2 = the y-coordinate of the rectangle to clear
         // Param3 = the width of the panel
         // Param4 = the height of the panel
-        theGraphics.clearRect(0, 0, getWidth(), getHeight());
-        player.draw(theGraphics);
+        theGraphics.clearRect(0, 0, getWidth(), getHeight()); // not sure if this line is neccessary -austn
+//        player.draw(theGraphics);
+        theGraphics.fillRect(myPlayer.getXPosition(), myPlayer.getYPosition(), 
+                25, 25);       
+        
     }
 
     /**
@@ -89,20 +96,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     public void keyPressed(final KeyEvent theKeyEvent) {
         switch(theKeyEvent.getKeyCode()) {
             case KeyEvent.VK_W: // Up
-                //player.setPlayerVelocityY(-PLAYER_SPEED);
-                player.moveUp();
+                myPlayer.moveUp();
                 break;
             case KeyEvent.VK_S: // Down
-//                player.setPlayerVelocityY(PLAYER_SPEED);
-                player.moveDown();
+                myPlayer.moveDown();
                 break;
             case KeyEvent.VK_A: // Left
-//                player.setPlayerVelocityX(-PLAYER_SPEED);
-                player.moveLeft();
+                myPlayer.moveLeft();
                 break;
             case KeyEvent.VK_D: // Right
-//                player.setPlayerVelocityX(PLAYER_SPEED);
-                player.moveRight();
+                myPlayer.moveRight();
                 break;
             // TODO | Can add interaction here with spacebar
         }
@@ -116,18 +119,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     public void keyReleased(final KeyEvent theKeyEvent) {
         switch(theKeyEvent.getKeyCode()) {
             case KeyEvent.VK_W: // Up
-//                player.setPlayerVelocityY(PLAYER_HALT);//
-//                break;
             case KeyEvent.VK_S: // Down
-//                player.setPlayerVelocityY(PLAYER_HALT);
-//                break;
+              myPlayer.stopMovingY();
+                break;
             case KeyEvent.VK_A: // Left
-//                player.setPlayerVelocityX(PLAYER_HALT);
-//                break;
             case KeyEvent.VK_D: // Right
-//                player.setPlayerVelocityX(PLAYER_HALT);
-//                break;
-                player.stopMoving();
+                myPlayer.stopMovingX();
+                break;
             // TODO | Can add interaction here with spacebar
         }
     }
