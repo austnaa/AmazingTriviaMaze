@@ -36,12 +36,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
      * Param3 = player width.
      * Param4 = player height.
      */
-    final Player player = new Player(300, 300, 10, 10);
+    //final Player player = new Player(300, 300, 10, 10);
+    final Player player = new Player();
 
     /**
      * The value for the player's speed/velocity.
      */
-    final static int PLAYER_SPEED = 3;
+    //final static int PLAYER_SPEED = 3;
 
     /**
      * The value for halting the player on key release.
@@ -88,16 +89,20 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     public void keyPressed(final KeyEvent theKeyEvent) {
         switch(theKeyEvent.getKeyCode()) {
             case KeyEvent.VK_W: // Up
-                player.setPlayerVelocityY(-PLAYER_SPEED);
+                //player.setPlayerVelocityY(-PLAYER_SPEED);
+                player.moveUp();
                 break;
             case KeyEvent.VK_S: // Down
-                player.setPlayerVelocityY(PLAYER_SPEED);
+//                player.setPlayerVelocityY(PLAYER_SPEED);
+                player.moveDown();
                 break;
             case KeyEvent.VK_A: // Left
-                player.setPlayerVelocityX(-PLAYER_SPEED);
+//                player.setPlayerVelocityX(-PLAYER_SPEED);
+                player.moveLeft();
                 break;
             case KeyEvent.VK_D: // Right
-                player.setPlayerVelocityX(PLAYER_SPEED);
+//                player.setPlayerVelocityX(PLAYER_SPEED);
+                player.moveRight();
                 break;
             // TODO | Can add interaction here with spacebar
         }
@@ -111,17 +116,18 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     public void keyReleased(final KeyEvent theKeyEvent) {
         switch(theKeyEvent.getKeyCode()) {
             case KeyEvent.VK_W: // Up
-                player.setPlayerVelocityY(PLAYER_HALT);
-                break;
+//                player.setPlayerVelocityY(PLAYER_HALT);//
+//                break;
             case KeyEvent.VK_S: // Down
-                player.setPlayerVelocityY(PLAYER_HALT);
-                break;
+//                player.setPlayerVelocityY(PLAYER_HALT);
+//                break;
             case KeyEvent.VK_A: // Left
-                player.setPlayerVelocityX(PLAYER_HALT);
-                break;
+//                player.setPlayerVelocityX(PLAYER_HALT);
+//                break;
             case KeyEvent.VK_D: // Right
-                player.setPlayerVelocityX(PLAYER_HALT);
-                break;
+//                player.setPlayerVelocityX(PLAYER_HALT);
+//                break;
+                player.stopMoving();
             // TODO | Can add interaction here with spacebar
         }
     }
