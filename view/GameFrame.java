@@ -1,9 +1,7 @@
-package gameframe;
+package view;
 
 import java.awt.GridLayout;
 import javax.swing.JFrame;
-
-import player.PlayerActions;
 
 /**
  * @author Daniel Jiang

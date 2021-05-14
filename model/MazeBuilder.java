@@ -136,5 +136,5 @@ public class MazeBuilder {
                 northDoor, southDoor, westDoor, eastDoor);
         
         return newRoom;
-    } 
+    }
 }

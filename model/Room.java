@@ -100,6 +100,8 @@ public class Room {
         }
         
         stringBuilder.append("Door status:");
+        stringBuilder.append(System.lineSeparator());
+        
         stringBuilder.append("North: ");
         stringBuilder.append(myNorthDoor != null);
         stringBuilder.append(System.lineSeparator());
