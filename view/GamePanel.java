@@ -18,6 +18,10 @@ import model.Player;
  * The class for the Player model's movement.
  */
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
+    
+    /** An auto-generated serial version UID for object Serialization */
+    private static final long serialVersionUID = 86445190678492115L;
+
     /**
      * The internal game timer.
      * Param1 = the initial and between-event delay in milliseconds.

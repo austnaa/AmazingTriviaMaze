@@ -10,6 +10,10 @@ import javax.swing.JFrame;
  * The class for the Amazing Trivia Maze game frame.
  */
 public class GameFrame extends JFrame {
+   
+    /** An auto-generated serial version UID for object Serialization */
+    private static final long serialVersionUID = -523569722387519606L;
+    
     /**
      * Creates the game frame.
      */
@@ -20,6 +24,8 @@ public class GameFrame extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         setVisible(true);
+        
+        this.setJMenuBar(new MenuBar());
 
         start();
     }
