@@ -1,4 +1,7 @@
-
+/**
+ * Amazing Trivial Maze 
+ * TCSS 360 Spring 2021
+ */
 
 package model;
 
@@ -7,16 +10,21 @@ import java.io.FileNotFoundException;
 import java.util.Objects;
 import java.util.Scanner;
 
+/**
+ * A utility class that provides functionality for creating a 2D matrix of Room objects
+ * based of off a given text file.
+ * 
+ * @author Austn Attaway
+ * @version May 14, 2021
+ */
 public class MazeBuilder {
     
+    // main method for testing purposes
     public static void main(String[] args) {
         Room[][] maze = MazeBuilder.buildMaze("./assets/map1.txt");
         System.out.println(maze[0][0].toString());
         System.out.println(maze[3][3].toString());
     }
-    
-    
-    
     
     /**
      * Private default constructor to inhibit its use.
@@ -26,18 +34,32 @@ public class MazeBuilder {
     }
     
     
-    
     /**
-     * Given a Scanner that contains a mapX.txt text file, builds and
-     * returns the matrix of rooms that represents the maze. 
+     * Given a file name of a text file that contains the map generation information,
+     * returns a matrix of Room objects that represents the maze. 
      * 
-     * @param theFileScanner the Scanner that contains the map file input
+     * The given file's first line should contain two integers which represent the number
+     * of rows and columns the matrix will have.
+     * 
+     * The given file's next lines will be a matrix of character sequences that are oriented
+     * similarly to how the maze will be built. 
+     * 
+     * Each character sequence may have an '@' character
+     * at the beginning that represents that room is the start room, or a '$' symbol to 
+     * represent the end room.
+     * 
+     * Following any special symbols are 4 characters, all either 'Y' or 'N' which represent 
+     * whether a door is located at the north, south, west, and east sides respectively. 
+     * 
+     * @param theFileName the name of the file that contains the map generation information
+     * @throws NullPointerException if theFileName is null
      */
-    public static Room[][] buildMaze(final String theFileName) {
+    public static Room[][] buildMaze(final String theFileName) throws NullPointerException {
+        
+        Objects.requireNonNull(theFileName);
         
         final Scanner fileScanner = getScanner(theFileName);
         
-
         final int numRows = fileScanner.nextInt();
         final int numCols = fileScanner.nextInt();
         final Room[][] resultMaze = new Room[numRows][numCols];
@@ -53,12 +75,24 @@ public class MazeBuilder {
             }
         }
         
+        fileScanner.close();
+ 
         return resultMaze;
       
     }  
     
     
-    private static Scanner getScanner(final String theFileName) {
+    /**
+     * Returns a Scanner object that contains the contents of the file 
+     * specified by the given filename.
+     * 
+     * @param theFileName the name of the file
+     * @return the Scanner object that contains the contents of the file
+     * @throws NullPointerException if theFileName is null
+     */
+    private static Scanner getScanner(final String theFileName) 
+            throws NullPointerException {
+        
         Scanner fileScanner = null;
         try {
             fileScanner = new Scanner(new File(theFileName));
@@ -68,12 +102,9 @@ public class MazeBuilder {
         return fileScanner;
     }
     
-    // TODO DOES NOT CHECK FOR START OR END ROOM
+    
     /**
-     * Returns a new Room that is built according to the given room string input.
-     * 
-     * TODO EXPLAIN HOW STRING SHOULD LOOK
-     * 
+     * Returns a new Room that is built according to the given room String input.
      * 
      * @param theRoomString the input string that contains Y or N values.\ 
      * @return the Room that corresponds to the given room string input
@@ -105,9 +136,5 @@ public class MazeBuilder {
                 northDoor, southDoor, westDoor, eastDoor);
         
         return newRoom;
-    }
- 
-    
-    
-    
+    } 
 }

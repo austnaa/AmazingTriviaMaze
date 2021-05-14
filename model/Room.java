@@ -1,5 +1,17 @@
+/**
+ * Amazing Trivial Maze 
+ * TCSS 360 Spring 2021
+ */
+
 package model;
 
+// TODO don't like this class comment.
+/**
+ * Contains state and behavior appropriate for a particular Room.
+ * 
+ * @author Austn Attaway
+ * @version May 14, 2021
+ */
 public class Room {
     
     /**
@@ -43,6 +55,7 @@ public class Room {
         
     }
     
+    
     /**
      * Constructor that builds a Room corresponding to the given input.
      * 
@@ -67,37 +80,42 @@ public class Room {
         
     }
     
-    // TODO NOT UPDATED TO SHOW IF IT IS A START OR END ROOM
+    
     /**
      * Returns a String representation of this room.
      */
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("I am a room");
+        stringBuilder.append("Room: ");
         stringBuilder.append(System.lineSeparator());
         
-        stringBuilder.append("Start room: " + myIsStartRoom);
+        if (myIsStartRoom) {
+            stringBuilder.append("Start room: true");
+            stringBuilder.append(System.lineSeparator());
+        } 
+        if (myIsEndRoom) {
+            stringBuilder.append("End room: true");
+            stringBuilder.append(System.lineSeparator());
+        }
+        
+        stringBuilder.append("Door status:");
+        stringBuilder.append("North: ");
+        stringBuilder.append(myNorthDoor != null);
         stringBuilder.append(System.lineSeparator());
         
-        stringBuilder.append("End room: " + myIsEndRoom);
+        stringBuilder.append("South: ");
+        stringBuilder.append(mySouthDoor != null);
         stringBuilder.append(System.lineSeparator());
         
-        stringBuilder.append("My north door: ");
-        stringBuilder.append(myNorthDoor);
+        stringBuilder.append("East: ");
+        stringBuilder.append(myEastDoor != null);
         stringBuilder.append(System.lineSeparator());
         
-        stringBuilder.append("My south door: ");
-        stringBuilder.append(mySouthDoor);
+        stringBuilder.append("West: ");
+        stringBuilder.append(myWestDoor != null);
         stringBuilder.append(System.lineSeparator());
         
-        stringBuilder.append("My east door: ");
-        stringBuilder.append(myEastDoor);
-        stringBuilder.append(System.lineSeparator());
-        
-        stringBuilder.append("My west door: ");
-        stringBuilder.append(myWestDoor);
-        stringBuilder.append(System.lineSeparator());
         
         return stringBuilder.toString();
     }
