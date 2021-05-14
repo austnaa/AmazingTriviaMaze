@@ -29,7 +29,7 @@ public class GameFrame extends JFrame {
      */
     public void start() {
         setLayout(new GridLayout(1, 1, 0, 0));
-        PlayerActions player = new PlayerActions();
+        GamePanel player = new GamePanel();
         add(player);
         setVisible(true);
     }

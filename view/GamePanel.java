@@ -17,7 +17,7 @@ import model.Player;
  * Updated: May 13, 2021
  * The class for the Player model's movement.
  */
-public class PlayerActions extends JPanel implements ActionListener, KeyListener {
+public class GamePanel extends JPanel implements ActionListener, KeyListener {
     /**
      * The internal game timer.
      * Param1 = the initial and between-event delay in milliseconds.
@@ -47,7 +47,7 @@ public class PlayerActions extends JPanel implements ActionListener, KeyListener
     /**
      * Adds a key listener to the player movement and starts the game timer.
      */
-    public PlayerActions() {
+    public GamePanel() {
         addKeyListener(this);
         setFocusable(true);
 
