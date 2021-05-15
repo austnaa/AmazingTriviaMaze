@@ -1,5 +1,6 @@
 package SpriteSheet;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 /**
@@ -29,6 +30,16 @@ public class SpriteSheet {
      */
     public BufferedImage grabImage(final int theColumn, final int theRow, final int theWidth, final int theHeight) {
         BufferedImage img = myImage.getSubimage((theColumn * 32) - 32, (theRow * 32) - 32, theWidth, theHeight); 
+        img = resizeImage(img, 128, 128);
         return img;
+    }
+    
+ // LINK: https://www.baeldung.com/java-resize-image
+    BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) {
+        BufferedImage resizedImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D graphics2D = resizedImage.createGraphics();
+        graphics2D.drawImage(originalImage, 0, 0, targetWidth, targetHeight, null);
+        graphics2D.dispose();
+        return resizedImage;
     }
 }

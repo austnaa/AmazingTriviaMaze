@@ -5,6 +5,8 @@
 
 package model;
 
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -70,7 +72,10 @@ public class Player {
      * The velocity of the player along the x axis. 
      */
     private int myVelocityX;
+    
     private BufferedImage spriteSheet = null;
+    
+    
     /**
      * The velocity of the player along the y axis. 
      */
@@ -81,6 +86,25 @@ public class Player {
      * The current image of the player shown on the screen.
      */
     private BufferedImage myPlayerImage;
+    
+    
+    private SpriteSheet mySpriteSheet;
+    
+    private int myTickCount;
+    
+   // moving up -> row 1
+   // moving down -> row 2
+   // moving left -> row 3
+   // moving down -> row 4
+   // stopping up -> row 1, column 1
+   // stopping down -> row 2, column 1
+   // stopping left -> row 3, column 1
+   // stopping right -> row 3, column 1
+    
+    
+    
+    
+    
     
     
     /**
@@ -95,9 +119,11 @@ public class Player {
         myY = START_Y;
         myVelocityX = INITIAL_SPEED;
         myVelocityY = INITIAL_SPEED;
+        myTickCount = 0;
         
-        SpriteSheet ss = new SpriteSheet(spriteSheet);
-        myPlayerImage = ss.grabImage(1, 2, 32, 32);
+        mySpriteSheet = new SpriteSheet(spriteSheet);
+        myPlayerImage = mySpriteSheet.grabImage(1, 2, 32, 32);
+//        myPlayerImage =  new BufferedImage(64, 64, myPlayerImage.getType());
     }
 
     public void loadImage() {
@@ -115,6 +141,10 @@ public class Player {
      * Updates this Player's game state after one tick.
      */
     public void updatePlayerTick() {
+        this.myTickCount++;
+        if (myTickCount > 999999) {
+            myTickCount = 0;
+        }
         this.myX += myVelocityX; 
         this.myY += myVelocityY;
         
@@ -122,8 +152,33 @@ public class Player {
         // stays within the bounds
         myX = Math.max(Math.min(myX,  MAX_X), MIN_X);
         myY = Math.max(Math.min(myY, MAX_Y), MIN_Y);
+        
+        
+        updatePlayerImage();
+    }
+        
+    
+    
+    public void updatePlayerImage() {
+        // moving up -> row 1
+        if (myVelocityY < 0) {
+            System.out.println(1 + " " + myTickCount % 4 + 1);
+            myPlayerImage = mySpriteSheet.grabImage(myTickCount % 4 + 1, 1, 32, 32);
+
+        }
+        // moving down -> row 2
+        // moving left -> row 3
+        // moving down -> row 4
+        // stopping up -> row 1, column 1
+        // stopping down -> row 2, column 1
+        // stopping left -> row 3, column 1
+        // stopping right -> row 3, column 1 
+        
+        
+    
     }
     
+
     /**
      * Returns the x position of this player.
      * @return the x position
@@ -189,6 +244,5 @@ public class Player {
     public BufferedImage getImage() {
         return myPlayerImage;
     }
-    
     
 }

@@ -88,6 +88,7 @@ public class MenuBar extends JMenuBar {
             @Override
             public void actionPerformed(final ActionEvent theEvent) {
                 System.out.println("About menu clicked");
+//                new AboutFrame();
             }    
         });
         howToPlayItem.addActionListener(new ActionListener() {
