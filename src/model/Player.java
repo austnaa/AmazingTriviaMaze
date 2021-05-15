@@ -92,6 +92,15 @@ public class Player {
     
     private int myTickCount;
     
+    
+    private int mySpriteRow;
+    private int mySpriteCol;
+    
+    
+    
+    
+    
+    
    // moving up -> row 1
    // moving down -> row 2
    // moving left -> row 3
@@ -120,6 +129,8 @@ public class Player {
         myVelocityX = INITIAL_SPEED;
         myVelocityY = INITIAL_SPEED;
         myTickCount = 0;
+        mySpriteRow = 1;
+        mySpriteCol = 1;
         
         mySpriteSheet = new SpriteSheet(spriteSheet);
         myPlayerImage = mySpriteSheet.grabImage(1, 2, 32, 32);
@@ -158,24 +169,38 @@ public class Player {
     }
         
     
-    
+    /**
+     * Updates the Player's sprite image depending on the game tick and 
+     * the direction the character is moving.
+     */
     public void updatePlayerImage() {
+        if (myVelocityX != INITIAL_SPEED || myVelocityY != INITIAL_SPEED) {
+            mySpriteCol = myTickCount / 4 % 4 + 1;
+        }
+
+        // moving left -> row 3
+        if (myVelocityX < 0) {
+            mySpriteRow = 3; 
+        }
+        // moving right
+        else if (myVelocityX > 0) {
+            mySpriteRow = 4;
+        }
+        
         // moving up -> row 1
         if (myVelocityY < 0) {
-            System.out.println(1 + " " + myTickCount % 4 + 1);
-            myPlayerImage = mySpriteSheet.grabImage(myTickCount % 4 + 1, 1, 32, 32);
-
+            mySpriteRow = 1;
         }
         // moving down -> row 2
-        // moving left -> row 3
-        // moving down -> row 4
-        // stopping up -> row 1, column 1
-        // stopping down -> row 2, column 1
-        // stopping left -> row 3, column 1
-        // stopping right -> row 3, column 1 
+        else if (myVelocityY > 0) {
+            mySpriteRow = 2;
+        } 
+        myPlayerImage = mySpriteSheet.grabImage(mySpriteCol, mySpriteRow, 32, 32);
         
-        
-    
+        // stopped moving, so update the image to the stationary position  
+        if (myVelocityX == 0 && myVelocityY == 0) {
+            myPlayerImage = mySpriteSheet.grabImage(1, mySpriteRow, 32, 32);
+        }
     }
     
 
