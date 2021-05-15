@@ -129,10 +129,10 @@ public class MazeBuilder {
             theRoomString = theRoomString.substring(1);
         }
         
-        final Door northDoor = theRoomString.charAt(0) == 'Y' ? new Door() : null;
-        final Door southDoor = theRoomString.charAt(1) == 'Y' ? new Door() : null;
-        final Door westDoor = theRoomString.charAt(2) == 'Y'  ? new Door() : null;
-        final Door eastDoor = theRoomString.charAt(3) == 'Y'  ? new Door() : null;
+        final Door northDoor = theRoomString.charAt(0) == 'Y' ? new Door(Door.TYPE.NORTH) : null;
+        final Door southDoor = theRoomString.charAt(1) == 'Y' ? new Door(Door.TYPE.SOUTH) : null;
+        final Door westDoor = theRoomString.charAt(2) == 'Y'  ? new Door(Door.TYPE.WEST) : null;
+        final Door eastDoor = theRoomString.charAt(3) == 'Y'  ? new Door(Door.TYPE.EAST) : null;
         
         final Room newRoom = new Room(isStartRoom, isEndRoom, 
                 northDoor, southDoor, westDoor, eastDoor);
