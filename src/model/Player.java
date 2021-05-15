@@ -255,10 +255,9 @@ public class Player {
      * Loads the sprite sheet image for future use.
      */
     private void loadSpriteSheetImage() {
-        BufferedImageLoader loader = new BufferedImageLoader();
         try {
           final String path = System.getProperty("user.dir") + "/assets/sprite_sheet.png";
-          mySpriteSheetImage = loader.loadImage(path);
+          mySpriteSheetImage = BufferedImageLoader.loadImage(path);
           
         } catch (IOException exception) {
             exception.printStackTrace();

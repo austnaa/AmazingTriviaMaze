@@ -1,3 +1,8 @@
+/**
+ * Amazing Trivial Maze 
+ * TCSS 360 Spring 2021
+ */
+
 package SpriteSheet;
 
 import java.awt.image.BufferedImage;
@@ -19,15 +24,15 @@ public class BufferedImageLoader {
      * instantiated myImage.
      * this is where the image will be loaded to.
      */
-    private BufferedImage myImage;
+    //private BufferedImage myImage;
     
     /**
      * @param thePath - path of spritesheet
      * @return
      * @throws IOException - throws exception if cant find path.
      */
-    public BufferedImage loadImage(final String thePath) throws IOException {
-        myImage = ImageIO.read(new File(thePath));
-        return myImage;
+    public static BufferedImage loadImage(final String thePath) throws IOException {
+        return ImageIO.read(new File(thePath));
+//        return myImage;
     }  
 }
