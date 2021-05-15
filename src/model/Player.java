@@ -5,33 +5,27 @@
 
 package model;
 
-import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 import SpriteSheet.BufferedImageLoader;
 import SpriteSheet.SpriteSheet;
 
+
 /**
- * Contains state and behavior specific to the Player character.
+ * Provides state and functionality for a Player sprite including movement and animation.
  * 
- * @author Daniel Jiang
  * @author Austn Attaway
  * @author Chau Vu
+ * @author Daniel Jiang
  * @version Spring 2021
- * Updated: May 15, 2021
- * The class for the Player model.
+ * Updated: April 15, 2021
  */
-// Tutorial source: https://www.youtube.com/watch?v=Yem67dViGSw
-// TODO - We can probably merge the PlayerActions into here.
+//Tutorial source: https://www.youtube.com/watch?v=Yem67dViGSw --- is this needed anymore?
 public class Player {
     
     /** The initial x speed of the player. */
-    private static final int INITIAL_SPEED = 0;
+    private static final int NO_SPEED = 0;
     
     /** THe initial x position of the player. */
     private static final int START_X = 100;
@@ -51,7 +45,6 @@ public class Player {
     /** The maximum allowed y position of the player. */
     private static final int MAX_Y = 500;
    
-      
     /**
      * The value for the player's speed. Represents how many pixels the 
      * player will move each game tick.
@@ -126,15 +119,14 @@ public class Player {
         
         myX = START_X;
         myY = START_Y;
-        myVelocityX = INITIAL_SPEED;
-        myVelocityY = INITIAL_SPEED;
+        myVelocityX = NO_SPEED;
+        myVelocityY = NO_SPEED;
         myTickCount = 0;
-        mySpriteRow = 1;
-        mySpriteCol = 1;
+        mySpriteRow = SpriteSheet.DOWN_MOVEMENT_ROW;
+        mySpriteCol = SpriteSheet.NO_MOVEMENT_COL;
         
         mySpriteSheet = new SpriteSheet(spriteSheet);
-        myPlayerImage = mySpriteSheet.grabImage(1, 2, 32, 32);
-//        myPlayerImage =  new BufferedImage(64, 64, myPlayerImage.getType());
+        myPlayerImage = mySpriteSheet.grabImage(mySpriteCol, mySpriteRow);
     }
 
     public void loadImage() {
@@ -174,33 +166,37 @@ public class Player {
      * the direction the character is moving.
      */
     public void updatePlayerImage() {
-        if (myVelocityX != INITIAL_SPEED || myVelocityY != INITIAL_SPEED) {
-            mySpriteCol = myTickCount / 4 % 4 + 1;
+        if (myVelocityX != NO_SPEED || myVelocityY != NO_SPEED) {
+            // TODO DIVISOR WORTH SAVING AS GLOBAL?
+            mySpriteCol = myTickCount / 4 % SpriteSheet.NUM_COLS + 1;
         }
 
-        // moving left -> row 3
-        if (myVelocityX < 0) {
-            mySpriteRow = 3; 
+        // moving left
+        if (myVelocityX < NO_SPEED) {
+            mySpriteRow = SpriteSheet.LEFT_MOVEMENT_ROW; 
         }
         // moving right
-        else if (myVelocityX > 0) {
-            mySpriteRow = 4;
+        else if (myVelocityX > NO_SPEED) {
+            mySpriteRow = SpriteSheet.RIGHT_MOVEMENT_ROW;
         }
         
-        // moving up -> row 1
-        if (myVelocityY < 0) {
-            mySpriteRow = 1;
+        // moving up
+        if (myVelocityY < NO_SPEED) {
+            mySpriteRow = SpriteSheet.UP_MOVEMENT_ROW;
         }
-        // moving down -> row 2
-        else if (myVelocityY > 0) {
-            mySpriteRow = 2;
+        // moving down 
+        else if (myVelocityY > NO_SPEED) {
+            mySpriteRow = SpriteSheet.DOWN_MOVEMENT_ROW;
         } 
-        myPlayerImage = mySpriteSheet.grabImage(mySpriteCol, mySpriteRow, 32, 32);
         
-        // stopped moving, so update the image to the stationary position  
         if (myVelocityX == 0 && myVelocityY == 0) {
-            myPlayerImage = mySpriteSheet.grabImage(1, mySpriteRow, 32, 32);
+            //myPlayerImage = mySpriteSheet.grabImage(SpriteSheet.NO_MOVEMENT_COL, mySpriteRow);
+            mySpriteCol = SpriteSheet.NO_MOVEMENT_COL;
         }
+        
+        myPlayerImage = mySpriteSheet.grabImage(mySpriteCol, mySpriteRow);
+        // stopped moving, so update the image to the stationary position  
+        
     }
     
 
@@ -252,14 +248,14 @@ public class Player {
      * Halts the Player's movement along the x axis.
      */
     public void stopMovingX() {
-        myVelocityX = INITIAL_SPEED;
+        myVelocityX = NO_SPEED;
     }
     
     /**
      * Halts the Player's movement along the y axis.
      */
     public void stopMovingY() {
-        myVelocityY = INITIAL_SPEED;
+        myVelocityY = NO_SPEED;
     }
       
     /**
