@@ -72,7 +72,13 @@ public class Player {
      */
     private int myVelocityY;
     
-    private BufferedImage player;
+     
+    /**
+     * The current image of the player shown on the screen.
+     */
+    private BufferedImage myPlayerImage;
+    
+    
     /**
      * Constructs a new Player with default values.
      */
@@ -87,7 +93,7 @@ public class Player {
         myVelocityY = INITIAL_SPEED;
         
         SpriteSheet ss = new SpriteSheet(spriteSheet);
-        player = ss.grabImage(1, 2, 32, 32);
+        myPlayerImage = ss.grabImage(1, 2, 32, 32);
     }
 
     public void loadImage() {
@@ -176,7 +182,7 @@ public class Player {
      * @return
      */
     public BufferedImage getImage() {
-        return player;
+        return myPlayerImage;
     }
     
     

@@ -58,24 +58,28 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         myGameTimer = new Timer(TICK_DELAY, this);
         myGameTimer.start();
     }
+    
     /**
      * Call the draw method and paint component.
      */
     @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        doDrawing(g);  
+    public void paintComponent(final Graphics theGraphics) {
+        super.paintComponent(theGraphics);
+        Graphics2D g2d = (Graphics2D) theGraphics;
+        drawPlayerImage(g2d);  
         Toolkit.getDefaultToolkit().sync();
     }
+    
     /**
      * draw this image on the screen.
      * @param g
      */
-    private void doDrawing(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(myPlayer.getImage(), myPlayer.getXPosition(), 
-            myPlayer.getYPosition(), this);
+    private void drawPlayerImage(Graphics2D theGraphics) {
+        theGraphics.drawImage(myPlayer.getImage(), myPlayer.getXPosition(), 
+                myPlayer.getYPosition(), this);
     }
+    
+    
     /**
      * Updates the player tick and repaints the panel.
      * @param theActionEvent The action event.
