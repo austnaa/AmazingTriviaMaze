@@ -50,7 +50,13 @@ public class Player {
      * player will move each game tick.
      */
     private static final int MOVE_SPEED = 4;
+    
+    /**
+     * A value used to delay animations. Larger values will result in larger delays.
+     */
+    private static final int ANIMATION_DELAY = 4;
 
+    // movement 
     /**
      * This Player's x current x position.
      */
@@ -66,56 +72,46 @@ public class Player {
      */
     private int myVelocityX;
     
-    private BufferedImage spriteSheet = null;
-    
-    
     /**
      * The velocity of the player along the y axis. 
      */
     private int myVelocityY;
+  
+    // images
+    /**
+     * The sprite sheet image for this player.
+     */
+    private BufferedImage mySpriteSheetImage;
     
-     
+    /**
+     * The SpriteSheet for this player.
+     */
+    private SpriteSheet mySpriteSheet;
+    
     /**
      * The current image of the player shown on the screen.
      */
     private BufferedImage myPlayerImage;
     
-    
-    private SpriteSheet mySpriteSheet;
-    
-    private int myTickCount;
-    
-    
+    /**
+     * The row the current player image is located at in the sprite sheet.
+     */
     private int mySpriteRow;
+    
+    /**
+     * The column the current player image is located at in the sprite sheet.
+     */
     private int mySpriteCol;
-    
-    
-    
-    
-    
-    
-   // moving up -> row 1
-   // moving down -> row 2
-   // moving left -> row 3
-   // moving down -> row 4
-   // stopping up -> row 1, column 1
-   // stopping down -> row 2, column 1
-   // stopping left -> row 3, column 1
-   // stopping right -> row 3, column 1
-    
-    
-    
-    
-    
-    
-    
+     
+    /**
+     * The number of ticks elapsed, used for changing images in animations.
+     */
+    private int myTickCount;
+     
     /**
      * Constructs a new Player with default values.
      */
     public Player() {  
-        
-        super();
-        loadImage();
         
         myX = START_X;
         myY = START_Y;
@@ -125,80 +121,32 @@ public class Player {
         mySpriteRow = SpriteSheet.DOWN_MOVEMENT_ROW;
         mySpriteCol = SpriteSheet.NO_MOVEMENT_COL;
         
-        mySpriteSheet = new SpriteSheet(spriteSheet);
+        loadSpriteSheetImage();
+        
+        mySpriteSheet = new SpriteSheet(mySpriteSheetImage);
         myPlayerImage = mySpriteSheet.grabImage(mySpriteCol, mySpriteRow);
     }
 
-    public void loadImage() {
-        BufferedImageLoader loader = new BufferedImageLoader();
-        try {
-          final String path = System.getProperty("user.dir") + "/assets/sprite_sheet.png";
-          spriteSheet = loader.loadImage(path);
-          
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        }
-    }
-    
     /**
-     * Updates this Player's game state after one tick.
+     * Updates this Player's game state. Should be called after each game tick.
      */
     public void updatePlayerTick() {
-        this.myTickCount++;
-        if (myTickCount > 999999) {
+        // update the tick count (for use in animation)
+        myTickCount++;
+        if (myTickCount > Integer.MAX_VALUE) {
             myTickCount = 0;
         }
-        this.myX += myVelocityX; 
-        this.myY += myVelocityY;
+        
+        myX += myVelocityX; 
+        myY += myVelocityY;
         
         // ensures the x and y position of the player
         // stays within the bounds
         myX = Math.max(Math.min(myX,  MAX_X), MIN_X);
         myY = Math.max(Math.min(myY, MAX_Y), MIN_Y);
         
-        
         updatePlayerImage();
-    }
-        
-    
-    /**
-     * Updates the Player's sprite image depending on the game tick and 
-     * the direction the character is moving.
-     */
-    public void updatePlayerImage() {
-        if (myVelocityX != NO_SPEED || myVelocityY != NO_SPEED) {
-            // TODO DIVISOR WORTH SAVING AS GLOBAL?
-            mySpriteCol = myTickCount / 4 % SpriteSheet.NUM_COLS + 1;
-        }
-
-        // moving left
-        if (myVelocityX < NO_SPEED) {
-            mySpriteRow = SpriteSheet.LEFT_MOVEMENT_ROW; 
-        }
-        // moving right
-        else if (myVelocityX > NO_SPEED) {
-            mySpriteRow = SpriteSheet.RIGHT_MOVEMENT_ROW;
-        }
-        
-        // moving up
-        if (myVelocityY < NO_SPEED) {
-            mySpriteRow = SpriteSheet.UP_MOVEMENT_ROW;
-        }
-        // moving down 
-        else if (myVelocityY > NO_SPEED) {
-            mySpriteRow = SpriteSheet.DOWN_MOVEMENT_ROW;
-        } 
-        
-        if (myVelocityX == 0 && myVelocityY == 0) {
-            //myPlayerImage = mySpriteSheet.grabImage(SpriteSheet.NO_MOVEMENT_COL, mySpriteRow);
-            mySpriteCol = SpriteSheet.NO_MOVEMENT_COL;
-        }
-        
-        myPlayerImage = mySpriteSheet.grabImage(mySpriteCol, mySpriteRow);
-        // stopped moving, so update the image to the stationary position  
-        
-    }
-    
+    }    
 
     /**
      * Returns the x position of this player.
@@ -264,6 +212,57 @@ public class Player {
      */
     public BufferedImage getImage() {
         return myPlayerImage;
+    }
+    
+    /**
+     * Updates the Player's sprite image depending on the game tick and 
+     * the direction the character is moving.
+     */
+    private void updatePlayerImage() {
+        if (myVelocityX != NO_SPEED || myVelocityY != NO_SPEED) {
+            mySpriteCol = myTickCount / ANIMATION_DELAY % SpriteSheet.NUM_COLS + 1;
+        }
+
+        // moving left
+        if (myVelocityX < NO_SPEED) {
+            mySpriteRow = SpriteSheet.LEFT_MOVEMENT_ROW; 
+        }
+        // moving right
+        else if (myVelocityX > NO_SPEED) {
+            mySpriteRow = SpriteSheet.RIGHT_MOVEMENT_ROW;
+        }
+        
+        // moving up
+        if (myVelocityY < NO_SPEED) {
+            mySpriteRow = SpriteSheet.UP_MOVEMENT_ROW;
+        }
+        // moving down 
+        else if (myVelocityY > NO_SPEED) {
+            mySpriteRow = SpriteSheet.DOWN_MOVEMENT_ROW;
+        } 
+        
+        // stopped moving, so update the image to the stationary position
+        if (myVelocityX == 0 && myVelocityY == 0) {
+            //myPlayerImage = mySpriteSheet.grabImage(SpriteSheet.NO_MOVEMENT_COL, mySpriteRow);
+            mySpriteCol = SpriteSheet.NO_MOVEMENT_COL;
+        }
+        
+        myPlayerImage = mySpriteSheet.grabImage(mySpriteCol, mySpriteRow);    
+    }
+
+    
+    /**
+     * Loads the sprite sheet image for future use.
+     */
+    private void loadSpriteSheetImage() {
+        BufferedImageLoader loader = new BufferedImageLoader();
+        try {
+          final String path = System.getProperty("user.dir") + "/assets/sprite_sheet.png";
+          mySpriteSheetImage = loader.loadImage(path);
+          
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
     }
     
 }
