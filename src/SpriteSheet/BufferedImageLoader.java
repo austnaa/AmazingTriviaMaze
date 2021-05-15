@@ -1,6 +1,7 @@
 package SpriteSheet;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
@@ -26,7 +27,10 @@ public class BufferedImageLoader {
      * @throws IOException - throws exception if cant find path.
      */
     public BufferedImage loadImage(final String thePath) throws IOException {
-        myImage = ImageIO.read(getClass().getResource(thePath));
+         System.out.println(thePath);
+        System.out.println(getClass().getResource(thePath));
+//        myImage = ImageIO.read(getClass().getResource(thePath));
+        myImage = ImageIO.read(new File(thePath));
         return myImage;
     }  
 }

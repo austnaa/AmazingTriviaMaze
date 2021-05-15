@@ -6,7 +6,11 @@
 package model;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 import SpriteSheet.BufferedImageLoader;
 import SpriteSheet.SpriteSheet;
 
@@ -99,11 +103,12 @@ public class Player {
     public void loadImage() {
         BufferedImageLoader loader = new BufferedImageLoader();
         try {
-          spriteSheet  = loader.loadImage("/sprite_sheet.png");
-        } catch (IOException e) {
-            e.printStackTrace();
+          final String path = System.getProperty("user.dir") + "/assets/sprite_sheet.png";
+          spriteSheet = loader.loadImage(path);
+          
+        } catch (IOException exception) {
+            exception.printStackTrace();
         }
-;
     }
     
     /**
