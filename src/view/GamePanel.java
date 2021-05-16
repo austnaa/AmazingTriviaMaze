@@ -71,7 +71,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         super.paintComponent(theGraphics);
         Graphics2D g2d = (Graphics2D) theGraphics;
         
-        // draw the background
         final BackgroundSheet backgroundSheet = new BackgroundSheet();
         backgroundSheet.drawBackground(g2d);
         drawPlayerImage(g2d); 

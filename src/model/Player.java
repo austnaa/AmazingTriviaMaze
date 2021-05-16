@@ -34,16 +34,16 @@ public class Player {
     private static final int START_Y = 100;
     
     /** The minimum allowed x position of the player. */
-    private static final int MIN_X = 25;
+    private static final int MIN_X = 0;
     
     /** The minimum allowed y position of the player. */
     private static final int MIN_Y = 25;
     
     /** The maximum allowed x position of the player. */
-    private static final int MAX_X = 500;
+    private static final int MAX_X = 512;
     
     /** The maximum allowed y position of the player. */
-    private static final int MAX_Y = 465;
+    private static final int MAX_Y = 475;
    
     /**
      * The value for the player's speed. Represents how many pixels the 

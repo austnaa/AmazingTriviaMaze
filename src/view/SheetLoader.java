@@ -41,7 +41,7 @@ public class SheetLoader {
     public static final int IMAGE_SCALAR = 4;
     
     /**
-     * The image that contains all of the images for the sprite.
+     * The image that contains the rows and columns of images.
      */
     private BufferedImage mySpriteSheet;
     
@@ -51,15 +51,16 @@ public class SheetLoader {
      * specified by the given file name. 
      * 
      * @param theFileName the file name of the image.
+     * @throws NullPointerException if theFileName is null
      */
     public SheetLoader(final String theFileName) {
+        Objects.requireNonNull(theFileName);
         final String path = System.getProperty("user.dir") + "/assets/" + theFileName;
         mySpriteSheet = loadImage(path);
     }
     
- 
     /**
-     * Grabbing and cropping the specified image from the sprite sheet.
+     * Grabs and cropping the specified image from this sheet.
      * 
      * @param theColumn the column the image returned is located at
      * @param theRow    the row the image returned is located at
