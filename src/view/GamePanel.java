@@ -17,7 +17,9 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import model.Door;
 import model.Player;
+import model.Room;
 
 /**
  * The panel that paints the graphics of the program. 
@@ -47,6 +49,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
      */ 
     private Player myPlayer; 
     
+    private Room myCurrentRoom;
+    
     
     
     /**
@@ -61,6 +65,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         // Param2 = the action listener associated with it.
         myGameTimer = new Timer(TICK_DELAY, this);
         myGameTimer.start();
+        myCurrentRoom = new Room(false, false, new Door(Door.TYPE.NORTH), 
+                                 new Door(Door.TYPE.SOUTH), new Door(Door.TYPE.WEST),
+                                 new Door(Door.TYPE.EAST));
     }
     
     /**
@@ -119,6 +126,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             case KeyEvent.VK_D: // Right
                 myPlayer.moveRight();
                 break;
+            case KeyEvent.VK_SPACE:
+                myCurrentRoom.interact(myPlayer);
+                break;
+                
+//                myPlayer.interact();
             // TODO | Can add interaction here with spacebar
         }
     }

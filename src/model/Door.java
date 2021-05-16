@@ -5,6 +5,8 @@
 
 package model;
 
+import view.GameFrame;
+
 // TODO don't like this class comment.
 /**
  * Contains state and behavior appropriate for a Door.
@@ -12,6 +14,30 @@ package model;
  * @version May 14, 2021
  */
 public class Door {
+    
+    /** The x position of a north door. */
+    private static final int NORTH_X = GameFrame.FRAME_WIDTH / 2;
+    
+    /** The y position of a north door. */
+    private static final int NORTH_Y = 0;
+    
+    /** The x position of a south door */
+    private static final int SOUTH_X = GameFrame.FRAME_WIDTH / 2;
+    
+    /** The y position of a south door */
+    private static final int SOUTH_Y = GameFrame.FRAME_HEIGHT - 128;
+    
+    /** The x position of a west door */
+    private static final int WEST_X = 0;
+    
+    /** The y position of a west door */
+    private static final int WEST_Y = GameFrame.FRAME_HEIGHT / 2;
+    
+    /** The x position of an east door */
+    private static final int EAST_X = GameFrame.FRAME_WIDTH;
+    
+    /** The y position of an east door */
+    private static final int EAST_Y = GameFrame.FRAME_HEIGHT / 2;
     
     /**
      * The possible types of a door
@@ -43,9 +69,21 @@ public class Door {
      */
     public Door(TYPE theType) {
         myType = theType;
-        myX = 0;
-        myY = 0;
+        setXYPosition();
         myIsLocked = true;
+    }
+    
+    /**
+     * Interact with this door if the player is close enough.  
+     */
+    public void interact(final Player thePlayer) {
+        final int xDiff = Math.abs(thePlayer.getXPosition() - myX);
+        final int yDiff = Math.abs(thePlayer.getYPosition() - myY);
+//        System.out.println(xDiff + " " + yDiff + " " + myType);
+        
+        if (xDiff < 150 && yDiff < 150) {
+            System.out.println("Interacted with a " + myType + " door");
+        }
     }
     
     /**
@@ -85,5 +123,30 @@ public class Door {
      */
     public String toString() {
         return "I am a door, type: " + myType;
+    }
+    
+    /**
+     * Sets the x and y position depending on the type this door is.
+     */
+    private void setXYPosition() {
+        switch (myType) {
+            case NORTH: 
+                myX = NORTH_X;
+                myY = NORTH_Y;
+                break;
+            case SOUTH:
+                myX = SOUTH_X;
+                myY = SOUTH_Y;
+                break;
+            case WEST: 
+                myX = WEST_X;
+                myY = WEST_Y;
+                break;
+            case EAST: 
+                myX = EAST_X;
+                myY = EAST_Y;
+                
+                break;
+        }
     }
 }

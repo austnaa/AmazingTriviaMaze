@@ -66,7 +66,7 @@ public class BackgroundSheet extends SheetLoader {
     }
     
     /**
-     * Draws the background of the panel
+     * Draws the background of the panel according to the given room
      * @param theGraphics the graphics object used to paint.
      */
     public void drawBackground(final Graphics2D theGraphics) {

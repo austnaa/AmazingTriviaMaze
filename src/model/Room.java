@@ -80,6 +80,25 @@ public class Room {
         
     }
     
+    /**
+     * Interacts with this 
+     */
+    public void interact(final Player thePlayer) {
+        // try and interact with all of the available doors
+        if (myNorthDoor != null) {
+            myNorthDoor.interact(thePlayer);
+        } 
+        if (mySouthDoor != null) {
+            mySouthDoor.interact(thePlayer);
+        }
+        if (myWestDoor != null) {
+            myWestDoor.interact(thePlayer);
+        }
+        if (myEastDoor != null) {
+            myEastDoor.interact(thePlayer);
+        }
+    }
+    
     
     /**
      * Returns a String representation of this room.
