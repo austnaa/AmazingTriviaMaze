@@ -1,16 +1,17 @@
-package SpriteSheet;
+package view;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-import view.GamePanel;
-
-public class BackgroundSheet extends SpriteSheet {
+public class BackgroundSheet extends SheetLoader {
     
-    public BackgroundSheet(final BufferedImage theBackgroundSheet) {
-        super(theBackgroundSheet);
+    /** The name of the sprite sheet image located in the assets folder. */
+    private static final String FILE_NAME = "background_sheet.png";
+    
+    public BackgroundSheet() {
+        super(FILE_NAME);
     }
     
     
@@ -30,7 +31,7 @@ public class BackgroundSheet extends SpriteSheet {
         final BufferedImage leftDoor = this.grabImage(2, 2);
         final BufferedImage rightWall = this.grabImage(3, 2);
         final BufferedImage rightDoor = this.grabImage(4, 2);
-        final BufferedImage floorTile = this.grabImage(1, 4);
+        final BufferedImage floorTile = this.grabImage(1, 5);
         
         // lower row components
         final BufferedImage lowerLeftCorner = this.grabImage(1, 3);
@@ -42,8 +43,6 @@ public class BackgroundSheet extends SpriteSheet {
         int row = 0;
         int col = 0;
         final int increment = IMAGE_DIMENSION * IMAGE_SCALAR;
-        
-        
         
         // draw the upper row
         theGraphics.drawImage(upperLeftCorner, col, row, null);
@@ -113,23 +112,35 @@ public class BackgroundSheet extends SpriteSheet {
         col += increment;
         theGraphics.drawImage(lowerRightCorner, col, row, null);
         
-        
-        
-        
-        
-        
-        
-        
-        // draw the middle door row
-        
-        
-        // draw more row
-        
-        // draw bottom row
-        
-//        theGraphics.drawImage(myPlayer.getImage(), myPlayer.getXPosition(), 
-//                myPlayer.getYPosition(), this);
     }
+    
+    /**
+     * Draws the background of the panel
+     * @param theGraphics the graphics object used to paint.
+     */
+    public void drawBottomWallTransparent(final Graphics2D theGraphics) {
+        // lower row components
+        final BufferedImage lowerLeftCornerTransparent = this.grabImage(1, 4);
+        final BufferedImage lowerWallTransparent = this.grabImage(2, 4);
+        final BufferedImage lowerDoorTransparent = this.grabImage(3, 4);
+        final BufferedImage lowerRightCornerTransparent = this.grabImage(4, 4);
+
+        int increment = IMAGE_DIMENSION * IMAGE_SCALAR;
+        int col = 0;
+        int row = 4*increment;
+        
+        // draw the bottom row
+        theGraphics.drawImage(lowerLeftCornerTransparent, col, row, null);
+        col += increment;
+        theGraphics.drawImage(lowerWallTransparent, col, row, null);
+        col += increment;
+        theGraphics.drawImage(lowerDoorTransparent, col, row, null);
+        col += increment;
+        theGraphics.drawImage(lowerWallTransparent, col, row, null);
+        col += increment;
+        theGraphics.drawImage(lowerRightCornerTransparent, col, row, null);
+    }
+    
 
 }
 

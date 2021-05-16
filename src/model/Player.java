@@ -8,8 +8,8 @@ package model;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import SpriteSheet.BufferedImageLoader;
-import SpriteSheet.SpriteSheet;
+import view.BufferedImageLoader;
+import view.SpriteSheet;
 
 
 /**
@@ -123,7 +123,7 @@ public class Player {
         
         loadSpriteSheetImage();
         
-        mySpriteSheet = new SpriteSheet(mySpriteSheetImage);
+        mySpriteSheet = new SpriteSheet();
         myPlayerImage = mySpriteSheet.grabImage(mySpriteCol, mySpriteRow);
     }
 

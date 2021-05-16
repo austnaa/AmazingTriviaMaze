@@ -3,7 +3,7 @@
  * TCSS 360 Spring 2021
  */
 
-package SpriteSheet;
+package view;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
