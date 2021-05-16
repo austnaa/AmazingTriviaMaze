@@ -19,14 +19,14 @@ import java.util.Scanner;
  */
 public class MazeBuilder {
     
-    // main method for testing purposes
-    public static void main(String[] args) {
-        
-        String path = System.getProperty("user.dir") + "/assets/map1.txt";
-        Room[][] maze = MazeBuilder.buildMaze(path);
-        System.out.println(maze[0][0].toString());
-        System.out.println(maze[3][3].toString());
-    }
+//    // main method for testing purposes
+//    public static void main(String[] args) {
+//        
+//        String path = System.getProperty("user.dir") + "/assets/map1.txt";
+//        Room[][] maze = MazeBuilder.buildMaze(path);
+//        System.out.println(maze[0][0].toString());
+//        System.out.println(maze[3][3].toString());
+//    }
     
     /**
      * Private default constructor to inhibit its use.
@@ -58,9 +58,11 @@ public class MazeBuilder {
      */
     public static Room[][] buildMaze(final String theFileName) throws NullPointerException {
         
-        Objects.requireNonNull(theFileName);
+        Objects.requireNonNull(theFileName); 
+        final String path = System.getProperty("user.dir") + "/assets/" + theFileName;
         
-        final Scanner fileScanner = getScanner(theFileName);
+        
+        final Scanner fileScanner = getScanner(path);
         
         final int numRows = fileScanner.nextInt();
         final int numCols = fileScanner.nextInt();

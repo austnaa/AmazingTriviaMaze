@@ -83,20 +83,35 @@ public class Room {
     /**
      * Interacts with this 
      */
-    public void interact(final Player thePlayer) {
+    public Door interact(final Player thePlayer) {
+        Door interactedDoor = null;
         // try and interact with all of the available doors
+        
         if (myNorthDoor != null) {
-            myNorthDoor.interact(thePlayer);
+            final Door temp = myNorthDoor.interact(thePlayer);
+            if (temp != null) {
+                interactedDoor = temp;
+            }
         } 
         if (mySouthDoor != null) {
-            mySouthDoor.interact(thePlayer);
+            final Door temp = mySouthDoor.interact(thePlayer);
+            if (temp != null) {
+                interactedDoor = temp;
+            }
         }
         if (myWestDoor != null) {
-            myWestDoor.interact(thePlayer);
+            final Door temp = myWestDoor.interact(thePlayer);
+            if (temp != null) {
+                interactedDoor = temp;
+            }
         }
         if (myEastDoor != null) {
-            myEastDoor.interact(thePlayer);
+            final Door temp = myEastDoor.interact(thePlayer);
+            if (temp != null) {
+                interactedDoor = temp;
+            }
         }
+        return interactedDoor;
     }
     
     /**

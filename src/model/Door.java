@@ -76,14 +76,15 @@ public class Door {
     /**
      * Interact with this door if the player is close enough.  
      */
-    public void interact(final Player thePlayer) {
+    public Door interact(final Player thePlayer) {
         final int xDiff = Math.abs(thePlayer.getXPosition() - myX);
         final int yDiff = Math.abs(thePlayer.getYPosition() - myY);
-//        System.out.println(xDiff + " " + yDiff + " " + myType);
-        
+
         if (xDiff < 150 && yDiff < 150) {
-            System.out.println("Interacted with a " + myType + " door");
+            myIsLocked = false;
+            return this;
         }
+        return null;
     }
     
     /**
