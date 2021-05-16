@@ -30,7 +30,7 @@ public class SheetLoader {
     public static int NUM_COLS = 4;
     
     /** The number of rows of images. */
-    public static int NUM_ROWS = 5;
+    public static int NUM_ROWS = 8;
     
     /** The width and height of the images in the sprite sheet in pixels. */
     public static final int IMAGE_DIMENSION = 32;
@@ -71,7 +71,6 @@ public class SheetLoader {
      * @throws IllegalArgumentException if theRow is less than 1 or greater than 4
      */
     public BufferedImage grabImage(final int theColumn, final int theRow) {
-        
         if (theColumn < 1 || theColumn > NUM_COLS) {
             throw new IllegalArgumentException("theCols value is invalid");
         }

@@ -241,6 +241,26 @@ public class Player {
             mySpriteRow = SpriteSheet.DOWN_MOVEMENT_ROW;
         } 
         
+        // moving down right
+        if ( myVelocityY > NO_SPEED && myVelocityX > NO_SPEED) {
+            mySpriteRow = SpriteSheet.DOWN_RIGHT_MOVEMENT_ROW;
+        }
+        
+        // moving down left
+        if ( myVelocityY > NO_SPEED && myVelocityX < NO_SPEED ) {
+            mySpriteRow = SpriteSheet.DOWN_LEFT_MOVEMENT_ROW;
+        }
+
+        // moving up right
+        if ( myVelocityY < NO_SPEED && myVelocityX > NO_SPEED) {
+            mySpriteRow = SpriteSheet.UP_RIGHT_MOVEMENT_ROW;
+        }
+        
+        // moving up left
+        if ( myVelocityY < NO_SPEED && myVelocityX < NO_SPEED ) {
+            mySpriteRow = SpriteSheet.UP_LEFT_MOVEMENT_ROW;
+        }
+        
         // stopped moving, so update the image to the stationary position
         if (myVelocityX == 0 && myVelocityY == 0) {
             //myPlayerImage = mySpriteSheet.grabImage(SpriteSheet.NO_MOVEMENT_COL, mySpriteRow);
