@@ -65,9 +65,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         // Param2 = the action listener associated with it.
         myGameTimer = new Timer(TICK_DELAY, this);
         myGameTimer.start();
-        myCurrentRoom = new Room(false, false, new Door(Door.TYPE.NORTH), 
-                                 new Door(Door.TYPE.SOUTH), new Door(Door.TYPE.WEST),
-                                 new Door(Door.TYPE.EAST));
+//        myCurrentRoom = new Room(false, false, new Door(Door.TYPE.NORTH), 
+//                                 new Door(Door.TYPE.SOUTH), new Door(Door.TYPE.WEST),
+//                                 new Door(Door.TYPE.EAST));
+        myCurrentRoom = new Room(false, false, null, new Door(Door.TYPE.SOUTH), null, new Door(Door.TYPE.EAST)); 
+//             
     }
     
     /**
@@ -79,9 +81,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         Graphics2D g2d = (Graphics2D) theGraphics;
         
         final BackgroundSheet backgroundSheet = new BackgroundSheet();
-        backgroundSheet.drawBackground(g2d);
+        backgroundSheet.drawBackground(g2d, myCurrentRoom);
         drawPlayerImage(g2d); 
-        backgroundSheet.drawBottomWallTransparent(g2d);
+        backgroundSheet.drawBottomRowTransparent(g2d, myCurrentRoom);
         Toolkit.getDefaultToolkit().sync();
     }
     

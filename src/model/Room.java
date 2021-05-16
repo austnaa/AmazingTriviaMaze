@@ -99,6 +99,38 @@ public class Room {
         }
     }
     
+    /**
+     * Returns whether or not this room has a north door.
+     * @return whether or not this room has a north door.
+     */
+    public boolean hasNorthDoor() {
+        return myNorthDoor != null;
+    }
+    
+    /**
+     * Returns whether or not this room has a south door.
+     * @return whether or not this room has a south door.
+     */
+    public boolean hasSouthDoor() {
+        return mySouthDoor != null;
+    }
+    
+    /**
+     * Returns whether or not this room has a west door.
+     * @return whether or not this room has a west door.
+     */
+    public boolean hasWestDoor() {
+        return myWestDoor != null;
+    }
+    
+    /**
+     * Returns whether or not this room has a east door.
+     * @return whether or not this room has a east door.
+     */
+    public boolean hasEastDoor() {
+        return myEastDoor != null;
+    }
+    
     
     /**
      * Returns a String representation of this room.
