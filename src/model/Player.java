@@ -40,10 +40,10 @@ public class Player {
     private static final int MIN_Y = 25;
     
     /** The maximum allowed x position of the player. */
-    private static final int MAX_X = 550;
+    private static final int MAX_X = 500;
     
     /** The maximum allowed y position of the player. */
-    private static final int MAX_Y = 500;
+    private static final int MAX_Y = 465;
    
     /**
      * The value for the player's speed. Represents how many pixels the 
@@ -255,13 +255,8 @@ public class Player {
      * Loads the sprite sheet image for future use.
      */
     private void loadSpriteSheetImage() {
-        try {
-          final String path = System.getProperty("user.dir") + "/assets/sprite_sheet.png";
-          mySpriteSheetImage = BufferedImageLoader.loadImage(path);
-          
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        }
+        final String path = System.getProperty("user.dir") + "/assets/sprite_sheet.png";
+        mySpriteSheetImage = BufferedImageLoader.loadImage(path);
     }
     
 }

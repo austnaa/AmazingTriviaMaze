@@ -29,10 +29,14 @@ public class BufferedImageLoader {
     /**
      * @param thePath - path of spritesheet
      * @return
-     * @throws IOException - throws exception if cant find path.
      */
-    public static BufferedImage loadImage(final String thePath) throws IOException {
-        return ImageIO.read(new File(thePath));
-//        return myImage;
+    public static BufferedImage loadImage(final String thePath) {
+        BufferedImage resultImage = null;
+        try {
+            resultImage = ImageIO.read(new File(thePath));
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+        return resultImage;
     }  
 }

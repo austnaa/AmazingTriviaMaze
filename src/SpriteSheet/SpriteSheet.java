@@ -45,12 +45,12 @@ public class SpriteSheet {
     public static int NUM_ROWS = 4;
     
     /** The width and height of the images in the sprite sheet in pixels. */
-    private static final int IMAGE_DIMENSION = 32;
+    public static final int IMAGE_DIMENSION = 32;
     
     /**
      * The amount the sprite image is scaled.
      */
-    private static final int IMAGE_SCALAR = 4;
+    public static final int IMAGE_SCALAR = 4;
     
     /**
      * The image that contains all of the images for the sprite.

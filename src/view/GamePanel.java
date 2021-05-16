@@ -12,8 +12,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import SpriteSheet.BackgroundSheet;
+import SpriteSheet.BufferedImageLoader;
 import model.Player;
 
 /**
@@ -36,7 +41,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     
     /**
      * The internal game timer.
-     * 
      */
     final Timer myGameTimer;
 
@@ -66,15 +70,24 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     public void paintComponent(final Graphics theGraphics) {
         super.paintComponent(theGraphics);
         Graphics2D g2d = (Graphics2D) theGraphics;
+        
+        // draw the background
+        final String path = System.getProperty("user.dir") + "/assets/background_sheet.png";
+        final BufferedImage backgroundImage = BufferedImageLoader.loadImage(path);
+        final BackgroundSheet backgroundSheet = new BackgroundSheet(backgroundImage);
+        backgroundSheet.drawBackground(g2d);
+        
         drawPlayerImage(g2d);  
         Toolkit.getDefaultToolkit().sync();
     }
+    
+    
     
     /**
      * draw this image on the screen.
      * @param g
      */
-    private void drawPlayerImage(Graphics2D theGraphics) {
+    private void drawPlayerImage(final Graphics2D theGraphics) {
         theGraphics.drawImage(myPlayer.getImage(), myPlayer.getXPosition(), 
                 myPlayer.getYPosition(), this);
     }
