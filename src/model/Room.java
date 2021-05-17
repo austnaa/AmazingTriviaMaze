@@ -80,6 +80,72 @@ public class Room {
         
     }
     
+    /**
+     * Interacts with this 
+     */
+    public Door interact(final Player thePlayer) {
+        Door interactedDoor = null;
+        // try and interact with all of the available doors
+        
+        if (myNorthDoor != null) {
+            final Door temp = myNorthDoor.interact(thePlayer);
+            if (temp != null) {
+                interactedDoor = temp;
+            }
+        } 
+        if (mySouthDoor != null) {
+            final Door temp = mySouthDoor.interact(thePlayer);
+            if (temp != null) {
+                interactedDoor = temp;
+            }
+        }
+        if (myWestDoor != null) {
+            final Door temp = myWestDoor.interact(thePlayer);
+            if (temp != null) {
+                interactedDoor = temp;
+            }
+        }
+        if (myEastDoor != null) {
+            final Door temp = myEastDoor.interact(thePlayer);
+            if (temp != null) {
+                interactedDoor = temp;
+            }
+        }
+        return interactedDoor;
+    }
+    
+    /**
+     * Returns whether or not this room has a north door.
+     * @return whether or not this room has a north door.
+     */
+    public boolean hasNorthDoor() {
+        return myNorthDoor != null;
+    }
+    
+    /**
+     * Returns whether or not this room has a south door.
+     * @return whether or not this room has a south door.
+     */
+    public boolean hasSouthDoor() {
+        return mySouthDoor != null;
+    }
+    
+    /**
+     * Returns whether or not this room has a west door.
+     * @return whether or not this room has a west door.
+     */
+    public boolean hasWestDoor() {
+        return myWestDoor != null;
+    }
+    
+    /**
+     * Returns whether or not this room has a east door.
+     * @return whether or not this room has a east door.
+     */
+    public boolean hasEastDoor() {
+        return myEastDoor != null;
+    }
+    
     
     /**
      * Returns a String representation of this room.

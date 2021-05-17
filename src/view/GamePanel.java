@@ -17,7 +17,11 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import model.Door;
+import model.MazeBuilder;
+import model.MazeManager;
 import model.Player;
+import model.Room;
 
 /**
  * The panel that paints the graphics of the program. 
@@ -45,7 +49,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     /**
      * This Panel's Player 
      */ 
-    private Player myPlayer; 
+    private Player myPlayer;
+
+    private MazeManager myMazeManager;
+    
+//    private Room[][] myMaze;
+//    
+//    private Room myCurrentRoom;
     
     
     
@@ -61,6 +71,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         // Param2 = the action listener associated with it.
         myGameTimer = new Timer(TICK_DELAY, this);
         myGameTimer.start();
+        
+        // sets up and handles the maze of rooms
+        myMazeManager = new MazeManager();
     }
     
     /**
@@ -72,9 +85,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         Graphics2D g2d = (Graphics2D) theGraphics;
         
         final BackgroundSheet backgroundSheet = new BackgroundSheet();
-        backgroundSheet.drawBackground(g2d);
+        backgroundSheet.drawBackground(g2d, myMazeManager.getCurrentRoom());
         drawPlayerImage(g2d); 
-        backgroundSheet.drawBottomWallTransparent(g2d);
+        backgroundSheet.drawBottomRowTransparent(g2d, myMazeManager.getCurrentRoom());
         Toolkit.getDefaultToolkit().sync();
     }
     
@@ -119,7 +132,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             case KeyEvent.VK_D: // Right
                 myPlayer.moveRight();
                 break;
-            // TODO | Can add interaction here with spacebar
+            case KeyEvent.VK_SPACE: // interaction
+                final Door interactedDoor = myMazeManager.getCurrentRoom().interact(myPlayer);
+                if (interactedDoor != null && !interactedDoor.isLocked()) {
+                    myMazeManager.moveRooms(interactedDoor.getType());
+//                 TODO   myPlayer.moveRooms(interactedDoor.getType());
+                }
+                break;
         }
     }
 
