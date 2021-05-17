@@ -7,7 +7,6 @@ package model;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
 import view.BufferedImageLoader;
 import view.SpriteSheet;
 
