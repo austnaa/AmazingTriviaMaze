@@ -40,10 +40,19 @@ public class GameFrame extends JFrame {
      */
     public void start() {
 //        setLayout(new GridLayout(1, 1, 0, 0));
-        GamePanel player = new GamePanel();
-        add(player);
+        // set the current panel to be the start panel
+        
+        final GamePanel gamePanel = new GamePanel();
+        add(gamePanel);
         setVisible(true);
     }
+    
+    
+    
+    
+    
+    
+    
 
     /**
      * Starts the game frame.

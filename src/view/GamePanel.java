@@ -56,6 +56,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 //    private Room[][] myMaze;
 //    
 //    private Room myCurrentRoom;
+    // game panel
+    // start panel
+    // if start button is hit, change the frame's panel to the game panel or something
     
     
     
