@@ -51,15 +51,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
      */ 
     private Player myPlayer;
 
+    /**
+     * The MazeManager that keeps track of the available Mazes and the current maze.
+     */
     private MazeManager myMazeManager;
-    
-//    private Room[][] myMaze;
-//    
-//    private Room myCurrentRoom;
-    // game panel
-    // start panel
-    // if start button is hit, change the frame's panel to the game panel or something
-    
     
     
     /**
@@ -70,8 +65,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         addKeyListener(this);
         setFocusable(true);   
         myPlayer = new Player();
-        // Param1 = the initial and between-event delay in milliseconds.
-        // Param2 = the action listener associated with it.
         myGameTimer = new Timer(TICK_DELAY, this);
         myGameTimer.start();
         
