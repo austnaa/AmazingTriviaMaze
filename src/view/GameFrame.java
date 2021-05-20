@@ -26,7 +26,7 @@ public class GameFrame extends JFrame {
         setTitle("Amazing Trivia Maze");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(FRAME_WIDTH, FRAME_HEIGHT);
-        //setResizable(false);
+        setResizable(false);
         setLocationRelativeTo(null);
         setVisible(true);
         

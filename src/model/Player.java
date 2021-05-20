@@ -7,6 +7,8 @@ package model;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+
+import model.Door.TYPE;
 import view.BufferedImageLoader;
 import view.GameFrame;
 import view.SpriteSheet;
@@ -277,6 +279,34 @@ public class Player {
     private void loadSpriteSheetImage() {
         final String path = System.getProperty("user.dir") + "/assets/sprite_sheet.png";
         mySpriteSheetImage = BufferedImageLoader.loadImage(path);
+    }
+
+    /**
+     * Updates the Player's current position as the Players interact with the door to move rooms.
+     * 
+     * @param theDoorType - The door position N/E/W/S.
+     */
+    public void moveRooms(final Door.TYPE theDoorType) {
+        if (theDoorType == Door.TYPE.NORTH) {
+            myX = MAX_X / 2;
+            myY = MAX_Y;
+        }
+        
+        if (theDoorType == Door.TYPE.SOUTH) {
+            myX = MAX_X / 2;
+            myY = MIN_Y;
+        }
+        
+        if (theDoorType == Door.TYPE.EAST) {
+            myX = MIN_X;
+            myY = MAX_Y / 2; 
+        }
+        
+        if (theDoorType == Door.TYPE.WEST) {
+            myX = MAX_X;
+            myY = MAX_Y / 2;
+        }
+        
     }
     
 }
