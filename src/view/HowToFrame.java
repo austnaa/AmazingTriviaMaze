@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -23,14 +25,21 @@ public class HowToFrame extends JFrame {
      * How To Play Frame constructor that sets up the frame.
      */
     public HowToFrame(){
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        final JLabel label = new JLabel("test");
+        setTitle("How To Play");
+  
+        final JLabel label = new JLabel();
+        final String path = System.getProperty("user.dir") + "/assets/HowToPlay.png";
+        final BufferedImage img = BufferedImageLoader.loadImage(path);  
+        
+        label.setIcon(new ImageIcon(SheetLoader.resizeImage(img, 600, 600)));
         add(label);
-        setSize(400, 400);
-        setResizable(false);
+        setSize(600, 600);
+        pack();
         setLocationRelativeTo(null);
         setVisible(true);
         setAlwaysOnTop(true);
         requestFocus();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // TODO: close frame one at a time - not both.
     }
 }
