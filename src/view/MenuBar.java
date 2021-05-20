@@ -16,6 +16,7 @@ import javax.swing.JMenuItem;
  * The menu bar that is used with the Trivial Maze GameFrame.
  * 
  * @author Austn Attaway
+ * @author Chau Vu
  * @version April 14, 2021
  */
 public class MenuBar extends JMenuBar {
@@ -87,14 +88,15 @@ public class MenuBar extends JMenuBar {
         aboutItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent theEvent) {
-                System.out.println("About menu clicked");
-//                new AboutFrame();
+                System.out.println("About menu clicked");         
+                AboutFrame frame = new AboutFrame();
             }    
         });
         howToPlayItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent theEvent) {
-                System.out.println("How to Play menu clicked");
+                System.out.println("How to Play menu clicked");                
+                HowToFrame frame = new HowToFrame();
             }
         });
         
