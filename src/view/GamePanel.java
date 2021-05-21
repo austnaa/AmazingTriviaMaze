@@ -132,10 +132,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 final Door interactedDoor = myMazeManager.getCurrentRoom().interact(myPlayer);
                 if (interactedDoor != null && !interactedDoor.isLocked()) {
                     myMazeManager.moveRooms(interactedDoor.getType());
-<<<<<<< HEAD
-=======
                     myPlayer.moveRooms(interactedDoor.getType());
->>>>>>> chau
 //                 TODO   myPlayer.moveRooms(interactedDoor.getType());
                 }
                 break;
