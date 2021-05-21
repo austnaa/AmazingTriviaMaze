@@ -97,7 +97,7 @@ public class SheetLoader {
      * @throws NullPointerException if theOriginalImage is null
      */
     // LINK: https://www.baeldung.com/java-resize-image
-    private BufferedImage resizeImage(final BufferedImage theOriginalImage, final int theNewHeight, final int theNewWidth) {
+    public static BufferedImage resizeImage(final BufferedImage theOriginalImage, final int theNewHeight, final int theNewWidth) {
         Objects.requireNonNull(theOriginalImage);
         
         final BufferedImage resizedImage = new BufferedImage(theNewHeight, theNewWidth, BufferedImage.TYPE_INT_ARGB);
