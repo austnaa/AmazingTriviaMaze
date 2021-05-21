@@ -34,12 +34,11 @@ public class HowToFrame extends JFrame {
         label.setIcon(new ImageIcon(SheetLoader.resizeImage(img, 600, 600)));
         add(label);
         setSize(600, 600);
+        setResizable(false);
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
         setAlwaysOnTop(true);
         requestFocus();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // TODO: close frame one at a time - not both.
     }
 }
