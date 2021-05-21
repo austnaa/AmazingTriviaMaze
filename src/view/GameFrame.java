@@ -1,3 +1,8 @@
+/**
+ * Amazing Trivial Maze 
+ * TCSS 360 Spring 2021
+ */
+
 package view;
 
 import javax.swing.JFrame;
@@ -40,10 +45,17 @@ public class GameFrame extends JFrame {
      */
     public void start() {
 //        setLayout(new GridLayout(1, 1, 0, 0));
-        GamePanel player = new GamePanel();
-        add(player);
+        final GamePanel gamePanel = new GamePanel();
+        add(gamePanel);
         setVisible(true);
     }
+    
+    
+    
+    
+    
+    
+    
 
     /**
      * Starts the game frame.

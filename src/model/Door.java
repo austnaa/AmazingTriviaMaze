@@ -146,7 +146,6 @@ public class Door {
             case EAST: 
                 myX = EAST_X;
                 myY = EAST_Y;
-                
                 break;
         }
     }
