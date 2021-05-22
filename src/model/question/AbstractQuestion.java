@@ -36,6 +36,6 @@ public abstract class AbstractQuestion implements Question {
         return myPrompt;
     }
 
-    public abstract Option[] getOptions();
+//    public abstract Option[] getOptions();
 
 }

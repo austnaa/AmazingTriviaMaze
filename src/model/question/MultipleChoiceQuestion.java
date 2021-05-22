@@ -45,14 +45,11 @@ public class MultipleChoiceQuestion extends AbstractQuestion {
     /**
      * Returns true if the currently selected option is the correct option, false otherwise.
      */
-    @Override
+//    @Override
     public boolean checkAnswer() {
         boolean result = false;
-        myOptions[0].setSelected(true);
         for (Option tempOption : myOptions) {
-            
             if (tempOption.isCorrectOption() && tempOption.isSelected()) {
-                System.out.println(tempOption.getText());
                 result = true;
                 break;
             }
@@ -61,7 +58,7 @@ public class MultipleChoiceQuestion extends AbstractQuestion {
     }
 
 
-    @Override
+//    @Override
     public Option[] getOptions() {
         return myOptions;
     }

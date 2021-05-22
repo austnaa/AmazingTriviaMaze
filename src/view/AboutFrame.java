@@ -23,7 +23,7 @@ public class AboutFrame extends JFrame {
      * About Frame constructor that sets up the frame.
      */
     public AboutFrame(){
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         final JLabel label = new JLabel("test");
         add(label);
         setSize(400, 400);

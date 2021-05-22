@@ -26,12 +26,12 @@ public interface Question {
      * 
      * @return the array of Option objects for this question
      */
-    public Option[] getOptions();
+//    public Option[] getOptions();
     
     
     /**
      * Returns true if the currently selected answer option is the correct option, false otherwise. 
      * @return true if the currently selected answer option is the correct option, false otherwise.
      */
-    public boolean checkAnswer();
+//    public boolean checkAnswer();
 }
