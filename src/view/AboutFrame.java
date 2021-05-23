@@ -1,5 +1,8 @@
 package view;
 
+import java.awt.image.BufferedImage;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -23,11 +26,15 @@ public class AboutFrame extends JFrame {
      * About Frame constructor that sets up the frame.
      */
     public AboutFrame(){
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        final JLabel label = new JLabel("test");
+        setTitle("About");
+        final JLabel label = new JLabel();
+        final String path = System.getProperty("user.dir") + "/assets/About.png";
+        final BufferedImage img = BufferedImageLoader.loadImage(path);  
+        label.setIcon(new ImageIcon(SheetLoader.resizeImage(img, 600, 600)));
         add(label);
-        setSize(400, 400);
+        setSize(600, 600);
         setResizable(false);
+        pack();
         setLocationRelativeTo(null);
         setVisible(true);
         setAlwaysOnTop(true);

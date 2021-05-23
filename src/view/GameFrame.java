@@ -36,7 +36,6 @@ public class GameFrame extends JFrame {
         setVisible(true);
         
         this.setJMenuBar(new MenuBar());
-
         start();
     }
 
@@ -50,13 +49,6 @@ public class GameFrame extends JFrame {
         setVisible(true);
     }
     
-    
-    
-    
-    
-    
-    
-
     /**
      * Starts the game frame.
      * @param theArgs The argument.
