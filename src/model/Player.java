@@ -1,5 +1,5 @@
 /**
- * Amazing Trivial Maze 
+ * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
 
@@ -16,15 +16,12 @@ import view.GameFrame;
 import view.ItemSheet;
 import view.SpriteSheet;
 
-
 /**
  * Provides state and functionality for a Player sprite including movement and animation.
- * 
  * @author Austn Attaway
  * @author Chau Vu
  * @author Daniel Jiang
  * @version Spring 2021
- * Updated: April 15, 2021
  */
 //Tutorial source: https://www.youtube.com/watch?v=Yem67dViGSw --- is this needed anymore?
 public class Player {
@@ -391,7 +388,5 @@ public class Player {
             myX = MAX_X;
             myY = MAX_Y / 2;
         }
-        
     }
-    
 }

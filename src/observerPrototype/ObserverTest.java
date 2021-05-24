@@ -1,3 +1,8 @@
+/**
+ * Amazing Trivia Maze 
+ * TCSS 360 Spring 2021
+ */
+
 package observerPrototype;
 
 import java.util.Scanner;
@@ -13,8 +18,6 @@ public class ObserverTest {
         observable.setInt(66);
         observable.setInt(67);
         observable.setInt(68);
-        observable.setInt(69);
-          
+        observable.setInt(69);     
     }
-    
 }

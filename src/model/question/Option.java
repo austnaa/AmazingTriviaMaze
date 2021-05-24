@@ -1,5 +1,5 @@
 /**
- * Amazing Trivial Maze 
+ * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
 
@@ -12,8 +12,8 @@ import javax.swing.JRadioButton;
 /**
  * Provides state and behavior appropriate for a radio button option for use in a multiple choice
  * or true/false question setting.
- * @author skieratheart
- *
+ * @author Austn Attaway
+ * @version Spring 2021
  */
 public class Option extends JRadioButton {
     

@@ -1,5 +1,5 @@
 /**
- * Amazing Trivial Maze 
+ * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
 
@@ -11,7 +11,7 @@ import view.GameFrame;
 /**
  * Contains state and behavior appropriate for a Door.
  * @author Austn Attaway
- * @version May 14, 2021
+ * @version Spring 2021
  */
 public class Door {
     

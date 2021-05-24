@@ -1,5 +1,5 @@
 /**
- * Amazing Trivial Maze 
+ * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
 
@@ -9,7 +9,8 @@ import view.question_view.QuestionFrame;
 
 /**
  * Simple main method used to test question components. 
- *
+ * @author Austn Attaway
+ * @version Spring 2021
  */
 public class QuestionTester {  
     public static void main(String[] args) {

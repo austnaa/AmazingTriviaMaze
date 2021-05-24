@@ -1,5 +1,5 @@
 /**
- * Amazing Trivial Maze 
+ * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
 
@@ -9,10 +9,8 @@ import java.util.Objects;
 
 /**
  * An abstract class that provides some functionality for Question objects. 
- * 
  * @author Austn Attaway
  * @version Spring 2021
- * Updated: May 19, 2021
  */
 public abstract class AbstractQuestion implements Question {
 

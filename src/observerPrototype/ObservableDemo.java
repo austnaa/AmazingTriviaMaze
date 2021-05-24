@@ -1,3 +1,8 @@
+/**
+ * Amazing Trivia Maze 
+ * TCSS 360 Spring 2021
+ */
+
 package observerPrototype;
 
 import java.util.Observable;

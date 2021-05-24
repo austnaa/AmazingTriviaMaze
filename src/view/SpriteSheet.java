@@ -1,5 +1,5 @@
 /**
- * Amazing Trivial Maze 
+ * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
 
@@ -14,13 +14,13 @@ import java.util.Objects;
  * grabs the specific image from 
  * a spritesheet.
  * 
+ * References: https://www.youtube.com/watch?v=jedilHUPO7c
+ *             https://www.baeldung.com/java-resize-image
+ * 
  * @author Austn Attaway
  * @author Chau Vu
  * @version Spring 2021
- * Updated: May 15, 2021
  */
-// references: https://www.youtube.com/watch?v=jedilHUPO7c&t=1s
-//             https://www.baeldung.com/java-resize-image
 public class SpriteSheet extends SheetLoader {
    
     /** The row that contains images for upwards sprite animation. */

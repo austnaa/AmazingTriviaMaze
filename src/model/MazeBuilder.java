@@ -1,5 +1,5 @@
 /**
- * Amazing Trivial Maze 
+ * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
 
@@ -13,9 +13,8 @@ import java.util.Scanner;
 /**
  * A utility class that provides functionality for creating a 2D matrix of Room objects
  * based of off a given text file.
- * 
  * @author Austn Attaway
- * @version May 14, 2021
+ * @version Spring 2021
  */
 public class MazeBuilder {
     

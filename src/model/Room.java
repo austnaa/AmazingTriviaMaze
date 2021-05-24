@@ -1,5 +1,5 @@
 /**
- * Amazing Trivial Maze 
+ * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
 
@@ -8,9 +8,8 @@ package model;
 // TODO don't like this class comment.
 /**
  * Contains state and behavior appropriate for a particular Room.
- * 
  * @author Austn Attaway
- * @version May 14, 2021
+ * @version Spring 2021
  */
 public class Room {
     

@@ -1,5 +1,5 @@
 /**
- * Amazing Trivial Maze 
+ * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
 
@@ -17,10 +17,8 @@ import javax.imageio.ImageIO;
  * Provides functionality for loading and getting images
  * from sprite and tile sheets.
  * 
- * 
  * @author Austn Attaway
  * @version Spring 2021
- * Updated: May 15, 202
  */
 public class SheetLoader {
     
@@ -44,7 +42,6 @@ public class SheetLoader {
      * The image that contains the rows and columns of images.
      */
     private BufferedImage mySpriteSheet;
-    
     
     /**
      * Constructs a new SheetLoader object that operates on the image
@@ -87,7 +84,6 @@ public class SheetLoader {
         return image;
     }
     
-    
     /**
      * Grabs and cropping the specified image from this sheet.
      * 
@@ -118,13 +114,14 @@ public class SheetLoader {
     /**
      * Returns the given image scaled up to the given width and height. 
      * 
+     * LINK: https://www.baeldung.com/java-resize-image
+     * 
      * @param theOriginalImage the image to be scaled 
      * @param theNewHeight   the new width of the image
      * @param theNewWidth  the new width of the image
      * @return the scaled image
      * @throws NullPointerException if theOriginalImage is null
      */
-    // LINK: https://www.baeldung.com/java-resize-image
     public static BufferedImage resizeImage(final BufferedImage theOriginalImage, final int theNewHeight, final int theNewWidth) {
         Objects.requireNonNull(theOriginalImage);
         

@@ -1,5 +1,5 @@
 /**
- * Amazing Trivial Maze 
+ * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
 
@@ -13,11 +13,12 @@ import javax.imageio.ImageIO;
 /**
  * Class contains a method 
  * that loads in a buffered image.
+ * 
+ * Reference: https://www.youtube.com/watch?v=jedilHUPO7c
+ * 
  * @author Chau Vu
  * @version Spring 2021
- * Updated: May 15, 2021
  */
-// reference: https://www.youtube.com/watch?v=jedilHUPO7c&t=1s
 public class BufferedImageLoader {
     
     /**

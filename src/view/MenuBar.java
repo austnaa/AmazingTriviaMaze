@@ -1,5 +1,5 @@
 /**
- * Amazing Trivial Maze 
+ * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
 
@@ -14,10 +14,9 @@ import javax.swing.JMenuItem;
 
 /**
  * The menu bar that is used with the Trivial Maze GameFrame.
- * 
  * @author Austn Attaway
  * @author Chau Vu
- * @version April 14, 2021
+ * @version Spring 2021
  */
 public class MenuBar extends JMenuBar {
 
@@ -34,7 +33,6 @@ public class MenuBar extends JMenuBar {
         setupHelpMenu();
    
     }
-    
     
     /**
      * Sets up and adds the "File" menu to this menu bar. 
@@ -74,7 +72,6 @@ public class MenuBar extends JMenuBar {
         this.add(fileMenu);
     }
     
-    
     /**
      * Sets up and adds the "Help" menu to this menu bar. 
      */
@@ -106,5 +103,4 @@ public class MenuBar extends JMenuBar {
         
         this.add(helpMenu);
     }
-
 }

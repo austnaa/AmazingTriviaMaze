@@ -1,5 +1,5 @@
 /**
- * Amazing Trivial Maze 
+ * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
 
@@ -11,7 +11,6 @@ import java.util.Objects;
  * Provides state and functinality for a free response question. 
  * @author Austn Attaway
  * @version Spring 2021
- * Updated: May 22, 2021
  */
 public class FreeResponseQuestion extends AbstractQuestion {
 

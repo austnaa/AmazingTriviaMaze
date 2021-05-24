@@ -1,5 +1,5 @@
 /**
- * Amazing Trivial Maze 
+ * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
 
@@ -28,7 +28,6 @@ import model.Room;
  * @author Austn Attaway
  * @author Chau Vu
  * @version Spring 2021
- * Updated: May 15, 2021
  * The class for the Player model's movement.
  */
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
@@ -86,9 +85,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         itemsheet.drawBrainsList(g2d, myPlayer);
         Toolkit.getDefaultToolkit().sync();
     }
-    
-    
-    
+
     /**
      * draw player image on the screen.
      * @param theGraphics - the 2D Graphics
@@ -105,7 +102,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 //    private void drawBrainImage(final Graphics2D theGraphics) {
 //        theGraphics.drawImage(myPlayer.getBrainImage(), 400, 400, this);
 //    }
-    
     
     /**
      * Updates the player tick and repaints the panel.
@@ -173,5 +169,4 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     public void keyTyped(final KeyEvent theKeyEvent) {
 
     }
-   
 }

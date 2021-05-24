@@ -1,3 +1,8 @@
+/**
+ * Amazing Trivia Maze 
+ * TCSS 360 Spring 2021
+ */
+
 package view;
 
 import java.awt.Graphics2D;
@@ -205,11 +210,3 @@ public class BackgroundSheet extends SheetLoader {
     }
 
 }
-
-
-
-
-
-
-
-

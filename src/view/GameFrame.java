@@ -1,5 +1,5 @@
 /**
- * Amazing Trivial Maze 
+ * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
 
@@ -8,10 +8,9 @@ package view;
 import javax.swing.JFrame;
 
 /**
+ * The class for the Amazing Trivia Maze game frame.
  * @author Daniel Jiang
  * @version Spring 2021
- * Updated: May 13, 2021
- * The class for the Amazing Trivia Maze game frame.
  */
 public class GameFrame extends JFrame {
    

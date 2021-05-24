@@ -1,5 +1,5 @@
 /**
- * Amazing Trivial Maze 
+ * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
 
@@ -7,10 +7,8 @@ package model.question;
 
 /**
  * Provides basic expected functionality for Question classes. 
- * 
  * @author Austn Attaway
  * @version Spring 2021
- * Updated: May 19, 2021
  */
 public interface Question {
     

@@ -1,3 +1,8 @@
+/**
+ * Amazing Trivia Maze 
+ * TCSS 360 Spring 2021
+ */
+
 package view;
 
 import java.awt.image.BufferedImage;
@@ -12,8 +17,6 @@ import javax.swing.JLabel;
  * 
  * @author Chau Vu
  * @version Spring 2021
- * Last updated 05/19/2021
- *
  */
 public class AboutFrame extends JFrame { 
     

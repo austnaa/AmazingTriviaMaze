@@ -1,5 +1,5 @@
 /**
- * Amazing Trivial Maze 
+ * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
 
@@ -14,24 +14,20 @@ import model.Player;
  * grabs the specific image from 
  * an item sheet.
  * 
+ * References: https://www.youtube.com/watch?v=jedilHUPO7c
+ *             https://www.baeldung.com/java-resize-image
  * @author Chau Vu
  * @version Spring 2021
- * Updated: May 15, 2021
  */
-// references: https://www.youtube.com/watch?v=jedilHUPO7c&t=1s
-//             https://www.baeldung.com/java-resize-image
 public class ItemSheet extends SheetLoader {
-    /**
-     * a constant variable 1 for brain image location.
-     */
+
+    /** A constant variable 1 for the brain image location. */
     public static final int BRAIN_IMAGE = 1;
     
     /** The name of the sprite sheet image located in the assets folder. */
     private static final String FILE_NAME = "item_sheet.png";
      
-    /**
-     * The Brains Image.
-     */
+    /** The Brains Image. */
     private BufferedImage myBrainsImage;
     
     /**
