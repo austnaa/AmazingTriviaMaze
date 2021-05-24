@@ -13,10 +13,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
 import model.Door;
 import model.MazeBuilder;
 import model.MazeManager;
@@ -84,19 +82,29 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         backgroundSheet.drawBackground(g2d, myMazeManager.getCurrentRoom());
         drawPlayerImage(g2d); 
         backgroundSheet.drawBottomRowTransparent(g2d, myMazeManager.getCurrentRoom());
+        final ItemSheet itemsheet = new ItemSheet();
+        itemsheet.drawBrainsList(g2d, myPlayer);
         Toolkit.getDefaultToolkit().sync();
     }
     
     
     
     /**
-     * draw this image on the screen.
-     * @param g
+     * draw player image on the screen.
+     * @param theGraphics - the 2D Graphics
      */
     private void drawPlayerImage(final Graphics2D theGraphics) {
         theGraphics.drawImage(myPlayer.getImage(), myPlayer.getXPosition(), 
                 myPlayer.getYPosition(), this);
     }
+//    
+//    /**
+//     * draw the brains image on the screen.
+//     */
+//    
+//    private void drawBrainImage(final Graphics2D theGraphics) {
+//        theGraphics.drawImage(myPlayer.getBrainImage(), 400, 400, this);
+//    }
     
     
     /**

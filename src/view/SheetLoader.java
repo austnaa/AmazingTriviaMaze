@@ -30,7 +30,7 @@ public class SheetLoader {
     public static int NUM_COLS = 4;
     
     /** The number of rows of images. */
-    public static int NUM_ROWS = 8;
+    public static int NUM_ROWS = 9;
     
     /** The width and height of the images in the sprite sheet in pixels. */
     public static final int IMAGE_DIMENSION = 32;
@@ -84,6 +84,34 @@ public class SheetLoader {
         BufferedImage image = mySpriteSheet.getSubimage(imageX, imageY, IMAGE_DIMENSION, IMAGE_DIMENSION); 
         image = resizeImage(image, IMAGE_SCALAR * IMAGE_DIMENSION, IMAGE_SCALAR * IMAGE_DIMENSION);
         
+        return image;
+    }
+    
+    
+    /**
+     * Grabs and cropping the specified image from this sheet.
+     * 
+     * @param theColumn the column the image returned is located at
+     * @param theRow    the row the image returned is located at
+     * @param theWidth  the width of the image grabbed from the sprite sheet
+     * @param theHeight the height of the image grabbed from the sprite sheet
+     * @return the image 
+     * @throws IllegalArgumentException if theColumn is less than 1 or greater than 4
+     * @throws IllegalArgumentException if theRow is less than 1 or greater than 4
+     */
+    public BufferedImage grabIcon(final int theColumn, final int theRow) {
+        if (theColumn < 1 || theColumn > NUM_COLS) {
+            throw new IllegalArgumentException("theCols value is invalid");
+        }
+        if (theRow < 1 || theRow > NUM_ROWS) {
+            throw new IllegalArgumentException("theRows value is invalid");
+        }
+        
+        final int imageX = (theColumn * IMAGE_DIMENSION) - IMAGE_DIMENSION;
+        final int imageY = (theRow * IMAGE_DIMENSION) - IMAGE_DIMENSION;
+        
+        BufferedImage image = mySpriteSheet.getSubimage(imageX, imageY, IMAGE_DIMENSION, IMAGE_DIMENSION); 
+
         return image;
     }
     

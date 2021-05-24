@@ -7,10 +7,13 @@ package model;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Door.TYPE;
 import view.BufferedImageLoader;
 import view.GameFrame;
+import view.ItemSheet;
 import view.SpriteSheet;
 
 
@@ -26,6 +29,18 @@ import view.SpriteSheet;
 //Tutorial source: https://www.youtube.com/watch?v=Yem67dViGSw --- is this needed anymore?
 public class Player {
     
+    /**
+     * the max number of brains a player can have.
+     * TODO: decide on the maximum number of brains
+     */
+    private static final int MAX_BRAINS = 10; 
+    
+    /**
+     * the number of brains the player starts with.
+     * TODO: decide on the number of brains player starts with.
+     */
+    private static final int START_BRAINS = 5;
+
     /** The initial x speed of the player. */
     private static final int NO_SPEED = 0;
     
@@ -68,7 +83,7 @@ public class Player {
      * This Player's x current x position.
      */
     private int myY;
-    
+       
     /**
      * The velocity of the player along the x axis. 
      */
@@ -79,21 +94,43 @@ public class Player {
      */
     private int myVelocityY;
   
-    // images
-    /**
-     * The sprite sheet image for this player.
-     */
-    private BufferedImage mySpriteSheetImage;
+    // brains location
     
+    /**
+     * TODO: create a list of brains image and put it in the top right.
+     */  
+    private List<BufferedImage> myBrainList;
+    
+    /**
+     * The Brains current x position
+     */
+    private int myBrainX;
+    
+    /**
+     * The Brains current y position
+     */
+    private int myBrainY;
+    
+    // images  
     /**
      * The SpriteSheet for this player.
      */
     private SpriteSheet mySpriteSheet;
     
     /**
+     * The SpriteSheet myBrainSpriteSheet.
+     */
+    private ItemSheet myItemSheet;
+     
+    /**
      * The current image of the player shown on the screen.
      */
     private BufferedImage myPlayerImage;
+    
+    /**
+     * The current image of the brains shown on the screen.
+     */
+    private BufferedImage myBrainImage;
     
     /**
      * The row the current player image is located at in the sprite sheet.
@@ -109,6 +146,11 @@ public class Player {
      * The number of ticks elapsed, used for changing images in animations.
      */
     private int myTickCount;
+    
+    /**
+     * The number of brains(incorrect answers) remaining.
+     */
+    private int myBrainsRemaining;
      
     /**
      * Constructs a new Player with default values.
@@ -123,10 +165,18 @@ public class Player {
         mySpriteRow = SpriteSheet.DOWN_MOVEMENT_ROW;
         mySpriteCol = SpriteSheet.NO_MOVEMENT_COL;
         
-        loadSpriteSheetImage();
-        
         mySpriteSheet = new SpriteSheet();
         myPlayerImage = mySpriteSheet.grabImage(mySpriteCol, mySpriteRow);
+        
+        myItemSheet = new ItemSheet();
+        myBrainImage = myItemSheet.grabIcon(ItemSheet.BRAIN_IMAGE, ItemSheet.BRAIN_IMAGE);
+        
+        myBrainsRemaining = START_BRAINS;
+        // TODO: put it in a method.
+        myBrainList = new ArrayList<BufferedImage>();
+        for (int i = 0; i < myBrainsRemaining; i++) {
+            myBrainList.add(myBrainImage);
+        }
     }
 
     /**
@@ -149,7 +199,7 @@ public class Player {
         
         updatePlayerImage();
     }    
-
+    
     /**
      * Returns the x position of this player.
      * @return the x position
@@ -217,6 +267,50 @@ public class Player {
     }
     
     /**
+     * return the image of the brains.
+     * @return
+     */
+    public BufferedImage getBrainImage() {
+        return myBrainImage;
+    }
+    
+    /**
+     * return the brains x location.
+     */
+    public int getBrainX() {
+        return myBrainX;
+    }
+    
+    /**
+     * return the brains y location.
+     */
+    public int getBrainY() {
+        return myBrainY;
+    }
+    
+    /**
+     * Returns myBrainsRemaining
+     * @return
+     */
+    public int getBrainsremaining() {
+        return myBrainsRemaining;
+    }
+    /**
+     * Sets myBrainsRemaining to theNumBrains if the sum is less than Max_Brains.
+     * @param theNumBrains
+     */
+    public void setBrains(final int theNumBrains) {
+        myBrainsRemaining = Math.min(MAX_BRAINS, theNumBrains);   
+    }
+    
+    /**
+     * return the brains list.
+     * @return
+     */
+    public List<BufferedImage> getBrainsList() {
+        return myBrainList;
+    }
+    /**
      * Updates the Player's sprite image depending on the game tick and 
      * the direction the character is moving.
      */
@@ -270,15 +364,6 @@ public class Player {
         }
         
         myPlayerImage = mySpriteSheet.grabImage(mySpriteCol, mySpriteRow);    
-    }
-
-    
-    /**
-     * Loads the sprite sheet image for future use.
-     */
-    private void loadSpriteSheetImage() {
-        final String path = System.getProperty("user.dir") + "/assets/sprite_sheet.png";
-        mySpriteSheetImage = BufferedImageLoader.loadImage(path);
     }
 
     /**
