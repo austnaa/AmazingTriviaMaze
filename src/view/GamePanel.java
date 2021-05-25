@@ -36,7 +36,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     private static final long serialVersionUID = 86445190678492115L;
     
     /** The delay between each game tick. */
-    private static final int TICK_DELAY = 50;
+    private static final int TICK_DELAY = 30;
     
     /**
      * The internal game timer.

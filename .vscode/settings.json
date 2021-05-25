@@ -1,0 +1,10 @@
+{
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar"
+        ],
+        "exclude": [
+            "/AmazingTriviaMaze/sqlite-jdbc-3.34.0.jar"
+        ]
+    }
+}

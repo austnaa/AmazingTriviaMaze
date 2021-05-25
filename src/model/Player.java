@@ -42,10 +42,10 @@ public class Player {
     private static final int NO_SPEED = 0;
     
     /** THe initial x position of the player. */
-    private static final int START_X = GameFrame.FRAME_WIDTH / 2;
+    private static final int START_X = GameFrame.FRAME_WIDTH / 2 - 65;
     
     /** The initial y position of the player. */
-    private static final int START_Y = GameFrame.FRAME_HEIGHT / 2;
+    private static final int START_Y = GameFrame.FRAME_HEIGHT / 2 - 100;
     
     /** The minimum allowed x position of the player. */
     private static final int MIN_X = 0;
