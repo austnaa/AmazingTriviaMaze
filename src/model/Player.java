@@ -90,24 +90,7 @@ public class Player {
      * The velocity of the player along the y axis. 
      */
     private int myVelocityY;
-  
-    // brains location
-    
-    /**
-     * TODO: create a list of brains image and put it in the top right.
-     */  
-    private List<BufferedImage> myBrainList;
-    
-    /**
-     * The Brains current x position
-     */
-    private int myBrainX;
-    
-    /**
-     * The Brains current y position
-     */
-    private int myBrainY;
-    
+
     // images  
     /**
      * The SpriteSheet for this player.
@@ -170,10 +153,6 @@ public class Player {
         
         myBrainsRemaining = START_BRAINS;
         // TODO: put it in a method.
-        myBrainList = new ArrayList<BufferedImage>();
-        for (int i = 0; i < myBrainsRemaining; i++) {
-            myBrainList.add(myBrainImage);
-        }
     }
 
     /**
@@ -264,28 +243,6 @@ public class Player {
     }
     
     /**
-     * return the image of the brains.
-     * @return
-     */
-    public BufferedImage getBrainImage() {
-        return myBrainImage;
-    }
-    
-    /**
-     * return the brains x location.
-     */
-    public int getBrainX() {
-        return myBrainX;
-    }
-    
-    /**
-     * return the brains y location.
-     */
-    public int getBrainY() {
-        return myBrainY;
-    }
-    
-    /**
      * Returns myBrainsRemaining
      * @return
      */
@@ -299,14 +256,7 @@ public class Player {
     public void setBrains(final int theNumBrains) {
         myBrainsRemaining = Math.min(MAX_BRAINS, theNumBrains);   
     }
-    
-    /**
-     * return the brains list.
-     * @return
-     */
-    public List<BufferedImage> getBrainsList() {
-        return myBrainList;
-    }
+
     /**
      * Updates the Player's sprite image depending on the game tick and 
      * the direction the character is moving.

@@ -54,7 +54,7 @@ public class ItemSheet extends SheetLoader {
     public void drawBrainsList(final Graphics2D theGraphics, final Player thePlayer) {
        int xLocation = 450;
        final int yLocation = 10;
-       for (int i = 0; i < thePlayer.getBrainsList().size(); i++) {
+       for (int i = 0; i < thePlayer.getBrainsremaining(); i++) {
            theGraphics.drawImage(myBrainsImage, xLocation, yLocation, null);
            xLocation += 32;
        }      
