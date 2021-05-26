@@ -5,6 +5,8 @@
 
 package view;
 
+import java.awt.GridLayout;
+
 import javax.swing.JFrame;
 
 /**
@@ -30,7 +32,7 @@ public class GameFrame extends JFrame {
         setTitle("Amazing Trivia Maze");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(FRAME_WIDTH, FRAME_HEIGHT);
-       // setResizable(false);
+        //setResizable(false);
         setLocationRelativeTo(null);
         setVisible(true);
         
@@ -42,9 +44,10 @@ public class GameFrame extends JFrame {
      * Starts the frame.
      */
     public void start() {
-//        setLayout(new GridLayout(1, 1, 0, 0));
+       // setLayout(new GridLayout(1, 1, 0, 0));
         final GamePanel gamePanel = new GamePanel();
         add(gamePanel);
+       // this.pack();
         setVisible(true);
     }
     
