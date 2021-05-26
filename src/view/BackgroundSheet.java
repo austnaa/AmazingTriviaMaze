@@ -8,10 +8,17 @@ package view;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-import javax.swing.JPanel;
+//import javax.swing.JPanel;
 
 import model.Room;
 
+// TODO complete javadoc 
+/**
+ * Manages drawing the background of the GamePanel
+ * @author Austn Attaway
+ * @version Spring 2021
+ *
+ */
 public class BackgroundSheet extends SheetLoader {
     
     /** The name of the sprite sheet image located in the assets folder. */
@@ -19,7 +26,7 @@ public class BackgroundSheet extends SheetLoader {
     
     private static final int INCREMENT = IMAGE_DIMENSION * IMAGE_SCALAR;
     
-    // TODO FINISH THESE JAVADOC LMAO
+ 
     /**
      * The image tile of the an upper left corner.
      */
