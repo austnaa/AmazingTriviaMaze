@@ -13,6 +13,11 @@ import javax.swing.JFrame;
  * @version Spring 2021
  */
 public class GameFrame extends JFrame {
+    
+    
+    // standard ui
+    // start up set look and feel
+    // 
    
     /** An auto-generated serial version UID for object Serialization */
     private static final long serialVersionUID = -523569722387519606L;

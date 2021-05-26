@@ -291,8 +291,14 @@ public class Player {
     // *****************
     
     /**
+     * Returns (basic english)
+     * @return (field name )
+     */
+    
+    
+    /**
      * Returns myBrainsRemaining
-     * @return
+     * @return 
      */
     public int getBrainsremaining() {
         return myBrainsRemaining;
@@ -315,6 +321,8 @@ public class Player {
     public List<BufferedImage> getBrainsList() {
         return myBrainList;
     }
+    
+    // could move to a PlayerView class
     /**
      * Updates the Player's sprite image depending on the game tick and 
      * the direction the character is moving.
