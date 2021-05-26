@@ -27,21 +27,21 @@ import view.SpriteSheet;
 public class Player {
     
     /**
-     * the max number of brains a player can have.
+     * The maximum number of brains a player can have.
      * TODO: decide on the maximum number of brains
      */
     private static final int MAX_BRAINS = 10; 
     
     /**
-     * the number of brains the player starts with.
+     * The number of brains the player starts with.
      * TODO: decide on the number of brains player starts with.
      */
     private static final int START_BRAINS = 5;
 
-    /** The initial x speed of the player. */
+    /** The initial x and y speed of the player. */
     private static final int NO_SPEED = 0;
     
-    /** THe initial x position of the player. */
+    /** The initial x position of the player. */
     private static final int START_X = GameFrame.FRAME_WIDTH / 2 - 65;
     
     /** The initial y position of the player. */
@@ -90,28 +90,51 @@ public class Player {
      * The velocity of the player along the y axis. 
      */
     private int myVelocityY;
+<<<<<<< HEAD
 
     // images  
+=======
+  
+    // ********************* move code below to VIEW
+    /**
+     * TODO: create a list of brains image and put it in the top right.
+     * TODO: move all brain image stuff to VIEW package
+     */  
+    private List<BufferedImage> myBrainList;
+    
+    /**
+     * The Brains current x position
+     */
+    private int myBrainX;
+    
+    /**
+     * The Brains current y position
+     */
+    private int myBrainY;
+    
+>>>>>>> 6f22f5a0c0e42f28e7a08bf3eecffb7bc55bdb66
+    /**
+     * The current image of the brains shown on the screen.
+     */
+    private BufferedImage myBrainImage;
+    
+    /**
+     * The SpriteSheet myBrainSpriteSheet.
+     */
+    private ItemSheet myItemSheet;
+    // ********************* move code above to VIEW
+    
+    // sprite images  
     /**
      * The SpriteSheet for this player.
      */
     private SpriteSheet mySpriteSheet;
     
     /**
-     * The SpriteSheet myBrainSpriteSheet.
-     */
-    private ItemSheet myItemSheet;
-     
-    /**
      * The current image of the player shown on the screen.
      */
     private BufferedImage myPlayerImage;
-    
-    /**
-     * The current image of the brains shown on the screen.
-     */
-    private BufferedImage myBrainImage;
-    
+ 
     /**
      * The row the current player image is located at in the sprite sheet.
      */
@@ -242,13 +265,50 @@ public class Player {
         return myPlayerImage;
     }
     
+    // *****************
+    // TODO won't need getBrainImage, getBrainX, getBrainY 
+    //      in this this class after brains are moved to model
     /**
-     * Returns myBrainsRemaining
+<<<<<<< HEAD
+=======
+     * return the image of the brains.
      * @return
+     */
+    public BufferedImage getBrainImage() {
+        return myBrainImage;
+    }
+    
+    /**
+     * return the brains x location.
+     */
+    public int getBrainX() {
+        return myBrainX;
+    }
+    
+    /**
+     * return the brains y location.
+     */
+    public int getBrainY() {
+        return myBrainY;
+    }
+    // *****************
+    
+    /**
+     * Returns (basic english)
+     * @return (field name )
+     */
+    
+    
+    /**
+>>>>>>> 6f22f5a0c0e42f28e7a08bf3eecffb7bc55bdb66
+     * Returns myBrainsRemaining
+     * @return 
      */
     public int getBrainsremaining() {
         return myBrainsRemaining;
     }
+    
+    // TODO create a guard against negative brains?
     /**
      * Sets myBrainsRemaining to theNumBrains if the sum is less than Max_Brains.
      * @param theNumBrains
@@ -256,7 +316,21 @@ public class Player {
     public void setBrains(final int theNumBrains) {
         myBrainsRemaining = Math.min(MAX_BRAINS, theNumBrains);   
     }
+<<<<<<< HEAD
 
+=======
+    
+    // TODO wont need this after brain code is moved to view
+    /**
+     * return the brains list.
+     * @return
+     */
+    public List<BufferedImage> getBrainsList() {
+        return myBrainList;
+    }
+    
+    // could move to a PlayerView class
+>>>>>>> 6f22f5a0c0e42f28e7a08bf3eecffb7bc55bdb66
     /**
      * Updates the Player's sprite image depending on the game tick and 
      * the direction the character is moving.
@@ -313,10 +387,11 @@ public class Player {
         myPlayerImage = mySpriteSheet.grabImage(mySpriteCol, mySpriteRow);    
     }
 
+    // TODO null enums check?
     /**
      * Updates the Player's current position as the Players interact with the door to move rooms.
      * 
-     * @param theDoorType - The door position N/E/W/S.
+     * @param theDoorType - The door position in its room (North/South/East/West).
      */
     public void moveRooms(final Door.TYPE theDoorType) {
         if (theDoorType == Door.TYPE.NORTH) {
