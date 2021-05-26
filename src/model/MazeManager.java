@@ -1,28 +1,63 @@
+/**
+ * Amazing Trivia Maze 
+ * TCSS 360 Spring 2021
+ */
+
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+/**
+ * Builds and maintains the collection of possible mazes the game can pick 
+ * from and the current maze that is being used in the current game.
+ * 
+ * @author Austn Attaway
+ * @version Spring 2021
+ */
 public class MazeManager {
     
+    /** The file name of maze 1. */
     private static final String MAZE_1 = "map1.txt";
+    
+    /** The file name of maze 2. */
     private static final String MAZE_2 = "map2.txt";
     
+    /**
+     * A List of Room matrices that have not been used in the current program's execution.
+     */
     private List<Room[][]> myUnusedMazes;
     
+    /**
+     * A List of Room matrices that have been used in the current program's execution.
+     */
     private List<Room[][]> myUsedMazes;
     
+    /**
+     * The current Maze the game is displaying.
+     */
     private Room[][] myCurrentMaze;
     
+    /**
+     * The room in the current maze the player is located in.
+     */
     private Room myCurrentRoom;
     
+    /**
+     * The 0-indexed row the current room is located at in the current maze.
+     */
     private int myMazeRow;
+    
+    /**
+     * The 0-indexed column the current room is located at in the current maze.
+     */
     private int myMazeCol;
     
-    // builds a list of mazes before the game starts
-    // has a current maze
-    
-    
+    /**
+     * Constructs a new MazeManager that contains all mazes available to be played 
+     * and sets the first maze.
+     */
     public MazeManager() {
         
         myUnusedMazes = new ArrayList<Room[][]>();
@@ -33,6 +68,10 @@ public class MazeManager {
         
         myUnusedMazes.add(maze1);
         myUnusedMazes.add(maze2);
+        
+        // shuffle the full list of unused mazes so when we pull from 
+        // the list later the order in which we use mazes is randomized
+        Collections.shuffle(myUnusedMazes);
         
         setNewMaze();
     }
@@ -52,13 +91,16 @@ public class MazeManager {
             moveUsedMazesToUnused();
         }
         
+        // TODO we may want to change this behavior to match the "start room" 
+        // mechanic we have in out map.txt files OR change our map mazes to always 
+        // start at (0, 0)
         myCurrentMaze = resultMaze;
         myMazeRow = 0;
         myMazeCol = 0;
         myCurrentRoom = myCurrentMaze[myMazeRow][myMazeCol];
     }
     
-    
+    // TODO can Enums be null? should we check for null?
     /**
      * Changes the current room to the correct room depending on the
      * type of door that is given. The given door is the type of door that

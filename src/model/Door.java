@@ -7,7 +7,6 @@ package model;
 
 import view.GameFrame;
 
-// TODO don't like this class comment.
 /**
  * Contains state and behavior appropriate for a Door.
  * @author Austn Attaway
@@ -64,6 +63,8 @@ public class Door {
      */
     private boolean myIsLocked;
     
+    // TODO add Question field
+    
     /**
      * Constructor that builds a door with default values.
      */
@@ -73,6 +74,9 @@ public class Door {
         myIsLocked = true;
     }
     
+    // TODO interaction not implemented yet
+    // return the door if it is unlocked?
+    // return null if the door was not previously locked and the question was never answered?
     /**
      * Interact with this door if the player is close enough.  
      */
@@ -80,6 +84,8 @@ public class Door {
         final int xDiff = Math.abs(thePlayer.getXPosition() - myX);
         final int yDiff = Math.abs(thePlayer.getYPosition() - myY);
 
+        // check to make sure that the Player is
+        // close enough to this door for interaction
         if (xDiff < 150 && yDiff < 150) {
             myIsLocked = false;
             return this;

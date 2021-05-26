@@ -27,21 +27,21 @@ import view.SpriteSheet;
 public class Player {
     
     /**
-     * the max number of brains a player can have.
+     * The maximum number of brains a player can have.
      * TODO: decide on the maximum number of brains
      */
     private static final int MAX_BRAINS = 10; 
     
     /**
-     * the number of brains the player starts with.
+     * The number of brains the player starts with.
      * TODO: decide on the number of brains player starts with.
      */
     private static final int START_BRAINS = 5;
 
-    /** The initial x speed of the player. */
+    /** The initial x and y speed of the player. */
     private static final int NO_SPEED = 0;
     
-    /** THe initial x position of the player. */
+    /** The initial x position of the player. */
     private static final int START_X = GameFrame.FRAME_WIDTH / 2 - 65;
     
     /** The initial y position of the player. */
@@ -91,10 +91,10 @@ public class Player {
      */
     private int myVelocityY;
   
-    // brains location
-    
+    // ********************* move code below to VIEW
     /**
      * TODO: create a list of brains image and put it in the top right.
+     * TODO: move all brain image stuff to VIEW package
      */  
     private List<BufferedImage> myBrainList;
     
@@ -108,27 +108,28 @@ public class Player {
      */
     private int myBrainY;
     
-    // images  
+    /**
+     * The current image of the brains shown on the screen.
+     */
+    private BufferedImage myBrainImage;
+    
+    /**
+     * The SpriteSheet myBrainSpriteSheet.
+     */
+    private ItemSheet myItemSheet;
+    // ********************* move code above to VIEW
+    
+    // sprite images  
     /**
      * The SpriteSheet for this player.
      */
     private SpriteSheet mySpriteSheet;
     
     /**
-     * The SpriteSheet myBrainSpriteSheet.
-     */
-    private ItemSheet myItemSheet;
-     
-    /**
      * The current image of the player shown on the screen.
      */
     private BufferedImage myPlayerImage;
-    
-    /**
-     * The current image of the brains shown on the screen.
-     */
-    private BufferedImage myBrainImage;
-    
+ 
     /**
      * The row the current player image is located at in the sprite sheet.
      */
@@ -263,6 +264,9 @@ public class Player {
         return myPlayerImage;
     }
     
+    // *****************
+    // TODO won't need getBrainImage, getBrainX, getBrainY 
+    //      in this this class after brains are moved to model
     /**
      * return the image of the brains.
      * @return
@@ -284,6 +288,7 @@ public class Player {
     public int getBrainY() {
         return myBrainY;
     }
+    // *****************
     
     /**
      * Returns myBrainsRemaining
@@ -292,6 +297,8 @@ public class Player {
     public int getBrainsremaining() {
         return myBrainsRemaining;
     }
+    
+    // TODO create a guard against negative brains?
     /**
      * Sets myBrainsRemaining to theNumBrains if the sum is less than Max_Brains.
      * @param theNumBrains
@@ -300,6 +307,7 @@ public class Player {
         myBrainsRemaining = Math.min(MAX_BRAINS, theNumBrains);   
     }
     
+    // TODO wont need this after brain code is moved to view
     /**
      * return the brains list.
      * @return
@@ -363,10 +371,11 @@ public class Player {
         myPlayerImage = mySpriteSheet.grabImage(mySpriteCol, mySpriteRow);    
     }
 
+    // TODO null enums check?
     /**
      * Updates the Player's current position as the Players interact with the door to move rooms.
      * 
-     * @param theDoorType - The door position N/E/W/S.
+     * @param theDoorType - The door position in its room (North/South/East/West).
      */
     public void moveRooms(final Door.TYPE theDoorType) {
         if (theDoorType == Door.TYPE.NORTH) {

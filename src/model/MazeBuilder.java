@@ -28,13 +28,14 @@ public class MazeBuilder {
 //    }
     
     /**
-     * Private default constructor to inhibit its use.
+     * Private default constructor to inhibit instantiation.
      */
     private MazeBuilder() {
         
     }
     
-    
+    // TODO probably pass in the QuestionList into this method so we can assign questions 
+    // to each of the doors
     /**
      * Given a file name of a text file that contains the map generation information,
      * returns a matrix of Room objects that represents the maze. 
@@ -50,7 +51,7 @@ public class MazeBuilder {
      * represent the end room.
      * 
      * Following any special symbols are 4 characters, all either 'Y' or 'N' which represent 
-     * whether a door is located at the north, south, west, and east sides respectively. 
+     * whether or not a door is located at the north, south, west, and east sides respectively. 
      * 
      * @param theFileName the name of the file that contains the map generation information
      * @throws NullPointerException if theFileName is null
@@ -59,8 +60,6 @@ public class MazeBuilder {
         
         Objects.requireNonNull(theFileName); 
         final String path = System.getProperty("user.dir") + "/assets/" + theFileName;
-        
-        
         final Scanner fileScanner = getScanner(path);
         
         final int numRows = fileScanner.nextInt();
@@ -129,7 +128,7 @@ public class MazeBuilder {
             isEndRoom   = theRoomString.charAt(0) == '$';
             theRoomString = theRoomString.substring(1);
         }
-        
+        // TODO will need to insert a random question for each Door here
         final Door northDoor = theRoomString.charAt(0) == 'Y' ? new Door(Door.TYPE.NORTH) : null;
         final Door southDoor = theRoomString.charAt(1) == 'Y' ? new Door(Door.TYPE.SOUTH) : null;
         final Door westDoor = theRoomString.charAt(2) == 'Y'  ? new Door(Door.TYPE.WEST) : null;

@@ -18,6 +18,8 @@ public interface Question {
      */
     public String getPrompt();
     
+    
+    // These are only applicable to the MultipleChoiceQuestion and the TrueFalse question...
     /**
      * Returns the array of Option objects for this question. At least one of the options
      * will be the correct option. 

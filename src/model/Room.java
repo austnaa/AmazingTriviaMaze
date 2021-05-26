@@ -5,9 +5,10 @@
 
 package model;
 
-// TODO don't like this class comment.
+import java.util.Objects;
+
 /**
- * Contains state and behavior appropriate for a particular Room.
+ * Contains state and behavior appropriate for a particular Room within a maze.
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -54,7 +55,7 @@ public class Room {
         
     }
     
-    
+    // TODO need to do some NULL checking (use Objects.requreNonNull(object, message))
     /**
      * Constructor that builds a Room corresponding to the given input.
      * 
@@ -79,10 +80,13 @@ public class Room {
         
     }
     
+    
     /**
-     * Interacts with this 
+     * Allows the given player to interact with this Room.
+     * @throws NullPointerException if thePlayer is null
      */
     public Door interact(final Player thePlayer) {
+        Objects.requireNonNull(thePlayer, "thePlayer can not be null");
         Door interactedDoor = null;
         // try and interact with all of the available doors
         
@@ -155,15 +159,15 @@ public class Room {
         stringBuilder.append("Room: ");
         stringBuilder.append(System.lineSeparator());
         
-        if (myIsStartRoom) {
-            stringBuilder.append("Start room: true");
-            stringBuilder.append(System.lineSeparator());
-        } 
-        if (myIsEndRoom) {
-            stringBuilder.append("End room: true");
-            stringBuilder.append(System.lineSeparator());
-        }
+        // start room?
+        stringBuilder.append("Start room: " + myIsStartRoom);
+        stringBuilder.append(System.lineSeparator());        
         
+        // end room?
+        stringBuilder.append("End room: " + myIsEndRoom);
+        stringBuilder.append(System.lineSeparator());
+
+        // doors
         stringBuilder.append("Door status:");
         stringBuilder.append(System.lineSeparator());
         

@@ -8,7 +8,7 @@ package model.question;
 import java.util.Objects;
 
 /**
- * Provides state and functinality for a free response question. 
+ * Provides state and functionality for a free response question. 
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -42,6 +42,7 @@ public class FreeResponseQuestion extends AbstractQuestion {
      */
     public boolean checkAnswer(final String theUsersAnswer) {
         Objects.requireNonNull(theUsersAnswer, "theUsersAnswer can not be null");
+        // TODO: implement better string comparison to cut whitespace, etc.
         return theUsersAnswer.equalsIgnoreCase(myCorrectAnswer);
     }
 
