@@ -14,7 +14,7 @@ import javax.swing.JFrame;
  */
 public class GameFrame extends JFrame {
     
-    
+
     // standard ui
     // start up set look and feel
     // 

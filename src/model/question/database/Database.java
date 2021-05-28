@@ -2,6 +2,7 @@
  * Amazing Trivia Maze
  * TCSS 360 Spring 2021
  */
+
 package model.question.database;
 
 import java.sql.Connection;

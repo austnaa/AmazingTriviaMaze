@@ -83,6 +83,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         backgroundSheet.drawBottomRowTransparent(g2d, myMazeManager.getCurrentRoom());
         final ItemSheet itemsheet = new ItemSheet();
         itemsheet.drawBrainsList(g2d, myPlayer);
+        MiniMap.drawMiniMap(g2d, myMazeManager.getCurrentMaze(), myMazeManager.getCurrentRoom());
         Toolkit.getDefaultToolkit().sync();
     }
 

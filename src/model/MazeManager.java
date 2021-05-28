@@ -98,6 +98,7 @@ public class MazeManager {
         myMazeRow = 0;
         myMazeCol = 0;
         myCurrentRoom = myCurrentMaze[myMazeRow][myMazeCol];
+        myCurrentRoom.setVisited();
     }
     
     // TODO can Enums be null? should we check for null?
@@ -119,6 +120,7 @@ public class MazeManager {
             myMazeCol = Math.min(myMazeCol + 1, myCurrentMaze[0].length - 1);
         }
         myCurrentRoom = myCurrentMaze[myMazeRow][myMazeCol];
+        myCurrentRoom.setVisited();
     }
     
     /**

@@ -25,6 +25,11 @@ public class Room {
     private boolean myIsEndRoom;
     
     /**
+     * Whether or not this Room has been visited yet.
+     */
+    private boolean myHasBeenVisited;
+    
+    /**
      * The Door that is located at to the North of the room.
      * Is null if the Door does not exist. 
      */
@@ -72,6 +77,7 @@ public class Room {
         
         myIsStartRoom = theRoomIsStart; 
         myIsEndRoom = theRoomIsEnd;
+        myHasBeenVisited = false;
         
         myNorthDoor = theNorthDoor;
         mySouthDoor = theSouthDoor;   
@@ -148,6 +154,23 @@ public class Room {
     public boolean hasEastDoor() {
         return myEastDoor != null;
     }
+    
+    /**
+     * Update this Room's state to indicate it has been visited.
+     */
+    public void setVisited() {
+        myHasBeenVisited = true;
+    }
+    
+    /**
+     * Returns whether or not this room has been visited.
+     * @return whether or not this room has been visited.
+     */
+    public boolean isVisited() {
+        return myHasBeenVisited;
+    }
+    
+    
     
     
     /**
