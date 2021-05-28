@@ -10,13 +10,16 @@ package model.question;
  * @author Austn Attaway
  * @version Spring 2021
  */
-public interface Question {
+public interface Question extends Cloneable {
     
     /**
      * Returns the String representation of this Question's prompt.
      * @return the String representation of this Question's prompt.
      */
     public String getPrompt();
+    
+    public Question clone();
+    
     
     
     // These are only applicable to the MultipleChoiceQuestion and the TrueFalse question...

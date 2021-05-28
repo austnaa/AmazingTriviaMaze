@@ -45,6 +45,11 @@ public class FreeResponseQuestion extends AbstractQuestion {
         // TODO: implement better string comparison to cut whitespace, etc.
         return theUsersAnswer.equalsIgnoreCase(myCorrectAnswer);
     }
+    
+    public Question clone() {
+        final FreeResponseQuestion copy = new FreeResponseQuestion(super.myPrompt, myCorrectAnswer);
+        return copy;
+    }
 
 //    /**
 //     * 

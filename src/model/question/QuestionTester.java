@@ -32,5 +32,8 @@ public class QuestionTester {
         
         new QuestionFrame(mcq);
         
+        QuestionManager qm = new QuestionManager();
+        
+        
     }
 }

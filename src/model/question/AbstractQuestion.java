@@ -17,7 +17,7 @@ public abstract class AbstractQuestion implements Question {
     /**
      * The String representation of this Question's prompt.
      */
-    private String myPrompt;
+    protected String myPrompt;
     
     
     /**
@@ -33,6 +33,8 @@ public abstract class AbstractQuestion implements Question {
     public String getPrompt() {
         return myPrompt;
     }
+    
+    public abstract Question clone();
 
 //    public abstract Option[] getOptions();
 

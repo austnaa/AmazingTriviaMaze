@@ -74,4 +74,12 @@ public class MultipleChoiceQuestion extends AbstractQuestion {
     public Option[] getOptions() {
         return myOptions;
     }
+    
+    
+    
+    public Question clone() {
+        // TODO CHECK to make sure that myOptions does a deep copy...
+        final MultipleChoiceQuestion copy = new MultipleChoiceQuestion(myPrompt, myOptions);
+        return copy;
+    }
 }
