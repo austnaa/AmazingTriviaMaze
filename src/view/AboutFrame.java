@@ -33,9 +33,9 @@ public class AboutFrame extends JFrame {
         final JLabel label = new JLabel();
         final String path = System.getProperty("user.dir") + "/assets/About.png";
         final BufferedImage img = BufferedImageLoader.loadImage(path);  
-        label.setIcon(new ImageIcon(SheetLoader.resizeImage(img, 600, 600)));
+        label.setIcon(new ImageIcon(SheetLoader.resizeImage(img, GameFrame.FRAME_WIDTH, GameFrame.FRAME_HEIGHT)));
         add(label);
-        setSize(600, 600);
+        setSize(GameFrame.FRAME_HEIGHT, GameFrame.FRAME_WIDTH);       
         setResizable(false);
         pack();
         setLocationRelativeTo(null);

@@ -5,7 +5,8 @@
 
 package view;
 
-import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 
@@ -39,8 +40,7 @@ public class GameFrame extends JFrame {
         setSize(FRAME_WIDTH, FRAME_HEIGHT);
         //setResizable(false);
         setLocationRelativeTo(null);
-        setVisible(true);
-        
+        setVisible(true);  
         this.setJMenuBar(new MenuBar());
         start();
     }
@@ -49,12 +49,21 @@ public class GameFrame extends JFrame {
      * Starts the frame.
      */
     public void start() {
-       // setLayout(new GridLayout(1, 1, 0, 0));
-        final GamePanel gamePanel = new GamePanel();
-        add(gamePanel);
-       // this.pack();
+        final StartPanel startPanel = new StartPanel();
+        add(startPanel); 
+        startPanel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                System.out.println(e.getX() + ", " + e.getY());
+                if(e.getX() >= 160 && e.getX() <= 480  && e.getY() >= 258  && e.getY() <= 428) {
+                    startPanel.setVisible(false);
+                    final GamePanel gamePanel = new GamePanel();
+                    add(gamePanel);
+                }
+            }
+        });
         setVisible(true);
-    }
+    }   
     
     /**
      * Starts the game frame.
