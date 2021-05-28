@@ -20,16 +20,7 @@ import model.question.QuestionManager;
  * @version Spring 2021
  */
 public class MazeBuilder {
-    
-//    // main method for testing purposes
-//    public static void main(String[] args) {
-//        
-//        String path = System.getProperty("user.dir") + "/assets/map1.txt";
-//        Room[][] maze = MazeBuilder.buildMaze(path);
-//        System.out.println(maze[0][0].toString());
-//        System.out.println(maze[3][3].toString());
-//    }
-    
+        
     /**
      * Private default constructor to inhibit instantiation.
      */
@@ -79,8 +70,7 @@ public class MazeBuilder {
             for (int j = 0; j < numCols; j++) {
                 
                 final String roomString = fileScanner.next();
-//                final Question question = theQuestionManager.getRandomQuestion();
-                resultMaze[i][j] = buildRoom(roomString, theQuestionManager);
+                resultMaze[i][j] = buildRoom(roomString, theQuestionManager, resultMaze, i, j);
                 
             }
         }
@@ -112,19 +102,30 @@ public class MazeBuilder {
         return fileScanner;
     }
     
-    
+    // TODO: better comments.
+    // TODO: explain important precondition that the room above and to left are already created in maze
     /**
      * Returns a new Room that is built according to the given room String input.
      * 
-     * @param theRoomString the input string that contains Y or N values.\ 
+     * @param theRoomString the input string that contains Y or N values.
+     * @param theQuestionManager the QuestionManager that supplies random questions.
+     * @param theMaze the 2D array of rooms that have been created up until theRow and theCol.
+     * @param theRow the row the returned room will be located at in theMaze
+     * @param theCol the columns the returned room will be located at in theMaze.
+     * 
      * @return the Room that corresponds to the given room string input
+     * 
      * @throws NullPointerException if theRoomString is null
      * @throws NullPointerException if theQuestionManager is null
+     * @throws NullPointerException if theMaze is null
      * @throws IllegalArgumentException if theRoomString length is less than 4
      */
-    private static Room buildRoom(String theRoomString, final QuestionManager theQuestionManager) {
+    private static Room buildRoom(String theRoomString, final QuestionManager theQuestionManager,
+            final Room[][] theMaze, final int theRow, final int theCol) {
+        
         Objects.requireNonNull(theRoomString, "theRoomString can not be null");
         Objects.requireNonNull(theQuestionManager, "theQuestionManager can not be null");
+        Objects.requireNonNull(theMaze, "theMaze can not be null");
         if (theRoomString.length() < 4) {
             throw new IllegalArgumentException("theRoomString must be at least length 4");
         }
@@ -137,22 +138,32 @@ public class MazeBuilder {
             isStartRoom = theRoomString.charAt(0) == '@';
             isEndRoom   = theRoomString.charAt(0) == '$';
             theRoomString = theRoomString.substring(1);
+        }  
+        
+        // the north door will share a question with the room above it
+        Door northDoor = null;
+        if (theRoomString.charAt(0) == 'Y') {
+            final Question question = theMaze[theRow - 1][theCol].getSouthDoor().getQuestion();
+            northDoor = new Door(Door.TYPE.NORTH, question);
+        } 
+        
+        // the west door will share a question with the room to the left of it
+        Door westDoor = null;
+        if (theRoomString.charAt(2) == 'Y') {
+            final Question question = theMaze[theRow][theCol - 1].getEastDoor().getQuestion();
+            westDoor = new Door(Door.TYPE.WEST, question);
         }
         
-        // set up each door for this room. Pass in a random 
-        // question into the door using theQuestionManager
-        final Door northDoor = theRoomString.charAt(0) == 'Y' ? 
-                new Door(Door.TYPE.NORTH, theQuestionManager.getRandomQuestion()) : null;
+        // we know that the doors to the south and east have not been created yet, so create them.
         final Door southDoor = theRoomString.charAt(1) == 'Y' ? 
                 new Door(Door.TYPE.SOUTH, theQuestionManager.getRandomQuestion()) : null;
-        final Door westDoor = theRoomString.charAt(2) == 'Y'  ? 
-                new Door(Door.TYPE.WEST, theQuestionManager.getRandomQuestion()) : null;
+        
         final Door eastDoor = theRoomString.charAt(3) == 'Y'  ? 
                 new Door(Door.TYPE.EAST, theQuestionManager.getRandomQuestion()) : null;
         
+                
         final Room newRoom = new Room(isStartRoom, isEndRoom, 
-                northDoor, southDoor, westDoor, eastDoor);
-        
+                northDoor, southDoor, westDoor, eastDoor); 
         return newRoom;
     }
 }

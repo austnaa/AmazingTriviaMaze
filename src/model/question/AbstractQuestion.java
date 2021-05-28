@@ -19,6 +19,11 @@ public abstract class AbstractQuestion implements Question {
      */
     protected String myPrompt;
     
+    /**
+     * Whether or not this Question has been answered.
+     */
+    protected boolean myIsAnswered;
+    
     
     /**
      * Abstract constructor that sets default values for Questions.
@@ -27,6 +32,7 @@ public abstract class AbstractQuestion implements Question {
      */
     protected AbstractQuestion(final String thePrompt) {
         myPrompt = Objects.requireNonNull(thePrompt, "thePrompt can not be null");
+        myIsAnswered = false;
     }
     
     @Override
@@ -34,9 +40,20 @@ public abstract class AbstractQuestion implements Question {
         return myPrompt;
     }
     
-
+    @Override
+    public boolean isAnswered() {
+        return myIsAnswered;
+    }
+    
+    @Override
+    public void answerQuestion() {
+        // TODO: this should be implemented in child classes. 
+        // this method should set up the frame that allows user to answer question
+        // if the question is answered correctly, set myIsAnswered to true.
+        myIsAnswered = true;
+    }
+    
+    @Override
     public abstract Question clone();
-
-//    public abstract Option[] getOptions();
 
 }

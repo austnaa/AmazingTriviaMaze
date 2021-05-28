@@ -7,6 +7,7 @@ package model.question;
 
 /**
  * Provides basic expected functionality for Question classes. 
+ * 
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -24,21 +25,18 @@ public interface Question extends Cloneable {
      */
     public Question clone();
     
-    
-    
-    // These are only applicable to the MultipleChoiceQuestion and the TrueFalse question...
     /**
-     * Returns the array of Option objects for this question. At least one of the options
-     * will be the correct option. 
-     * 
-     * @return the array of Option objects for this question
+     * Returns whether or not this question is answered
+     * @return whether or not this question is answered
      */
-//    public Option[] getOptions();
-    
+    public boolean isAnswered();
     
     /**
-     * Returns true if the currently selected answer option is the correct option, false otherwise. 
-     * @return true if the currently selected answer option is the correct option, false otherwise.
+     * Invokes the appropriate entity used to answer questions and allows 
+     * the user to answer this question. Sets this Question to be answered 
+     * if the user answers the question correctly.
      */
-//    public boolean checkAnswer();
+    public void answerQuestion();
+    
+
 }

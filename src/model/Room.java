@@ -170,9 +170,6 @@ public class Room {
         return myHasBeenVisited;
     }
     
-    
-    
-    
     /**
      * Returns a String representation of this room.
      */
@@ -212,5 +209,26 @@ public class Room {
         
         
         return stringBuilder.toString();
+    }
+    
+  //TODO: DECIDE IF WE WANT GETTERS FOR THE OTHER TWO DOORS...
+    /**
+     * Returns this Room's southern door. 
+     * Will return null if this Room does not have a southern door.
+     * 
+     * @return this Room's southern door if it exists, null otherwise.
+     */
+    Door getSouthDoor() {
+        return mySouthDoor;
+    }
+    
+    /**
+     * Returns this Room's eastern door. 
+     * Will return null if this Room does not have a eastern door.
+     * 
+     * @return this Room's western door if it exists, null otherwise.
+     */
+    Door getEastDoor() {
+        return myEastDoor;
     }
 }

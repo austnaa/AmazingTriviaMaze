@@ -59,10 +59,6 @@ public class Door {
      */
     private int myY;
     
-    /**
-     * Whether or not this door is currently locked.
-     */
-    private boolean myIsLocked;
     
     /**
      * The Question assigned to this door. Is used when the user 
@@ -77,8 +73,9 @@ public class Door {
         myType = theType;
         myQuestion = theQuestion;
         setXYPosition();
-        myIsLocked = true;
     }
+    
+    
     
     // TODO interaction not implemented yet
     // return the door if it is unlocked?
@@ -93,9 +90,12 @@ public class Door {
         // check to make sure that the Player is
         // close enough to this door for interaction
         if (xDiff < 150 && yDiff < 150) {
-            if (myIsLocked) {
+            if (this.isLocked()) {
+                // door is currently locked, so print that it is locked.
                 System.out.println("LOCKED: " + myQuestion.getPrompt());
-                myIsLocked = false;
+                // this method will set the question to be answered if the user answers successfully
+                myQuestion.answerQuestion();
+                // TODO: check to see if the question was answered correctly..
             } else {
                 return this;
             }
@@ -103,12 +103,15 @@ public class Door {
         return null;
     }
     
+    
+    
+    
     /**
      * Returns whether or not this door is locked
      * @return whether or not this door is locked
      */
     public boolean isLocked() {
-        return myIsLocked;
+        return !myQuestion.isAnswered();
     }
     
     /**
@@ -140,6 +143,10 @@ public class Door {
      */
     public String toString() {
         return "I am a door, type: " + myType;
+    }
+    
+    public Question getQuestion() {
+        return myQuestion;
     }
     
     /**

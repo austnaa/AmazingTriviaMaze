@@ -46,25 +46,11 @@ public class FreeResponseQuestion extends AbstractQuestion {
         return theUsersAnswer.equalsIgnoreCase(myCorrectAnswer);
     }
     
+    @Override
     public Question clone() {
         final FreeResponseQuestion copy = new FreeResponseQuestion(super.myPrompt, myCorrectAnswer);
         return copy;
     }
 
-//    /**
-//     * 
-//     */
-//    @Override
-//    public Option[] getOptions() {
-//        // TODO Auto-generated method stub
-//        return null;
-//    }
-
-
-//    @Override
-//    public boolean checkAnswer() {
-//        // TODO Auto-generated method stub
-//        return false;
-//    }
 
 }

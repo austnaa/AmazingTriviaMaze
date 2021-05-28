@@ -62,11 +62,15 @@ public class MultipleChoiceQuestion extends AbstractQuestion {
                 break;
             }
         }
+        
+        // sets the state of this question to be answered
+        if (result) {
+            myIsAnswered = true;
+        }
         return result;
     }
 
 
-//    @Override
     /**
      * Returns the array of Option objects that are available to pick from.
      * @return
@@ -76,7 +80,7 @@ public class MultipleChoiceQuestion extends AbstractQuestion {
     }
     
     
-    
+    @Override
     public Question clone() {
         // TODO CHECK to make sure that myOptions does a deep copy...
         final MultipleChoiceQuestion copy = new MultipleChoiceQuestion(myPrompt, myOptions);
