@@ -18,6 +18,10 @@ public interface Question extends Cloneable {
      */
     public String getPrompt();
     
+    /**
+     * Returns a deep copy of this Question.
+     * @return a deep copy of this Question.
+     */
     public Question clone();
     
     

@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import model.question.QuestionManager;
+
 /**
  * Builds and maintains the collection of possible mazes the game can pick 
  * from and the current maze that is being used in the current game.
@@ -54,17 +56,21 @@ public class MazeManager {
      */
     private int myMazeCol;
     
+    private QuestionManager myQuestionManager;
+    
     /**
      * Constructs a new MazeManager that contains all mazes available to be played 
      * and sets the first maze.
      */
     public MazeManager() {
         
+        myQuestionManager = new QuestionManager();
+        
         myUnusedMazes = new ArrayList<Room[][]>();
         myUsedMazes = new ArrayList<Room[][]>();
         
-        final Room[][] maze1 = MazeBuilder.buildMaze(MAZE_1);
-        final Room[][] maze2 = MazeBuilder.buildMaze(MAZE_2);
+        final Room[][] maze1 = MazeBuilder.buildMaze(MAZE_1, myQuestionManager);
+        final Room[][] maze2 = MazeBuilder.buildMaze(MAZE_2, myQuestionManager);
         
         myUnusedMazes.add(maze1);
         myUnusedMazes.add(maze2);

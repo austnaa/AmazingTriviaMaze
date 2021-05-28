@@ -5,6 +5,7 @@
 
 package model;
 
+import model.question.Question;
 import view.GameFrame;
 
 /**
@@ -63,13 +64,18 @@ public class Door {
      */
     private boolean myIsLocked;
     
-    // TODO add Question field
+    /**
+     * The Question assigned to this door. Is used when the user 
+     * needs to answer a question to unlock the door.
+     */
+    private Question myQuestion;
     
     /**
      * Constructor that builds a door with default values.
      */
-    public Door(TYPE theType) {
+    public Door(final TYPE theType, final Question theQuestion) {
         myType = theType;
+        myQuestion = theQuestion;
         setXYPosition();
         myIsLocked = true;
     }
@@ -87,6 +93,7 @@ public class Door {
         // check to make sure that the Player is
         // close enough to this door for interaction
         if (xDiff < 150 && yDiff < 150) {
+            System.out.println(myQuestion.getPrompt());
             myIsLocked = false;
             return this;
         }

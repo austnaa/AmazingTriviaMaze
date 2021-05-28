@@ -20,13 +20,13 @@ public class FreeResponseQuestion extends AbstractQuestion {
     private String myCorrectAnswer;
     
     /**
-     * 
+     * TODO:
      * @param thePrompt 
      * @param theCorrectAnswer
      * @throws NullPointerException if thePrompt is null
      * @throws NullPointerException if theCorrectAnswer is null
      */
-    protected FreeResponseQuestion(final String thePrompt, final String theCorrectAnswer) {
+    public FreeResponseQuestion(final String thePrompt, final String theCorrectAnswer) {
         super(thePrompt);
         myCorrectAnswer = Objects.requireNonNull(theCorrectAnswer, "theCorrectAnswer can not be null");
     }

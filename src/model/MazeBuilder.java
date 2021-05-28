@@ -10,6 +10,9 @@ import java.io.FileNotFoundException;
 import java.util.Objects;
 import java.util.Scanner;
 
+import model.question.Question;
+import model.question.QuestionManager;
+
 /**
  * A utility class that provides functionality for creating a 2D matrix of Room objects
  * based of off a given text file.
@@ -55,10 +58,14 @@ public class MazeBuilder {
      * 
      * @param theFileName the name of the file that contains the map generation information
      * @throws NullPointerException if theFileName is null
+     * @throws NullPointerException if theQuestionManager is null
      */
-    public static Room[][] buildMaze(final String theFileName) throws NullPointerException {
+    public static Room[][] buildMaze(final String theFileName, final QuestionManager theQuestionManager) {
+        Objects.requireNonNull(theFileName, "theFileName can not be null"); 
+        Objects.requireNonNull(theQuestionManager, "theQuestionManager can not be null");
         
-        Objects.requireNonNull(theFileName); 
+        theQuestionManager.setNewQuestionList();
+        
         final String path = System.getProperty("user.dir") + "/assets/" + theFileName;
         final Scanner fileScanner = getScanner(path);
         
@@ -72,7 +79,8 @@ public class MazeBuilder {
             for (int j = 0; j < numCols; j++) {
                 
                 final String roomString = fileScanner.next();
-                resultMaze[i][j] = buildRoom(roomString);
+//                final Question question = theQuestionManager.getRandomQuestion();
+                resultMaze[i][j] = buildRoom(roomString, theQuestionManager);
                 
             }
         }
@@ -111,10 +119,12 @@ public class MazeBuilder {
      * @param theRoomString the input string that contains Y or N values.\ 
      * @return the Room that corresponds to the given room string input
      * @throws NullPointerException if theRoomString is null
+     * @throws NullPointerException if theQuestionManager is null
      * @throws IllegalArgumentException if theRoomString length is less than 4
      */
-    private static Room buildRoom(String theRoomString) {
-        Objects.requireNonNull(theRoomString);
+    private static Room buildRoom(String theRoomString, final QuestionManager theQuestionManager) {
+        Objects.requireNonNull(theRoomString, "theRoomString can not be null");
+        Objects.requireNonNull(theQuestionManager, "theQuestionManager can not be null");
         if (theRoomString.length() < 4) {
             throw new IllegalArgumentException("theRoomString must be at least length 4");
         }
@@ -128,11 +138,17 @@ public class MazeBuilder {
             isEndRoom   = theRoomString.charAt(0) == '$';
             theRoomString = theRoomString.substring(1);
         }
-        // TODO will need to insert a random question for each Door here
-        final Door northDoor = theRoomString.charAt(0) == 'Y' ? new Door(Door.TYPE.NORTH) : null;
-        final Door southDoor = theRoomString.charAt(1) == 'Y' ? new Door(Door.TYPE.SOUTH) : null;
-        final Door westDoor = theRoomString.charAt(2) == 'Y'  ? new Door(Door.TYPE.WEST) : null;
-        final Door eastDoor = theRoomString.charAt(3) == 'Y'  ? new Door(Door.TYPE.EAST) : null;
+        
+        // set up each door for this room. Pass in a random 
+        // question into the door using theQuestionManager
+        final Door northDoor = theRoomString.charAt(0) == 'Y' ? 
+                new Door(Door.TYPE.NORTH, theQuestionManager.getRandomQuestion()) : null;
+        final Door southDoor = theRoomString.charAt(1) == 'Y' ? 
+                new Door(Door.TYPE.SOUTH, theQuestionManager.getRandomQuestion()) : null;
+        final Door westDoor = theRoomString.charAt(2) == 'Y'  ? 
+                new Door(Door.TYPE.WEST, theQuestionManager.getRandomQuestion()) : null;
+        final Door eastDoor = theRoomString.charAt(3) == 'Y'  ? 
+                new Door(Door.TYPE.EAST, theQuestionManager.getRandomQuestion()) : null;
         
         final Room newRoom = new Room(isStartRoom, isEndRoom, 
                 northDoor, southDoor, westDoor, eastDoor);

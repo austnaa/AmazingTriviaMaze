@@ -59,23 +59,26 @@ public class QuestionManager {
         
         // ******** TEMP QUESTION FOR TESTING ... 
         // ******** ADD DATABASE ACCESSES HERE TO POPULATE LIST
-        Option option1 = new Option("Minecraft", true);
-        Option option2 = new Option("Fornite", false);
-        Option option3 = new Option("Roblox", false);
-        Option option4 = new Option("Among Us", false);
-        Option[] options = {option1, option2, option3, option4}; 
-        MultipleChoiceQuestion mcq = new MultipleChoiceQuestion("Which game is the most popular PC game?", 
-                options);
-        // ********
+        for (int i = 0; i < 50; i++) {
+            Option option1 = new Option("Minecraft", true);
+            Option option2 = new Option("Fornite", false);
+            Option option3 = new Option("Roblox", false);
+            Option option4 = new Option("Among Us", false);
+            Option[] options = {option1, option2, option3, option4}; 
+            MultipleChoiceQuestion mcq = new MultipleChoiceQuestion("Which game is the most popular PC game?", 
+                    options);
+            // ********
+            
+            myQuestionList.add(mcq);
+        }
         
-        myQuestionList.add(mcq);
     }
     
     
     /**
      * Sets up a brand new List of questions for use in a particular game instance.
      */
-    private void setNewQuestionList() {
+    public void setNewQuestionList() {
         myCurrentQuestionList = makeDeepCopy(myQuestionList);
     }
     

@@ -34,6 +34,7 @@ public abstract class AbstractQuestion implements Question {
         return myPrompt;
     }
     
+
     public abstract Question clone();
 
 //    public abstract Option[] getOptions();

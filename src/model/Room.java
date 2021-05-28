@@ -7,6 +7,8 @@ package model;
 
 import java.util.Objects;
 
+import model.question.Question;
+
 /**
  * Contains state and behavior appropriate for a particular Room within a maze.
  * @author Austn Attaway
