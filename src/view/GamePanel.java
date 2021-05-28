@@ -134,14 +134,26 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 myPlayer.moveRight();
                 break;
             case KeyEvent.VK_SPACE: // interaction
-                final Door interactedDoor = myMazeManager.getCurrentRoom().interact(myPlayer);
-                if (interactedDoor != null && !interactedDoor.isLocked()) {
-                    myMazeManager.moveRooms(interactedDoor.getType());
-                    myPlayer.moveRooms(interactedDoor.getType());
-//                 TODO   myPlayer.moveRooms(interactedDoor.getType());
-                }
+                interact();
                 break;
+                
         }
+    }
+    
+    /**
+     * Completes the interaction between the player and the interactable objects in the room.
+     * 
+     * TODO: controller code kinda
+     */
+    private void interact() {
+        final Door interactedDoor = myMazeManager.getCurrentRoom().interact(myPlayer);
+        
+        
+        if (interactedDoor != null && !interactedDoor.isLocked()) {
+            myMazeManager.moveRooms(interactedDoor.getType());
+            myPlayer.moveRooms(interactedDoor.getType());
+        }
+
     }
 
     /**

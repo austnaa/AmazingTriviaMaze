@@ -93,9 +93,12 @@ public class Door {
         // check to make sure that the Player is
         // close enough to this door for interaction
         if (xDiff < 150 && yDiff < 150) {
-            System.out.println(myQuestion.getPrompt());
-            myIsLocked = false;
-            return this;
+            if (myIsLocked) {
+                System.out.println("LOCKED: " + myQuestion.getPrompt());
+                myIsLocked = false;
+            } else {
+                return this;
+            }
         }
         return null;
     }

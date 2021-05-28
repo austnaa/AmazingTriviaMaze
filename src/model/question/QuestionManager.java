@@ -14,7 +14,7 @@ import java.util.Random;
 
 /**
  * Creates and manages the list of available questions that can be accessed to build 
- * intances of the Trivia Maze game.  
+ * instances of the Trivia Maze game.  
  *   
  * @author Austn Attaway
  * @version Spring 2021
@@ -57,15 +57,18 @@ public class QuestionManager {
     private void setupQuestionList() {
         myQuestionList = new ArrayList<Question>();
         
-        // ******** TEMP QUESTION FOR TESTING ... 
+        // ******** TEMP QUESTION LIST FOR TESTING ... 
         // ******** ADD DATABASE ACCESSES HERE TO POPULATE LIST
+        // this is where we will access each table in the database 
+        // and add create each question using the table's data. Once a question is created we add
+        // it to myQuestionList
         for (int i = 0; i < 50; i++) {
             Option option1 = new Option("Minecraft", true);
             Option option2 = new Option("Fornite", false);
             Option option3 = new Option("Roblox", false);
             Option option4 = new Option("Among Us", false);
             Option[] options = {option1, option2, option3, option4}; 
-            MultipleChoiceQuestion mcq = new MultipleChoiceQuestion("Which game is the most popular PC game?", 
+            Question mcq = new MultipleChoiceQuestion("Which game is the most popular PC game?", 
                     options);
             // ********
             
