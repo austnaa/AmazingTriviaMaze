@@ -7,11 +7,7 @@ package model;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import model.Door.TYPE;
-import view.BufferedImageLoader;
 import view.GameFrame;
 import view.ItemSheet;
 import view.SpriteSheet;
@@ -90,34 +86,6 @@ public class Player {
      * The velocity of the player along the y axis. 
      */
     private int myVelocityY;
-  
-    // ********************* move code below to VIEW
-    /**
-     * TODO: create a list of brains image and put it in the top right.
-     * TODO: move all brain image stuff to VIEW package
-     */  
-    private List<BufferedImage> myBrainList;
-    
-    /**
-     * The Brains current x position
-     */
-    private int myBrainX;
-    
-    /**
-     * The Brains current y position
-     */
-    private int myBrainY;
-    
-    /**
-     * The current image of the brains shown on the screen.
-     */
-    private BufferedImage myBrainImage;
-    
-    /**
-     * The SpriteSheet myBrainSpriteSheet.
-     */
-    private ItemSheet myItemSheet;
-    // ********************* move code above to VIEW
     
     // sprite images  
     /**
@@ -164,17 +132,10 @@ public class Player {
         mySpriteCol = SpriteSheet.NO_MOVEMENT_COL;
         
         mySpriteSheet = new SpriteSheet();
-        myPlayerImage = mySpriteSheet.grabImage(mySpriteCol, mySpriteRow);
-        
-        myItemSheet = new ItemSheet();
-        myBrainImage = myItemSheet.grabIcon(ItemSheet.BRAIN_IMAGE, ItemSheet.BRAIN_IMAGE);
+        myPlayerImage = mySpriteSheet.grabImage(mySpriteCol, mySpriteRow);    
         
         myBrainsRemaining = START_BRAINS;
         // TODO: put it in a method.
-        myBrainList = new ArrayList<BufferedImage>();
-        for (int i = 0; i < myBrainsRemaining; i++) {
-            myBrainList.add(myBrainImage);
-        }
     }
 
     /**
@@ -263,38 +224,11 @@ public class Player {
     public BufferedImage getImage() {
         return myPlayerImage;
     }
-    
-    // *****************
-    // TODO won't need getBrainImage, getBrainX, getBrainY 
-    //      in this this class after brains are moved to model
-    /**
-     * return the image of the brains.
-     * @return
-     */
-    public BufferedImage getBrainImage() {
-        return myBrainImage;
-    }
-    
-    /**
-     * return the brains x location.
-     */
-    public int getBrainX() {
-        return myBrainX;
-    }
-    
-    /**
-     * return the brains y location.
-     */
-    public int getBrainY() {
-        return myBrainY;
-    }
-    // *****************
-    
+
     /**
      * Returns (basic english)
      * @return (field name )
      */
-    
     
     /**
      * Returns myBrainsRemaining
@@ -312,15 +246,7 @@ public class Player {
     public void setBrains(final int theNumBrains) {
         myBrainsRemaining = Math.min(MAX_BRAINS, theNumBrains);   
     }
-    
-    // TODO wont need this after brain code is moved to view
-    /**
-     * return the brains list.
-     * @return
-     */
-    public List<BufferedImage> getBrainsList() {
-        return myBrainList;
-    }
+
     
     // could move to a PlayerView class
     /**
