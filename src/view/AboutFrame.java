@@ -35,7 +35,6 @@ public class AboutFrame extends JFrame {
         final BufferedImage img = BufferedImageLoader.loadImage(path);  
         label.setIcon(new ImageIcon(SheetLoader.resizeImage(img, GameFrame.FRAME_WIDTH, GameFrame.FRAME_HEIGHT)));
         add(label);
-        setSize(GameFrame.FRAME_HEIGHT, GameFrame.FRAME_WIDTH);       
         setResizable(false);
         pack();
         setLocationRelativeTo(null);
