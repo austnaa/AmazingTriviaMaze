@@ -5,6 +5,7 @@
 
 package model.question;
 
+import model.Player;
 import view.question_view.MultipleChoiceQuestionPanel;
 import view.question_view.QuestionFrame;
 
@@ -27,12 +28,12 @@ public class QuestionTester {
         
         FreeResponseQuestion frq = new FreeResponseQuestion("What is answer?", "answer");
         System.out.println(frq.checkAnswer("AnsweR"));
-        
+        Player p = new Player();
         
         
         mcq.checkAnswer();
         
-        MultipleChoiceQuestionPanel mcqp = new MultipleChoiceQuestionPanel(mcq);
+        MultipleChoiceQuestionPanel mcqp = new MultipleChoiceQuestionPanel(p, mcq);
         new QuestionFrame(mcqp);
         
         QuestionManager qm = new QuestionManager();

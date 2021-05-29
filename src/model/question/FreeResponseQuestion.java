@@ -7,6 +7,8 @@ package model.question;
 
 import java.util.Objects;
 
+import model.Player;
+
 /**
  * Provides state and functionality for a free response question. 
  * @author Austn Attaway
@@ -46,8 +48,9 @@ public class FreeResponseQuestion extends AbstractQuestion {
         return theUsersAnswer.equalsIgnoreCase(myCorrectAnswer);
     }
     
-    public void answerQuestion() {
+    public void answerQuestion(final Player thePlayer) {
         super.myIsAnswered = true;
+//        return true;
     }
     
     @Override

@@ -7,6 +7,8 @@ package model.question;
 
 import java.util.Objects;
 
+import model.Player;
+
 /**
  * An abstract class that provides some functionality for Question objects. 
  * @author Austn Attaway
@@ -52,7 +54,7 @@ public abstract class AbstractQuestion implements Question {
 //        // if the question is answered correctly, set myIsAnswered to true.
 //        myIsAnswered = true;
 //    }
-    public abstract void answerQuestion();
+    public abstract void answerQuestion(final Player thePlayer);
     
     @Override
     public abstract Question clone();

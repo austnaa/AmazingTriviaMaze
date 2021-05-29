@@ -5,6 +5,8 @@
 
 package model;
 
+import java.util.Objects;
+
 import model.question.Question;
 import view.GameFrame;
 
@@ -84,27 +86,37 @@ public class Door {
      * Interact with this door if the player is close enough.  
      */
     public Door interact(final Player thePlayer) {
-        final int xDiff = Math.abs(thePlayer.getXPosition() - myX);
-        final int yDiff = Math.abs(thePlayer.getYPosition() - myY);
-
-        // check to make sure that the Player is
-        // close enough to this door for interaction
-        if (xDiff < 150 && yDiff < 150) {
+        
+        if (isCloseEnough(thePlayer)) {
             if (this.isLocked()) {
                 // door is currently locked, so print that it is locked.
                 System.out.println("LOCKED: " + myQuestion.getPrompt());
                 // this method will set the question to be answered if the user answers successfully
-                myQuestion.answerQuestion();
-                
-            } 
-              
+                myQuestion.answerQuestion(thePlayer);  
+            } else {
+                return this;
+            }
         }
         
-        // we get to this statement before we can answer the question, which is not what we want...
+        // we get to this statement before we can answer the question, which is not what we want I don't think...
         System.out.println("Returning the door now, am I too early?");
-        return this.isLocked() ? null : this;
+        return null;
     }
     
+    /**
+     * Returns whether or not the given Player is close enough to this door for interaction.
+     * 
+     * @param thePlayer the Player trying to interact with this door.
+     * @return whether or not the given Player is close enough to this door for interaction.
+     * @throws NullPointerException if thePlayer is null
+     */
+    private boolean isCloseEnough(final Player thePlayer) {
+        Objects.requireNonNull(thePlayer, "thePlayer can not be null");
+        final int xDiff = Math.abs(thePlayer.getXPosition() - myX);
+        final int yDiff = Math.abs(thePlayer.getYPosition() - myY);
+        
+        return xDiff < 150 && yDiff < 150;
+    }
     
     
     

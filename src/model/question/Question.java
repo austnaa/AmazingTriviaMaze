@@ -5,6 +5,8 @@
 
 package model.question;
 
+import model.Player;
+
 /**
  * Provides basic expected functionality for Question classes. 
  * 
@@ -35,8 +37,9 @@ public interface Question extends Cloneable {
      * Invokes the appropriate entity used to answer questions and allows 
      * the user to answer this question. Sets this Question to be answered 
      * if the user answers the question correctly.
+     * @return 
      */
-    public void answerQuestion();
+    public void answerQuestion(final Player thePlayer);
     
 
 }

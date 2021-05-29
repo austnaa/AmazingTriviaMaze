@@ -9,31 +9,65 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
+import model.Player;
 import model.question.MultipleChoiceQuestion;
 import model.question.Option;
 
+/**
+ * A Panel that displays a multiple choice question.
+ * 
+ * @author Austn Attaway
+ * @version Spring 2021
+ */
 public class MultipleChoiceQuestionPanel extends JPanel {
 
     /** An auto-generated serial version UID for object Serialization */
     private static final long serialVersionUID = -2729044720547678473L;
     
+    /**
+     * The MultipleChoiceQuestion that this panel is displaying.
+     */
     private MultipleChoiceQuestion myQuestion;
+    
+    // TODO: MAY NOT NEED THIS
+    /**
+     * The options available for this multiple choice question
+     */
     private Option[] myOptions;
     
-    public MultipleChoiceQuestionPanel(final MultipleChoiceQuestion theQuestion) {
+    /**
+     * The Player object that could be affected from answering this panel's Question incorrectly.
+     */
+    private Player myPlayer;
+    
+    /**
+     * Constructs a new MultipleChoiceQuestionPanel with the given Player and Question.
+     * 
+     * @param thePlayer the Player that could be affected by answering the given Question incorrectly.
+     * @param theQuestion the MultipleChoiceQuestion this panel is displaying
+     * @throws NullPointerException if thePlayer is null
+     * @throws NullPointerException if theQuestion is null
+     */
+    public MultipleChoiceQuestionPanel(final Player thePlayer, final MultipleChoiceQuestion theQuestion) {
         super();
-        myQuestion = theQuestion;
+        myQuestion = Objects.requireNonNull(theQuestion, "theQuestion can not be null");
+        myPlayer = Objects.requireNonNull(thePlayer, "thePlayer can not be null");
         setup();
     }
     
+    /**
+     * Sets up this panel.
+     */
     private void setup() {
         this.setLayout(null);
+        
         // add the question label 
         final JLabel questionLabel = new JLabel();
         questionLabel.setText(myQuestion.getPrompt());
@@ -71,6 +105,8 @@ public class MultipleChoiceQuestionPanel extends JPanel {
         
         JButton submitButton = new JButton("Submit");
         submitButton.setBounds(190, 140, 90, 20);
+        
+        
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent theEvent) {
@@ -85,6 +121,10 @@ public class MultipleChoiceQuestionPanel extends JPanel {
                 // IS CORRECT OR CLOSE THE PANEL AND CHANGE ROOMS...
                 if (myQuestion.isAnswered()) {
                     
+                } 
+                // question was not answered correctly
+                else {
+                    myPlayer.setBrains(myPlayer.getBrainsremaining() - 1);
                 }
             }
         });

@@ -9,6 +9,7 @@ import java.util.Objects;
 
 import javax.swing.ButtonGroup;
 
+import model.Player;
 import view.question_view.MultipleChoiceQuestionPanel;
 import view.question_view.QuestionFrame;
 
@@ -75,10 +76,12 @@ public class MultipleChoiceQuestion extends AbstractQuestion {
     
     
     
-    public void answerQuestion() {
-        final MultipleChoiceQuestionPanel multipleChoiceQuestionPanel = new MultipleChoiceQuestionPanel(this);
+    public void answerQuestion(final Player thePlayer) {
+        final MultipleChoiceQuestionPanel multipleChoiceQuestionPanel = new MultipleChoiceQuestionPanel(thePlayer, this); //thePlayer,
         final QuestionFrame questionFrame = new QuestionFrame(multipleChoiceQuestionPanel);
         
+//        questionFrame.dispose();
+//        return myIsAnswered;
         
     }
 
