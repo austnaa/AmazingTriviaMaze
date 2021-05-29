@@ -5,6 +5,7 @@
 
 package model.question;
 
+import view.question_view.MultipleChoiceQuestionPanel;
 import view.question_view.QuestionFrame;
 
 /**
@@ -28,9 +29,11 @@ public class QuestionTester {
         System.out.println(frq.checkAnswer("AnsweR"));
         
         
+        
         mcq.checkAnswer();
         
-        new QuestionFrame(mcq);
+        MultipleChoiceQuestionPanel mcqp = new MultipleChoiceQuestionPanel(mcq);
+        new QuestionFrame(mcqp);
         
         QuestionManager qm = new QuestionManager();
         

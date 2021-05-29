@@ -45,13 +45,14 @@ public abstract class AbstractQuestion implements Question {
         return myIsAnswered;
     }
     
-    @Override
-    public void answerQuestion() {
-        // TODO: this should be implemented in child classes. 
-        // this method should set up the frame that allows user to answer question
-        // if the question is answered correctly, set myIsAnswered to true.
-        myIsAnswered = true;
-    }
+//    @Override
+//    public void answerQuestion() {
+//        // TODO: this should be implemented in child classes. 
+//        // this method should set up the frame that allows user to answer question
+//        // if the question is answered correctly, set myIsAnswered to true.
+//        myIsAnswered = true;
+//    }
+    public abstract void answerQuestion();
     
     @Override
     public abstract Question clone();

@@ -95,12 +95,14 @@ public class Door {
                 System.out.println("LOCKED: " + myQuestion.getPrompt());
                 // this method will set the question to be answered if the user answers successfully
                 myQuestion.answerQuestion();
-                // TODO: check to see if the question was answered correctly..
-            } else {
-                return this;
-            }
+                
+            } 
+              
         }
-        return null;
+        
+        // we get to this statement before we can answer the question, which is not what we want...
+        System.out.println("Returning the door now, am I too early?");
+        return this.isLocked() ? null : this;
     }
     
     

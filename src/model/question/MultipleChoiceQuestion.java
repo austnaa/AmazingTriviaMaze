@@ -9,6 +9,9 @@ import java.util.Objects;
 
 import javax.swing.ButtonGroup;
 
+import view.question_view.MultipleChoiceQuestionPanel;
+import view.question_view.QuestionFrame;
+
 /**
  * Provides state and behavior for a multiple-choice single selection question.
  * @author Austn Attaway
@@ -68,6 +71,15 @@ public class MultipleChoiceQuestion extends AbstractQuestion {
             myIsAnswered = true;
         }
         return result;
+    }
+    
+    
+    
+    public void answerQuestion() {
+        final MultipleChoiceQuestionPanel multipleChoiceQuestionPanel = new MultipleChoiceQuestionPanel(this);
+        final QuestionFrame questionFrame = new QuestionFrame(multipleChoiceQuestionPanel);
+        
+        
     }
 
 

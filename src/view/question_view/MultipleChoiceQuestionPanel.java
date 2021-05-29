@@ -80,6 +80,12 @@ public class MultipleChoiceQuestionPanel extends JPanel {
                 } else {
                     System.out.println("incorrect");
                 }
+                
+                // THIS IS WHERE WE COULD SHOW THAT THE ANSWER 
+                // IS CORRECT OR CLOSE THE PANEL AND CHANGE ROOMS...
+                if (myQuestion.isAnswered()) {
+                    
+                }
             }
         });
         

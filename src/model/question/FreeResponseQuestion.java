@@ -46,6 +46,10 @@ public class FreeResponseQuestion extends AbstractQuestion {
         return theUsersAnswer.equalsIgnoreCase(myCorrectAnswer);
     }
     
+    public void answerQuestion() {
+        super.myIsAnswered = true;
+    }
+    
     @Override
     public Question clone() {
         final FreeResponseQuestion copy = new FreeResponseQuestion(super.myPrompt, myCorrectAnswer);

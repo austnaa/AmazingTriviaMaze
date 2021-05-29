@@ -75,7 +75,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     @Override
     public void paintComponent(final Graphics theGraphics) {
         super.paintComponent(theGraphics);
-        Graphics2D g2d = (Graphics2D) theGraphics;
+        final Graphics2D g2d = (Graphics2D) theGraphics;
         
         final BackgroundSheet backgroundSheet = new BackgroundSheet();
         backgroundSheet.drawBackground(g2d, myMazeManager.getCurrentRoom());
@@ -88,7 +88,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     }
 
     /**
-     * draw player image on the screen.
+     * Draws the player image on the screen.
      * @param theGraphics - the 2D Graphics
      */
     private void drawPlayerImage(final Graphics2D theGraphics) {
