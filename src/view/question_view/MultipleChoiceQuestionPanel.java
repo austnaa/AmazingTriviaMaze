@@ -6,19 +6,23 @@
 package view.question_view;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.SwingUtilities;
 
 import model.Player;
 import model.question.MultipleChoiceQuestion;
 import model.question.Option;
+
 
 /**
  * A Panel that displays a multiple choice question.
@@ -47,6 +51,8 @@ public class MultipleChoiceQuestionPanel extends JPanel {
      */
     private Player myPlayer;
     
+    private JFrame myFrame;
+    
     /**
      * Constructs a new MultipleChoiceQuestionPanel with the given Player and Question.
      * 
@@ -59,6 +65,20 @@ public class MultipleChoiceQuestionPanel extends JPanel {
         super();
         myQuestion = Objects.requireNonNull(theQuestion, "theQuestion can not be null");
         myPlayer = Objects.requireNonNull(thePlayer, "thePlayer can not be null");
+
+        myFrame = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, this);
+        
+        
+        
+        Component c = this;
+        System.out.println(c);
+        
+        
+        
+        
+        
+        System.out.println(this.getParent()); //(JFrame) SwingUtilities.getWindowAncestor(
+//        System.out.println(myFrame);
         setup();
     }
     
@@ -76,16 +96,16 @@ public class MultipleChoiceQuestionPanel extends JPanel {
         
         // add the answer buttons
         myOptions = myQuestion.getOptions();
-        JRadioButton button1 = myOptions[0];
+        final JRadioButton button1 = myOptions[0];
         button1.setBounds(30, 50, 400, 20);
         
-        JRadioButton button2 = myOptions[1];
+        final JRadioButton button2 = myOptions[1];
         button2.setBounds(30, 70, 400, 20);
        
-        JRadioButton button3 = myOptions[2];
+        final JRadioButton button3 = myOptions[2];
         button3.setBounds(30, 90, 400, 20);
         
-        JRadioButton button4 = myOptions[3];
+        final JRadioButton button4 = myOptions[3];
         button4.setBounds(30, 110, 400, 20);
        
         this.add(button1);
@@ -103,7 +123,7 @@ public class MultipleChoiceQuestionPanel extends JPanel {
 //            }
 //        });
         
-        JButton submitButton = new JButton("Submit");
+        final JButton submitButton = new JButton("Submit");
         submitButton.setBounds(190, 140, 90, 20);
         
         
@@ -120,7 +140,7 @@ public class MultipleChoiceQuestionPanel extends JPanel {
                 // THIS IS WHERE WE COULD SHOW THAT THE ANSWER 
                 // IS CORRECT OR CLOSE THE PANEL AND CHANGE ROOMS...
                 if (myQuestion.isAnswered()) {
-                    
+                    myFrame.dispose();
                 } 
                 // question was not answered correctly
                 else {
