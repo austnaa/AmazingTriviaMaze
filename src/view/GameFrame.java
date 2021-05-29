@@ -7,17 +7,17 @@ package view;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
 
 /**
  * The class for the Amazing Trivia Maze game frame.
  * @author Daniel Jiang
+ * @author Chau Vu
  * @version Spring 2021
  */
 public class GameFrame extends JFrame {
-    
-
     // standard ui
     // start up set look and feel
     // 
@@ -55,13 +55,13 @@ public class GameFrame extends JFrame {
             @Override
             public void mousePressed(MouseEvent e) {
                 System.out.println(e.getX() + ", " + e.getY());
-                if(e.getX() >= 160 && e.getX() <= 480  && e.getY() >= 258  && e.getY() <= 428) {
+                if(e.getX() >= 214 && e.getX() <= 427 && e.getY() >= 485  && e.getY() <= 534) {
                     startPanel.setVisible(false);
                     final GamePanel gamePanel = new GamePanel();
                     add(gamePanel);
                 }
-            }
-        });
+            } 
+        });       
         setVisible(true);
     }   
     
@@ -72,4 +72,5 @@ public class GameFrame extends JFrame {
     public static void main(final String[] theArgs) {
         GameFrame frame = new GameFrame();
     }
+
 }
