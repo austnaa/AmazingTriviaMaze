@@ -66,20 +66,32 @@ public class MultipleChoiceQuestionPanel extends JPanel {
         myQuestion = Objects.requireNonNull(theQuestion, "theQuestion can not be null");
         myPlayer = Objects.requireNonNull(thePlayer, "thePlayer can not be null");
 
-        myFrame = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, this);
+        myFrame = null;
         
-        
+        System.out.println("my frame: "+myFrame);
         
         Component c = this;
-        System.out.println(c);
         
         
         
         
         
-        System.out.println(this.getParent()); //(JFrame) SwingUtilities.getWindowAncestor(
+        System.out.println(); //(JFrame) SwingUtilities.getWindowAncestor(
+        System.out.println("tring to get jframe:");
+        
 //        System.out.println(myFrame);
         setup();
+    }
+    
+    /**
+     * Sets the Frame for this panel. Important to use this method
+     * before trying to use the panel.
+     * 
+     * @param theFrame theFrame that contains this panel
+     * @throws NullPointerException when theFrame is null
+     */
+    public void setupFrame(final JFrame theFrame) {
+        myFrame = Objects.requireNonNull(theFrame, "theFrame can not be null");
     }
     
     /**
@@ -140,9 +152,12 @@ public class MultipleChoiceQuestionPanel extends JPanel {
                 // THIS IS WHERE WE COULD SHOW THAT THE ANSWER 
                 // IS CORRECT OR CLOSE THE PANEL AND CHANGE ROOMS...
                 if (myQuestion.isAnswered()) {
-                    myFrame.dispose();
+                    if (myFrame != null) {
+                        myFrame.dispose();
+                    }
                 } 
-                // question was not answered correctly
+                // question was not answered correctly, 
+                // so decrement the number of brains remaining
                 else {
                     myPlayer.setBrains(myPlayer.getBrainsremaining() - 1);
                 }

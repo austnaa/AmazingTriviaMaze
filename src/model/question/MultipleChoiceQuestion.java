@@ -79,6 +79,7 @@ public class MultipleChoiceQuestion extends AbstractQuestion {
     public void answerQuestion(final Player thePlayer) {
         final MultipleChoiceQuestionPanel multipleChoiceQuestionPanel = new MultipleChoiceQuestionPanel(thePlayer, this); //thePlayer,
         final QuestionFrame questionFrame = new QuestionFrame(multipleChoiceQuestionPanel);
+        multipleChoiceQuestionPanel.setupFrame(questionFrame);
         
 //        questionFrame.dispose();
 //        return myIsAnswered;

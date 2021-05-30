@@ -5,7 +5,13 @@
 
 package model.question;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+
 import model.Player;
+import view.GameFrame;
+import view.GamePanel;
 import view.question_view.MultipleChoiceQuestionPanel;
 import view.question_view.QuestionFrame;
 
@@ -37,6 +43,34 @@ public class QuestionTester {
         new QuestionFrame(mcqp);
         
         QuestionManager qm = new QuestionManager();
+        
+        
+        
+        
+        
+        
+        GameFrame frame = new GameFrame();
+        GamePanel panel = new GamePanel();
+        frame.add(panel);
+        System.out.println("What is the frame?");
+        System.out.println(frame.equals( (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel)));
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
     }
