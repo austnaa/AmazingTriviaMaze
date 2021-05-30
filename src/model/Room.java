@@ -224,7 +224,7 @@ public class Room {
      * 
      * @return this Room's southern door if it exists, null otherwise.
      */
-    Door getSouthDoor() {
+    public Door getSouthDoor() {
         return mySouthDoor;
     }
     
@@ -234,8 +234,18 @@ public class Room {
      * 
      * @return this Room's western door if it exists, null otherwise.
      */
-    Door getEastDoor() {
+    public Door getEastDoor() {
         return myEastDoor;
     }
     
+<<<<<<< HEAD
+=======
+    public Door getNorthDoor() {
+        return myNorthDoor;
+    }
+    
+   public Door getWestDoor() {
+        return myWestDoor;
+    }
+>>>>>>> b4ea7eedbe2d5732dad5efc1fbe527d5594c48f3
 }
