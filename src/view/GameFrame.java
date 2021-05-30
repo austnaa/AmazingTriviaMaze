@@ -53,9 +53,9 @@ public class GameFrame extends JFrame {
         add(startPanel); 
         startPanel.addMouseListener(new MouseAdapter() {
             @Override
-            public void mousePressed(MouseEvent e) {
-                System.out.println(e.getX() + ", " + e.getY());
-                if(e.getX() >= 214 && e.getX() <= 427 && e.getY() >= 485  && e.getY() <= 534) {
+            public void mousePressed(final MouseEvent theEvent) {
+//                System.out.println(e.getX() + ", " + e.getY());
+                if(theEvent.getX() >= 214 && theEvent.getX() <= 427 && theEvent.getY() >= 485  && theEvent.getY() <= 534) {
                     startPanel.setVisible(false);
                     final GamePanel gamePanel = new GamePanel();
                     add(gamePanel);

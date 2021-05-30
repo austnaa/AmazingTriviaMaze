@@ -30,7 +30,7 @@ import model.question.Option;
  * @author Austn Attaway
  * @version Spring 2021
  */
-public class MultipleChoiceQuestionPanel extends JPanel {
+public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
 
     /** An auto-generated serial version UID for object Serialization */
     private static final long serialVersionUID = -2729044720547678473L;
@@ -51,6 +51,9 @@ public class MultipleChoiceQuestionPanel extends JPanel {
      */
     private Player myPlayer;
     
+    /**
+     * The frame that contains this panel.
+     */
     private JFrame myFrame;
     
     /**
@@ -67,19 +70,6 @@ public class MultipleChoiceQuestionPanel extends JPanel {
         myPlayer = Objects.requireNonNull(thePlayer, "thePlayer can not be null");
 
         myFrame = null;
-        
-        System.out.println("my frame: "+myFrame);
-        
-        Component c = this;
-        
-        
-        
-        
-        
-        System.out.println(); //(JFrame) SwingUtilities.getWindowAncestor(
-        System.out.println("tring to get jframe:");
-        
-//        System.out.println(myFrame);
         setup();
     }
     
@@ -143,11 +133,11 @@ public class MultipleChoiceQuestionPanel extends JPanel {
             @Override
             public void actionPerformed(final ActionEvent theEvent) {
                 boolean result = myQuestion.checkAnswer();
-                if (result) {
-                    System.out.println("Correct!");
-                } else {
-                    System.out.println("incorrect");
-                }
+//                if (result) {
+//                    System.out.println("Correct!");
+//                } else {
+//                    System.out.println("incorrect");
+//                }
                 
                 // THIS IS WHERE WE COULD SHOW THAT THE ANSWER 
                 // IS CORRECT OR CLOSE THE PANEL AND CHANGE ROOMS...

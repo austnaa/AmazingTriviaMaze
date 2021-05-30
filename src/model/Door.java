@@ -86,20 +86,15 @@ public class Door {
      * Interact with this door if the player is close enough.  
      */
     public Door interact(final Player thePlayer) {
-        
+        // TODO: THIS CAN BE REFACTORED TO LOOK BETTER
         if (isCloseEnough(thePlayer)) {
             if (this.isLocked()) {
-                // door is currently locked, so print that it is locked.
-                System.out.println("LOCKED: " + myQuestion.getPrompt());
-                // this method will set the question to be answered if the user answers successfully
+                // creates the popup question frame
                 myQuestion.answerQuestion(thePlayer);  
             } else {
                 return this;
             }
         }
-        
-        // we get to this statement before we can answer the question, which is not what we want I don't think...
-        System.out.println("Returning the door now, am I too early?");
         return null;
     }
     
