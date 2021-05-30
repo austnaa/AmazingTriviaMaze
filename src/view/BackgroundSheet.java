@@ -32,23 +32,28 @@ public class BackgroundSheet extends SheetLoader {
      */
     private BufferedImage myUpperLeftCornerImage;
     private BufferedImage myUpperWallImage;
-    private BufferedImage myUpperDoorImage;
+    private BufferedImage myUpperDoorLockedImage;
+    private BufferedImage myUpperDoorUnlockedImage;
     private BufferedImage myUpperRightCornerImage; 
     
     private BufferedImage myLeftWallImage;
-    private BufferedImage myLeftDoorImage;
+    private BufferedImage myLeftDoorLockedImage;
+    private BufferedImage myLeftDoorUnlockedImage;
     private BufferedImage myRightWallImage;
-    private BufferedImage myRightDoorImage;
+    private BufferedImage myRightDoorLockedImage;
+    private BufferedImage myRightDoorUnlockedImage;
     private BufferedImage myFloorTileImage;
     
     private BufferedImage myLowerLeftCornerImage; 
     private BufferedImage myLowerWallImage;
-    private BufferedImage myLowerDoorImage; 
+    private BufferedImage myLowerDoorLockedImage;
+    private BufferedImage myLowerDoorUnlockedImage;
     private BufferedImage myLowerRightCornerImage;
     
     private BufferedImage myLowerLeftCornerTransparentImage;
     private BufferedImage myLowerWallTransparentImage;
-    private BufferedImage myLowerDoorTransparentImage; 
+    private BufferedImage myLowerDoorLockedTransparentImage;
+    private BufferedImage myLowerDoorUnlockedTransparentImage;
     private BufferedImage myLowerRightCornerTransparentImage;
     
     
@@ -60,23 +65,26 @@ public class BackgroundSheet extends SheetLoader {
     private void setupImages() {
         myUpperLeftCornerImage = this.grabImage(1, 1);
         myUpperWallImage = this.grabImage(2, 1);
-        myUpperDoorImage = this.grabImage(3, 1);
+        myUpperDoorLockedImage = this.grabImage(3, 1);
+        myUpperDoorUnlockedImage = this.grabImage(1, 6);
         myUpperRightCornerImage = this.grabImage(4, 1);
         
         myLeftWallImage = this.grabImage(1, 2);
-        myLeftDoorImage = this.grabImage(2, 2);
+        myLeftDoorLockedImage = this.grabImage(2, 2);
+        myLeftDoorUnlockedImage = this.grabImage(3, 6);
         myRightWallImage = this.grabImage(3, 2);
-        myRightDoorImage = this.grabImage(4, 2);
+        myRightDoorLockedImage = this.grabImage(4, 2);
+        myRightDoorUnlockedImage = this.grabImage(2, 6);
         myFloorTileImage = this.grabImage(1, 5);
         
         myLowerLeftCornerImage = this.grabImage(1, 3);
         myLowerWallImage = this.grabImage(2, 3);
-        myLowerDoorImage = this.grabImage(3, 3);
         myLowerRightCornerImage = this.grabImage(4, 3);
         
         myLowerLeftCornerTransparentImage = this.grabImage(1, 4);
         myLowerWallTransparentImage = this.grabImage(2, 4);
-        myLowerDoorTransparentImage = this.grabImage(3, 4);
+        myLowerDoorLockedTransparentImage = this.grabImage(3, 4);
+        myLowerDoorUnlockedTransparentImage = this.grabImage(4, 6);
         myLowerRightCornerTransparentImage = this.grabImage(4, 4);
         
     }
@@ -111,7 +119,12 @@ public class BackgroundSheet extends SheetLoader {
         
         // draw a top door if one exists
         if (theRoom.hasNorthDoor()) {
-            theGraphics.drawImage(myUpperDoorImage, col, row, null);
+             if (theRoom.getNorthDoor().isLocked()) {
+                 theGraphics.drawImage(myUpperDoorLockedImage, col, row, null); 
+             } else {
+                 theGraphics.drawImage(myUpperDoorUnlockedImage, col, row, null);
+             }
+
         } else {
             theGraphics.drawImage(myUpperWallImage, col, row, null);
         }
@@ -145,7 +158,11 @@ public class BackgroundSheet extends SheetLoader {
         int col = 0;
         
         if (theRoom.hasWestDoor()) {
-            theGraphics.drawImage(myLeftDoorImage, col, row, null);
+            if (theRoom.getWestDoor().isLocked()) {
+                theGraphics.drawImage(myLeftDoorLockedImage, col, row, null);
+            } else {
+                theGraphics.drawImage(myLeftDoorUnlockedImage, col, row, null);
+            }
         } else {
             theGraphics.drawImage(myLeftWallImage, col, row, null);
         }
@@ -159,7 +176,12 @@ public class BackgroundSheet extends SheetLoader {
         col += INCREMENT;
         
         if (theRoom.hasEastDoor()) {
-            theGraphics.drawImage(myRightDoorImage, col, row, null);
+            if (theRoom.getEastDoor().isLocked()) {
+                theGraphics.drawImage(myRightDoorLockedImage, col, row, null);    
+            } else {
+                theGraphics.drawImage(myRightDoorUnlockedImage, col, row, null);
+            }
+            
         } else {
             theGraphics.drawImage(myRightWallImage, col, row, null);
         }
@@ -175,11 +197,8 @@ public class BackgroundSheet extends SheetLoader {
         theGraphics.drawImage(myLowerWallImage, col, row, null);
         col += INCREMENT;
         
-        if (theRoom.hasSouthDoor()) {
-            theGraphics.drawImage(myLowerDoorImage, col, row, null);
-        } else {
-            theGraphics.drawImage(myLowerWallImage, col, row, null);
-        }
+        // draw floor background since the foreground will be drawn on top 
+        theGraphics.drawImage(myFloorTileImage, col, row, null);     
         
         col += INCREMENT;
         theGraphics.drawImage(myLowerWallImage, col, row, null);
@@ -205,7 +224,11 @@ public class BackgroundSheet extends SheetLoader {
         col += INCREMENT;
         
         if (theRoom.hasSouthDoor()) {
-            theGraphics.drawImage(myLowerDoorTransparentImage, col, row, null);
+            if (theRoom.getSouthDoor().isLocked()) {
+                theGraphics.drawImage(myLowerDoorLockedTransparentImage, col, row, null);
+            } else {
+                theGraphics.drawImage(myLowerDoorUnlockedTransparentImage, col, row, null);
+            }
         } else {
             theGraphics.drawImage(myLowerWallTransparentImage, col, row, null);
         }
