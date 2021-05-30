@@ -28,7 +28,7 @@ public class Room {
      * Whether or not this Room has been visited yet.
      */
     private boolean myHasBeenVisited;
-    
+
     /**
      * The Door that is located at to the North of the room.
      * Is null if the Door does not exist. 
@@ -169,7 +169,13 @@ public class Room {
     public boolean isVisited() {
         return myHasBeenVisited;
     }
-    
+    /**
+     * Returns whether or not this is the last room.
+     * @return whether or not this is the last room.
+     */
+    public boolean isMyIsEndRoom() {
+        return myIsEndRoom;
+    }
     /**
      * Returns a String representation of this room.
      */
@@ -231,4 +237,5 @@ public class Room {
     Door getEastDoor() {
         return myEastDoor;
     }
+    
 }

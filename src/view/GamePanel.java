@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import model.Door;
@@ -53,7 +54,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
      */
     private MazeManager myMazeManager;
     
-    
     /**
      * Constructs a new GamePanel. 
      * Adds a key listener to the player movement and starts the game timer.
@@ -63,12 +63,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         setFocusable(true);   
         myPlayer = new Player();
         myGameTimer = new Timer(TICK_DELAY, this);
-        myGameTimer.start();
-        
+        myGameTimer.start();  
         // sets up and handles the maze of rooms
         myMazeManager = new MazeManager();
     }
-    
+
     /**
      * Call the draw method and paint component.
      */
@@ -76,14 +75,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     public void paintComponent(final Graphics theGraphics) {
         super.paintComponent(theGraphics);
         final Graphics2D g2d = (Graphics2D) theGraphics;
-        
-        final BackgroundSheet backgroundSheet = new BackgroundSheet();
-        backgroundSheet.drawBackground(g2d, myMazeManager.getCurrentRoom());
-        drawPlayerImage(g2d); 
-        backgroundSheet.drawBottomRowTransparent(g2d, myMazeManager.getCurrentRoom());
         final ItemSheet itemsheet = new ItemSheet();
+        final BackgroundSheet backgroundSheet = new BackgroundSheet();
+        backgroundSheet.drawBackground(g2d, myMazeManager.getCurrentRoom()); 
+        drawPlayerImage(g2d); 
+        itemsheet.drawWinItem(g2d, myMazeManager.getCurrentRoom());
+        backgroundSheet.drawBottomRowTransparent(g2d, myMazeManager.getCurrentRoom()); 
         itemsheet.drawBrainsList(g2d, myPlayer);
-        MiniMap.drawMiniMap(g2d, myMazeManager.getCurrentMaze(), myMazeManager.getCurrentRoom());
+        MiniMap.drawMiniMap(g2d, myMazeManager.getCurrentMaze(), myMazeManager.getCurrentRoom()); 
         Toolkit.getDefaultToolkit().sync();
     }
 
@@ -95,14 +94,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         theGraphics.drawImage(myPlayer.getImage(), myPlayer.getXPosition(), 
                 myPlayer.getYPosition(), this);
     }
-//    
-//    /**
-//     * draw the brains image on the screen.
-//     */
-//    
-//    private void drawBrainImage(final Graphics2D theGraphics) {
-//        theGraphics.drawImage(myPlayer.getBrainImage(), 400, 400, this);
-//    }
     
     /**
      * Updates the player tick and repaints the panel.
@@ -134,12 +125,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 myPlayer.moveRight();
                 break;
             case KeyEvent.VK_SPACE: // interaction
-                interact();
-                break;
-                
+                interact();           
+                break;       
         }
     }
-    
+
     /**
      * Completes the interaction between the player and the interactable objects in the room.
      * 
@@ -147,12 +137,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
      */
     private void interact() {
         final Door interactedDoor = myMazeManager.getCurrentRoom().interact(myPlayer);
-
         if (interactedDoor != null && !interactedDoor.isLocked()) {
             myMazeManager.moveRooms(interactedDoor.getType());
-            myPlayer.moveRooms(interactedDoor.getType());
-        }
-
+            myPlayer.moveRooms(interactedDoor.getType());   
+        } 
+        // TODO: interact with the win item to invoke you win image?
+        // Once brain is at 0 -> invoke you lose.
     }
 
     /**

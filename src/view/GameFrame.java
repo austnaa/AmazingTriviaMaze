@@ -11,6 +11,11 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
 
+import model.Door;
+import model.MazeManager;
+import model.Player;
+import model.Room;
+
 /**
  * The class for the Amazing Trivia Maze game frame.
  * @author Daniel Jiang
@@ -30,7 +35,7 @@ public class GameFrame extends JFrame {
     
     /** The height of the frame in pixels. */
     public static final int FRAME_HEIGHT = 5*32*4+45;
-    
+
     /**
      * Creates the game frame.
      */
@@ -49,19 +54,27 @@ public class GameFrame extends JFrame {
      * Starts the frame.
      */
     public void start() {
-        final StartPanel startPanel = new StartPanel();
+        final StartPanel startPanel = new StartPanel(); 
+        final GamePanel gamePanel = new GamePanel();
+        final WinPanel winPanel = new WinPanel();
+
         add(startPanel); 
-        startPanel.addMouseListener(new MouseAdapter() {
+        startPanel.addMouseListener(new MouseAdapter() {          
             @Override
             public void mousePressed(final MouseEvent theEvent) {
 //                System.out.println(e.getX() + ", " + e.getY());
                 if(theEvent.getX() >= 214 && theEvent.getX() <= 427 && theEvent.getY() >= 485  && theEvent.getY() <= 534) {
-                    startPanel.setVisible(false);
-                    final GamePanel gamePanel = new GamePanel();
+                    startPanel.setVisible(false); 
                     add(gamePanel);
                 }
             } 
-        });       
+        });  
+        
+//        if (myMazeManager.getCurrentRoom().isMyIsEndRoom()) {
+//            gamePanel.setVisible(false);
+//            add(winPanel);
+//        }
+        
         setVisible(true);
     }   
     

@@ -8,6 +8,7 @@ package view;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import model.Player;
+import model.Room;
 
 /**
  * Class contains a method that
@@ -31,6 +32,11 @@ public class ItemSheet extends SheetLoader {
     private BufferedImage myBrainsImage;
     
     /**
+     * The Win item Image.
+     */
+    private BufferedImage myWinImage;
+    
+    /**
      * Creates a new item sheet instance with the given item sheet image.
      */
     public ItemSheet() {
@@ -43,8 +49,14 @@ public class ItemSheet extends SheetLoader {
      */
     private void setUpImages() {
         myBrainsImage = this.grabIcon(1, 1);
+        myWinImage = this.grabImage(2, 1);
     }
     
+    public void drawWinItem(final Graphics2D theGraphics, final Room theRoom) {
+        if (theRoom.isMyIsEndRoom()) {
+            theGraphics.drawImage(myWinImage, GameFrame.FRAME_HEIGHT/2, GameFrame.FRAME_WIDTH/2, null);
+        }
+    }
     /**
      * draws the list of brains. 
      * TODO: find the location for brains.
