@@ -9,6 +9,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 
 /**
@@ -45,6 +53,42 @@ public class GameFrame extends JFrame {
         start();
     }
 
+    public void sound() {
+        try {
+            final String url = System.getProperty("user.dir") + "/src/model/audio/gameplay.wav";
+            // String soundName = "yourSound.wav";    
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(url).getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        }
+        catch (IOException e) {
+            System.out.println("1");
+        }
+        catch (UnsupportedAudioFileException e) {
+            System.out.println("2");
+        }
+        catch (LineUnavailableException e) {
+            System.out.println("3");
+        }
+
+        
+
+
+        // try {
+        //     final String url = System.getProperty("user.dir") + "/src/model/audio/gameplay.wav";
+        //     AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource(url));
+        //     System.out.println("Here");
+        //     Clip clip = AudioSystem.getClip();
+        //     clip.open(audioInputStream);
+        //     clip.start();
+        //     // If you want the sound to loop infinitely, then put: clip.loop(Clip.LOOP_CONTINUOUSLY); 
+        //     // If you want to stop the sound, then use clip.stop();
+        // } catch (Exception ex) {
+        //     ex.printStackTrace();
+        // }
+    }
+
     /**
      * Starts the frame.
      */
@@ -57,6 +101,7 @@ public class GameFrame extends JFrame {
 //                System.out.println(e.getX() + ", " + e.getY());
                 if(theEvent.getX() >= 214 && theEvent.getX() <= 427 && theEvent.getY() >= 485  && theEvent.getY() <= 534) {
                     startPanel.setVisible(false);
+                    sound();
                     final GamePanel gamePanel = new GamePanel();
                     add(gamePanel);
                 }

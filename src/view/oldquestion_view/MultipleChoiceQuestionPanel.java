@@ -10,13 +10,17 @@ import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.util.Objects;
 
+import javax.swing.InputMap;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 
 import model.Player;
@@ -92,6 +96,8 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
     private void setup() {
         this.setLayout(null);
         
+        
+
         // add the question label 
         final JLabel questionLabel = new JLabel();
         questionLabel.setText(myQuestion.getPrompt());
