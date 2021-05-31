@@ -64,6 +64,7 @@ public class GameFrame extends JFrame {
 
             FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 
+            // Adjust volume
             double gain = 0.20;   
             float dB = (float) (Math.log(gain) / Math.log(10.0) * 10.0);
             volume.setValue(dB);
@@ -73,14 +74,14 @@ public class GameFrame extends JFrame {
             clip.loop(Clip.LOOP_CONTINUOUSLY);
             // If you want to stop the sound, then use clip.stop();
         }
-        catch (IOException e) {
-            System.out.println("1");
+        catch (final IOException e) {
+            System.out.println("Unexpected input/output!");
         }
-        catch (UnsupportedAudioFileException e) {
-            System.out.println("2");
+        catch (final UnsupportedAudioFileException e) {
+            System.out.println("Audio file is not supported (.wav only)!");
         }
-        catch (LineUnavailableException e) {
-            System.out.println("3");
+        catch (final LineUnavailableException e) {
+            System.out.println("Audio line unavailable!");
         }
     }
 
