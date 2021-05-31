@@ -31,23 +31,22 @@ public class StartPanel extends JPanel {
     private BufferedImage myBackgroundImage;
     
     /** the sheet that contains the background images. */
-    private BufferedImage myBackgroundSheet;
+    private PanelSheet myBackgroundSheet;
     
     /**
      * Constructor that implements mouse motion listener for the "start button".
      */
     public StartPanel() {
-        final String path = System.getProperty("user.dir") + "/assets/start_sheet.png";
-        myBackgroundSheet= BufferedImageLoader.loadImage(path);
-        myBackgroundImage = SheetLoader.resizeImage(myBackgroundSheet.getSubimage(0, 0, 128, 128), GameFrame.FRAME_WIDTH, GameFrame.FRAME_HEIGHT);
+        myBackgroundSheet = new PanelSheet();
+        myBackgroundImage = myBackgroundSheet.grabPanelImage(1, 1);
         addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {                 
                 if (e.getX() >= 214 && e.getX() <= 427 && e.getY() >= 485  && e.getY() <= 534) {
-                    myBackgroundImage = SheetLoader.resizeImage(myBackgroundSheet.getSubimage(128, 0, 128, 128), GameFrame.FRAME_WIDTH, GameFrame.FRAME_HEIGHT);
+                    myBackgroundImage = myBackgroundSheet.grabPanelImage(2, 1);
                     repaint();
                 } else {
-                    myBackgroundImage = SheetLoader.resizeImage(myBackgroundSheet.getSubimage(0, 0, 128, 128), GameFrame.FRAME_WIDTH, GameFrame.FRAME_HEIGHT);
+                    myBackgroundImage = myBackgroundSheet.grabPanelImage(1, 1);
                     repaint();
                 }
             }          

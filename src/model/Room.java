@@ -238,8 +238,6 @@ public class Room {
         return myEastDoor;
     }
     
-<<<<<<< HEAD
-=======
     public Door getNorthDoor() {
         return myNorthDoor;
     }
@@ -247,5 +245,4 @@ public class Room {
    public Door getWestDoor() {
         return myWestDoor;
     }
->>>>>>> b4ea7eedbe2d5732dad5efc1fbe527d5594c48f3
 }

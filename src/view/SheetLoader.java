@@ -61,8 +61,6 @@ public class SheetLoader {
      * 
      * @param theColumn the column the image returned is located at
      * @param theRow    the row the image returned is located at
-     * @param theWidth  the width of the image grabbed from the sprite sheet
-     * @param theHeight the height of the image grabbed from the sprite sheet
      * @return the image 
      * @throws IllegalArgumentException if theColumn is less than 1 or greater than 4
      * @throws IllegalArgumentException if theRow is less than 1 or greater than 4
@@ -89,8 +87,6 @@ public class SheetLoader {
      * 
      * @param theColumn the column the image returned is located at
      * @param theRow    the row the image returned is located at
-     * @param theWidth  the width of the image grabbed from the sprite sheet
-     * @param theHeight the height of the image grabbed from the sprite sheet
      * @return the image 
      * @throws IllegalArgumentException if theColumn is less than 1 or greater than 4
      * @throws IllegalArgumentException if theRow is less than 1 or greater than 4
@@ -107,6 +103,34 @@ public class SheetLoader {
         final int imageY = (theRow * IMAGE_DIMENSION) - IMAGE_DIMENSION;
         
         BufferedImage image = mySpriteSheet.getSubimage(imageX, imageY, IMAGE_DIMENSION, IMAGE_DIMENSION); 
+
+        return image;
+    }
+    
+    /**
+     * Grabs and cropping the specified image from this sheet.
+     * 
+     * @param theColumn the column the image returned is located at
+     * @param theRow    the row the image returned is located at
+     * @return the image 
+     * @throws IllegalArgumentException if theColumn is less than 1 or greater than 4
+     * @throws IllegalArgumentException if theRow is less than 1 or greater than 4
+     */
+    public BufferedImage grabPanelImage(final int theColumn, final int theRow) {
+        if (theColumn < 1 || theColumn > NUM_COLS) {
+            throw new IllegalArgumentException("theCols value is invalid");
+        }
+        
+        if (theRow < 1 || theRow > NUM_ROWS) {
+            throw new IllegalArgumentException("theRows value is invalid");
+        }
+        
+        final int imageSize = 128;
+        final int imageX = (theColumn * imageSize) - imageSize;
+        final int imageY = (theRow * imageSize) - imageSize;
+        
+        BufferedImage image = mySpriteSheet.getSubimage(imageX, imageY, imageSize, imageSize); 
+        image = resizeImage(image, GameFrame.FRAME_WIDTH, GameFrame.FRAME_HEIGHT);
 
         return image;
     }

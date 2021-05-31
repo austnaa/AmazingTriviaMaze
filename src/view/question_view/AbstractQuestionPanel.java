@@ -26,4 +26,5 @@ public abstract class AbstractQuestionPanel extends JPanel {
      * @throws NullPointerException if theFrame is null
      */
     public abstract void setupFrame(final JFrame theFrame);
+    
 }

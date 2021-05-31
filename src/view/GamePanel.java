@@ -77,12 +77,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         final Graphics2D g2d = (Graphics2D) theGraphics;
         final ItemSheet itemsheet = new ItemSheet();
         final BackgroundSheet backgroundSheet = new BackgroundSheet();
+        final PanelSheet panelSheet = new PanelSheet();
         backgroundSheet.drawBackground(g2d, myMazeManager.getCurrentRoom()); 
         drawPlayerImage(g2d); 
-        itemsheet.drawWinItem(g2d, myMazeManager.getCurrentRoom());
+//        itemsheet.drawWinItem(g2d, myMazeManager.getCurrentRoom());
         backgroundSheet.drawBottomRowTransparent(g2d, myMazeManager.getCurrentRoom()); 
         itemsheet.drawBrainsList(g2d, myPlayer);
-        MiniMap.drawMiniMap(g2d, myMazeManager.getCurrentMaze(), myMazeManager.getCurrentRoom()); 
+        MiniMap.drawMiniMap(g2d, myMazeManager.getCurrentMaze(), myMazeManager.getCurrentRoom());
+        panelSheet.drawWinLosePanel(g2d, myMazeManager.getCurrentRoom(), myPlayer);
         Toolkit.getDefaultToolkit().sync();
     }
 

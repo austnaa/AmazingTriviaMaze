@@ -34,7 +34,7 @@ public class ItemSheet extends SheetLoader {
     /**
      * The Win item Image.
      */
-    private BufferedImage myWinImage;
+    private BufferedImage myWinItemImage;
     
     /**
      * Creates a new item sheet instance with the given item sheet image.
@@ -49,12 +49,18 @@ public class ItemSheet extends SheetLoader {
      */
     private void setUpImages() {
         myBrainsImage = this.grabIcon(1, 1);
-        myWinImage = this.grabImage(2, 1);
+        myWinItemImage = this.grabImage(2, 1);
     }
     
+    /**
+     * draw the win item in the last room
+     * TODO: user interact for you win image pop up?
+     * @param theGraphics
+     * @param theRoom
+     */
     public void drawWinItem(final Graphics2D theGraphics, final Room theRoom) {
         if (theRoom.isMyIsEndRoom()) {
-            theGraphics.drawImage(myWinImage, GameFrame.FRAME_HEIGHT/2, GameFrame.FRAME_WIDTH/2, null);
+            theGraphics.drawImage(myWinItemImage, GameFrame.FRAME_HEIGHT/2, GameFrame.FRAME_WIDTH/2, null);
         }
     }
     /**

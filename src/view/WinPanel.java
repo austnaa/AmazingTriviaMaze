@@ -7,6 +7,12 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
+/**
+ * Might delete since we don't need this anymore?
+ * @author Chau Vu
+ * @vesion Spring 2021
+ *
+ */
 public class WinPanel extends JPanel {
 
     /** An auto-generated serial version UID for object serialization. */
