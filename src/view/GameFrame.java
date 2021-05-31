@@ -56,8 +56,6 @@ public class GameFrame extends JFrame {
     public void start() {
         final StartPanel startPanel = new StartPanel(); 
         final GamePanel gamePanel = new GamePanel();
-        final WinPanel winPanel = new WinPanel();
-
         add(startPanel); 
         startPanel.addMouseListener(new MouseAdapter() {          
             @Override
