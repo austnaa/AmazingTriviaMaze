@@ -41,7 +41,7 @@ public class QuestionFrame extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         setAlwaysOnTop(true);
-        requestFocus();
+        // requestFocus();
         thePanel.setupFrame(this);
     }
 }

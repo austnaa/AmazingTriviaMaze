@@ -36,6 +36,10 @@ public final class TriviaQuestions {
      */
     private final static String ANSWER = "Answer";
     
+    /**
+     * Creates an ArrayList of questions from the database of trivia questions.
+     * @return An ArrayList of questions from the database of trivia questions.
+     */
     public static ArrayList<Question> getTriviaQuestions() {
         Connection connection = null;
         final ArrayList<Question> questions = new ArrayList<Question>();

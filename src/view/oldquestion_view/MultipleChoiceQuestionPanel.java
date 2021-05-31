@@ -154,6 +154,7 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
                 else {
                     myPlayer.setBrains(myPlayer.getBrainsremaining() - 1);
                 }
+                myFrame.dispose();
             }
         });
         
