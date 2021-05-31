@@ -15,6 +15,7 @@ import java.io.IOException;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
@@ -60,7 +61,17 @@ public class GameFrame extends JFrame {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(url).getAbsoluteFile());
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
+
+            FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+
+            double gain = 0.20;   
+            float dB = (float) (Math.log(gain) / Math.log(10.0) * 10.0);
+            volume.setValue(dB);
+
             clip.start();
+            // If you want the sound to loop infinitely, then put: clip.loop(Clip.LOOP_CONTINUOUSLY);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+            // If you want to stop the sound, then use clip.stop();
         }
         catch (IOException e) {
             System.out.println("1");
@@ -71,22 +82,6 @@ public class GameFrame extends JFrame {
         catch (LineUnavailableException e) {
             System.out.println("3");
         }
-
-        
-
-
-        // try {
-        //     final String url = System.getProperty("user.dir") + "/src/model/audio/gameplay.wav";
-        //     AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource(url));
-        //     System.out.println("Here");
-        //     Clip clip = AudioSystem.getClip();
-        //     clip.open(audioInputStream);
-        //     clip.start();
-        //     // If you want the sound to loop infinitely, then put: clip.loop(Clip.LOOP_CONTINUOUSLY); 
-        //     // If you want to stop the sound, then use clip.stop();
-        // } catch (Exception ex) {
-        //     ex.printStackTrace();
-        // }
     }
 
     /**
