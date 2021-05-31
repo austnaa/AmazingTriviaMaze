@@ -3,7 +3,7 @@
  * TCSS 360 Spring 2021
  */
 
-package view.question_view;
+package view.oldquestion_view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

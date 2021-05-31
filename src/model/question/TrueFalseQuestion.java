@@ -5,23 +5,23 @@
 package model.question;
 
 /**
- * Free response trivia questions.
+ * True/false trivia questions.
  * @author Daniel Jiang
  * @version Spring 2021
  */
-public class FreeResponseQuestion extends Question {
+public class TrueFalseQuestion extends Question{
     /**
      * Constructor the the free response trivia questions.
      * @param theQuestion The question prompt.
      * @param theAnswer The answer.
      */
-    public FreeResponseQuestion(final String theQuestion, final String theAnswer) {
+    public TrueFalseQuestion(final String theQuestion, final String theAnswer) {
         super(theQuestion, theAnswer);
     }
 
     /**
-     * Creates a String representation of free response questions.
-     * @return The String representation of free response questions.
+     * Creates a String representation of true/false questions.
+     * @return The String representation of true/false questions.
      */
     @Override
     public String toString() {

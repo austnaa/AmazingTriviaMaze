@@ -10,8 +10,8 @@ import java.io.FileNotFoundException;
 import java.util.Objects;
 import java.util.Scanner;
 
-import model.question.Question;
-import model.question.QuestionManager;
+import model.oldquestion.AustnQuestion;
+import model.oldquestion.QuestionManager;
 
 /**
  * A utility class that provides functionality for creating a 2D matrix of Room objects
@@ -143,14 +143,14 @@ public class MazeBuilder {
         // the north door will share a question with the room above it
         Door northDoor = null;
         if (theRoomString.charAt(0) == 'Y') {
-            final Question question = theMaze[theRow - 1][theCol].getSouthDoor().getQuestion();
+            final AustnQuestion question = theMaze[theRow - 1][theCol].getSouthDoor().getQuestion();
             northDoor = new Door(Door.TYPE.NORTH, question);
         } 
         
         // the west door will share a question with the room to the left of it
         Door westDoor = null;
         if (theRoomString.charAt(2) == 'Y') {
-            final Question question = theMaze[theRow][theCol - 1].getEastDoor().getQuestion();
+            final AustnQuestion question = theMaze[theRow][theCol - 1].getEastDoor().getQuestion();
             westDoor = new Door(Door.TYPE.WEST, question);
         }
         

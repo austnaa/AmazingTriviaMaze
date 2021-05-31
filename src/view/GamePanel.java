@@ -46,12 +46,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     /**
      * This Panel's Player 
      */ 
-    private Player myPlayer;
+    private static Player myPlayer;
 
     /**
      * The MazeManager that keeps track of the available Mazes and the current maze.
      */
-    private MazeManager myMazeManager;
+    private static MazeManager myMazeManager;
     
     
     /**
@@ -60,7 +60,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
      */
     public GamePanel() {
         addKeyListener(this);
-        setFocusable(true);   
+        setFocusable(true);
         myPlayer = new Player();
         myGameTimer = new Timer(TICK_DELAY, this);
         myGameTimer.start();
@@ -145,7 +145,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
      * 
      * TODO: controller code kinda
      */
-    private void interact() {
+    public static void interact() {
         final Door interactedDoor = myMazeManager.getCurrentRoom().interact(myPlayer);
 
         if (interactedDoor != null && !interactedDoor.isLocked()) {

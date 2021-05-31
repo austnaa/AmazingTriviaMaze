@@ -3,7 +3,7 @@
  * TCSS 360 Spring 2021
  */
 
-package model.question;
+package model.oldquestion;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,8 +12,8 @@ import javax.swing.SwingUtilities;
 import model.Player;
 import view.GameFrame;
 import view.GamePanel;
-import view.question_view.MultipleChoiceQuestionPanel;
-import view.question_view.QuestionFrame;
+import view.oldquestion_view.MultipleChoiceQuestionPanel;
+import view.oldquestion_view.QuestionFrame;
 
 /**
  * Simple main method used to test question components. 

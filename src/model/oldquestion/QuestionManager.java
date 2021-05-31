@@ -3,7 +3,7 @@
  * TCSS 360 Spring 2021
  */
 
-package model.question;
+package model.oldquestion;
 
 import java.util.List;
 import java.util.Objects;
@@ -24,12 +24,12 @@ public class QuestionManager {
     /**
      * The List of questions that will be copied each time we set up a new game.
      */
-    private List<Question> myQuestionList; 
+    private List<AustnQuestion> myQuestionList; 
     
     /**
      * The List of questions that questions will be pulled from for the current game instance.
      */
-    private List<Question> myCurrentQuestionList;
+    private List<AustnQuestion> myCurrentQuestionList;
     
     /**
      * Sets up a new QuestionManager. Sets up the list of questions that can be copied for 
@@ -45,7 +45,7 @@ public class QuestionManager {
      * Returns a random question from the current game's list of unused questions.
      * @return a random question from the current game's list of unused questions.
      */
-    public Question getRandomQuestion() {
+    public AustnQuestion getRandomQuestion() {
         final Random random = new Random();
         return myCurrentQuestionList.remove(random.nextInt(myCurrentQuestionList.size()));
     }
@@ -55,7 +55,7 @@ public class QuestionManager {
      * be copied for future game instances.  
      */
     private void setupQuestionList() {
-        myQuestionList = new ArrayList<Question>();
+        myQuestionList = new ArrayList<AustnQuestion>();
         
         // ******** TEMP QUESTION LIST FOR TESTING ... 
         // ******** ADD DATABASE ACCESSES HERE TO POPULATE LIST
@@ -68,7 +68,7 @@ public class QuestionManager {
             Option option3 = new Option("Roblox", false);
             Option option4 = new Option("Among Us", false);
             Option[] options = {option1, option2, option3, option4}; 
-            Question mcq = new MultipleChoiceQuestion("Which game is the most popular PC game?", 
+            AustnQuestion mcq = new MultipleChoiceQuestion("Which game is the most popular PC game?", 
                     options);
             // ********
             
@@ -93,11 +93,11 @@ public class QuestionManager {
      * @return the deep copy of the given list
      * @throws NullPointerException if theList is null
      */
-    private List<Question> makeDeepCopy(final List<Question> theList) {
+    private List<AustnQuestion> makeDeepCopy(final List<AustnQuestion> theList) {
         Objects.requireNonNull(theList, "theList can not be null");
         
-        List<Question> copy = new ArrayList<>();
-        for (Question question : theList) {
+        List<AustnQuestion> copy = new ArrayList<>();
+        for (AustnQuestion question : theList) {
             copy.add(question.clone());
         }
         return copy;

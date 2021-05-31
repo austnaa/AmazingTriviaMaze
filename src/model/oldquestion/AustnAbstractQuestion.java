@@ -3,7 +3,7 @@
  * TCSS 360 Spring 2021
  */
 
-package model.question;
+package model.oldquestion;
 
 import java.util.Objects;
 
@@ -14,7 +14,7 @@ import model.Player;
  * @author Austn Attaway
  * @version Spring 2021
  */
-public abstract class AbstractQuestion implements Question {
+public abstract class AustnAbstractQuestion implements AustnQuestion {
 
     /**
      * The String representation of this Question's prompt.
@@ -32,7 +32,7 @@ public abstract class AbstractQuestion implements Question {
      * @param thePrompt the String representation of the question being asked.
      * @throws NullPointerException if thePrompt is null.
      */
-    protected AbstractQuestion(final String thePrompt) {
+    protected AustnAbstractQuestion(final String thePrompt) {
         myPrompt = Objects.requireNonNull(thePrompt, "thePrompt can not be null");
         myIsAnswered = false;
     }
@@ -57,6 +57,6 @@ public abstract class AbstractQuestion implements Question {
     public abstract void answerQuestion(final Player thePlayer);
     
     @Override
-    public abstract Question clone();
+    public abstract AustnQuestion clone();
 
 }

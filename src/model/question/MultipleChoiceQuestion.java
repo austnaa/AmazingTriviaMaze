@@ -1,106 +1,84 @@
 /**
- * Amazing Trivia Maze 
+ * Amazing Trivia Maze
  * TCSS 360 Spring 2021
  */
-
 package model.question;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
-import javax.swing.ButtonGroup;
-
-import model.Player;
-import view.question_view.MultipleChoiceQuestionPanel;
-import view.question_view.QuestionFrame;
-
 /**
- * Provides state and behavior for a multiple-choice single selection question.
- * @author Austn Attaway
+ * Multiple choice trivia questions.
+ * @author Daniel Jiang
  * @version Spring 2021
  */
-public class MultipleChoiceQuestion extends AbstractQuestion {
-    
+public class MultipleChoiceQuestion extends Question {
     /**
-     * The ButtonGroup that contains the Option objects for this Question. Important for
-     * ensuring that only one of the Options can be selected at once.
+     * The second option for the multiple choice question.
      */
-    private ButtonGroup myButtonGroup;
-    
-    // TODO we may consider making the Option array a List.
+    protected String myOptionB;
+
     /**
-     * The array of Option objects that represent the available answers for this question.
+     * The third option for the multiple choice question.
      */
-    private Option[] myOptions;
-    
+    protected String myOptionC;
+
     /**
-     * Constructs a MultipleChoiceQuestion object with the given prompt and an array of options. 
-     * At least one of the Options in theOptions should be marked as the correct option.
-     * 
-     * @param thePrompt the String that represents the question being asked.
-     * @param theOptions the Options available to be picked when answering this question.
-     * @throws NullPointerException if thePrompt is null
-     * @throws NullPointerException if theOptions is null
+     * The fourth option for the multiple choice question.
      */
-    public MultipleChoiceQuestion(final String thePrompt, final Option[] theOptions) {
-        super(thePrompt);
-        
-        myButtonGroup = new ButtonGroup();
-        myOptions = Objects.requireNonNull(theOptions, "theOptions can not be null");;
-        
-        // TODO check to make sure the option array is a desired length?
-        // TODO check to make sure none of the Options are null?
-        for (Option option : theOptions) {
-            myButtonGroup.add(option);
-        }
+    protected String myOptionD;
+
+    /**
+     * Constructor for the multiple choice trivia questions.
+     * @param theQuestion The question prompt.
+     * @param theAnswer The answer.
+     * @param theOptionB The second option.
+     * @param theOptionC The third option.
+     * @param theOptionD The fourth option.
+     */
+    public MultipleChoiceQuestion(final String theQuestion, final String theAnswer, final String theOptionB, final String theOptionC, final String theOptionD) {
+        super(theQuestion, theAnswer);
+        myOptionB = Objects.requireNonNull(theOptionB);
+        myOptionC = Objects.requireNonNull(theOptionC);
+        myOptionD = Objects.requireNonNull(theOptionD);
     }
 
     /**
-     * Returns true if the currently selected option in the ButtonGroup
-     * is the correct option, and false otherwise.
+     * Returns an ArrayList of the options that aren't the answer.
+     * @return ArrayList of the options that aren't the answer.
      */
-//    @Override
-    public boolean checkAnswer() {
-        boolean result = false;
-        for (Option tempOption : myOptions) {
-            if (tempOption.isCorrectOption() && tempOption.isSelected()) {
-                result = true;
-                break;
-            }
-        }
-        
-        // sets the state of this question to be answered
-        if (result) {
-            myIsAnswered = true;
-        }
-        return result;
+    public ArrayList<String> getOptionsOnly() {
+        ArrayList<String> optionsOnly = new ArrayList<String>();
+        optionsOnly.add(myOptionB);
+        optionsOnly.add(myOptionC);
+        optionsOnly.add(myOptionD);
+        return optionsOnly;
     }
-    
-    
-    
-    public void answerQuestion(final Player thePlayer) {
-        final MultipleChoiceQuestionPanel multipleChoiceQuestionPanel = new MultipleChoiceQuestionPanel(thePlayer, this); //thePlayer,
-        final QuestionFrame questionFrame = new QuestionFrame(multipleChoiceQuestionPanel);
-        multipleChoiceQuestionPanel.setupFrame(questionFrame);
-        
-//        questionFrame.dispose();
-//        return myIsAnswered;
-        
-    }
-
 
     /**
-     * Returns the array of Option objects that are available to pick from.
-     * @return
+     * Returns an ArrayList of all the possible options.
+     * @return An ArrayList of all the possible options.
      */
-    public Option[] getOptions() {
-        return myOptions;
+    public ArrayList<String> getAllOptions() {
+        ArrayList<String> allOptions = new ArrayList<String>();
+        allOptions.add(myAnswer);
+        allOptions.add(myOptionB);
+        allOptions.add(myOptionC);
+        allOptions.add(myOptionD);
+        return allOptions;
     }
-    
-    
+
+    /**
+     * Creates a String representation of multiple choice questions.
+     * @return The String representation of multiple choice questions.
+     */
     @Override
-    public Question clone() {
-        // TODO CHECK to make sure that myOptions does a deep copy...
-        final MultipleChoiceQuestion copy = new MultipleChoiceQuestion(myPrompt, myOptions);
-        return copy;
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append(super.toString());
+        sb.append("\nOptionB: " + myOptionB);
+        sb.append("\nOptionC: " + myOptionC);
+        sb.append("\nOptionD: " + myOptionD + "\n");
+        return sb.toString();
     }
 }

@@ -3,7 +3,7 @@
  * TCSS 360 Spring 2021
  */
 
-package view.question_view;
+package view.oldquestion_view;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -20,8 +20,10 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingUtilities;
 
 import model.Player;
-import model.question.MultipleChoiceQuestion;
-import model.question.Option;
+import model.oldquestion.MultipleChoiceQuestion;
+import model.oldquestion.Option;
+
+import view.GamePanel;
 
 
 /**
@@ -145,6 +147,7 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
                     if (myFrame != null) {
                         myFrame.dispose();
                     }
+                    GamePanel.interact();
                 } 
                 // question was not answered correctly, 
                 // so decrement the number of brains remaining
