@@ -39,6 +39,8 @@ public class GameFrame extends JFrame {
     
     /** The height of the frame in pixels. */
     public static final int FRAME_HEIGHT = 5*32*4+45;
+
+    private static final String MENU_BGD_PATH = System.getProperty("user.dir") + "/src/model/audio/menubgd.wav";
     
     /**
      * Creates the game frame.
@@ -91,6 +93,36 @@ public class GameFrame extends JFrame {
     public void start() {
         final StartPanel startPanel = new StartPanel();
         add(startPanel); 
+
+        // try {
+        //     final AudioInputStream menuAudioInput = AudioSystem.getAudioInputStream(new File(MENU_BGD_PATH).getAbsoluteFile());
+        //     final Clip menu = AudioSystem.getClip();
+        //     menu.open(menuAudioInput);
+
+        //     FloatControl volume = (FloatControl) menu.getControl(FloatControl.Type.MASTER_GAIN);
+
+        //     // Adjust volume
+        //     double gain = 0.20;   
+        //     float dB = (float) (Math.log(gain) / Math.log(10.0) * 10.0);
+        //     volume.setValue(dB);
+
+        //     menu.start();
+        //     // If you want the sound to loop infinitely, then put: clip.loop(Clip.LOOP_CONTINUOUSLY);
+        //     menu.loop(Clip.LOOP_CONTINUOUSLY);
+        // }
+        // catch (final UnsupportedAudioFileException e) {
+        //     System.out.println("Audio file is not supported (.wav only)!");
+        // }
+        // catch (final IOException e) {
+        //     System.out.println("Unexpected input/output!");
+        // }
+        // catch (final LineUnavailableException e) {
+        //     System.out.println("Audio line unavailable!");
+        // }
+
+
+
+
         startPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(final MouseEvent theEvent) {

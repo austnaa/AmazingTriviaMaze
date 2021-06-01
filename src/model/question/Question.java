@@ -15,25 +15,19 @@ public abstract class Question {
     /**
      * The question prompt.
      */
-    protected String myQuestionPrompt;
-
-    /**
-     * The answer to the question.
-     */
-    protected String myAnswer;
+    public String myQuestionPrompt;
 
     /**
      * If the question has been answered correctly already.
      */
-    protected boolean myAnsweredAlready;
+    public boolean myAnsweredAlready;
 
     /**
      * Constructor for the question abstract class.
      * @param theQuestion The question.
      */
-    public Question(final String theQuestion, final String theAnswer) {
+    public Question(final String theQuestion) {
         myQuestionPrompt = Objects.requireNonNull(theQuestion);
-        myAnswer = Objects.requireNonNull(theAnswer);
         myAnsweredAlready = false;
     }
 
@@ -43,23 +37,6 @@ public abstract class Question {
      */
     public String getQuestionPrompt() {
         return myQuestionPrompt;
-    }
-
-    /**
-     * Gets the answer of the question.
-     * @return The answer of the question.
-     */
-    public String getAnswer() {
-        return myAnswer;
-    }
-
-    /**
-     * Checks the user answer with the correct answer.
-     * @param theUserAnswer The user answer.
-     * @return If they answered correctly.
-     */
-    public boolean checkAnswer(final String theUserAnswer) {
-        return myAnswer.compareToIgnoreCase(theUserAnswer) == 0;
     }
 
     /**
@@ -85,9 +62,8 @@ public abstract class Question {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("\nQuestion: " + myQuestionPrompt);
-        sb.append("\nIsAnswered: " + myAnsweredAlready);
-        sb.append("\nAnswer: " + myAnswer);
+        sb.append("Question: " + myQuestionPrompt + "\n");
+        sb.append("IsAnswered: " + myAnsweredAlready + "\n");
         return sb.toString();
     }
 }

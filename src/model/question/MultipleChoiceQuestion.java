@@ -5,6 +5,7 @@
 package model.question;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -14,19 +15,24 @@ import java.util.Objects;
  */
 public class MultipleChoiceQuestion extends Question {
     /**
+     * The correct option.
+     */
+    private Option myAnswer;
+    
+    /**
      * The second option for the multiple choice question.
      */
-    protected String myOptionB;
+    private Option myOptionB;
 
     /**
      * The third option for the multiple choice question.
      */
-    protected String myOptionC;
+    private Option myOptionC;
 
     /**
      * The fourth option for the multiple choice question.
      */
-    protected String myOptionD;
+    private Option myOptionD;
 
     /**
      * Constructor for the multiple choice trivia questions.
@@ -36,8 +42,9 @@ public class MultipleChoiceQuestion extends Question {
      * @param theOptionC The third option.
      * @param theOptionD The fourth option.
      */
-    public MultipleChoiceQuestion(final String theQuestion, final String theAnswer, final String theOptionB, final String theOptionC, final String theOptionD) {
-        super(theQuestion, theAnswer);
+    public MultipleChoiceQuestion(final String theQuestion, final Option theAnswer, final Option theOptionB, final Option theOptionC, final Option theOptionD) {
+        super(theQuestion);
+        myAnswer = Objects.requireNonNull(theAnswer);
         myOptionB = Objects.requireNonNull(theOptionB);
         myOptionC = Objects.requireNonNull(theOptionC);
         myOptionD = Objects.requireNonNull(theOptionD);
@@ -47,8 +54,8 @@ public class MultipleChoiceQuestion extends Question {
      * Returns an ArrayList of the options that aren't the answer.
      * @return ArrayList of the options that aren't the answer.
      */
-    public ArrayList<String> getOptionsOnly() {
-        ArrayList<String> optionsOnly = new ArrayList<String>();
+    public List<Option> getOptionsOnly() {
+        List<Option> optionsOnly = new ArrayList<Option>();
         optionsOnly.add(myOptionB);
         optionsOnly.add(myOptionC);
         optionsOnly.add(myOptionD);
@@ -59,8 +66,8 @@ public class MultipleChoiceQuestion extends Question {
      * Returns an ArrayList of all the possible options.
      * @return An ArrayList of all the possible options.
      */
-    public ArrayList<String> getAllOptions() {
-        ArrayList<String> allOptions = new ArrayList<String>();
+    public List<Option> getAllOptions() {
+        List<Option> allOptions = new ArrayList<Option>();
         allOptions.add(myAnswer);
         allOptions.add(myOptionB);
         allOptions.add(myOptionC);
@@ -76,9 +83,10 @@ public class MultipleChoiceQuestion extends Question {
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append(super.toString());
-        sb.append("\nOptionB: " + myOptionB);
-        sb.append("\nOptionC: " + myOptionC);
-        sb.append("\nOptionD: " + myOptionD + "\n");
+        sb.append(myAnswer);
+        sb.append(myOptionB);
+        sb.append(myOptionC);
+        sb.append(myOptionD);
         return sb.toString();
     }
 }

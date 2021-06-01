@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The trivia questions grabbed from the trivia questions database.
@@ -40,9 +41,9 @@ public final class TriviaQuestions {
      * Creates an ArrayList of questions from the database of trivia questions.
      * @return An ArrayList of questions from the database of trivia questions.
      */
-    public static ArrayList<Question> getTriviaQuestions() {
+    public static List<Question> getTriviaQuestions() {
         Connection connection = null;
-        final ArrayList<Question> questions = new ArrayList<Question>();
+        final List<Question> questions = new ArrayList<Question>();
         try {
             // Create a database connection.
             // We are using jdbc for the Java database connection and SQLite ("jdbc:sqlite").
@@ -55,13 +56,19 @@ public final class TriviaQuestions {
 
             final ResultSet mc = statement.executeQuery("SELECT * FROM MultipleChoice");
             while (mc.next()) {
-                final Question q = new MultipleChoiceQuestion(mc.getString(QUESTION), mc.getString(ANSWER), mc.getString("OptionB"), mc.getString("OptionC"), mc.getString("OptionD"));
+                final Option answer = new Option(mc.getString(ANSWER), true);
+                final Option optionB = new Option(mc.getString("OptionB"), false);
+                final Option optionC = new Option(mc.getString("OptionC"), false);
+                final Option optionD = new Option(mc.getString("OptionD"), false);
+                final Question q = new MultipleChoiceQuestion(mc.getString(QUESTION), answer, optionB, optionC, optionD);
                 questions.add(q);
             }
 
             final ResultSet tf = statement.executeQuery("SELECT * FROM TrueFalse");
             while (tf.next()) {
-                final Question q = new TrueFalseQuestion(tf.getString(QUESTION), mc.getString(ANSWER));
+                final Option answer = new Option(mc.getString(ANSWER), true);
+                final Option incorrect = new Option(mc.getString("Incorrect"), false);
+                final Question q = new TrueFalseQuestion(tf.getString(QUESTION), answer, incorrect);
                 questions.add(q);
             }
 
