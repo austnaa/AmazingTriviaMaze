@@ -1,28 +1,39 @@
 /**
- * Amazing Trivia Maze
+ * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
 package view.question_view;
 
+import java.util.Objects;
+
 import javax.swing.JFrame;
 
-import view.GameFrame;
-
 /**
- * Provides basic functionalities for all types of question frames.
- * @author Daniel Jiang
+ * A frame build particularly for containing QuestionPanel objects. 
+ * @author Austn Attaway
  * @version Spring 2021
  */
-public abstract class QuestionFrame extends JFrame {
-	
-    /** Auto-generated serial ID for serialization. */
-	private static final long serialVersionUID = 6121294826588417584L;
+public class QuestionFrame extends JFrame {
+    
+    /** An auto-generated serial version UID for object Serialization */
+    private static final long serialVersionUID = -8649295778935069382L;
 
-	/**
-	 * TODO
-	 * @param theGameFrame
-	 */
-	public QuestionFrame(final GameFrame theGameFrame) {
-            setLocationRelativeTo(theGameFrame);
-        }
+    /**
+     * Constructs a new QuestionFrame that contains the given AbstractQuestionPanel 
+     * @param thePanel the AbstractQuestionPanel that this frame will contain
+     * @throws NullPointerException if thePanel is null
+     */
+    public QuestionFrame(final AbstractQuestionPanel thePanel) {
+        super();
+        Objects.requireNonNull(thePanel, "thePanel can not be null");
+        add(thePanel);
+        setTitle("Question Frame");
+        setSize(400, 400);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setVisible(true);
+        setAlwaysOnTop(true);
+        // requestFocus();
+        thePanel.setupFrame(this);
+    }
 }

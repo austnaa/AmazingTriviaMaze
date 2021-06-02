@@ -8,9 +8,9 @@ import java.util.Objects;
 
 import model.Player;
 import model.question.Question.QuestionType;
-import view.oldquestion_view.AbstractQuestionPanel;
-import view.oldquestion_view.MultipleChoiceQuestionPanel;
-import view.oldquestion_view.QuestionFrame;
+import view.question_view.AbstractQuestionPanel;
+import view.question_view.MultipleChoiceQuestionPanel;
+import view.question_view.QuestionFrame;
 
 /**
  * Provides basic functionalities for all types of questions.

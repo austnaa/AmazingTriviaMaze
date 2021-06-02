@@ -2,7 +2,7 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-package view.oldquestion_view;
+package view.question_view;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;

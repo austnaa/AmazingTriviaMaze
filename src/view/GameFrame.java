@@ -68,7 +68,7 @@ public class GameFrame extends JFrame {
             FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 
             // Adjust volume
-            double gain = 0.001;   
+            double gain = 0.2;   
             float dB = (float) (Math.log(gain) / Math.log(10.0) * 10.0);
             volume.setValue(dB);
 
