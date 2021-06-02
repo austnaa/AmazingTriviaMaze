@@ -14,11 +14,14 @@ import view.GameFrame;
  * @version Spring 2021
  */
 public abstract class QuestionFrame extends JFrame {
-    /**
-	 * Auto-generated serial ID for serialization.
-	 */
+	
+    /** Auto-generated serial ID for serialization. */
 	private static final long serialVersionUID = 6121294826588417584L;
 
+	/**
+	 * TODO
+	 * @param theGameFrame
+	 */
 	public QuestionFrame(final GameFrame theGameFrame) {
         setLocationRelativeTo(theGameFrame);
     }

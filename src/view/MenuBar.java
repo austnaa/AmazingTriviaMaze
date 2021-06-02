@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package view;
 
 import java.awt.event.ActionEvent;
@@ -28,10 +27,8 @@ public class MenuBar extends JMenuBar {
      */
     public MenuBar() {
         super();
-        
         setupFileMenu();
         setupHelpMenu();
-   
     }
     
     /**
@@ -86,14 +83,14 @@ public class MenuBar extends JMenuBar {
             @Override
             public void actionPerformed(final ActionEvent theEvent) {
                 System.out.println("About menu clicked");         
-                AboutFrame frame = new AboutFrame();
+                final AboutFrame frame = new AboutFrame();
             }    
         });
         howToPlayItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent theEvent) {
                 System.out.println("How to Play menu clicked");                
-                HowToFrame frame = new HowToFrame();
+                final HowToFrame frame = new HowToFrame();
             }
         });
         

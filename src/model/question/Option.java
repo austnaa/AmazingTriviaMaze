@@ -15,20 +15,13 @@ import javax.swing.JRadioButton;
  */
 public class Option extends JRadioButton {
 
-	/**
-	 * Auto-generated serial version ID.
-	 */
+	/** Auto-generated serial version ID. */
 	private static final long serialVersionUID = -2129560532822415441L;
     
-    /**
-     * The text of the option.
-     */
+    /** The text of the option. */
     private String myOptionText;
 
-    /**
-     * The correctness of the option.
-     * The asnwer will be true.
-     */
+    /** The correctness of the option. */
     private boolean myCorrectOption;
 
     /**

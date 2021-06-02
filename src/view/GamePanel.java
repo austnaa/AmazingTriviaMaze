@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package view;
 
 import java.awt.Graphics;
@@ -12,24 +11,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import model.Door;
-import model.MazeBuilder;
 import model.MazeManager;
 import model.Player;
-import model.Room;
 
 /**
- * The panel that paints the graphics of the program. 
- * 
+ * The panel that paints the graphics of the program.
  * @author Daniel Jiang
  * @author Austn Attaway
  * @author Chau Vu
  * @version Spring 2021
- * The class for the Player model's movement.
  */
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
     
@@ -39,19 +32,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     /** The delay between each game tick. */
     private static final int TICK_DELAY = 50;
     
-    /**
-     * The internal game timer.
-     */
+    /** The internal game timer. */
     final Timer myGameTimer;
 
-    /**
-     * This Panel's Player 
-     */ 
+    /** This Panel's Player */ 
     private static Player myPlayer;
 
-    /**
-     * The MazeManager that keeps track of the available Mazes and the current maze.
-     */
+    /** The MazeManager that keeps track of the available Mazes and the current maze. */
     private static MazeManager myMazeManager;
     
     /**
@@ -134,7 +121,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
     /**
      * Completes the interaction between the player and the interactable objects in the room.
-     * 
      * TODO: controller code kinda
      */
     public static void interact() {

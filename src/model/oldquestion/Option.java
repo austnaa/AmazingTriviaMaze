@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package model.oldquestion;
 
 import java.util.Objects;
@@ -12,25 +11,19 @@ import javax.swing.JRadioButton;
 /**
  * A JRadioButton that provides state and functionality for being either an incorrect 
  * or correct answer to a multiple choice question.
- * 
  * @author Austn Attaway
  * @version Spring 2021
  */
 public class Option extends JRadioButton {
     
-    /** An auto-generated serial version UID for object Serialization */
+    /** An auto-generated serial version UID for object serialization. */
     private static final long serialVersionUID = 6937889941706117785L;
 
-    /**
-     * Whether or not this option is correct.
-     */
+    /** Whether or not this option is correct. */
     private boolean myOptionCorrect;
     
-    /**
-     * The text that represents this Option.
-     */
+    /** The text that represents this Option. */
     private String myText;
-    
     
     /**
      * Constructs an option with the given and whether or not this option is correct. 
@@ -58,5 +51,4 @@ public class Option extends JRadioButton {
     protected boolean isCorrectOption() {
         return myOptionCorrect;
     }
-    
 }

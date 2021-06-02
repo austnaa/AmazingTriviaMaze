@@ -5,32 +5,25 @@
 package model;
 
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import model.Door.TYPE;
 import view.GameFrame;
-import view.ItemSheet;
 import view.SpriteSheet;
 
 /**
  * Provides state and functionality for a Player sprite including movement and animation.
+ * 
+ * Reference: https://www.youtube.com/watch?v=Yem67dViGSw
+ * 
  * @author Austn Attaway
  * @author Chau Vu
  * @author Daniel Jiang
  * @version Spring 2021
  */
-//Tutorial source: https://www.youtube.com/watch?v=Yem67dViGSw --- is this needed anymore?
 public class Player {
     
-    /**
-     * The maximum number of brains a player can have.
-     * TODO: decide on the maximum number of brains
-     */
+    /** The maximum number of brains a player can have. */
     private static final int MAX_BRAINS = 10; 
     
-    /**
-     * The number of brains the player starts with.
-     * TODO: decide on the number of brains player starts with.
-     */
+    /** The number of brains the player starts with. */
     private static final int START_BRAINS = 5;
 
     /** The initial x and y speed of the player. */
@@ -65,56 +58,34 @@ public class Player {
      */
     private static final int ANIMATION_DELAY = 4;
 
-    // movement 
-    /**
-     * This Player's x current x position.
-     */
+    /** This Player's x current x position. */
     private int myX;
     
-    /**
-     * This Player's x current x position.
-     */
+    /** This Player's x current x position. */
     private int myY;
        
-    /**
-     * The velocity of the player along the x axis. 
-     */
+    /** The velocity of the player along the x axis. */
     private int myVelocityX;
     
-    /**
-     * The velocity of the player along the y axis. 
-     */
+    /** The velocity of the player along the y axis. */
     private int myVelocityY;
     
-    // sprite images  
-    /**
-     * The SpriteSheet for this player.
-     */
+    /** The SpriteSheet for this player. */
     private SpriteSheet mySpriteSheet;
     
-    /**
-     * The current image of the player shown on the screen.
-     */
+    /** The current image of the player shown on the screen. */
     private BufferedImage myPlayerImage;
  
-    /**
-     * The row the current player image is located at in the sprite sheet.
-     */
+    /** The row the current player image is located at in the sprite sheet. */
     private int mySpriteRow;
     
-    /**
-     * The column the current player image is located at in the sprite sheet.
-     */
+    /** The column the current player image is located at in the sprite sheet. */
     private int mySpriteCol;
      
-    /**
-     * The number of ticks elapsed, used for changing images in animations.
-     */
+    /** The number of ticks elapsed, used for changing images in animations. */
     private int myTickCount;
     
-    /**
-     * The number of brains(incorrect answers) remaining.
-     */
+    /** The number of brains(incorrect answers) remaining. */
     private int myBrainsRemaining;
      
     /**
@@ -245,7 +216,6 @@ public class Player {
     public void setBrains(final int theNumBrains) {
         myBrainsRemaining = Math.min(MAX_BRAINS, theNumBrains);   
     }
-
     
     // could move to a PlayerView class
     /**

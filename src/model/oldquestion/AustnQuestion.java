@@ -2,19 +2,16 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package model.oldquestion;
 
 import model.Player;
 
 /**
  * Provides basic expected functionality for Question classes. 
- * 
  * @author Austn Attaway
  * @version Spring 2021
  */
 public interface AustnQuestion extends Cloneable {
-    
     /**
      * Returns the String representation of this Question's prompt.
      * @return the String representation of this Question's prompt.
@@ -40,6 +37,4 @@ public interface AustnQuestion extends Cloneable {
      * @return 
      */
     public void answerQuestion(final Player thePlayer);
-    
-
 }

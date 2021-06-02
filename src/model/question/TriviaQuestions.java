@@ -19,6 +19,12 @@ import java.util.List;
  * @version Spring 2021
  */
 public final class TriviaQuestions {
+    
+    /** String for querying the questions. */
+    private final static String QUESTION = "Question";
+
+    /** String for querying the answers to the questions. */
+    private final static String ANSWER = "Answer";
 
     /**
      * Private constructor so we cannot initialize an object of this class.
@@ -26,16 +32,6 @@ public final class TriviaQuestions {
     private TriviaQuestions() {
 
     }
-
-    /**
-     * String for querying the questions.
-     */
-    private final static String QUESTION = "Question";
-
-    /**
-     * String for querying the answers to the questions.
-     */
-    private final static String ANSWER = "Answer";
     
     /**
      * Creates an ArrayList of questions from the database of trivia questions.

@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package model.oldquestion;
 
 import java.util.List;
@@ -15,20 +14,15 @@ import java.util.Random;
 /**
  * Creates and manages the list of available questions that can be accessed to build 
  * instances of the Trivia Maze game.  
- *   
  * @author Austn Attaway
  * @version Spring 2021
  */
 public class QuestionManager {
     
-    /**
-     * The List of questions that will be copied each time we set up a new game.
-     */
+    /** The List of questions that will be copied each time we set up a new game. */
     private List<AustnQuestion> myQuestionList; 
     
-    /**
-     * The List of questions that questions will be pulled from for the current game instance.
-     */
+    /** The List of questions that questions will be pulled from for the current game instance. */
     private List<AustnQuestion> myCurrentQuestionList;
     
     /**
@@ -39,7 +33,6 @@ public class QuestionManager {
         setupQuestionList();
         setNewQuestionList();
     }
-    
     
     /**
      * Returns a random question from the current game's list of unused questions.
@@ -71,12 +64,9 @@ public class QuestionManager {
             AustnQuestion mcq = new MultipleChoiceQuestion("Which game is the most popular PC game?", 
                     options);
             // ********
-            
             myQuestionList.add(mcq);
         }
-        
     }
-    
     
     /**
      * Sets up a brand new List of questions for use in a particular game instance.
@@ -102,5 +92,4 @@ public class QuestionManager {
         }
         return copy;
     }
-    
 }

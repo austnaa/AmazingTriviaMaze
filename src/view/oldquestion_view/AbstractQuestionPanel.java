@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package view.oldquestion_view;
 
 import javax.swing.JFrame;
@@ -10,7 +9,6 @@ import javax.swing.JPanel;
 
 /**
  * Provides mandatory implementations for all classes that are QuestionPanels
- * 
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -26,5 +24,4 @@ public abstract class AbstractQuestionPanel extends JPanel {
      * @throws NullPointerException if theFrame is null
      */
     public abstract void setupFrame(final JFrame theFrame);
-    
 }

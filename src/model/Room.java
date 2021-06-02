@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package model;
 
 import java.util.Objects;
@@ -14,19 +13,13 @@ import java.util.Objects;
  */
 public class Room {
     
-    /**
-     * Whether or not this Room is the room the game starts in.
-     */
+    /** Whether or not this Room is the room the game starts in. */
     private boolean myIsStartRoom;
     
-    /**
-     * Whether or not this Room is the room the game ends in.
-     */
+    /** Whether or not this Room is the room the game ends in. */
     private boolean myIsEndRoom;
     
-    /**
-     * Whether or not this Room has been visited yet.
-     */
+    /** Whether or not this Room has been visited yet. */
     private boolean myHasBeenVisited;
 
     /**
@@ -85,7 +78,6 @@ public class Room {
         myEastDoor = theEastDoor;
         
     }
-    
     
     /**
      * Allows the given player to interact with this Room.

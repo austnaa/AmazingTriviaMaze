@@ -1,36 +1,33 @@
+/**
+ * Amazing Trivia Maze 
+ * TCSS 360 Spring 2021
+ */
 package view;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
  * The panel that paints the start
  * images at the beginning.
- * 
  * @author Chau Vu
  * @version Spring 2021
  */
 public class StartPanel extends JPanel {
-
+    
     /** An auto-generated serial version UID for object serialization. */
     private static final long serialVersionUID = 3216576382698567738L;
     
-    /** the image that represent the background. */
+    /** The image that represent the background. */
     private BufferedImage myBackgroundImage;
     
-    /** the sheet that contains the background images. */
+    /** The sheet that contains the background images. */
     private PanelSheet myBackgroundSheet;
     
     /**
@@ -67,7 +64,7 @@ public class StartPanel extends JPanel {
     }
     
     /**
-     * draw the background image for the panel.
+     * Draw the background image for the panel.
      * @param theGraphics
      */
     public void drawBackgroundImage(final Graphics2D theGraphics) {

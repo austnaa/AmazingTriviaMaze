@@ -12,9 +12,8 @@ import java.util.Objects;
  * @version Spring 2021
  */
 public class FreeResponseQuestion extends Question {
-    /**
-     * The answer to the question.
-     */
+    
+    /** The answer to the question. */
     private String myAnswer;
 
     /**

@@ -2,11 +2,9 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package model.oldquestion;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import model.Player;
@@ -20,7 +18,12 @@ import view.oldquestion_view.QuestionFrame;
  * @author Austn Attaway
  * @version Spring 2021
  */
-public class QuestionTester {  
+public class QuestionTester {
+    
+    /**
+     * TODO
+     * @param args
+     */
     public static void main(String[] args) {
               
         Option option1 = new Option("Minecraft", true);
@@ -45,33 +48,10 @@ public class QuestionTester {
         QuestionManager qm = new QuestionManager();
         
         
-        
-        
-        
-        
         GameFrame frame = new GameFrame();
         GamePanel panel = new GamePanel();
         frame.add(panel);
         System.out.println("What is the frame?");
         System.out.println(frame.equals( (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel)));
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     }
 }

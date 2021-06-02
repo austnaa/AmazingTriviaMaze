@@ -1,3 +1,7 @@
+/**
+ * Amazing Trivia Maze 
+ * TCSS 360 Spring 2021
+ */
 package view;
 
 import java.awt.Graphics2D;
@@ -6,19 +10,18 @@ import java.awt.image.BufferedImage;
 import model.Player;
 import model.Room;
 
+/**
+ * TODO
+ */
 public class PanelSheet extends SheetLoader {
     
     /** The name of the sprite sheet image located in the assets folder. */
     private static final String FILE_NAME = "panel_sheet.png";
     
-    /**
-     * the win image shown when player reach the end room.
-     */
+    /** The win image shown when player reach the end room. */
     private BufferedImage myWinImage;
     
-    /**
-     * the lose image shown when player lose all brains.
-     */
+    /** The lose image shown when player lose all brains. */
     private BufferedImage myLoseImage;
     
     /**
@@ -38,9 +41,8 @@ public class PanelSheet extends SheetLoader {
     }
     
     /**
-     * draw the Win panel based on room.
-     * draw the Lose panel based on brains.
-     * 
+     * Draws the Win panel based on room.
+     * Draws the Lose panel based on brains.
      * @param theGraphics 
      * @param theRoom - the current room
      * @param thePlayer - the player

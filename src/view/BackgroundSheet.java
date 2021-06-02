@@ -2,13 +2,10 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package view;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-
-//import javax.swing.JPanel;
 
 import model.Room;
 
@@ -17,18 +14,20 @@ import model.Room;
  * Manages drawing the background of the GamePanel
  * @author Austn Attaway
  * @version Spring 2021
- *
  */
 public class BackgroundSheet extends SheetLoader {
     
     /** The name of the sprite sheet image located in the assets folder. */
     private static final String FILE_NAME = "background_sheet.png";
     
+    /** TODO */
     private static final int INCREMENT = IMAGE_DIMENSION * IMAGE_SCALAR;
     
- 
     /**
      * The image tile of the an upper left corner.
+     */
+    /**
+     * TODO
      */
     private BufferedImage myUpperLeftCornerImage;
     private BufferedImage myUpperWallImage;
@@ -56,12 +55,17 @@ public class BackgroundSheet extends SheetLoader {
     private BufferedImage myLowerDoorUnlockedTransparentImage;
     private BufferedImage myLowerRightCornerTransparentImage;
     
-    
+    /**
+     * TODO
+     */
     public BackgroundSheet() {
         super(FILE_NAME);
         setupImages();
     }
     
+    /**
+     * TODO
+     */
     private void setupImages() {
         myUpperLeftCornerImage = this.grabImage(1, 1);
         myUpperWallImage = this.grabImage(2, 1);
@@ -135,7 +139,11 @@ public class BackgroundSheet extends SheetLoader {
         theGraphics.drawImage(myUpperRightCornerImage, col, row, null);
     }
     
-    // TODO
+    /**
+     * TODO
+     * @param theGraphics
+     * @param theRow
+     */
     private void drawGenericRow(final Graphics2D theGraphics, final int theRow) {
         
         final int row = theRow * INCREMENT;
@@ -152,7 +160,11 @@ public class BackgroundSheet extends SheetLoader {
         theGraphics.drawImage(myRightWallImage, col, row, null);
     }
     
-    // TODO
+    /**
+     * TODO
+     * @param theGraphics
+     * @param theRoom
+     */
     private void drawDoorRow(final Graphics2D theGraphics, final Room theRoom) {
         int row = INCREMENT * 2;
         int col = 0;
@@ -187,7 +199,11 @@ public class BackgroundSheet extends SheetLoader {
         }
     }
 
-    // TODO
+    /**
+     * TODO
+     * @param theGraphics
+     * @param theRoom
+     */
     private void drawBottomRow(final Graphics2D theGraphics, final Room theRoom) {
         final int row = 4 * INCREMENT;
         int col = 0;
@@ -238,5 +254,4 @@ public class BackgroundSheet extends SheetLoader {
         col += INCREMENT;
         theGraphics.drawImage(myLowerRightCornerTransparentImage, col, row, null);
     }
-
 }

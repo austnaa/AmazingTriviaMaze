@@ -2,26 +2,17 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package view.oldquestion_view;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.util.Objects;
 
-import javax.swing.InputMap;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.KeyStroke;
-import javax.swing.SwingUtilities;
 
 import model.Player;
 import model.oldquestion.MultipleChoiceQuestion;
@@ -32,7 +23,6 @@ import view.GamePanel;
 
 /**
  * A Panel that displays a multiple choice question.
- * 
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -41,30 +31,21 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
     /** An auto-generated serial version UID for object Serialization */
     private static final long serialVersionUID = -2729044720547678473L;
     
-    /**
-     * The MultipleChoiceQuestion that this panel is displaying.
-     */
+    /** The MultipleChoiceQuestion that this panel is displaying. */
     private MultipleChoiceQuestion myQuestion;
     
     // TODO: MAY NOT NEED THIS
-    /**
-     * The options available for this multiple choice question
-     */
+    /** The options available for this multiple choice question. */
     private Option[] myOptions;
     
-    /**
-     * The Player object that could be affected from answering this panel's Question incorrectly.
-     */
+    /** The Player object that could be affected from answering this panel's Question incorrectly. */
     private Player myPlayer;
     
-    /**
-     * The frame that contains this panel.
-     */
+    /** The frame that contains this panel. */
     private JFrame myFrame;
     
     /**
      * Constructs a new MultipleChoiceQuestionPanel with the given Player and Question.
-     * 
      * @param thePlayer the Player that could be affected by answering the given Question incorrectly.
      * @param theQuestion the MultipleChoiceQuestion this panel is displaying
      * @throws NullPointerException if thePlayer is null
@@ -82,7 +63,6 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
     /**
      * Sets the Frame for this panel. Important to use this method
      * before trying to use the panel.
-     * 
      * @param theFrame theFrame that contains this panel
      * @throws NullPointerException when theFrame is null
      */
@@ -96,8 +76,6 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
     private void setup() {
         this.setLayout(null);
         
-        
-
         // add the question label 
         final JLabel questionLabel = new JLabel();
         questionLabel.setText(myQuestion.getPrompt());
@@ -182,7 +160,4 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
 //        theGraphics.setColor(Color.red);
 //        theGraphics.drawRect(100, 100, 100, 100);
 //    }
-    
-    
-    
 }

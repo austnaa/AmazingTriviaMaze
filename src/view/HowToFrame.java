@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package view;
 
 import java.awt.image.BufferedImage;
@@ -13,15 +12,12 @@ import javax.swing.JLabel;
 /**
  * How to play Frame that pops up when users click on the
  * How to play button in the menu bar.
- * 
  * @author Chau Vu
  * @version Spring 2021
  */
 public class HowToFrame extends JFrame { 
     
-    /**
-     * Generated ID for serialization.
-     */
+    /** Generated ID for serialization. */
     private static final long serialVersionUID = -981295503148408992L;
 
     /**

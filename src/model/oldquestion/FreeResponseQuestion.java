@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package model.oldquestion;
 
 import java.util.Objects;
@@ -15,10 +14,8 @@ import model.Player;
  * @version Spring 2021
  */
 public class FreeResponseQuestion extends AustnAbstractQuestion {
-
-    /**
-     * The String representation of a correct answer.
-     */
+    
+    /** The string representation of a correct answer. */
     private String myCorrectAnswer;
     
     /**
@@ -32,7 +29,6 @@ public class FreeResponseQuestion extends AustnAbstractQuestion {
         super(thePrompt);
         myCorrectAnswer = Objects.requireNonNull(theCorrectAnswer, "theCorrectAnswer can not be null");
     }
-
     
     /**
      * Compares the given text to the correct answer for this question. Returns
@@ -58,6 +54,4 @@ public class FreeResponseQuestion extends AustnAbstractQuestion {
         final FreeResponseQuestion copy = new FreeResponseQuestion(super.myPrompt, myCorrectAnswer);
         return copy;
     }
-
-
 }

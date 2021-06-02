@@ -12,14 +12,11 @@ import java.util.Objects;
  * @version Spring 2021
  */
 public abstract class Question {
-    /**
-     * The question prompt.
-     */
+    
+    /** The question prompt. */
     public String myQuestionPrompt;
 
-    /**
-     * If the question has been answered correctly already.
-     */
+    /** If the question has been answered correctly already. */
     public boolean myAnsweredAlready;
 
     /**

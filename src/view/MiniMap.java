@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package view;
 
 import java.awt.Color;
@@ -13,7 +12,6 @@ import model.Room;
 
 /**
  * Utility class providing functionality for drawing a mini-map on a Panel.
- * 
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -48,7 +46,7 @@ public class MiniMap {
     }
     
     /**
-     * 
+     * TODO
      * @param theGraphics
      * @param theMaze
      * @param theCurrentRoom
@@ -95,6 +93,4 @@ public class MiniMap {
             }    
         }        
     }
-    
-
 }
