@@ -22,7 +22,7 @@ public class FreeResponseQuestion extends Question {
      * @param theAnswer The answer.
      */
     public FreeResponseQuestion(final String theQuestion, final String theAnswer) {
-        super(theQuestion);
+        super(theQuestion, QuestionType.FREE_RESPONSE);
         myAnswer = Objects.requireNonNull(theAnswer);
     }
 

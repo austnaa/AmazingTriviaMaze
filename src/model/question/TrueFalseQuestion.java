@@ -27,7 +27,7 @@ public class TrueFalseQuestion extends Question {
      * @param theAnswer The answer.
      */
     public TrueFalseQuestion(final String theQuestion, final Option theAnswer, final Option theIncorrectAnswer) {
-        super(theQuestion);
+        super(theQuestion, QuestionType.TRUE_FALSE);
         myAnswer = Objects.requireNonNull(theAnswer);
         myIncorrectAnswer = Objects.requireNonNull(theIncorrectAnswer);
     }
