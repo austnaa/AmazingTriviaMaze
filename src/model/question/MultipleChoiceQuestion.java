@@ -69,6 +69,14 @@ public class MultipleChoiceQuestion extends Question {
     }
 
     /**
+     * Gets the answer option.
+     * @return The answer option.
+     */
+    public Option getAnswer() {
+        return myAnswer;
+    }
+
+    /**
      * Creates a String representation of multiple choice questions.
      * @return The String representation of multiple choice questions.
      */

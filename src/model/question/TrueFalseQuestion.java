@@ -4,6 +4,8 @@
  */
 package model.question;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -28,6 +30,25 @@ public class TrueFalseQuestion extends Question {
         super(theQuestion);
         myAnswer = Objects.requireNonNull(theAnswer);
         myIncorrectAnswer = Objects.requireNonNull(theIncorrectAnswer);
+    }
+
+    /**
+     * Returns an ArrayList of all the possible options.
+     * @return An ArrayList of all the possible options.
+     */
+    public List<Option> getAllOptions() {
+        List<Option> allOptions = new ArrayList<Option>();
+        allOptions.add(myAnswer);
+        allOptions.add(myIncorrectAnswer);
+        return allOptions;
+    }
+
+    /**
+     * Gets the answer option.
+     * @return The answer option.
+     */
+    public Option getAnswer() {
+        return myAnswer;
     }
     
     /**
