@@ -44,7 +44,7 @@ public final class TriviaQuestions {
             // Create a database connection.
             // We are using jdbc for the Java database connection and SQLite ("jdbc:sqlite").
             // Then we are using the actual .db physical file that we want to connect to ("jdbc:sqlite:db_name.db").
-            final String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/src/model/question/database/TriviaQuestions.db";
+            final String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/src/model/question/TriviaQuestions.db";
             connection = DriverManager.getConnection(url);
             final Statement statement = connection.createStatement();
             // Sets the timeout to 30 seconds (if the query takes too long - good practice).

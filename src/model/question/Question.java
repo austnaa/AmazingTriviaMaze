@@ -6,6 +6,12 @@ package model.question;
 
 import java.util.Objects;
 
+import model.Player;
+import model.question.Question.QuestionType;
+import view.oldquestion_view.AbstractQuestionPanel;
+import view.oldquestion_view.MultipleChoiceQuestionPanel;
+import view.oldquestion_view.QuestionFrame;
+
 /**
  * Provides basic functionalities for all types of questions.
  * @author Daniel Jiang
@@ -69,6 +75,28 @@ public abstract class Question {
      */
     public QuestionType getType() {
         return myType;
+    }
+    
+    public void answerQuestion(final Player thePlayer) {
+        Objects.requireNonNull(thePlayer, "thePlayer can not be null");
+        
+        
+        AbstractQuestionPanel panel = null;
+        
+        if (this.getType() == QuestionType.MULTIPLE_CHOICE) {
+            panel = new MultipleChoiceQuestionPanel(thePlayer, this);
+        } else if (this.getType() == QuestionType.TRUE_FALSE) {
+            // insert code to set the panel to a truefalsepanel
+            System.out.println("open true false panel...");
+        } else if (this.getType() == QuestionType.FREE_RESPONSE) {
+            // insert code to set the panel to a free response panel
+            System.out.println("open free response panel...");
+        }
+        
+        if (panel != null) {
+            QuestionFrame frame = new QuestionFrame(panel);
+            panel.setupFrame(frame);
+        }
     }
 
     /**

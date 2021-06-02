@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import model.oldquestion.QuestionManager;
+import model.question.QuestionManager;
 
 /**
  * Builds and maintains the collection of possible mazes the game can pick 
