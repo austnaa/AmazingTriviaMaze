@@ -1,8 +1,7 @@
 /**
- * Amazing Trivia Maze 
+ * Amazing Trivia Maze
  * TCSS 360 Spring 2021
  */
-
 package model.question;
 
 import java.util.Objects;
@@ -10,53 +9,65 @@ import java.util.Objects;
 import javax.swing.JRadioButton;
 
 /**
- * A JRadioButton that provides state and functionality for being either an incorrect 
- * or correct answer to a multiple choice question.
- * 
- * @author Austn Attaway
+ * Option radio buttons for multiple choice questions and true/false questions
+ * @author Daniel Jiang
  * @version Spring 2021
  */
 public class Option extends JRadioButton {
+
+	/**
+	 * Auto-generated serial version ID.
+	 */
+	private static final long serialVersionUID = -2129560532822415441L;
     
-    /** An auto-generated serial version UID for object Serialization */
-    private static final long serialVersionUID = 6937889941706117785L;
+    /**
+     * The text of the option.
+     */
+    private String myOptionText;
 
     /**
-     * Whether or not this option is correct.
+     * The correctness of the option.
+     * The asnwer will be true.
      */
-    private boolean myOptionCorrect;
-    
+    private boolean myCorrectOption;
+
     /**
-     * The text that represents this Option.
+     * Constructor for the options for the multiple choice questions and true/false questions.
+     * @param theOptionText The text of the option.
+     * @param theCorrectOption The correctness of the option.
      */
-    private String myText;
-    
-    
-    /**
-     * Constructs an option with the given and whether or not this option is correct. 
-     * @param theText the text that will be displayed when end users are considering this option.
-     * @param theOptionCorrect whether or not this option is correct.
-     * @throws NullPointerException if theText is null
-     */
-    public Option(final String theText, final boolean theOptionCorrect) {
-        myText = Objects.requireNonNull(theText, "theText can not be null");
-        myOptionCorrect = theOptionCorrect;
+    public Option(final String theOptionText, final boolean theCorrectOption) {
+        myOptionText = Objects.requireNonNull(theOptionText);
+        myCorrectOption = theCorrectOption;
     }
-    
+
     /**
-     * Returns the text that represents this option.
-     * @return the text that represents this option.
+     * Gets the text of the option.
+     * @return The text of the option.
      */
-    public String getText() {
-        return myText;
+    public String getOptionText() {
+        return myOptionText;
     }
-    
+
     /**
-     * Returns whether or not this option is correct.
-     * @return whether or not this option is correct.
+     * Checks for the correctness of the option.
+     * The answer will be true.
+     * @return The correctness of the option.
      */
-    protected boolean isCorrectOption() {
-        return myOptionCorrect;
+    public boolean isCorrectOption() {
+        return myCorrectOption;
     }
-    
+
+    /**
+     * Creates a String representation of options.
+     * @return The String representation of options.
+     */
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("Option: " + myOptionText + " is ");
+        final String correct = myCorrectOption ? "correct\n" : "incorrect\n";
+        sb.append(correct);
+        return sb.toString();
+    }
 }

@@ -1,63 +1,49 @@
 /**
- * Amazing Trivia Maze 
+ * Amazing Trivia Maze
  * TCSS 360 Spring 2021
  */
-
 package model.question;
 
 import java.util.Objects;
 
-import model.Player;
-
 /**
- * Provides state and functionality for a free response question. 
- * @author Austn Attaway
+ * Free response trivia questions.
+ * @author Daniel Jiang
  * @version Spring 2021
  */
-public class FreeResponseQuestion extends AbstractQuestion {
+public class FreeResponseQuestion extends Question {
+    /**
+     * The answer to the question.
+     */
+    private String myAnswer;
 
     /**
-     * The String representation of a correct answer.
+     * Constructor the the free response trivia questions.
+     * @param theQuestion The question prompt.
+     * @param theAnswer The answer.
      */
-    private String myCorrectAnswer;
-    
-    /**
-     * TODO:
-     * @param thePrompt 
-     * @param theCorrectAnswer
-     * @throws NullPointerException if thePrompt is null
-     * @throws NullPointerException if theCorrectAnswer is null
-     */
-    public FreeResponseQuestion(final String thePrompt, final String theCorrectAnswer) {
-        super(thePrompt);
-        myCorrectAnswer = Objects.requireNonNull(theCorrectAnswer, "theCorrectAnswer can not be null");
+    public FreeResponseQuestion(final String theQuestion, final String theAnswer) {
+        super(theQuestion);
+        myAnswer = Objects.requireNonNull(theAnswer);
     }
 
-    
     /**
-     * Compares the given text to the correct answer for this question. Returns
-     * true if they are the same, and false otherwise.
-     * 
-     * @param theUsersAnswer the String the user typed into a textbox to answer this question
-     * @return whether or not the correct answer for this question is the same as the given answer
-     * @throws NullPointerException if theUsersAnswer is null
+     * Gets the answer of the question.
+     * @return The answer of the question.
      */
-    public boolean checkAnswer(final String theUsersAnswer) {
-        Objects.requireNonNull(theUsersAnswer, "theUsersAnswer can not be null");
-        // TODO: implement better string comparison to cut whitespace, etc.
-        return theUsersAnswer.equalsIgnoreCase(myCorrectAnswer);
+    public String getAnswer() {
+        return myAnswer;
     }
-    
-    public void answerQuestion(final Player thePlayer) {
-        super.myIsAnswered = true;
-//        return true;
-    }
-    
+
+    /**
+     * Creates a String representation of free response questions.
+     * @return The String representation of free response questions.
+     */
     @Override
-    public Question clone() {
-        final FreeResponseQuestion copy = new FreeResponseQuestion(super.myPrompt, myCorrectAnswer);
-        return copy;
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append(super.toString());
+        sb.append("Answer: " + myAnswer + "\n");
+        return sb.toString();
     }
-
-
 }

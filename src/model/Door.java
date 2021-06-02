@@ -7,7 +7,7 @@ package model;
 
 import java.util.Objects;
 
-import model.question.Question;
+import model.oldquestion.AustnQuestion;
 import view.GameFrame;
 
 /**
@@ -66,12 +66,12 @@ public class Door {
      * The Question assigned to this door. Is used when the user 
      * needs to answer a question to unlock the door.
      */
-    private Question myQuestion;
+    private AustnQuestion myQuestion;
     
     /**
      * Constructor that builds a door with default values.
      */
-    public Door(final TYPE theType, final Question theQuestion) {
+    public Door(final TYPE theType, final AustnQuestion theQuestion) {
         myType = theType;
         myQuestion = theQuestion;
         setXYPosition();
@@ -154,7 +154,7 @@ public class Door {
         return "I am a door, type: " + myType;
     }
     
-    public Question getQuestion() {
+    public AustnQuestion getQuestion() {
         return myQuestion;
     }
     
