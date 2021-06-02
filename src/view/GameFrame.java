@@ -59,7 +59,7 @@ public class GameFrame extends JFrame {
      */
     public void sound() {
         try {
-            final String url = System.getProperty("user.dir") + "/src/model/audio/gameplay.wav";
+            final String url = System.getProperty("user.dir") + "/assets/gameplay.wav";
             // String soundName = "yourSound.wav";    
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(url).getAbsoluteFile());
             Clip clip = AudioSystem.getClip();
@@ -68,7 +68,7 @@ public class GameFrame extends JFrame {
             FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 
             // Adjust volume
-            double gain = 0.20;   
+            double gain = 0.001;   
             float dB = (float) (Math.log(gain) / Math.log(10.0) * 10.0);
             volume.setValue(dB);
 

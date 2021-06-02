@@ -7,6 +7,8 @@ package view.oldquestion_view;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 import javax.swing.JButton;
@@ -15,9 +17,11 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 
 import model.Player;
-import model.oldquestion.MultipleChoiceQuestion;
-import model.oldquestion.Option;
-
+//import model.oldquestion.MultipleChoiceQuestion;
+//import model.oldquestion.Option;
+import model.question.MultipleChoiceQuestion;
+import model.question.Option;
+import model.question.Question;
 import view.GamePanel;
 
 
@@ -36,7 +40,7 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
     
     // TODO: MAY NOT NEED THIS
     /** The options available for this multiple choice question. */
-    private Option[] myOptions;
+    private List<Option> myOptions;
     
     /** The Player object that could be affected from answering this panel's Question incorrectly. */
     private Player myPlayer;
@@ -51,9 +55,9 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
      * @throws NullPointerException if thePlayer is null
      * @throws NullPointerException if theQuestion is null
      */
-    public MultipleChoiceQuestionPanel(final Player thePlayer, final MultipleChoiceQuestion theQuestion) {
+    public MultipleChoiceQuestionPanel(final Player thePlayer, final Question theQuestion) {
         super();
-        myQuestion = Objects.requireNonNull(theQuestion, "theQuestion can not be null");
+        myQuestion = (MultipleChoiceQuestion) Objects.requireNonNull(theQuestion, "theQuestion can not be null");
         myPlayer = Objects.requireNonNull(thePlayer, "thePlayer can not be null");
 
         myFrame = null;
@@ -78,28 +82,32 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
         
         // add the question label 
         final JLabel questionLabel = new JLabel();
-        questionLabel.setText(myQuestion.getPrompt());
+        questionLabel.setText(myQuestion.getQuestionPrompt());
         questionLabel.setBounds(30, 10, 400, 30);
         add(questionLabel);
         
         // add the answer buttons
-        myOptions = myQuestion.getOptions();
-        final JRadioButton button1 = myOptions[0];
+        myOptions = myQuestion.getAllOptions();
+        Collections.shuffle(myOptions);
+        final JRadioButton button1 = myOptions.get(0);
         button1.setBounds(30, 50, 400, 20);
         
-        final JRadioButton button2 = myOptions[1];
+        final JRadioButton button2 = myOptions.get(1);
         button2.setBounds(30, 70, 400, 20);
        
-        final JRadioButton button3 = myOptions[2];
+        final JRadioButton button3 = myOptions.get(2);
         button3.setBounds(30, 90, 400, 20);
         
-        final JRadioButton button4 = myOptions[3];
+        final JRadioButton button4 = myOptions.get(3);
         button4.setBounds(30, 110, 400, 20);
        
         this.add(button1);
         this.add(button2);
         this.add(button3);
         this.add(button4);
+        
+
+        
         
 //        // add the submit and cancel button
 //        JButton cancelButton = new JButton("Cancel");
@@ -119,15 +127,15 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
             @Override
             public void actionPerformed(final ActionEvent theEvent) {
                 boolean result = myQuestion.checkAnswer();
-//                if (result) {
-//                    System.out.println("Correct!");
-//                } else {
-//                    System.out.println("incorrect");
-//                }
+                if (result) {
+                    System.out.println("Correct!");
+                } else {
+                    System.out.println("incorrect");
+                }
                 
                 // THIS IS WHERE WE COULD SHOW THAT THE ANSWER 
                 // IS CORRECT OR CLOSE THE PANEL AND CHANGE ROOMS...
-                if (myQuestion.isAnswered()) {
+                if (myQuestion.getAnsweredAlready()) {
                     if (myFrame != null) {
                         myFrame.dispose();
                     }

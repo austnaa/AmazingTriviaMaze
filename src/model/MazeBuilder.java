@@ -9,8 +9,8 @@ import java.io.FileNotFoundException;
 import java.util.Objects;
 import java.util.Scanner;
 
-import model.oldquestion.AustnQuestion;
-import model.oldquestion.QuestionManager;
+import model.question.Question;
+import model.question.QuestionManager;
 
 /**
  * A utility class that provides functionality for creating a 2D matrix of Room objects
@@ -53,8 +53,6 @@ public class MazeBuilder {
     public static Room[][] buildMaze(final String theFileName, final QuestionManager theQuestionManager) {
         Objects.requireNonNull(theFileName, "theFileName can not be null"); 
         Objects.requireNonNull(theQuestionManager, "theQuestionManager can not be null");
-        
-        theQuestionManager.setNewQuestionList();
         
         final String path = System.getProperty("user.dir") + "/assets/" + theFileName;
         final Scanner fileScanner = getScanner(path);
@@ -138,14 +136,14 @@ public class MazeBuilder {
         // the north door will share a question with the room above it
         Door northDoor = null;
         if (theRoomString.charAt(0) == 'Y') {
-            final AustnQuestion question = theMaze[theRow - 1][theCol].getSouthDoor().getQuestion();
+            final Question question = theMaze[theRow - 1][theCol].getSouthDoor().getQuestion();
             northDoor = new Door(Door.TYPE.NORTH, question);
         } 
         
         // the west door will share a question with the room to the left of it
         Door westDoor = null;
         if (theRoomString.charAt(2) == 'Y') {
-            final AustnQuestion question = theMaze[theRow][theCol - 1].getEastDoor().getQuestion();
+            final Question question = theMaze[theRow][theCol - 1].getEastDoor().getQuestion();
             westDoor = new Door(Door.TYPE.WEST, question);
         }
         

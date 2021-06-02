@@ -19,7 +19,7 @@ public class Option extends JRadioButton {
 	private static final long serialVersionUID = -2129560532822415441L;
     
     /** The text of the option. */
-    private String myOptionText;
+//    private String myOptionText;
 
     /** The correctness of the option. */
     private boolean myCorrectOption;
@@ -30,7 +30,8 @@ public class Option extends JRadioButton {
      * @param theCorrectOption The correctness of the option.
      */
     public Option(final String theOptionText, final boolean theCorrectOption) {
-        myOptionText = Objects.requireNonNull(theOptionText);
+        super(Objects.requireNonNull(theOptionText, "theOptionText can not be null"));
+//        myOptionText = Objects.requireNonNull(theOptionText);
         myCorrectOption = theCorrectOption;
     }
 
@@ -38,9 +39,9 @@ public class Option extends JRadioButton {
      * Gets the text of the option.
      * @return The text of the option.
      */
-    public String getOptionText() {
-        return myOptionText;
-    }
+//    public String getOptionText() {
+//        return myOptionText;
+//    }
 
     /**
      * Checks for the correctness of the option.
@@ -58,7 +59,7 @@ public class Option extends JRadioButton {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("Option: " + myOptionText + " is ");
+//        sb.append("Option: " + myOptionText + " is ");
         final String correct = myCorrectOption ? "correct\n" : "incorrect\n";
         sb.append(correct);
         return sb.toString();

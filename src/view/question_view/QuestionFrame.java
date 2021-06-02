@@ -23,6 +23,6 @@ public abstract class QuestionFrame extends JFrame {
 	 * @param theGameFrame
 	 */
 	public QuestionFrame(final GameFrame theGameFrame) {
-        setLocationRelativeTo(theGameFrame);
-    }
+            setLocationRelativeTo(theGameFrame);
+        }
 }

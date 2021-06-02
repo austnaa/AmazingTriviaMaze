@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.swing.ButtonGroup;
+
+
 /**
  * Multiple choice trivia questions.
  * @author Daniel Jiang
@@ -36,11 +39,17 @@ public class MultipleChoiceQuestion extends Question {
      * @param theOptionD The fourth option.
      */
     public MultipleChoiceQuestion(final String theQuestion, final Option theAnswer, final Option theOptionB, final Option theOptionC, final Option theOptionD) {
-        super(theQuestion);
+        super(theQuestion, QuestionType.MULTIPLE_CHOICE);
         myAnswer = Objects.requireNonNull(theAnswer);
         myOptionB = Objects.requireNonNull(theOptionB);
         myOptionC = Objects.requireNonNull(theOptionC);
         myOptionD = Objects.requireNonNull(theOptionD);
+        
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(myAnswer);
+        buttonGroup.add(myOptionB);
+        buttonGroup.add(myOptionC);
+        buttonGroup.add(myOptionD);
     }
 
     /**
@@ -67,6 +76,29 @@ public class MultipleChoiceQuestion extends Question {
         allOptions.add(myOptionD);
         return allOptions;
     }
+
+    /**
+     * Gets the answer option.
+     * @return The answer option.
+     */
+    public Option getAnswer() {
+        return myAnswer;
+    }
+    
+    /**
+     * Returns true if the currently selected option is the correct option.
+     * Updates the state of this question to be answered.
+     * 
+     * @return whether or not this question was answered correctly.
+     */
+    public boolean checkAnswer() {
+        boolean result = myAnswer.isSelected();
+        if (result) {
+            this.setAnsweredAlready(true);
+        }
+        return result;
+    }
+    
 
     /**
      * Creates a String representation of multiple choice questions.
