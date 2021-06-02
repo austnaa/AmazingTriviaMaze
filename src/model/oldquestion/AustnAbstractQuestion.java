@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package model.oldquestion;
 
 import java.util.Objects;
@@ -15,17 +14,12 @@ import model.Player;
  * @version Spring 2021
  */
 public abstract class AustnAbstractQuestion implements AustnQuestion {
-
-    /**
-     * The String representation of this Question's prompt.
-     */
+    
+    /** The String representation of this Question's prompt. */
     protected String myPrompt;
     
-    /**
-     * Whether or not this Question has been answered.
-     */
+    /** Whether or not this Question has been answered. */
     protected boolean myIsAnswered;
-    
     
     /**
      * Abstract constructor that sets default values for Questions.
@@ -37,11 +31,17 @@ public abstract class AustnAbstractQuestion implements AustnQuestion {
         myIsAnswered = false;
     }
     
+    /**
+     * TODO
+     */
     @Override
     public String getPrompt() {
         return myPrompt;
     }
     
+    /**
+     * TODO
+     */
     @Override
     public boolean isAnswered() {
         return myIsAnswered;
@@ -56,7 +56,9 @@ public abstract class AustnAbstractQuestion implements AustnQuestion {
 //    }
     public abstract void answerQuestion(final Player thePlayer);
     
+    /**
+     * 
+     */
     @Override
     public abstract AustnQuestion clone();
-
 }

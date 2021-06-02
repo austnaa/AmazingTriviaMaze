@@ -2,22 +2,14 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package view.oldquestion_view;
 
 import java.util.Objects;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-import model.oldquestion.AustnQuestion;
-import model.oldquestion.MultipleChoiceQuestion;
-
 
 /**
- * A Frame build particularly for containing QuestionPanel objects. 
- * 
+ * A frame build particularly for containing QuestionPanel objects. 
  * @author Austn Attaway
  * @version Spring 2021
  */

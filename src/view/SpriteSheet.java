@@ -2,12 +2,7 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package view;
-
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.util.Objects;
 
 /**
  * Class contains a method that
@@ -50,7 +45,6 @@ public class SpriteSheet extends SheetLoader {
     /** The column that contains images for a player that is standing still. */
     public static int NO_MOVEMENT_COL = 1;
     
-    
     /** The name of the sprite sheet image located in the assets folder. */
     private static final String FILE_NAME = "sprite_sheet.png";
      
@@ -60,5 +54,4 @@ public class SpriteSheet extends SheetLoader {
     public SpriteSheet() {
         super(FILE_NAME);
     }
- 
 }

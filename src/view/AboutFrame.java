@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package view;
 
 import java.awt.image.BufferedImage;
@@ -14,15 +13,12 @@ import javax.swing.JLabel;
 /**
  * About Frame that pops up when users click on the
  * about button in the menubar.
- * 
  * @author Chau Vu
  * @version Spring 2021
  */
-public class AboutFrame extends JFrame { 
-    
-    /**
-     * Generated ID for serialization.
-     */
+public class AboutFrame extends JFrame {
+
+    /** Generated ID for serialization. */
     private static final long serialVersionUID = 6313021765242043472L;
     
     /**

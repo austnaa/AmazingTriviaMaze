@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package model.oldquestion;
 
 import java.util.Objects;
@@ -35,7 +34,6 @@ public class MultipleChoiceQuestion extends AustnAbstractQuestion {
     /**
      * Constructs a MultipleChoiceQuestion object with the given prompt and an array of options. 
      * At least one of the Options in theOptions should be marked as the correct option.
-     * 
      * @param thePrompt the String that represents the question being asked.
      * @param theOptions the Options available to be picked when answering this question.
      * @throws NullPointerException if thePrompt is null
@@ -75,18 +73,13 @@ public class MultipleChoiceQuestion extends AustnAbstractQuestion {
         return result;
     }
     
-    
-    
     public void answerQuestion(final Player thePlayer) {
         final MultipleChoiceQuestionPanel multipleChoiceQuestionPanel = new MultipleChoiceQuestionPanel(thePlayer, this); //thePlayer,
         final QuestionFrame questionFrame = new QuestionFrame(multipleChoiceQuestionPanel);
         multipleChoiceQuestionPanel.setupFrame(questionFrame);
-        
 //        questionFrame.dispose();
 //        return myIsAnswered;
-        
     }
-
 
     /**
      * Returns the array of Option objects that are available to pick from.
@@ -95,8 +88,10 @@ public class MultipleChoiceQuestion extends AustnAbstractQuestion {
     public Option[] getOptions() {
         return myOptions;
     }
-    
-    
+
+    /**
+     * TODO
+     */
     @Override
     public AustnQuestion clone() {
         // TODO CHECK to make sure that myOptions does a deep copy...

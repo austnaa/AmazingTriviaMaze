@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package view;
 
 import java.awt.image.BufferedImage;
@@ -28,6 +27,7 @@ public class BufferedImageLoader {
     //private BufferedImage myImage;
     
     /**
+     * TODO
      * @param thePath - path of spritesheet
      * @return
      */

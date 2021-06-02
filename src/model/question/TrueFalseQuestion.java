@@ -13,14 +13,10 @@ import java.util.Objects;
  */
 public class TrueFalseQuestion extends Question {
 
-    /**
-     * The correct option.
-     */
+    /** The correct option. */
     private Option myAnswer;
 
-    /**
-     * The incorrect option.
-     */
+    /** The incorrect option. */
     private Option myIncorrectAnswer;
 
     /**

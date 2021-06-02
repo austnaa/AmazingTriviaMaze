@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package model;
 
 import java.io.File;
@@ -20,7 +19,7 @@ import model.oldquestion.QuestionManager;
  * @version Spring 2021
  */
 public class MazeBuilder {
-        
+    
     /**
      * Private default constructor to inhibit instantiation.
      */
@@ -74,18 +73,14 @@ public class MazeBuilder {
                 
             }
         }
-        
         fileScanner.close();
- 
         return resultMaze;
-      
     }  
     
     
     /**
      * Returns a Scanner object that contains the contents of the file 
      * specified by the given filename.
-     * 
      * @param theFileName the name of the file
      * @return the Scanner object that contains the contents of the file
      * @throws NullPointerException if theFileName is null

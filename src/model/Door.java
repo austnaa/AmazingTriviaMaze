@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package model;
 
 import java.util.Objects;
@@ -41,26 +40,17 @@ public class Door {
     /** The y position of an east door */
     private static final int EAST_Y = GameFrame.FRAME_HEIGHT / 2;
     
-    /**
-     * The possible types of a door
-     */
+    /** The possible types of a door */
     public enum TYPE { NORTH, SOUTH, EAST, WEST };
     
-    /**
-     * The type of this door.
-     */
+    /** The type of this door. */
     private TYPE myType;
     
-    /**
-     * The x position of this door
-     */
+    /** The x position of this door. */
     private int myX;
     
-    /**
-     * The y position of this door
-     */
+    /** The y position of this door. */
     private int myY;
-    
     
     /**
      * The Question assigned to this door. Is used when the user 
@@ -76,8 +66,6 @@ public class Door {
         myQuestion = theQuestion;
         setXYPosition();
     }
-    
-    
     
     // TODO interaction not implemented yet
     // return the door if it is unlocked?
@@ -100,7 +88,6 @@ public class Door {
     
     /**
      * Returns whether or not the given Player is close enough to this door for interaction.
-     * 
      * @param thePlayer the Player trying to interact with this door.
      * @return whether or not the given Player is close enough to this door for interaction.
      * @throws NullPointerException if thePlayer is null
@@ -112,8 +99,6 @@ public class Door {
         
         return xDiff < 150 && yDiff < 150;
     }
-    
-    
     
     /**
      * Returns whether or not this door is locked
@@ -154,6 +139,10 @@ public class Door {
         return "I am a door, type: " + myType;
     }
     
+    /**
+     * TODO
+     * @return
+     */
     public AustnQuestion getQuestion() {
         return myQuestion;
     }

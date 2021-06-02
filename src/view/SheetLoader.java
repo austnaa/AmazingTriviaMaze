@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package view;
 
 import java.awt.Graphics2D;
@@ -16,7 +15,6 @@ import javax.imageio.ImageIO;
 /**
  * Provides functionality for loading and getting images
  * from sprite and tile sheets.
- * 
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -33,20 +31,15 @@ public class SheetLoader {
     /** The width and height of the images in the sprite sheet in pixels. */
     public static final int IMAGE_DIMENSION = 32;
     
-    /**
-     * The amount the sprite image is scaled.
-     */
+    /** The amount the sprite image is scaled. */
     public static final int IMAGE_SCALAR = 4;
     
-    /**
-     * The image that contains the rows and columns of images.
-     */
+    /** The image that contains the rows and columns of images. */
     private BufferedImage mySpriteSheet;
     
     /**
      * Constructs a new SheetLoader object that operates on the image
      * specified by the given file name. 
-     * 
      * @param theFileName the file name of the image.
      * @throws NullPointerException if theFileName is null
      */
@@ -58,7 +51,6 @@ public class SheetLoader {
     
     /**
      * Grabs and cropping the specified image from this sheet.
-     * 
      * @param theColumn the column the image returned is located at
      * @param theRow    the row the image returned is located at
      * @return the image 
@@ -84,7 +76,6 @@ public class SheetLoader {
     
     /**
      * Grabs and cropping the specified image from this sheet.
-     * 
      * @param theColumn the column the image returned is located at
      * @param theRow    the row the image returned is located at
      * @return the image 
@@ -109,7 +100,6 @@ public class SheetLoader {
     
     /**
      * Grabs and cropping the specified image from this sheet.
-     * 
      * @param theColumn the column the image returned is located at
      * @param theRow    the row the image returned is located at
      * @return the image 
@@ -137,9 +127,7 @@ public class SheetLoader {
     
     /**
      * Returns the given image scaled up to the given width and height. 
-     * 
      * LINK: https://www.baeldung.com/java-resize-image
-     * 
      * @param theOriginalImage the image to be scaled 
      * @param theNewHeight   the new width of the image
      * @param theNewWidth  the new width of the image
@@ -156,6 +144,11 @@ public class SheetLoader {
         return resizedImage;
     }
     
+    /**
+     * TODO
+     * @param thePath
+     * @return
+     */
     private BufferedImage loadImage(final String thePath) {
         BufferedImage resultImage = null;
         try {
@@ -165,5 +158,4 @@ public class SheetLoader {
         }
         return resultImage;
     }
-
 }

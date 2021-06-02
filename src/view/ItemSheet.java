@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package view;
 
 import java.awt.Graphics2D;
@@ -17,6 +16,7 @@ import model.Room;
  * 
  * References: https://www.youtube.com/watch?v=jedilHUPO7c
  *             https://www.baeldung.com/java-resize-image
+ * 
  * @author Chau Vu
  * @version Spring 2021
  */
@@ -31,9 +31,7 @@ public class ItemSheet extends SheetLoader {
     /** The Brains Image. */
     private BufferedImage myBrainsImage;
     
-    /**
-     * The Win item Image.
-     */
+    /** The Win item Image. */
     private BufferedImage myWinItemImage;
     
     /**
@@ -53,7 +51,7 @@ public class ItemSheet extends SheetLoader {
     }
     
     /**
-     * draw the win item in the last room
+     * Draws the win item in the last room.
      * TODO: user interact for you win image pop up?
      * @param theGraphics
      * @param theRoom
@@ -64,7 +62,7 @@ public class ItemSheet extends SheetLoader {
         }
     }
     /**
-     * draws the list of brains. 
+     * Draws the list of brains. 
      * TODO: find the location for brains.
      * @param theGraphics
      * @param thePlayer

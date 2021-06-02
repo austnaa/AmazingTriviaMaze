@@ -14,24 +14,17 @@ import java.util.Objects;
  * @version Spring 2021
  */
 public class MultipleChoiceQuestion extends Question {
-    /**
-     * The correct option.
-     */
+    
+    /** The correct option. */
     private Option myAnswer;
     
-    /**
-     * The second option for the multiple choice question.
-     */
+    /** The second option for the multiple choice question. */
     private Option myOptionB;
 
-    /**
-     * The third option for the multiple choice question.
-     */
+    /** The third option for the multiple choice question. */
     private Option myOptionC;
 
-    /**
-     * The fourth option for the multiple choice question.
-     */
+    /** The fourth option for the multiple choice question. */
     private Option myOptionD;
 
     /**

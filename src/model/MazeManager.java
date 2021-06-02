@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package model;
 
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ import model.oldquestion.QuestionManager;
 /**
  * Builds and maintains the collection of possible mazes the game can pick 
  * from and the current maze that is being used in the current game.
- * 
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -26,36 +24,25 @@ public class MazeManager {
     /** The file name of maze 2. */
     private static final String MAZE_2 = "map2.txt";
     
-    /**
-     * A List of Room matrices that have not been used in the current program's execution.
-     */
+    /** A List of Room matrices that have not been used in the current program's execution. */
     private List<Room[][]> myUnusedMazes;
     
-    /**
-     * A List of Room matrices that have been used in the current program's execution.
-     */
+    /** A List of Room matrices that have been used in the current program's execution. */
     private List<Room[][]> myUsedMazes;
     
-    /**
-     * The current Maze the game is displaying.
-     */
+    /** The current Maze the game is displaying. */
     private Room[][] myCurrentMaze;
     
-    /**
-     * The room in the current maze the player is located in.
-     */
+    /** The room in the current maze the player is located in. */
     private Room myCurrentRoom;
     
-    /**
-     * The 0-indexed row the current room is located at in the current maze.
-     */
+    /** The 0-indexed row the current room is located at in the current maze. */
     private int myMazeRow;
     
-    /**
-     * The 0-indexed column the current room is located at in the current maze.
-     */
+    /** The 0-indexed column the current room is located at in the current maze. */
     private int myMazeCol;
     
+    /** TODO */
     private QuestionManager myQuestionManager;
     
     /**
@@ -153,6 +140,4 @@ public class MazeManager {
             myUnusedMazes.add(myUsedMazes.remove(0));
         }
     }
-    
-
 }
