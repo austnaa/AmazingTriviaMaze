@@ -24,6 +24,8 @@ public class TrueFalseQuestion extends Question {
     /** The incorrect option. */
     private Option myIncorrectAnswer;
 
+    private ButtonGroup myButtonGroup;
+    
     /**
      * Constructor the the free response trivia questions.
      * @param theQuestion The question prompt.
@@ -34,9 +36,9 @@ public class TrueFalseQuestion extends Question {
         myAnswer = Objects.requireNonNull(theAnswer);
         myIncorrectAnswer = Objects.requireNonNull(theIncorrectAnswer);
         
-        final ButtonGroup buttonGroup = new ButtonGroup();
-        buttonGroup.add(myAnswer);
-        buttonGroup.add(myIncorrectAnswer);
+        myButtonGroup = new ButtonGroup();
+        myButtonGroup.add(myAnswer);
+        myButtonGroup.add(myIncorrectAnswer);
     }
 
     /**
@@ -67,6 +69,7 @@ public class TrueFalseQuestion extends Question {
      */
     public boolean checkAnswer() {
         boolean result = myAnswer.isSelected();
+        myButtonGroup.clearSelection();
         if (result) {
             this.setAnsweredAlready(true);
         }

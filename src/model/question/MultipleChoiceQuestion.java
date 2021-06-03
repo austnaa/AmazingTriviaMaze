@@ -50,6 +50,7 @@ public class MultipleChoiceQuestion extends Question {
         myOptionD = Objects.requireNonNull(theOptionD);
         
         myButtonGroup = new ButtonGroup();
+  
         myButtonGroup.add(myAnswer);
         myButtonGroup.add(myOptionB);
         myButtonGroup.add(myOptionC);

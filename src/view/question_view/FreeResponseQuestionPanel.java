@@ -29,9 +29,6 @@ public class FreeResponseQuestionPanel extends AbstractQuestionPanel {
     /** The FreeResponseQuestion that this panel is displaying. */
     private FreeResponseQuestion myQuestion;
     
-    /** The options available for this multiple choice question. */
-    private List<Option> myOptions;
-    
     /** The Player object that could be affected from answering this panel's Question incorrectly. */
     private Player myPlayer;
     
