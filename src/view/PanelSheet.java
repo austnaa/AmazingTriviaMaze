@@ -7,8 +7,11 @@ package view;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+import javax.sound.sampled.Clip;
+
 import model.Player;
 import model.Room;
+import model.Sound;
 
 /**
  * TODO
@@ -23,6 +26,12 @@ public class PanelSheet extends SheetLoader {
     
     /** The lose image shown when player lose all brains. */
     private BufferedImage myLoseImage;
+
+    /** The clip for managing the gameplay background music. */
+    private static Clip WIN = Sound.sound(Sound.WIN_SOUND, 0.5);
+
+    /** The clip for managing the gameplay background music. */
+    private static Clip LOSE = Sound.sound(Sound.LOSE_SOUND, 0.5);
     
     /**
      * Create a new panel sheet with the given sheet image.
@@ -50,8 +59,12 @@ public class PanelSheet extends SheetLoader {
     public void drawWinLosePanel(final Graphics2D theGraphics, final Room theRoom, final Player thePlayer) {
         if (theRoom.isMyIsEndRoom()) {
             theGraphics.drawImage(myWinImage, 0, 0, null);
+            GameFrame.GAMEPLAY.stop();
+            WIN.start();
         } else if (thePlayer.getBrainsremaining() == 0) {
             theGraphics.drawImage(myLoseImage, 0, 0, null);
+            GameFrame.GAMEPLAY.stop();
+            LOSE.start();
         }
     }
 }
