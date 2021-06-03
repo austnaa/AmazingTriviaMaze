@@ -56,6 +56,10 @@ public class MultipleChoiceQuestion extends Question {
         myButtonGroup.add(myOptionD);
     }
     
+    public void clearButtons() {
+        myButtonGroup.clearSelection();
+    }
+    
 
     /**
      * Returns an ArrayList of the options that aren't the answer.
@@ -98,7 +102,7 @@ public class MultipleChoiceQuestion extends Question {
      */
     public boolean checkAnswer() {
         boolean result = myAnswer.isSelected();
-        myButtonGroup.clearSelection();
+        clearButtons();
         if (result) {
             this.setAnsweredAlready(true);
         }

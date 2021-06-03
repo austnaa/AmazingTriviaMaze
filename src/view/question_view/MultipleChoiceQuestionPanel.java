@@ -92,6 +92,9 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
         this.add(button2);
         this.add(button3);
         this.add(button4);
+        
+        // ensures that none of the options are selected 
+        myQuestion.clearButtons();
                 
         final JButton submitButton = new JButton("Submit");
         submitButton.setBounds(190, 140, 90, 20);
@@ -130,6 +133,8 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
         this.setBackground(Color.WHITE);
         repaint();
         this.setVisible(true);
+        
+       
     }
     
 }

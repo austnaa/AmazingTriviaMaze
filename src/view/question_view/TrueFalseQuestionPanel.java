@@ -71,6 +71,9 @@ public class TrueFalseQuestionPanel extends AbstractQuestionPanel {
         this.add(button1);
         this.add(button2);
         
+        // ensures that none of the options are selected 
+        myQuestion.clearButtons();
+        
         final JButton submitButton = new JButton("Submit");
         submitButton.setBounds(190, 140, 90, 20);
         
