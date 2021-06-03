@@ -11,14 +11,17 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import javax.sound.sampled.Clip;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 
 import model.Player;
+import model.Sound;
 import model.question.Option;
 import model.question.Question;
 import model.question.TrueFalseQuestion;
+
 import view.GamePanel;
 
 /**
@@ -103,11 +106,15 @@ public class TrueFalseQuestionPanel extends AbstractQuestionPanel {
                         myFrame.dispose();
                     }
                     GamePanel.interact();
+                    final Clip openDoor = Sound.sound(Sound.DOOR_OPEN_SOUND, 0.5);
+                    openDoor.start();
                 } 
                 // question was not answered correctly, 
                 // so decrement the number of brains remaining
                 else {
                     myPlayer.setBrains(myPlayer.getBrainsremaining() - 1);
+                    final Clip loseBrain = Sound.sound(Sound.LOSE_BRAIN_SOUND, 0.5);
+                    loseBrain.start();
                 }
                 myFrame.dispose();
             }

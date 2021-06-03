@@ -9,13 +9,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
+import javax.sound.sampled.Clip;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import model.Player;
+import model.Sound;
 import model.question.FreeResponseQuestion;
 import model.question.Question;
+
 import view.GamePanel;
 
 /**
@@ -84,11 +87,15 @@ public class FreeResponseQuestionPanel extends AbstractQuestionPanel {
                         myFrame.dispose();
                     }
                     GamePanel.interact();
+                    final Clip openDoor = Sound.sound(Sound.DOOR_OPEN_SOUND, 0.5);
+                    openDoor.start();
                 } 
                 // question was not answered correctly, 
                 // so decrement the number of brains remaining
                 else {
                     myPlayer.setBrains(myPlayer.getBrainsremaining() - 1);
+                    final Clip loseBrain = Sound.sound(Sound.LOSE_BRAIN_SOUND, 0.5);
+                    loseBrain.start();
                 }
                 myFrame.dispose();
             }

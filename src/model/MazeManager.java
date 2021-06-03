@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.sound.sampled.Clip;
+
 import model.question.QuestionManager;
 
 /**
@@ -114,6 +116,8 @@ public class MazeManager {
         }
         myCurrentRoom = myCurrentMaze[myMazeRow][myMazeCol];
         myCurrentRoom.setVisited();
+        final Clip openDoor = Sound.sound(Sound.DOOR_OPEN_SOUND, 0.5);
+        openDoor.start();
     }
     
     /**
