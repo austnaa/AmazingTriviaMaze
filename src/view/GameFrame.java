@@ -64,13 +64,9 @@ public class GameFrame extends JFrame {
             public void mousePressed(final MouseEvent theEvent) {
                 if (theEvent.getX() >= 214 && theEvent.getX() <= 427 && theEvent.getY() >= 485  && theEvent.getY() <= 534) {
                     startPanel.setVisible(false);
-<<<<<<< HEAD
-//                    sound();
-=======
                     MENU.stop();
                     GAMEPLAY.start();
                     GAMEPLAY.loop(Clip.LOOP_CONTINUOUSLY);
->>>>>>> daniel
                     final GamePanel gamePanel = new GamePanel();
                     add(gamePanel);
                     gamePanel.grabFocus();
