@@ -11,6 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import model.Door;
@@ -53,7 +56,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         myGameTimer.start();  
         // sets up and handles the maze of rooms
         myMazeManager = new MazeManager();
-    }
+       
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseReleased(e);
+                GamePanel.this.grabFocus();
+            }
+        });
+  }
 
     /**
      * Call the draw method and paint component.
@@ -90,9 +101,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
      */
     public void actionPerformed(final ActionEvent theActionEvent) {
         myPlayer.updatePlayerTick();
-        repaint();
-
-        requestFocus();     
+        repaint();    
     }
 
     /**
@@ -130,8 +139,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             myMazeManager.moveRooms(interactedDoor.getType());
             myPlayer.moveRooms(interactedDoor.getType());   
         } 
-        // TODO: interact with the win item to invoke you win image?
-        // Once brain is at 0 -> invoke you lose.
     }
 
     /**
@@ -149,7 +156,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             case KeyEvent.VK_D: // Right
                 myPlayer.stopMovingX();
                 break;
-            // TODO | Can add interaction here with spacebar
         }
     }
 
@@ -158,6 +164,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
      * @param theKeyEvent The key event that is being listened for.
      */
     public void keyTyped(final KeyEvent theKeyEvent) {
-
+        // do nothing :(
     }
 }

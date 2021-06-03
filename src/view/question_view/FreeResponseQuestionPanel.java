@@ -8,7 +8,6 @@ package view.question_view;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,7 +17,6 @@ import javax.swing.JTextField;
 
 import model.Player;
 import model.question.FreeResponseQuestion;
-import model.question.MultipleChoiceQuestion;
 import model.question.Option;
 import model.question.Question;
 import view.GamePanel;
@@ -47,7 +45,7 @@ public class FreeResponseQuestionPanel extends AbstractQuestionPanel {
     }
     
     public void setup() {
-this.setLayout(null);
+        this.setLayout(null);
         
         // add the question label 
         final JLabel questionLabel = new JLabel();
@@ -59,16 +57,12 @@ this.setLayout(null);
         final JTextField textField = new JTextField();
         textField.setBounds(30, 50, 400, 20);
         
-        
-        
         final JButton submitButton = new JButton("Submit");
         submitButton.setBounds(190, 140, 90, 20);
-        
         
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent theEvent) {
-System.out.println(textField.getText());
                 final boolean result = myQuestion.checkAnswer(textField.getText());// get text from textbox
                 
                 if (result) {
@@ -95,10 +89,7 @@ System.out.println(textField.getText());
         });
         
         this.add(submitButton);
-        this.add(textField);
-//        this.add(cancelButton);
-        
-       
+        this.add(textField);       
         
         this.setBackground(Color.WHITE);
         repaint();

@@ -2,14 +2,12 @@
  * Amazing Trivia Maze
  * TCSS 360 Spring 2021
  */
+
 package model.question;
 
 import java.util.Objects;
 
-import javax.swing.JDialog;
-
 import model.Player;
-import model.question.Question.QuestionType;
 import view.question_view.AbstractQuestionPanel;
 import view.question_view.FreeResponseQuestionPanel;
 import view.question_view.MultipleChoiceQuestionPanel;
@@ -81,21 +79,20 @@ public abstract class Question {
         return myType;
     }
     
+    /**
+     * Creates an appropriate frame and panel that pops up so this question can be answered.
+     * @param thePlayer the Player that this question is being answered by.
+     * @throws NullPointerException if thePlayer is null
+     */
     public void answerQuestion(final Player thePlayer) {
         Objects.requireNonNull(thePlayer, "thePlayer can not be null");
-        
-        
         AbstractQuestionPanel panel = null;
         
         if (this.getType() == QuestionType.MULTIPLE_CHOICE) {
             panel = new MultipleChoiceQuestionPanel(thePlayer, this);
         } else if (this.getType() == QuestionType.TRUE_FALSE) {
-            // insert code to set the panel to a truefalsepanel
-            System.out.println("open true false panel...");
             panel = new TrueFalseQuestionPanel(thePlayer, this); 
         } else if (this.getType() == QuestionType.FREE_RESPONSE) {
-            // insert code to set the panel to a free response panel
-            System.out.println("open free response panel...");
           panel = new FreeResponseQuestionPanel(thePlayer, this);
         }
         

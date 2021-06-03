@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 
@@ -46,7 +45,6 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
     private Player myPlayer;
     
     
-    
     /**
      * Constructs a new MultipleChoiceQuestionPanel with the given Player and Question.
      * @param thePlayer the Player that could be affected by answering the given Question incorrectly.
@@ -62,17 +60,7 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
         myFrame = null;
         setup();
     }
-    
-//    /**
-//     * Sets the Frame for this panel. Important to use this method
-//     * before trying to use the panel.
-//     * @param theFrame theFrame that contains this panel
-//     * @throws NullPointerException when theFrame is null
-//     */
-//    public void setupFrame(final JFrame theFrame) {
-//        myFrame = Objects.requireNonNull(theFrame, "theFrame can not be null");
-//    }
-    
+        
     /**
      * Sets up this panel.
      */
@@ -104,20 +92,7 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
         this.add(button2);
         this.add(button3);
         this.add(button4);
-        
-
-        
-        
-//        // add the submit and cancel button
-//        JButton cancelButton = new JButton("Cancel");
-//        cancelButton.setBounds(90, 140, 90, 20);
-//        cancelButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(final ActionEvent theEvent) {
-//                
-//            }
-//        });
-        
+                
         final JButton submitButton = new JButton("Submit");
         submitButton.setBounds(190, 140, 90, 20);
         
@@ -151,21 +126,10 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
         });
         
         this.add(submitButton);
-//        this.add(cancelButton);
-        
-       
         
         this.setBackground(Color.WHITE);
         repaint();
         this.setVisible(true);
-        
-        
     }
     
-//    @Override
-//    public void paintComponent(final Graphics theGraphics) {
-//        super.paintComponent(theGraphics);
-//        theGraphics.setColor(Color.red);
-//        theGraphics.drawRect(100, 100, 100, 100);
-//    }
 }

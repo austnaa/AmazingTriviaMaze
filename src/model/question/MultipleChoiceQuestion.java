@@ -10,7 +10,6 @@ import java.util.Objects;
 
 import javax.swing.ButtonGroup;
 
-
 /**
  * Multiple choice trivia questions.
  * @author Daniel Jiang
@@ -29,6 +28,11 @@ public class MultipleChoiceQuestion extends Question {
 
     /** The fourth option for the multiple choice question. */
     private Option myOptionD;
+    
+    /**
+     * The ButtonGroup that contains this questions's Options.
+     */
+    public ButtonGroup myButtonGroup;
 
     /**
      * Constructor for the multiple choice trivia questions.
@@ -45,12 +49,13 @@ public class MultipleChoiceQuestion extends Question {
         myOptionC = Objects.requireNonNull(theOptionC);
         myOptionD = Objects.requireNonNull(theOptionD);
         
-        ButtonGroup buttonGroup = new ButtonGroup();
-        buttonGroup.add(myAnswer);
-        buttonGroup.add(myOptionB);
-        buttonGroup.add(myOptionC);
-        buttonGroup.add(myOptionD);
+        myButtonGroup = new ButtonGroup();
+        myButtonGroup.add(myAnswer);
+        myButtonGroup.add(myOptionB);
+        myButtonGroup.add(myOptionC);
+        myButtonGroup.add(myOptionD);
     }
+    
 
     /**
      * Returns an ArrayList of the options that aren't the answer.
@@ -93,6 +98,7 @@ public class MultipleChoiceQuestion extends Question {
      */
     public boolean checkAnswer() {
         boolean result = myAnswer.isSelected();
+        myButtonGroup.clearSelection();
         if (result) {
             this.setAnsweredAlready(true);
         }
