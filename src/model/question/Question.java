@@ -6,9 +6,12 @@ package model.question;
 
 import java.util.Objects;
 
+import javax.swing.JDialog;
+
 import model.Player;
 import model.question.Question.QuestionType;
 import view.question_view.AbstractQuestionPanel;
+import view.question_view.FreeResponseQuestionPanel;
 import view.question_view.MultipleChoiceQuestionPanel;
 import view.question_view.QuestionFrame;
 import view.question_view.TrueFalseQuestionPanel;
@@ -93,11 +96,11 @@ public abstract class Question {
         } else if (this.getType() == QuestionType.FREE_RESPONSE) {
             // insert code to set the panel to a free response panel
             System.out.println("open free response panel...");
-//          panel = new FreeResponseQuestionPanel(thePlayer, this);
+          panel = new FreeResponseQuestionPanel(thePlayer, this);
         }
         
         if (panel != null) {
-            QuestionFrame frame = new QuestionFrame(panel);
+            final QuestionFrame frame = new QuestionFrame(panel);
             panel.setupFrame(frame);
         }
     }

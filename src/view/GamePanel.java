@@ -91,7 +91,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     public void actionPerformed(final ActionEvent theActionEvent) {
         myPlayer.updatePlayerTick();
         repaint();
-        requestFocus();        
+
+        requestFocus();     
     }
 
     /**
