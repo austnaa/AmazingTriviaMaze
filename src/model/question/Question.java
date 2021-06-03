@@ -11,6 +11,7 @@ import model.question.Question.QuestionType;
 import view.question_view.AbstractQuestionPanel;
 import view.question_view.MultipleChoiceQuestionPanel;
 import view.question_view.QuestionFrame;
+import view.question_view.TrueFalseQuestionPanel;
 
 /**
  * Provides basic functionalities for all types of questions.
@@ -88,9 +89,11 @@ public abstract class Question {
         } else if (this.getType() == QuestionType.TRUE_FALSE) {
             // insert code to set the panel to a truefalsepanel
             System.out.println("open true false panel...");
+            panel = new TrueFalseQuestionPanel(thePlayer, this); 
         } else if (this.getType() == QuestionType.FREE_RESPONSE) {
             // insert code to set the panel to a free response panel
             System.out.println("open free response panel...");
+//          panel = new FreeResponseQuestionPanel(thePlayer, this);
         }
         
         if (panel != null) {
