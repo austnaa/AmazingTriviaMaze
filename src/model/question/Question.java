@@ -2,7 +2,6 @@
  * Amazing Trivia Maze
  * TCSS 360 Spring 2021
  */
-
 package model.question;
 
 import java.util.Objects;
@@ -21,9 +20,7 @@ import view.question_view.TrueFalseQuestionPanel;
  */
 public abstract class Question {
     
-    /**
-     * An enumerated type that specifies what type of question a question can be.
-     */
+    /** An enumerated type that specifies the questin type. */
     public enum QuestionType { MULTIPLE_CHOICE, TRUE_FALSE, FREE_RESPONSE };
     
     /** The question prompt. */
@@ -32,9 +29,7 @@ public abstract class Question {
     /** If the question has been answered correctly already. */
     private boolean myAnsweredAlready;
     
-    /**
-     * The type of this question.
-     */
+    /** The type of question. */
     private QuestionType myType;
 
     /**

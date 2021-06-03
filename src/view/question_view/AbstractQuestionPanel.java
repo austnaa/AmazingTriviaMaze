@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
- * Provides mandatory implementations for all classes that are QuestionPanels
+ * Provides general implementations for question panels.
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -19,12 +19,9 @@ public abstract class AbstractQuestionPanel extends JPanel {
     /** An auto-generated serial version UID for object Serialization */
     private static final long serialVersionUID = 3769172387697694444L;
     
-   
     /** The frame that contains this panel. */
     protected JFrame myFrame;
 
-
-    
     /**
      * Sets the Frame for this panel. Important to use this method
      * before trying to use this panel.
@@ -42,6 +39,4 @@ public abstract class AbstractQuestionPanel extends JPanel {
 //    protected JFrame getFrame() {
 //        return myFrame;
 //    }
-
-    
 }

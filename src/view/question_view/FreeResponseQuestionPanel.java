@@ -2,13 +2,11 @@
  * Amazing Trivia Maze
  * TCSS 360 Spring 2021
  */
-
 package view.question_view;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 import java.util.Objects;
 
 import javax.swing.JButton;
@@ -17,43 +15,51 @@ import javax.swing.JTextField;
 
 import model.Player;
 import model.question.FreeResponseQuestion;
-import model.question.Option;
 import model.question.Question;
 import view.GamePanel;
 
+/**
+ * The class for free response question panels.
+ * @author Austn Attaway
+ * @version Spring 2021
+ */
 public class FreeResponseQuestionPanel extends AbstractQuestionPanel {
 
-    /** An auto-generated serial version UID for object Serialization */
+    /** An auto-generated serial version UID for object serialization. */
     private static final long serialVersionUID = -3013920620597350575L;
     
-    /** The FreeResponseQuestion that this panel is displaying. */
+    /** The free response questions that this panel is displaying. */
     private FreeResponseQuestion myQuestion;
     
-    /** The options available for this multiple choice question. */
-    private List<Option> myOptions;
-    
-    /** The Player object that could be affected from answering this panel's Question incorrectly. */
+    /** The player will lose a brain for answering the question incorrectly. */
     private Player myPlayer;
     
+    /**
+     * The question panel for free response questions.
+     * @param thePlayer The player.
+     * @param theQuestion The free response question.
+     */
     public FreeResponseQuestionPanel(final Player thePlayer, final Question theQuestion) {
         super();
         myQuestion = (FreeResponseQuestion) Objects.requireNonNull(theQuestion, "theQuestion can not be null");
         myPlayer = Objects.requireNonNull(thePlayer, "thePlayer can not be null");
-
         myFrame = null;
         setup();
     }
     
+    /**
+     * Sets up the free response question panel.
+     */
     public void setup() {
         this.setLayout(null);
         
-        // add the question label 
+        // Adds the question label 
         final JLabel questionLabel = new JLabel();
         questionLabel.setText(myQuestion.getQuestionPrompt());
         questionLabel.setBounds(30, 10, 400, 30);
         add(questionLabel);
         
-        // text area
+        // Text area
         final JTextField textField = new JTextField();
         textField.setBounds(30, 50, 400, 20);
         
@@ -94,15 +100,5 @@ public class FreeResponseQuestionPanel extends AbstractQuestionPanel {
         this.setBackground(Color.WHITE);
         repaint();
         this.setVisible(true);
-        
-        
-        
     }
-    
-    
-    
-    
-    
-    
-    
 }

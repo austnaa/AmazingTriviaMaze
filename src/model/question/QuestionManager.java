@@ -49,5 +49,4 @@ public class QuestionManager {
     private void setupQuestionList() {
         myQuestionList = TriviaQuestions.getTriviaQuestions();
     }
-    
 }

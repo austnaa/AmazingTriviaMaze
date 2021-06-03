@@ -48,7 +48,7 @@ public class MultipleChoiceQuestion extends Question {
         myOptionB = Objects.requireNonNull(theOptionB);
         myOptionC = Objects.requireNonNull(theOptionC);
         myOptionD = Objects.requireNonNull(theOptionD);
-        
+
         myButtonGroup = new ButtonGroup();
         myButtonGroup.add(myAnswer);
         myButtonGroup.add(myOptionB);
@@ -56,7 +56,6 @@ public class MultipleChoiceQuestion extends Question {
         myButtonGroup.add(myOptionD);
     }
     
-
     /**
      * Returns an ArrayList of the options that aren't the answer.
      * @return ArrayList of the options that aren't the answer.
@@ -93,7 +92,6 @@ public class MultipleChoiceQuestion extends Question {
     /**
      * Returns true if the currently selected option is the correct option.
      * Updates the state of this question to be answered.
-     * 
      * @return whether or not this question was answered correctly.
      */
     public boolean checkAnswer() {
@@ -104,7 +102,6 @@ public class MultipleChoiceQuestion extends Question {
         }
         return result;
     }
-    
 
     /**
      * Creates a String representation of multiple choice questions.
