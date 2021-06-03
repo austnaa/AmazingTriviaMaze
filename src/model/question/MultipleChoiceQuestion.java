@@ -56,6 +56,14 @@ public class MultipleChoiceQuestion extends Question {
         myButtonGroup.add(myOptionD);
     }
     
+<<<<<<< HEAD
+=======
+    public void clearButtons() {
+        myButtonGroup.clearSelection();
+    }
+    
+
+>>>>>>> austnbranch
     /**
      * Returns an ArrayList of the options that aren't the answer.
      * @return ArrayList of the options that aren't the answer.
@@ -96,7 +104,7 @@ public class MultipleChoiceQuestion extends Question {
      */
     public boolean checkAnswer() {
         boolean result = myAnswer.isSelected();
-        myButtonGroup.clearSelection();
+        clearButtons();
         if (result) {
             this.setAnsweredAlready(true);
         }

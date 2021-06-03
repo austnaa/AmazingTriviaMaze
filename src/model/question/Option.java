@@ -29,6 +29,7 @@ public class Option extends JRadioButton {
     public Option(final String theOptionText, final boolean theCorrectOption) {
         super(Objects.requireNonNull(theOptionText, "theOptionText can not be null"));
         myCorrectOption = theCorrectOption;
+        this.setFocusable(false);
     }
 
     /**
