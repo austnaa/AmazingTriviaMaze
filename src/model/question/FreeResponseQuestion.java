@@ -33,6 +33,23 @@ public class FreeResponseQuestion extends Question {
     public String getAnswer() {
         return myAnswer;
     }
+    
+    /**
+     * Returns whether or not this question was answered correctly.
+     * Updates the state of this question if the question is answered correctly.
+     * @param theUsersAnswer
+     * @return
+     * @throws NullPointerException if theUsersAnswer is null
+     */
+    public boolean checkAnswer(final String theUsersAnswer) {
+        Objects.requireNonNull(theUsersAnswer, "theUsersAnswer can not be null");
+        final boolean result = myAnswer.equalsIgnoreCase(theUsersAnswer.trim());
+        
+        if (result) {
+            this.setAnsweredAlready(true);
+        } 
+        return result;
+    }
 
     /**
      * Creates a String representation of free response questions.

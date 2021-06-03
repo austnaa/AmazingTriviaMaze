@@ -2,11 +2,14 @@
  * Amazing Trivia Maze
  * TCSS 360 Spring 2021
  */
+
 package model.question;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import javax.swing.ButtonGroup;
 
 /**
  * True/false trivia questions.
@@ -30,6 +33,10 @@ public class TrueFalseQuestion extends Question {
         super(theQuestion, QuestionType.TRUE_FALSE);
         myAnswer = Objects.requireNonNull(theAnswer);
         myIncorrectAnswer = Objects.requireNonNull(theIncorrectAnswer);
+        
+        final ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(myAnswer);
+        buttonGroup.add(myIncorrectAnswer);
     }
 
     /**
@@ -49,6 +56,21 @@ public class TrueFalseQuestion extends Question {
      */
     public Option getAnswer() {
         return myAnswer;
+    }
+    
+    // NOTE: this is duplicated code (also in the multiple choice question) and could be refactored.
+    /**
+     * Returns true if the currently selected option is the correct option.
+     * Updates the state of this question to be answered.
+     * 
+     * @return whether or not this question was answered correctly.
+     */
+    public boolean checkAnswer() {
+        boolean result = myAnswer.isSelected();
+        if (result) {
+            this.setAnsweredAlready(true);
+        }
+        return result;
     }
     
     /**

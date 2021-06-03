@@ -17,54 +17,39 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 
 import model.Player;
-// import model.oldquestion.MultipleChoiceQuestion;
-// import model.oldquestion.Option;
-import model.question.MultipleChoiceQuestion;
 import model.question.Option;
 import model.question.Question;
+import model.question.TrueFalseQuestion;
 import view.GamePanel;
 
-/**
- * A Panel that displays a multiple choice question.
- * @author Austn Attaway
- * @version Spring 2021
- */
-public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
+public class TrueFalseQuestionPanel extends AbstractQuestionPanel {
 
     /** An auto-generated serial version UID for object Serialization */
-    private static final long serialVersionUID = -2729044720547678473L;
+    private static final long serialVersionUID = 5105930508290698162L;
     
     /** The MultipleChoiceQuestion that this panel is displaying. */
-    private MultipleChoiceQuestion myQuestion;
+    private TrueFalseQuestion myQuestion;
     
     // TODO: MAY NOT NEED THIS
-    /** The options available for this multiple choice question. */
+    /** The options available for this true/false question. */
     private List<Option> myOptions;
     
     /** The Player object that could be affected from answering this panel's Question incorrectly. */
     private Player myPlayer;
     
     
-    /**
-     * Constructs a new MultipleChoiceQuestionPanel with the given Player and Question.
-     * @param thePlayer the Player that could be affected by answering the given Question incorrectly.
-     * @param theQuestion the MultipleChoiceQuestion this panel is displaying
-     * @throws NullPointerException if thePlayer is null
-     * @throws NullPointerException if theQuestion is null
-     */
-    public MultipleChoiceQuestionPanel(final Player thePlayer, final Question theQuestion) {
+    public TrueFalseQuestionPanel(final Player thePlayer, final Question theQuestion) {
         super();
-        myQuestion = (MultipleChoiceQuestion) Objects.requireNonNull(theQuestion, "theQuestion can not be null");
+        myQuestion = (TrueFalseQuestion) Objects.requireNonNull(theQuestion, "theQuestion can not be null");
         myPlayer = Objects.requireNonNull(thePlayer, "thePlayer can not be null");
 
         myFrame = null;
         setup();
+    
     }
-        
-    /**
-     * Sets up this panel.
-     */
+    
     private void setup() {
+        
         this.setLayout(null);
         
         // add the question label 
@@ -82,17 +67,10 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
         final JRadioButton button2 = myOptions.get(1);
         button2.setBounds(30, 70, 400, 20);
        
-        final JRadioButton button3 = myOptions.get(2);
-        button3.setBounds(30, 90, 400, 20);
-        
-        final JRadioButton button4 = myOptions.get(3);
-        button4.setBounds(30, 110, 400, 20);
        
         this.add(button1);
         this.add(button2);
-        this.add(button3);
-        this.add(button4);
-                
+        
         final JButton submitButton = new JButton("Submit");
         submitButton.setBounds(190, 140, 90, 20);
         
@@ -130,6 +108,7 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
         this.setBackground(Color.WHITE);
         repaint();
         this.setVisible(true);
-    }
     
+    }
+
 }
