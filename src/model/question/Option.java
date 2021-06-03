@@ -34,7 +34,6 @@ public class Option extends JRadioButton {
 
     /**
      * Checks for the correctness of the option.
-     * The answer will be true.
      * @return The correctness of the option.
      */
     public boolean isCorrectOption() {

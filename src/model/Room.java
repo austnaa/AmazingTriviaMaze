@@ -76,7 +76,6 @@ public class Room {
         mySouthDoor = theSouthDoor;   
         myWestDoor = theWestDoor;
         myEastDoor = theEastDoor;
-        
     }
     
     /**

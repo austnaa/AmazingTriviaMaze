@@ -67,8 +67,8 @@ public abstract class Question {
     }
     
     /**
-     * Returns the type of Question this question is. 
-     * @return the type of Question this question is.
+     * Gets the question type. 
+     * @return The question type.
      */
     public QuestionType getType() {
         return myType;

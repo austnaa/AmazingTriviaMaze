@@ -11,7 +11,7 @@ import java.util.Objects;
 import model.Room;
 
 /**
- * Utility class providing functionality for drawing a mini-map on a Panel.
+ * Utility class providing functionality for drawing a mini-map on a panel.
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -88,7 +88,6 @@ public class MiniMap {
                         theGraphics.setColor(CURR_ROOM_COLOR);
                     }
                     theGraphics.fillOval(tempXPosition, tempYPosition, ROOM_WIDTH, ROOM_WIDTH);
-
                 }   
             }    
         }        

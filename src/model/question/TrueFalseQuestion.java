@@ -42,7 +42,7 @@ public class TrueFalseQuestion extends Question {
     }
     
     /**
-     * Clears the options for this Question.
+     * Clears the options.
      */
     public void clearButtons() {
         myButtonGroup.clearSelection();

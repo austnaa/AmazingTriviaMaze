@@ -9,7 +9,6 @@ import java.awt.image.BufferedImage;
 
 import model.Room;
 
-// TODO complete javadoc 
 /**
  * Manages drawing the background of the GamePanel
  * @author Austn Attaway

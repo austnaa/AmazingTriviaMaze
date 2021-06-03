@@ -93,7 +93,6 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
         final JButton submitButton = new JButton("Submit");
         submitButton.setBounds(190, 140, 90, 20);
         
-        
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent theEvent) {
@@ -125,7 +124,5 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
         this.setBackground(Color.WHITE);
         repaint();
         this.setVisible(true);
-        
-       
     }
 }

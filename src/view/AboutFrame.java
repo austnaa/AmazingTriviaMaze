@@ -22,7 +22,7 @@ public class AboutFrame extends JFrame {
     private static final long serialVersionUID = 6313021765242043472L;
     
     /**
-     * About Frame constructor that sets up the frame.
+     * Constructor that sets up the "About Us" frame.
      */
     public AboutFrame(){
         setTitle("About");

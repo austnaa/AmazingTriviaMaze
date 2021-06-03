@@ -55,15 +55,14 @@ public class MultipleChoiceQuestion extends Question {
         myButtonGroup.add(myOptionC);
         myButtonGroup.add(myOptionD);
     }
-    
-<<<<<<< HEAD
-=======
+
+    /**
+     * Clears the options.
+     */
     public void clearButtons() {
         myButtonGroup.clearSelection();
     }
-    
 
->>>>>>> austnbranch
     /**
      * Returns an ArrayList of the options that aren't the answer.
      * @return ArrayList of the options that aren't the answer.
