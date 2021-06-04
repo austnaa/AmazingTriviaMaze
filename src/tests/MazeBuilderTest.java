@@ -183,6 +183,50 @@ public class MazeBuilderTest {
      * Tests the buildMaze method with the test_map3.txt file that builds 
      * a 2x2 maze with various different connecting rooms.
      */
+    @Test
+    public void testBuildRoom2x2() throws FileNotFoundException {
+        final Room[][] resultMaze = MazeBuilder.buildMaze(MAP_TEXT_2x2, myQuestionManagerMock);
+        boolean result = true;
+        
+        // check maze for expected size
+        if (resultMaze.length != 2 || resultMaze[0].length != 2) {
+            result = false;
+        }
+        
+        // check to ensure that each room is as expected
+        // check the top left room (should have only a south and east door)
+        Room tempRoom = resultMaze[0][0];
+        if (!(!tempRoom.hasNorthDoor() && tempRoom.hasSouthDoor() &&
+                tempRoom.hasEastDoor() && !tempRoom.hasWestDoor())) {
+            result = false;
+        }
+        
+        // check the top right room (should only have a east and west door)
+        tempRoom = resultMaze[0][1];
+        if (!(!tempRoom.hasNorthDoor() && !tempRoom.hasSouthDoor() &&
+                tempRoom.hasEastDoor() && tempRoom.hasWestDoor())) {
+            result = false;
+        }
+        
+        // check the bottom left room (should have north, south, and east doors)
+        tempRoom = resultMaze[1][0];
+        if (!(tempRoom.hasNorthDoor() && tempRoom.hasSouthDoor() && 
+                tempRoom.hasEastDoor() && !tempRoom.hasWestDoor())) {
+            result = false;
+        }
+        
+        // check bottom right room (only west and north doors
+        tempRoom = resultMaze[1][1];
+        if (!(!tempRoom.hasNorthDoor() && tempRoom.hasSouthDoor() && 
+                !tempRoom.hasEastDoor() && tempRoom.hasWestDoor())) {
+            result = false;
+        }
+        
+        
+        assertTrue("buildRoom failed to build a 2x2 room", result);
+                  
+    }
+    
     
     
     
