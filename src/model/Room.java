@@ -13,9 +13,6 @@ import java.util.Objects;
  */
 public class Room {
     
-    /** Whether or not this Room is the room the game starts in. */
-    private boolean myIsStartRoom;
-    
     /** Whether or not this Room is the room the game ends in. */
     private boolean myIsEndRoom;
     
@@ -64,11 +61,10 @@ public class Room {
      * @param theWestDoor     the Room located to the east  (null if there isn't a door)
      * @param theEastDoor     the Room located to the west  (null if there isn't a door)
      */
-    public Room(final boolean theRoomIsStart, final boolean theRoomIsEnd,
+    public Room(final boolean theRoomIsEnd,
             final Door theNorthDoor, final Door theSouthDoor,
             final Door theWestDoor, final Door theEastDoor) {
-        
-        myIsStartRoom = theRoomIsStart; 
+         
         myIsEndRoom = theRoomIsEnd;
         myHasBeenVisited = false;
         
@@ -175,11 +171,7 @@ public class Room {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Room: ");
         stringBuilder.append(System.lineSeparator());
-        
-        // start room?
-        stringBuilder.append("Start room: " + myIsStartRoom);
-        stringBuilder.append(System.lineSeparator());        
-        
+             
         // end room?
         stringBuilder.append("End room: " + myIsEndRoom);
         stringBuilder.append(System.lineSeparator());

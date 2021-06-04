@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
 
+import model.Door;
 import model.MazeBuilder;
 import model.Room;
 import model.question.QuestionManager;
@@ -136,7 +137,7 @@ public class MazeBuilderTest {
      * a 1x1 maze with no doors
      */
     @Test
-    public void testBuildRoom1x1NoDoors() throws FileNotFoundException {
+    public void testBuildMaze1x1NoDoors() throws FileNotFoundException {
         final Room[][] resultMaze = MazeBuilder.buildMaze(MAP_TEXT_1x1_NO_DOORS, myQuestionManagerMock);
         boolean result = true;
 
@@ -152,7 +153,7 @@ public class MazeBuilderTest {
             result = false;
         }
 
-        assertTrue("buildRoom method failed to build a 1x1 room with no doors.", result);
+        assertTrue("buildMaze method failed to build a 1x1 maze with a single room with no doors.", result);
     }
     
     /**
@@ -160,7 +161,7 @@ public class MazeBuilderTest {
      * a 1x1 maze with all doors
      */
     @Test
-    public void testBuildRoom1x1AllDoors() throws FileNotFoundException {
+    public void testBuildMaze1x1AllDoors() throws FileNotFoundException {
         final Room[][] resultMaze = MazeBuilder.buildMaze(MAP_TEXT_1x1_ALL_DOORS, myQuestionManagerMock);
         boolean result = true;
 
@@ -176,7 +177,8 @@ public class MazeBuilderTest {
             result = false;
         }
 
-        assertTrue("buildRoom method failed to build a 1x1 room with all doors.", result);
+        assertTrue("buildMaze method failed to build a 1x1 maze with a "
+                + "single room with all doors.", result);
     }
     
     /**
@@ -184,7 +186,7 @@ public class MazeBuilderTest {
      * a 2x2 maze with various different connecting rooms.
      */
     @Test
-    public void testBuildRoom2x2() throws FileNotFoundException {
+    public void testBuildMaze2x2() throws FileNotFoundException {
         final Room[][] resultMaze = MazeBuilder.buildMaze(MAP_TEXT_2x2, myQuestionManagerMock);
         boolean result = true;
         
@@ -221,27 +223,102 @@ public class MazeBuilderTest {
                 !tempRoom.hasEastDoor() && tempRoom.hasWestDoor())) {
             result = false;
         }
-        assertTrue("buildRoom failed to build a 2x2 room", result);          
+        assertTrue("buildRoom failed to build a 2x2 maze", result);          
+    }
+    
+ 
+    // ***** test functionality of buildRoom method ******
+    
+    /**
+     * Tests the buildRoom method trying to build a room that has no doors.
+     */
+    @Test
+    public void testBuildRoomNoDoors() {
+        final String noDoorString = "NNNN";
+        final Room[][] tempMaze = new Room[1][1];
+        final Room resultRoom = MazeBuilder.buildRoom(noDoorString, 
+                myQuestionManagerMock, tempMaze, 0, 0);
+         
+        boolean result = true;
+        // check to ensure there aren't any doors in the room
+        if (resultRoom.hasNorthDoor() || resultRoom.hasSouthDoor() ||
+                resultRoom.hasEastDoor() || resultRoom.hasWestDoor() || resultRoom.isMyIsEndRoom()) {
+            result = false;
+        }
+        
+        assertTrue("buildRoom failed to build a room with no doors", result);
+    }
+    
+    /**
+     * Tests the buildRoom method trying to build
+     * a room that has only south and east doors. 
+     */
+    @Test
+    public void testBuildRoomSouthEastDoors() {
+        final String southEastRoomString = "NYNY";
+        final Room[][] tempMaze = new Room[1][1];
+        final Room resultRoom = MazeBuilder.buildRoom(southEastRoomString, 
+                myQuestionManagerMock, tempMaze, 0, 0);
+         
+        boolean result = true;
+        if (resultRoom.hasNorthDoor() || !resultRoom.hasSouthDoor() ||
+                !resultRoom.hasEastDoor() || resultRoom.hasWestDoor() || resultRoom.isMyIsEndRoom()) {
+            result = false;
+        }
+        
+        assertTrue("buildRoom failed to build a room with east and south doors.", result);
+    }
+    
+    /**
+     * Tests the buildRoom method trying to build
+     * a room that has a west door that shares a question with 
+     * its leftmost neighbor. 
+     */
+    @Test
+    public void testBuildRoomWestDoor() {
+        final String westDoorRoomString = "NNYN";
+        
+        // create the room that will be to the west of the door we want to create        
+        final Room westRoom = new Room(false, null, null, null,
+                new Door(Door.TYPE.EAST, myQuestionManagerMock.getRandomQuestion()));
+        
+        final Room[][] tempMaze = new Room[1][2];
+        tempMaze[0][0] = westRoom;
+        
+        final Room resultRoom = MazeBuilder.buildRoom(westDoorRoomString, 
+                myQuestionManagerMock, tempMaze, 0, 1);
+         
+        boolean result = true;
+        if (resultRoom.hasNorthDoor() || resultRoom.hasSouthDoor() ||
+                resultRoom.hasEastDoor() || !resultRoom.hasWestDoor()) {
+            result = false;
+        }
+
+        // make sure the two rooms share the same question 
+        if (result && !resultRoom.getWestDoor().getQuestion().equals(westRoom.getEastDoor().getQuestion())) {
+            result = false;
+        }
+        
+        
+        assertTrue("buildRoom failed to build a room with a west door.", result);
     }
     
     
+    /**
+     * Tests the buildRoom method trying to build
+     * a room that has a north door that shares a question with 
+     * its northern neighbor. 
+     */
     
+    /**
+     * Tests the buildRoom method trying to build 
+     * a room that has all doors. 
+     */
     
-    
-    
-    
-    // ***** test functionality of buildRoom method ******
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    /**
+     * Tests the buildRoom method trying to build 
+     * an end room.
+     */
 
 }
 
@@ -253,8 +330,8 @@ public class MazeBuilderTest {
  * -nullpointer from string DONE
  * -nullpointer questionmanager DONE
  * -check to ensure that a room matrix is built properly
- *          -1x1 room
- *          -2x2 rooms
+ *          -1x1 room DONE
+ *          -2x2 rooms DONE
  *          
  * 2. buildRoom
  * -theRoomString null DONE

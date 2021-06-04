@@ -11,7 +11,6 @@ import java.util.Objects;
 import java.util.Scanner;
 
 import model.question.Question;
-import model.question.QuestionManager;
 import model.question.QuestionManagerInterface;
 
 /**
@@ -79,7 +78,7 @@ public class MazeBuilder {
         return resultMaze;
     }  
         
-    //NOTE: this method should be made public for testing purposes.
+    //NOTE: this method could be private but is public for testing purposes.
     /**
      * Returns a new Room that is built according to the given room String input.
      * 
@@ -116,10 +115,8 @@ public class MazeBuilder {
         
         // if the length of the room string is 5, we know that there is an extra character at
         // the beginning that tells us it is a special room (start or end room)
-        boolean isStartRoom = false;
         boolean isEndRoom = false;
         if (theRoomString.length() == 5) {
-            isStartRoom = theRoomString.charAt(0) == '@';
             isEndRoom   = theRoomString.charAt(0) == '$';
             theRoomString = theRoomString.substring(1);
         }  
@@ -146,7 +143,7 @@ public class MazeBuilder {
                 new Door(Door.TYPE.EAST, theQuestionManager.getRandomQuestion()) : null;
         
                 
-        final Room newRoom = new Room(isStartRoom, isEndRoom, 
+        final Room newRoom = new Room(isEndRoom, 
                 northDoor, southDoor, westDoor, eastDoor); 
         return newRoom;
     }
