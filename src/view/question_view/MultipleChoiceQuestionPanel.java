@@ -70,16 +70,16 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
     private void setupButtons() {
         // set up the radio buttons
         final JRadioButton button1 = myOptions.get(0);
-        button1.setBounds(30, 60, 100, 20);
+        button1.setBounds(30, 60, 150, 20);
         
         final JRadioButton button2 = myOptions.get(1);
-        button2.setBounds(30, 80, 100, 20);
+        button2.setBounds(30, 80, 150, 20);
        
         final JRadioButton button3 = myOptions.get(2);
-        button3.setBounds(30, 100, 100, 20);
+        button3.setBounds(30, 100, 150, 20);
         
         final JRadioButton button4 = myOptions.get(3);
-        button4.setBounds(30, 120, 100, 20);
+        button4.setBounds(30, 120, 150, 20);
        
         this.add(button1);
         this.add(button2);

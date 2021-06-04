@@ -23,7 +23,7 @@ public class TrueFalseQuestion extends Question {
     /** The incorrect option. */
     private Option myIncorrectAnswer;
     
-    /** The ButtonGroup that contains this question's options. */
+    /** The ButtonGroup that contains the options. */
     private ButtonGroup myButtonGroup;
 
     /**
@@ -66,17 +66,15 @@ public class TrueFalseQuestion extends Question {
     public Option getAnswer() {
         return myAnswer;
     }
-    
-    // NOTE: this is duplicated code (also in the multiple choice question) and could be refactored.
+
     /**
      * Returns true if the currently selected option is the correct option.
      * Updates the state of this question to be answered.
-     * 
-     * @return whether or not this question was answered correctly.
+     * @return Whether or not this question was answered correctly.
      */
     public boolean checkAnswer() {
         boolean result = myAnswer.isSelected();
-        myButtonGroup.clearSelection();
+        clearButtons();
         if (result) {
             this.setAnsweredAlready(true);
         }
