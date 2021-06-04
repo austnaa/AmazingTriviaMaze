@@ -32,11 +32,11 @@ public class FreeResponseQuestionPanel extends AbstractQuestionPanel {
     /** The free response questions that this panel is displaying. */
     private FreeResponseQuestion myQuestion;
     
-<<<<<<< HEAD
+
     /** The Player object that could be affected from answering this panel's Question incorrectly. */
-=======
+
     /** The player will lose a brain for answering the question incorrectly. */
->>>>>>> c3afd362188b2539bd5459641f76b64637cdaec0
+
     private Player myPlayer;
     
     /**
