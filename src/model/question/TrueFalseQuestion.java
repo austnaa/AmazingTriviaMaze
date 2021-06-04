@@ -26,7 +26,6 @@ public class TrueFalseQuestion extends Question {
     /** The ButtonGroup that contains the options. */
     private ButtonGroup myButtonGroup;
 
-    private ButtonGroup myButtonGroup;
     
     /**
      * Constructor the the free response trivia questions.
@@ -41,8 +40,7 @@ public class TrueFalseQuestion extends Question {
         myButtonGroup = new ButtonGroup();
         myButtonGroup.add(myAnswer);
         myButtonGroup.add(myIncorrectAnswer);
-<<<<<<< HEAD
-=======
+
     }
     
     /**
@@ -50,7 +48,6 @@ public class TrueFalseQuestion extends Question {
      */
     public void clearButtons() {
         myButtonGroup.clearSelection();
->>>>>>> c3afd362188b2539bd5459641f76b64637cdaec0
     }
 
     /**
@@ -79,11 +76,8 @@ public class TrueFalseQuestion extends Question {
      */
     public boolean checkAnswer() {
         boolean result = myAnswer.isSelected();
-<<<<<<< HEAD
         myButtonGroup.clearSelection();
-=======
         clearButtons();
->>>>>>> c3afd362188b2539bd5459641f76b64637cdaec0
         if (result) {
             this.setAnsweredAlready(true);
         }

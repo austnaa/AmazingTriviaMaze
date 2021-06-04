@@ -20,11 +20,29 @@ import view.SpriteSheet;
  */
 public class Player {
     
-    /** The maximum number of brains a player can have. */
-    private static final int MAX_BRAINS = 10; 
+    /** The minimum allowed x position of the player. */
+    public static final int MIN_X = 0;
+    
+    /** The minimum allowed y position of the player. */
+    public static final int MIN_Y = 25;
+    
+    /** The maximum allowed x position of the player. */
+    public static final int MAX_X = 512;
+    
+    /** The maximum allowed y position of the player. */
+    public static final int MAX_Y = 475;
+    
+    /**
+     * The value for the player's speed. Represents how many pixels the 
+     * player will move each game tick.
+     */
+    public static final int MOVE_SPEED = 4;
     
     /** The number of brains the player starts with. */
-    private static final int START_BRAINS = 5;
+    public static final int START_BRAINS = 5;
+    
+    /** The maximum number of brains a player can have. */
+    public static final int MAX_BRAINS = 10; 
 
     /** The initial x and y speed of the player. */
     private static final int NO_SPEED = 0;
@@ -34,25 +52,7 @@ public class Player {
     
     /** The initial y position of the player. */
     private static final int START_Y = GameFrame.FRAME_HEIGHT / 2 - 100;
-    
-    /** The minimum allowed x position of the player. */
-    private static final int MIN_X = 0;
-    
-    /** The minimum allowed y position of the player. */
-    private static final int MIN_Y = 25;
-    
-    /** The maximum allowed x position of the player. */
-    private static final int MAX_X = 512;
-    
-    /** The maximum allowed y position of the player. */
-    private static final int MAX_Y = 475;
-   
-    /**
-     * The value for the player's speed. Represents how many pixels the 
-     * player will move each game tick.
-     */
-    private static final int MOVE_SPEED = 4;
-    
+     
     /**
      * A value used to delay animations. Larger values will result in larger delays.
      */
