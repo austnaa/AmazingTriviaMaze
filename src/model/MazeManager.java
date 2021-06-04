@@ -116,8 +116,6 @@ public class MazeManager {
         }
         myCurrentRoom = myCurrentMaze[myMazeRow][myMazeCol];
         myCurrentRoom.setVisited();
-        final Clip openDoor = Sound.sound(Sound.DOOR_OPEN_SOUND, 0.5);
-        openDoor.start();
     }
     
     /**
