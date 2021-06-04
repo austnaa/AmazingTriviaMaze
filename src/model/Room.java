@@ -160,7 +160,7 @@ public class Room {
      * Returns whether or not this is the last room.
      * @return whether or not this is the last room.
      */
-    public boolean isMyIsEndRoom() {
+    public boolean isEndRoom() {
         return myIsEndRoom;
     }
     /**

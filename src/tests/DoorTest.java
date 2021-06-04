@@ -9,7 +9,6 @@ public class DoorTest {
 
     @Before
     public void setUp() {
-        System.out.println("print");
     }
     
     @Test
