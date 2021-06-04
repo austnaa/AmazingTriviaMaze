@@ -4,10 +4,14 @@
  */
 package view.question_view;
 
+import java.awt.Color;
+import java.awt.ComponentOrientation;
 import java.util.Objects;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 /**
  * Provides general implementations for question panels.
@@ -21,6 +25,33 @@ public abstract class AbstractQuestionPanel extends JPanel {
     
     /** The frame that contains this panel. */
     protected JFrame myFrame;
+    
+    
+    
+    // constructor
+    protected AbstractQuestionPanel() {
+        this.setLayout(null);
+    }
+    
+    // sets the text area for the question prompt
+    protected void setQuestionPrompt(final String theQuestionPrompt) {
+        Objects.requireNonNull(theQuestionPrompt, "theQuestionPrompt can not be null");
+        // Adds the question label 
+        final JTextArea questionPromptArea = new JTextArea();
+        questionPromptArea.setText(theQuestionPrompt);
+        questionPromptArea.setBounds(30, 20, 350, 50);
+        questionPromptArea.setWrapStyleWord(true);
+        questionPromptArea.setLineWrap(true);
+        questionPromptArea.setOpaque(false);
+        questionPromptArea.setEditable(false);
+        questionPromptArea.setFocusable(false);
+
+        add(questionPromptArea);
+        
+//        final JLabel questionLabel = new JLabel();
+//        
+//        add(questionLabel);
+    }
 
     /**
      * Sets the Frame for this panel. Important to use this method

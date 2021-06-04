@@ -53,75 +53,60 @@ public class TrueFalseQuestionPanel extends AbstractQuestionPanel {
         myQuestion = (TrueFalseQuestion) Objects.requireNonNull(theQuestion, "theQuestion can not be null");
         myPlayer = Objects.requireNonNull(thePlayer, "thePlayer can not be null");
         myFrame = null;
-        setup();
+        myOptions = myQuestion.getAllOptions();
+        Collections.shuffle(myOptions);
+        
+        super.setQuestionPrompt(myQuestion.getQuestionPrompt());
+        setupButtons();
+        
+        this.setVisible(true);
+        repaint();
     }
     
     /**
-     * Sets up the multiple choice question panel.
+     * Sets up and adds the buttons to this panel.
      */
-    private void setup() {
-        
-        this.setLayout(null);
-        
-        // Adds the question label 
-        final JLabel questionLabel = new JLabel();
-        questionLabel.setText(myQuestion.getQuestionPrompt());
-        questionLabel.setBounds(30, 10, 400, 30);
-        add(questionLabel);
-        
-        // Adds the answer buttons
-        myOptions = myQuestion.getAllOptions();
-        Collections.shuffle(myOptions);
+    private void setupButtons() {
+
+        // set up the radio buttons      
         final JRadioButton button1 = myOptions.get(0);
-        button1.setBounds(30, 50, 400, 20);
+        button1.setBounds(30, 60, 100, 20);
         
         final JRadioButton button2 = myOptions.get(1);
-        button2.setBounds(30, 70, 400, 20);
+        button2.setBounds(30, 80, 100, 20);
        
         this.add(button1);
         this.add(button2);
         
-        // ensures that none of the options are selected 
+        // ensure that none of the options are selected 
         myQuestion.clearButtons();
         
+        // setup the submit button
         final JButton submitButton = new JButton("Submit");
-        submitButton.setBounds(190, 140, 90, 20);
-        
-        
+        submitButton.setBounds(150, 160, 90, 20);
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent theEvent) {
-                final boolean result = myQuestion.checkAnswer();
-                
-                if (result) {
-                    System.out.println("Correct!");
-                } else {
-                    System.out.println("incorrect");
-                }
-                
-                // THIS IS WHERE WE COULD SHOW THAT THE ANSWER 
-                // IS CORRECT OR CLOSE THE PANEL AND CHANGE ROOMS...
+                myQuestion.checkAnswer();
+
+                // question was answered correctly
                 if (myQuestion.getAnsweredAlready()) {
-                    if (myFrame != null) {
-                        myFrame.dispose();
-                    }
                     GamePanel.interact();
                     final Clip openDoor = Sound.sound(Sound.DOOR_OPEN_SOUND, 0.5);
                     openDoor.start();
                 } 
-                // question was not answered correctly, 
-                // so decrement the number of brains remaining
+                // question was answered incorrectly
                 else {
                     myPlayer.setBrains(myPlayer.getBrainsremaining() - 1);
                     final Clip loseBrain = Sound.sound(Sound.LOSE_BRAIN_SOUND, 0.5);
                     loseBrain.start();
                 }
-                myFrame.dispose();
+                // close the frame once the submit button has been pressed.
+                if (myFrame != null) {
+                    myFrame.dispose();
+                }
             }
         });
         this.add(submitButton);
-        this.setBackground(Color.WHITE);
-        repaint();
-        this.setVisible(true);
     }
 }
