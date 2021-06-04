@@ -2,6 +2,7 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
+
 package view;
 
 import java.awt.event.MouseAdapter;
@@ -10,11 +11,14 @@ import java.awt.event.MouseEvent;
 import javax.sound.sampled.Clip;
 import javax.swing.JFrame;
 
+import model.MazeManager;
 import model.Sound;
 
 /**
  * The class for the Amazing Trivia Maze game frame.
+ * 
  * @author Daniel Jiang
+ * @author Austn Attaway
  * @author Chau Vu
  * @version Spring 2021
  */
@@ -28,58 +32,92 @@ public class GameFrame extends JFrame {
     
     /** The height of the frame in pixels. */
     public static final int FRAME_HEIGHT = 5*32*4+45;
+    
+    /**
+     * The StartPanel this frame displays at the beginning of the game.
+     */
+    private StartPanel myStartPanel;
+    
+    /**
+     * The GamePanel this frame displays while the user is playing the game.
+     */
+    private GamePanel myGamePanel;
+    
+    /**
+     * The MazeManager that helps manage the current game's and future games' mazes.
+     */
+    private MazeManager myMazeManager; //added
 
     /**
      * Creates the game frame.
      */
     public GameFrame() {
-        setTitle("Amazing Trivia Maze");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(FRAME_WIDTH, FRAME_HEIGHT);
-        //setResizable(false);
-        setLocationRelativeTo(null);
-        setVisible(true);  
-        this.setJMenuBar(new MenuBar());
-        start();
-        Sound.MENU.start();
-        Sound.MENU.loop(Clip.LOOP_CONTINUOUSLY);
+        myStartPanel = new StartPanel();
+        myMazeManager = new MazeManager();
+        myGamePanel = new GamePanel(myMazeManager);
+        setup();
     }
 
     /**
-     * Starts the frame.
+     * Sets up the frame.
      */
-    public void start() {
-        final StartPanel startPanel = new StartPanel(); 
-        final GamePanel gamePanel = new GamePanel();
-        add(startPanel);
-
-        startPanel.addMouseListener(new MouseAdapter() {
+    private void setup() {
+        
+        // setup up frame settings
+        this.setTitle("Amazing Trivia Maze");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+//        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);  
+        this.setJMenuBar(new MenuBar());
+        
+        // start menu sound
+        Sound.MENU.start();
+        Sound.MENU.loop(Clip.LOOP_CONTINUOUSLY);
+        
+        // add listener to the start panel that allows the user to click the start button
+        myStartPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(final MouseEvent theEvent) {
                 if (theEvent.getX() >= 214 && theEvent.getX() <= 427 && theEvent.getY() >= 485  && theEvent.getY() <= 534) {
-                    startPanel.setVisible(false);
+                    myStartPanel.setVisible(false);
                     Sound.MENU.stop();
                     Sound.GAMEPLAY.start();
                     Sound.GAMEPLAY.loop(Clip.LOOP_CONTINUOUSLY);
-                    final GamePanel gamePanel = new GamePanel();
-                    add(gamePanel);
-                    gamePanel.grabFocus();
+                    setNewGamePanel();    
                 }
             } 
-        });  
+        });
         
-//        if (myMazeManager.getCurrentRoom().isMyIsEndRoom()) {
-//            gamePanel.setVisible(false);
-//            add(winPanel);
-//        }
+        add(myStartPanel);
         setVisible(true);
-    }   
+    }
+    
+    /**
+     * Sets up a new game instance by setting up a new GamePanel 
+     * and adding it to this panel. Also ensures the MazeManager sets 
+     * a new maze. 
+     */
+    void setNewGamePanel() {
+        // stop the timer on the current game panel
+        myGamePanel.disable();
+        myGamePanel.setVisible(false);
+
+        // create a new game panel
+        myMazeManager.setNewMaze();
+        myGamePanel = new GamePanel(myMazeManager);
+        myGamePanel.setVisible(true);
+        
+        add(myGamePanel);
+        myGamePanel.grabFocus();
+    }
     
     /**
      * Starts the game frame.
      * @param theArgs The argument.
      */
     public static void main(final String[] theArgs) {
-        final GameFrame frame = new GameFrame();
+        new GameFrame();
     }
 }

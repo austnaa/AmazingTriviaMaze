@@ -22,6 +22,7 @@ public class MenuBar extends JMenuBar {
     /** An auto-generated serial version UID for object Serialization */
     private static final long serialVersionUID = -111659266189879540L;
     
+    
     /**
      * Constructor that sets up a new menu bar.
      */
@@ -58,6 +59,7 @@ public class MenuBar extends JMenuBar {
             @Override
             public void actionPerformed(final ActionEvent theEvent) {
                 System.out.println("Exit menu clicked");
+                
             } 
         });
         
