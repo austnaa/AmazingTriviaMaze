@@ -221,10 +221,7 @@ public class MazeBuilderTest {
                 !tempRoom.hasEastDoor() && tempRoom.hasWestDoor())) {
             result = false;
         }
-        
-        
-        assertTrue("buildRoom failed to build a 2x2 room", result);
-                  
+        assertTrue("buildRoom failed to build a 2x2 room", result);          
     }
     
     
