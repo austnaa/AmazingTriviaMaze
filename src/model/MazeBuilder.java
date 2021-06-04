@@ -2,6 +2,7 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
+
 package model;
 
 import java.io.File;
@@ -15,6 +16,7 @@ import model.question.QuestionManager;
 /**
  * A utility class that provides functionality for creating a 2D matrix of Room objects
  * based of off a given text file.
+ * 
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -27,8 +29,6 @@ public class MazeBuilder {
         
     }
     
-    // TODO probably pass in the QuestionList into this method so we can assign questions 
-    // to each of the doors
     /**
      * Given a file name of a text file that contains the map generation information,
      * returns a matrix of Room objects that represents the maze. 
@@ -49,13 +49,16 @@ public class MazeBuilder {
      * @param theFileName the name of the file that contains the map generation information
      * @throws NullPointerException if theFileName is null
      * @throws NullPointerException if theQuestionManager is null
+     * @throws FileNotFoundException if theFileName is not found
      */
-    public static Room[][] buildMaze(final String theFileName, final QuestionManager theQuestionManager) {
+    public static Room[][] buildMaze(final String theFileName, final QuestionManager theQuestionManager) 
+            throws NullPointerException, FileNotFoundException {
+        
         Objects.requireNonNull(theFileName, "theFileName can not be null"); 
         Objects.requireNonNull(theQuestionManager, "theQuestionManager can not be null");
         
-        final String path = System.getProperty("user.dir") + "/assets/" + theFileName;
-        final Scanner fileScanner = getScanner(path);
+        final String filePath = System.getProperty("user.dir") + "/assets/" + theFileName;
+        final Scanner fileScanner = new Scanner(new File(filePath));
         
         final int numRows = fileScanner.nextInt();
         final int numCols = fileScanner.nextInt();
@@ -74,29 +77,8 @@ public class MazeBuilder {
         fileScanner.close();
         return resultMaze;
     }  
-    
-    
-    /**
-     * Returns a Scanner object that contains the contents of the file 
-     * specified by the given filename.
-     * @param theFileName the name of the file
-     * @return the Scanner object that contains the contents of the file
-     * @throws NullPointerException if theFileName is null
-     */
-    private static Scanner getScanner(final String theFileName) 
-            throws NullPointerException {
         
-        Scanner fileScanner = null;
-        try {
-            fileScanner = new Scanner(new File(theFileName));
-        } catch (FileNotFoundException exception) {
-            exception.printStackTrace();
-        }
-        return fileScanner;
-    }
-    
-    // TODO: better comments.
-    // TODO: explain important precondition that the room above and to left are already created in maze
+    //NOTE: this method should be made public for testing purposes.
     /**
      * Returns a new Room that is built according to the given room String input.
      * 
@@ -112,8 +94,10 @@ public class MazeBuilder {
      * @throws NullPointerException if theQuestionManager is null
      * @throws NullPointerException if theMaze is null
      * @throws IllegalArgumentException if theRoomString length is less than 4
+     * @throws IllegalArgumentException if theRow is less than 0
+     * @throws IllegalArgumentException if theCol is less than 0
      */
-    private static Room buildRoom(String theRoomString, final QuestionManager theQuestionManager,
+    public static Room buildRoom(String theRoomString, final QuestionManager theQuestionManager,
             final Room[][] theMaze, final int theRow, final int theCol) {
         
         Objects.requireNonNull(theRoomString, "theRoomString can not be null");
@@ -121,6 +105,12 @@ public class MazeBuilder {
         Objects.requireNonNull(theMaze, "theMaze can not be null");
         if (theRoomString.length() < 4) {
             throw new IllegalArgumentException("theRoomString must be at least length 4");
+        }
+        if (theRow < 0) {
+            throw new IllegalArgumentException("theRow can not be less than 0");
+        }
+        if (theCol < 0) {
+            throw new IllegalArgumentException("theCol can not be less than 0");
         }
         
         // if the length of the room string is 5, we know that there is an extra character at
@@ -135,14 +125,14 @@ public class MazeBuilder {
         
         // the north door will share a question with the room above it
         Door northDoor = null;
-        if (theRoomString.charAt(0) == 'Y') {
+        if (theRoomString.charAt(0) == 'Y' && theRow > 0) {
             final Question question = theMaze[theRow - 1][theCol].getSouthDoor().getQuestion();
             northDoor = new Door(Door.TYPE.NORTH, question);
         } 
         
         // the west door will share a question with the room to the left of it
         Door westDoor = null;
-        if (theRoomString.charAt(2) == 'Y') {
+        if (theRoomString.charAt(2) == 'Y' && theCol > 0) {
             final Question question = theMaze[theRow][theCol - 1].getEastDoor().getQuestion();
             westDoor = new Door(Door.TYPE.WEST, question);
         }

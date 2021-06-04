@@ -4,6 +4,7 @@
  */
 package model;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -56,6 +57,18 @@ public class MazeManager {
         myUnusedMazes = new ArrayList<Room[][]>();
         myUsedMazes = new ArrayList<Room[][]>();
         
+        try {
+            setupMazes();
+        } catch (NullPointerException exception) {
+            System.out.println("a null pointer exception occurred while trying to create a maze");
+        } catch (FileNotFoundException exception) {
+            System.out.println("a map file was not found");
+        }
+        
+        setNewMaze();
+    }
+    
+    private void setupMazes() throws NullPointerException, FileNotFoundException {
         final Room[][] maze1 = MazeBuilder.buildMaze(MAZE_1, myQuestionManager);
         final Room[][] maze2 = MazeBuilder.buildMaze(MAZE_2, myQuestionManager);
         
@@ -66,7 +79,7 @@ public class MazeManager {
         // the list later the order in which we use mazes is randomized
         Collections.shuffle(myUnusedMazes);
         
-        setNewMaze();
+
     }
     
     /**
