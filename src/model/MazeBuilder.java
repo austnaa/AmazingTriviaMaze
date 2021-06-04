@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 import model.question.Question;
 import model.question.QuestionManager;
+import model.question.QuestionManagerInterface;
 
 /**
  * A utility class that provides functionality for creating a 2D matrix of Room objects
@@ -51,7 +52,7 @@ public class MazeBuilder {
      * @throws NullPointerException if theQuestionManager is null
      * @throws FileNotFoundException if theFileName is not found
      */
-    public static Room[][] buildMaze(final String theFileName, final QuestionManager theQuestionManager) 
+    public static Room[][] buildMaze(final String theFileName, final QuestionManagerInterface theQuestionManager) 
             throws NullPointerException, FileNotFoundException {
         
         Objects.requireNonNull(theFileName, "theFileName can not be null"); 
@@ -97,7 +98,7 @@ public class MazeBuilder {
      * @throws IllegalArgumentException if theRow is less than 0
      * @throws IllegalArgumentException if theCol is less than 0
      */
-    public static Room buildRoom(String theRoomString, final QuestionManager theQuestionManager,
+    public static Room buildRoom(String theRoomString, final QuestionManagerInterface theQuestionManager,
             final Room[][] theMaze, final int theRow, final int theCol) {
         
         Objects.requireNonNull(theRoomString, "theRoomString can not be null");

@@ -1,3 +1,8 @@
+/**
+ * Amazing Trivia Maze 
+ * TCSS 360 Spring 2021
+ */
+
 package tests;
 
 import static org.junit.Assert.*;
@@ -10,6 +15,7 @@ import org.junit.Test;
 import model.MazeBuilder;
 import model.Room;
 import model.question.QuestionManager;
+import tests.mock_objects.QuestionManagerMock;
 
 /**
  * JUnit test class for the model.MazeBuilder class.
@@ -19,11 +25,14 @@ import model.question.QuestionManager;
  */
 public class MazeBuilderTest {
     
-    private static final String MAP_TEXT_1 = "map1.txt";
+    private static final String MAP_TEXT_1x1_NO_DOORS = "test_map1.txt";
+    private static final String MAP_TEXT_1x1_ALL_DOORS = "test_map2.txt";
+    private static final String MAP_TEXT_2x2 = "test_map3.txt";
     
     private static final String ROOM_TEXT_1 = "YYYY";
     
     private QuestionManager myQuestionManager;
+    private QuestionManagerMock myQuestionManagerMock;
     private Room[][] myNullMaze;
     
     /**
@@ -32,14 +41,12 @@ public class MazeBuilderTest {
     @Before
     public void setUp() { 
         myQuestionManager = new QuestionManager();
+        myQuestionManagerMock = new QuestionManagerMock();
         myNullMaze = new Room[1][1];
     }
 
-   
-    
-    
-    // test for exceptions from the buildMaze method
-    
+
+    // ***** test for exceptions from the buildMaze method *****
     /**
      * Tests the MazeBuilder buildMaze method for a 
      * NullPointerException given a null fileName String
@@ -55,7 +62,7 @@ public class MazeBuilderTest {
      */
     @Test(expected = NullPointerException.class)
     public void testBuildMazeNullQuestionManager() throws NullPointerException, FileNotFoundException {
-        MazeBuilder.buildMaze(MAP_TEXT_1, null);
+        MazeBuilder.buildMaze(MAP_TEXT_1x1_NO_DOORS, null);
     }
     
     /**
@@ -68,7 +75,7 @@ public class MazeBuilderTest {
     }
     
     
-    // test for exceptions from the buildRoom method
+    // ***** test for exceptions from the buildRoom method *****
     /**
      * Tests to ensure that the MazeManager buildMaze method throws a NullPointerException
      * given a room string that is null.
@@ -122,6 +129,67 @@ public class MazeBuilderTest {
     public void testBuildRoomNegativeCol() {
         MazeBuilder.buildRoom(ROOM_TEXT_1, myQuestionManager, myNullMaze, 0, -1);
     }
+    
+    // ***** test functionality of buildMaze method ******
+    /**
+     * Tests the buildMaze method with the test_map1.txt file that builds 
+     * a 1x1 maze with no doors
+     */
+    @Test
+    public void testBuildRoom1x1NoDoors() throws FileNotFoundException {
+        final Room[][] resultMaze = MazeBuilder.buildMaze(MAP_TEXT_1x1_NO_DOORS, myQuestionManagerMock);
+        boolean result = true;
+
+        // check for the expected size
+        if (resultMaze.length != 1 || resultMaze[0].length != 1) {
+            result = false;
+        }
+        
+        // check to ensure there aren't any doors on the room
+        final Room room = resultMaze[0][0];
+        if (room.hasNorthDoor() || room.hasSouthDoor() ||
+                room.hasEastDoor() || room.hasWestDoor() || room.isMyIsEndRoom()) {
+            result = false;
+        }
+
+        assertTrue("buildRoom method failed to build a 1x1 room with no doors.", result);
+    }
+    
+    /**
+     * Tests the buildMaze method with the test_map2.txt file that builds 
+     * a 1x1 maze with all doors
+     */
+    @Test
+    public void testBuildRoom1x1AllDoors() throws FileNotFoundException {
+        final Room[][] resultMaze = MazeBuilder.buildMaze(MAP_TEXT_1x1_ALL_DOORS, myQuestionManagerMock);
+        boolean result = true;
+
+        // check for the expected size
+        if (resultMaze.length != 1 || resultMaze[0].length != 1) {
+            result = false;
+        }
+        
+        // check to ensure there aren't any doors on the room
+        final Room room = resultMaze[0][0];
+        if (!(room.hasNorthDoor() || room.hasSouthDoor() ||
+                room.hasEastDoor() || room.hasWestDoor() || room.isMyIsEndRoom())) {
+            result = false;
+        }
+
+        assertTrue("buildRoom method failed to build a 1x1 room with all doors.", result);
+    }
+    
+    /**
+     * Tests the buildMaze method with the test_map3.txt file that builds 
+     * a 2x2 maze with various different connecting rooms.
+     */
+    
+    
+    
+    
+    
+    
+    // ***** test functionality of buildRoom method ******
     
     
     

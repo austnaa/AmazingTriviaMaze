@@ -2,6 +2,7 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
+
 package model.question;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.Random;
  * @author Austn Attaway
  * @version Spring 2021
  */
-public class QuestionManager {
+public class QuestionManager implements QuestionManagerInterface {
     
     /** 
      * The List of questions that will be copied each time we set up a new game. 
@@ -28,11 +29,6 @@ public class QuestionManager {
         setupQuestionList();
     }
     
-    /**
-     * Returns a random question from the current game's list of unused questions.
-     * Will repopulate the backing store of questions if all questions have been pulled.
-     * @return a random question from the current game's list of unused questions.
-     */
     public Question getRandomQuestion() {
         
         if (myQuestionList.size() == 0) {
