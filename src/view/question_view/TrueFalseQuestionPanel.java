@@ -4,7 +4,6 @@
  */
 package view.question_view;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Collections;
@@ -13,7 +12,6 @@ import java.util.Objects;
 
 import javax.sound.sampled.Clip;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 
 import model.Player;
@@ -70,10 +68,10 @@ public class TrueFalseQuestionPanel extends AbstractQuestionPanel {
 
         // set up the radio buttons      
         final JRadioButton button1 = myOptions.get(0);
-        button1.setBounds(30, 60, 100, 20);
+        button1.setBounds(30, 60, 150, 20);
         
         final JRadioButton button2 = myOptions.get(1);
-        button2.setBounds(30, 80, 100, 20);
+        button2.setBounds(30, 80, 150, 20);
        
         this.add(button1);
         this.add(button2);

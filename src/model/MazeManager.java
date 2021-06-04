@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.sound.sampled.Clip;
-
 import model.question.QuestionManager;
 
 /**

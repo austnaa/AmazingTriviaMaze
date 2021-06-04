@@ -4,12 +4,9 @@
  */
 package view.question_view;
 
-import java.awt.Color;
-import java.awt.ComponentOrientation;
 import java.util.Objects;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -26,17 +23,22 @@ public abstract class AbstractQuestionPanel extends JPanel {
     /** The frame that contains this panel. */
     protected JFrame myFrame;
     
-    
-    
     // constructor
+    /**
+     * TODO
+     */
     protected AbstractQuestionPanel() {
         this.setLayout(null);
     }
     
     // sets the text area for the question prompt
+    /**
+     * TODO
+     * @param theQuestionPrompt
+     */
     protected void setQuestionPrompt(final String theQuestionPrompt) {
         Objects.requireNonNull(theQuestionPrompt, "theQuestionPrompt can not be null");
-        // Adds the question label 
+        // Adds the question label
         final JTextArea questionPromptArea = new JTextArea();
         questionPromptArea.setText(theQuestionPrompt);
         questionPromptArea.setBounds(30, 20, 350, 50);
@@ -47,10 +49,6 @@ public abstract class AbstractQuestionPanel extends JPanel {
         questionPromptArea.setFocusable(false);
 
         add(questionPromptArea);
-        
-//        final JLabel questionLabel = new JLabel();
-//        
-//        add(questionLabel);
     }
 
     /**
@@ -62,12 +60,4 @@ public abstract class AbstractQuestionPanel extends JPanel {
     public void setupFrame(final JFrame theFrame) {
         myFrame = Objects.requireNonNull(theFrame, "theFrame can not be null");
     }
-    
-//    /**
-//     * Returns the Frame that contains this panel.
-//     * @return theJFrame that contains this panel.
-//     */
-//    protected JFrame getFrame() {
-//        return myFrame;
-//    }
 }
