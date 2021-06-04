@@ -26,6 +26,7 @@ public class TrueFalseQuestion extends Question {
     /** The ButtonGroup that contains the options. */
     private ButtonGroup myButtonGroup;
 
+    
     /**
      * Constructor the the free response trivia questions.
      * @param theQuestion The question prompt.
@@ -39,6 +40,7 @@ public class TrueFalseQuestion extends Question {
         myButtonGroup = new ButtonGroup();
         myButtonGroup.add(myAnswer);
         myButtonGroup.add(myIncorrectAnswer);
+
     }
     
     /**
@@ -74,6 +76,7 @@ public class TrueFalseQuestion extends Question {
      */
     public boolean checkAnswer() {
         boolean result = myAnswer.isSelected();
+        myButtonGroup.clearSelection();
         clearButtons();
         if (result) {
             this.setAnsweredAlready(true);
