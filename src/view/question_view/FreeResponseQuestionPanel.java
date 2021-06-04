@@ -2,104 +2,98 @@
  * Amazing Trivia Maze
  * TCSS 360 Spring 2021
  */
-
 package view.question_view;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 import java.util.Objects;
 
+import javax.sound.sampled.Clip;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import model.Player;
+import model.Sound;
 import model.question.FreeResponseQuestion;
-import model.question.Option;
 import model.question.Question;
+
 import view.GamePanel;
 
+/**
+ * The class for free response question panels.
+ * @author Austn Attaway
+ * @version Spring 2021
+ */
 public class FreeResponseQuestionPanel extends AbstractQuestionPanel {
 
-    /** An auto-generated serial version UID for object Serialization */
+    /** An auto-generated serial version UID for object serialization. */
     private static final long serialVersionUID = -3013920620597350575L;
     
-    /** The FreeResponseQuestion that this panel is displaying. */
+    /** The free response questions that this panel is displaying. */
     private FreeResponseQuestion myQuestion;
     
+<<<<<<< HEAD
     /** The Player object that could be affected from answering this panel's Question incorrectly. */
+=======
+    /** The player will lose a brain for answering the question incorrectly. */
+>>>>>>> c3afd362188b2539bd5459641f76b64637cdaec0
     private Player myPlayer;
     
+    /**
+     * The question panel for free response questions.
+     * @param thePlayer The player.
+     * @param theQuestion The free response question.
+     */
     public FreeResponseQuestionPanel(final Player thePlayer, final Question theQuestion) {
         super();
         myQuestion = (FreeResponseQuestion) Objects.requireNonNull(theQuestion, "theQuestion can not be null");
         myPlayer = Objects.requireNonNull(thePlayer, "thePlayer can not be null");
-
         myFrame = null;
-        setup();
+        
+        super.setQuestionPrompt(myQuestion.getQuestionPrompt());
+        setupComponents();
+        
+        this.setVisible(true);
+        repaint();
     }
     
-    public void setup() {
-        this.setLayout(null);
+    /**
+     * Sets up the text field and submit button for this panel.
+     */
+    private void setupComponents() {
         
-        // add the question label 
-        final JLabel questionLabel = new JLabel();
-        questionLabel.setText(myQuestion.getQuestionPrompt());
-        questionLabel.setBounds(30, 10, 400, 30);
-        add(questionLabel);
-        
-        // text area
+        // set up the text area where the user can enter text
         final JTextField textField = new JTextField();
-        textField.setBounds(30, 50, 400, 20);
+        textField.setBounds(30, 60, 200, 20);
         
+        // set up the submit button
         final JButton submitButton = new JButton("Submit");
-        submitButton.setBounds(190, 140, 90, 20);
-        
+        submitButton.setBounds(150, 100, 90, 20);
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent theEvent) {
-                final boolean result = myQuestion.checkAnswer(textField.getText());// get text from textbox
+                myQuestion.checkAnswer(textField.getText());
                 
-                if (result) {
-                    System.out.println("Correct!");
-                } else {
-                    System.out.println("incorrect");
-                }
-                
-                // THIS IS WHERE WE COULD SHOW THAT THE ANSWER 
-                // IS CORRECT OR CLOSE THE PANEL AND CHANGE ROOMS...
+                // question was answered correctly
                 if (myQuestion.getAnsweredAlready()) {
-                    if (myFrame != null) {
-                        myFrame.dispose();
-                    }
                     GamePanel.interact();
+                    final Clip openDoor = Sound.sound(Sound.DOOR_OPEN_SOUND, 0.5);
+                    openDoor.start();
                 } 
-                // question was not answered correctly, 
-                // so decrement the number of brains remaining
+                // question was answered incorrectly
                 else {
                     myPlayer.setBrains(myPlayer.getBrainsremaining() - 1);
+                    final Clip loseBrain = Sound.sound(Sound.LOSE_BRAIN_SOUND, 0.5);
+                    loseBrain.start();
                 }
-                myFrame.dispose();
+                // close the frame after the submit button is pressed
+                if (myFrame != null) {
+                    myFrame.dispose();
+                }
             }
         });
         
         this.add(submitButton);
-        this.add(textField);       
-        
-        this.setBackground(Color.WHITE);
-        repaint();
-        this.setVisible(true);
-        
-        
-        
+        this.add(textField);           
     }
-    
-    
-    
-    
-    
-    
-    
 }

@@ -61,6 +61,7 @@ public class ItemSheet extends SheetLoader {
             theGraphics.drawImage(myWinItemImage, GameFrame.FRAME_HEIGHT/2, GameFrame.FRAME_WIDTH/2, null);
         }
     }
+    
     /**
      * Draws the list of brains. 
      * TODO: find the location for brains.

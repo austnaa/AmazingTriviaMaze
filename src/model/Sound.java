@@ -33,6 +33,27 @@ public final class Sound {
     /** Path for the lose sound. */
     public static final String LOSE_SOUND = System.getProperty("user.dir") + "/assets/losesound.wav";
 
+    /** Path for the door opening sound. */
+    public static final String DOOR_OPEN_SOUND = System.getProperty("user.dir") + "/assets/dooropensound.wav";
+
+    /** Path for the lose brain sound. */
+    public static final String LOSE_BRAIN_SOUND = System.getProperty("user.dir") + "/assets/losebrainsound.wav";
+
+    /** The clip for managing the menu background music. */
+    public static Clip MENU = Sound.sound(Sound.MENU_BGD, 0.5);
+
+    /** The clip for managing the gameplay background music. */
+    public static Clip GAMEPLAY = Sound.sound(Sound.GAMEPLAY_BGD, 0.5);
+
+    /** The clip for managing the win sound. */
+    public static Clip WIN = Sound.sound(Sound.WIN_SOUND, 0.5);
+
+    /** The clip for managing the lose sound. */
+    public static Clip LOSE = Sound.sound(Sound.LOSE_SOUND, 0.5);
+
+    /** The clip for managing the lose brain sound. */
+    public static Clip LOSE_BRAIN = Sound.sound(Sound.LOSE_BRAIN_SOUND, 0.5);
+
     /**
      * Private constructor so we cannot initialize an object of this class.
      */

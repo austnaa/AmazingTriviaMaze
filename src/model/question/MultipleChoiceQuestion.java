@@ -29,9 +29,7 @@ public class MultipleChoiceQuestion extends Question {
     /** The fourth option for the multiple choice question. */
     private Option myOptionD;
     
-    /**
-     * The ButtonGroup that contains this questions's Options.
-     */
+    /** The ButtonGroup that contains the options. */
     public ButtonGroup myButtonGroup;
 
     /**
@@ -48,7 +46,7 @@ public class MultipleChoiceQuestion extends Question {
         myOptionB = Objects.requireNonNull(theOptionB);
         myOptionC = Objects.requireNonNull(theOptionC);
         myOptionD = Objects.requireNonNull(theOptionD);
-        
+
         myButtonGroup = new ButtonGroup();
   
         myButtonGroup.add(myAnswer);
@@ -56,7 +54,13 @@ public class MultipleChoiceQuestion extends Question {
         myButtonGroup.add(myOptionC);
         myButtonGroup.add(myOptionD);
     }
-    
+
+    /**
+     * Clears the options.
+     */
+    public void clearButtons() {
+        myButtonGroup.clearSelection();
+    }
 
     /**
      * Returns an ArrayList of the options that aren't the answer.
@@ -94,8 +98,7 @@ public class MultipleChoiceQuestion extends Question {
     /**
      * Returns true if the currently selected option is the correct option.
      * Updates the state of this question to be answered.
-     * 
-     * @return whether or not this question was answered correctly.
+     * @return Whether or not this question was answered correctly.
      */
     public boolean checkAnswer() {
         boolean result = myAnswer.isSelected();
@@ -105,7 +108,6 @@ public class MultipleChoiceQuestion extends Question {
         }
         return result;
     }
-    
 
     /**
      * Creates a String representation of multiple choice questions.

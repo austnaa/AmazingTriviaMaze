@@ -70,9 +70,8 @@ public class Door {
         setXYPosition();
     }
     
-    // TODO interaction not implemented yet
-    // return the door if it is unlocked?
-    // return null if the door was not previously locked and the question was never answered?
+
+
     /**
      * Interact with this door if the player is close enough.  
      */

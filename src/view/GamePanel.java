@@ -14,11 +14,13 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.sound.sampled.Clip;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import model.Door;
 import model.MazeManager;
 import model.Player;
+import model.Sound;
 
 /**
  * The panel that paints the graphics of the program.
@@ -137,7 +139,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         final Door interactedDoor = myMazeManager.getCurrentRoom().interact(myPlayer);
         if (interactedDoor != null && !interactedDoor.isLocked()) {
             myMazeManager.moveRooms(interactedDoor.getType());
-            myPlayer.moveRooms(interactedDoor.getType());   
+            myPlayer.moveRooms(interactedDoor.getType());
+            final Clip openDoor = Sound.sound(Sound.DOOR_OPEN_SOUND, 0.5);
+            openDoor.start();
         } 
     }
 

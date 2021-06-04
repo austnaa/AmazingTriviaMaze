@@ -44,10 +44,9 @@ public class FreeResponseQuestion extends Question {
     public boolean checkAnswer(final String theUsersAnswer) {
         Objects.requireNonNull(theUsersAnswer, "theUsersAnswer can not be null");
         final boolean result = myAnswer.equalsIgnoreCase(theUsersAnswer.trim());
-        
         if (result) {
             this.setAnsweredAlready(true);
-        } 
+        }
         return result;
     }
 

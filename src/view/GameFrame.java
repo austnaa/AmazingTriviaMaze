@@ -29,12 +29,6 @@ public class GameFrame extends JFrame {
     /** The height of the frame in pixels. */
     public static final int FRAME_HEIGHT = 5*32*4+45;
 
-    /** The clip for managing the menu background music. */
-    public static Clip MENU = Sound.sound(Sound.MENU_BGD, 0.5);
-
-    /** The clip for managing the gameplay background music. */
-    public static Clip GAMEPLAY = Sound.sound(Sound.GAMEPLAY_BGD, 0.5);
-
     /**
      * Creates the game frame.
      */
@@ -47,8 +41,8 @@ public class GameFrame extends JFrame {
         setVisible(true);  
         this.setJMenuBar(new MenuBar());
         start();
-        MENU.start();
-        MENU.loop(Clip.LOOP_CONTINUOUSLY);
+        Sound.MENU.start();
+        Sound.MENU.loop(Clip.LOOP_CONTINUOUSLY);
     }
 
     /**
@@ -64,9 +58,9 @@ public class GameFrame extends JFrame {
             public void mousePressed(final MouseEvent theEvent) {
                 if (theEvent.getX() >= 214 && theEvent.getX() <= 427 && theEvent.getY() >= 485  && theEvent.getY() <= 534) {
                     startPanel.setVisible(false);
-                    MENU.stop();
-                    GAMEPLAY.start();
-                    GAMEPLAY.loop(Clip.LOOP_CONTINUOUSLY);
+                    Sound.MENU.stop();
+                    Sound.GAMEPLAY.start();
+                    Sound.GAMEPLAY.loop(Clip.LOOP_CONTINUOUSLY);
                     final GamePanel gamePanel = new GamePanel();
                     add(gamePanel);
                     gamePanel.grabFocus();
