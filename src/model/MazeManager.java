@@ -11,7 +11,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import model.question.QuestionManager;
 import model.question.QuestionManagerInterface;
 
 /**
@@ -59,6 +58,7 @@ public class MazeManager {
     /**
      * Constructs a new MazeManager that contains all mazes available to be played 
      * and sets the first maze.
+     * 
      * @param theQuestionManager the QuestionManager that provides Questions for the maze. 
      * @throws NullPointerException if theQuestionManager is null
      */
@@ -70,29 +70,38 @@ public class MazeManager {
         myUnusedMazes = new ArrayList<Room[][]>();
         myUsedMazes = new ArrayList<Room[][]>();
         
+        setupMazes();
+        setNewMaze();
+    }
+    
+    /**
+     * Populates the list of unused mazes so they can be used in the current program. 
+     * 
+     * @throws NullPointerException if there is an issue with creating mazes.
+     * @throws FileNotFoundException if there is an issue with creating the mazes.
+     */
+    private void setupMazes() {
+        
         try {
-            setupMazes();
+            final Room[][] maze1 = MazeBuilder.buildMaze(MAZE_1, myQuestionManager);
+            final Room[][] maze2 = MazeBuilder.buildMaze(MAZE_2, myQuestionManager);
+            final Room[][] maze3 = MazeBuilder.buildMaze(MAZE_3, myQuestionManager);
+            final Room[][] maze4 = MazeBuilder.buildMaze(MAZE_4, myQuestionManager);
+            
+            myUnusedMazes.add(maze1);
+            myUnusedMazes.add(maze2);
+            myUnusedMazes.add(maze3);
+            myUnusedMazes.add(maze4);
+            
+            // shuffle the full list of unused mazes so when we pull from 
+            // the list later the order in which we use mazes is randomized
+            Collections.shuffle(myUnusedMazes);
+            
         } catch (NullPointerException exception) {
             System.out.println("a null pointer exception occurred while trying to create a maze");
         } catch (FileNotFoundException exception) {
             System.out.println("a map file was not found");
         }
-        
-        setNewMaze();
-    }
-    
-    private void setupMazes() throws NullPointerException, FileNotFoundException {
-        final Room[][] maze1 = MazeBuilder.buildMaze(MAZE_1, myQuestionManager);
-        final Room[][] maze2 = MazeBuilder.buildMaze(MAZE_2, myQuestionManager);
-        
-        myUnusedMazes.add(maze1);
-        myUnusedMazes.add(maze2);
-        
-        // shuffle the full list of unused mazes so when we pull from 
-        // the list later the order in which we use mazes is randomized
-        Collections.shuffle(myUnusedMazes);
-        
-
     }
     
     /**
