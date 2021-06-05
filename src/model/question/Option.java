@@ -2,6 +2,7 @@
  * Amazing Trivia Maze
  * TCSS 360 Spring 2021
  */
+
 package model.question;
 
 import java.util.Objects;
@@ -14,9 +15,9 @@ import javax.swing.JRadioButton;
  * @version Spring 2021
  */
 public class Option extends JRadioButton {
-
-	/** Auto-generated serial version ID. */
-	private static final long serialVersionUID = -2129560532822415441L;
+    
+    /** Auto-generated serial version ID. */
+    private static final long serialVersionUID = -2129560532822415441L;
 
     /** The correctness of the option. */
     private boolean myCorrectOption;
@@ -47,6 +48,7 @@ public class Option extends JRadioButton {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        sb.append("Option: ");
         final String correct = myCorrectOption ? "correct\n" : "incorrect\n";
         sb.append(correct);
         return sb.toString();
