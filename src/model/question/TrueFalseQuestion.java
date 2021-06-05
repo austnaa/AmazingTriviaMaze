@@ -40,7 +40,6 @@ public class TrueFalseQuestion extends Question {
         myButtonGroup = new ButtonGroup();
         myButtonGroup.add(myAnswer);
         myButtonGroup.add(myIncorrectAnswer);
-
     }
     
     /**
@@ -76,7 +75,6 @@ public class TrueFalseQuestion extends Question {
      */
     public boolean checkAnswer() {
         boolean result = myAnswer.isSelected();
-        myButtonGroup.clearSelection();
         clearButtons();
         if (result) {
             this.setAnsweredAlready(true);
@@ -92,8 +90,12 @@ public class TrueFalseQuestion extends Question {
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append(super.toString());
+        sb.append("Correct answer: ");
         sb.append(myAnswer);
+        sb.append(System.lineSeparator());
+        sb.append("Incorrect answer: ");
         sb.append(myIncorrectAnswer);
+        sb.append(System.lineSeparator());
         return sb.toString();
     }
 }

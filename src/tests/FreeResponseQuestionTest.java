@@ -195,7 +195,7 @@ public class FreeResponseQuestionTest {
      */
     @Test
     public void testToStringUnansweredQuestion() {
-        final String expected = "Question: " + QUESTION + "\nAnswered: false\nAnswer: " + ANSWER + "\n";
+        final String expected = "Question: " + QUESTION + "\nIsAnswered: false\nAnswer: " + ANSWER + "\n";
         assertEquals("the toString method failed on an unanswered question", 
                 expected, myFreeResponseQuestion.toString());
     }
@@ -205,7 +205,7 @@ public class FreeResponseQuestionTest {
      */
     @Test
     public void testToStringAnsweredQuestion() {
-        final String expected = "Question: " + QUESTION + "\nAnswered: false\nAnswer: " + ANSWER + "\n";
+        final String expected = "Question: " + QUESTION + "\nIsAnswered: false\nAnswer: " + ANSWER + "\n";
         
         assertEquals("the toString method failed on an answered question", 
                 expected, myFreeResponseQuestion.toString());
