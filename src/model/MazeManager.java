@@ -119,7 +119,6 @@ public class MazeManager {
         myCurrentRoom.setVisited();
     }
     
-    // TODO can Enums be null? should we check for null?
     /**
      * Changes the current room to the correct room depending on the
      * type of door that is given. The given door is the type of door that
