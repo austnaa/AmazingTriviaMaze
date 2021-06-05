@@ -12,9 +12,9 @@ import java.io.FileNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
 
+import model.Door;
 import model.MazeBuilder;
 import model.Room;
-import model.question.QuestionManager;
 import tests.mock_objects.QuestionManagerMock;
 
 /**
@@ -25,14 +25,26 @@ import tests.mock_objects.QuestionManagerMock;
  */
 public class MazeBuilderTest {
     
+    /** A String used when creating rooms when you don't want any doors. */ 
+    private static final String ROOM_TEXT = "NNNN";
+    
+    /** The file name for a map with a 1x1 maze with a single room with no doors. */
     private static final String MAP_TEXT_1x1_NO_DOORS = "test_map1.txt";
+    
+    /** The file name for a map with a 1x1 maze with a single room with no doors. */
     private static final String MAP_TEXT_1x1_ALL_DOORS = "test_map2.txt";
+    
+    /** The file name for a map with a 2x2 maze with varying rooms. */
     private static final String MAP_TEXT_2x2 = "test_map3.txt";
     
-    private static final String ROOM_TEXT_1 = "YYYY";
-    
-    private QuestionManager myQuestionManager;
+    /**
+     * A Mock QuestionManager used for testing.
+     */
     private QuestionManagerMock myQuestionManagerMock;
+    
+    /**
+     * An instantiated empty maze used for testing.
+     */
     private Room[][] myNullMaze;
     
     /**
@@ -40,7 +52,6 @@ public class MazeBuilderTest {
      */
     @Before
     public void setUp() { 
-        myQuestionManager = new QuestionManager();
         myQuestionManagerMock = new QuestionManagerMock();
         myNullMaze = new Room[1][1];
     }
@@ -53,7 +64,7 @@ public class MazeBuilderTest {
      */
     @Test(expected = NullPointerException.class)
     public void testBuildMazeNullFileName() throws NullPointerException, FileNotFoundException {
-        MazeBuilder.buildMaze(null, myQuestionManager);
+        MazeBuilder.buildMaze(null, myQuestionManagerMock);
     }
     
     /**
@@ -71,7 +82,7 @@ public class MazeBuilderTest {
      */
     @Test(expected = FileNotFoundException.class)
     public void testBuildMazeFileNotFound() throws NullPointerException, FileNotFoundException {
-        MazeBuilder.buildMaze("notafilename", myQuestionManager);
+        MazeBuilder.buildMaze("notafilename", myQuestionManagerMock);
     }
     
     
@@ -91,7 +102,7 @@ public class MazeBuilderTest {
      */
     @Test(expected = NullPointerException.class)
     public void testBuildRoomNullQuestionManager() {
-        MazeBuilder.buildRoom(ROOM_TEXT_1, null, null, 0, 0);
+        MazeBuilder.buildRoom(ROOM_TEXT, null, null, 0, 0);
     }
     
     /**
@@ -100,7 +111,7 @@ public class MazeBuilderTest {
      */
     @Test(expected = NullPointerException.class)
     public void testBuildRoomNullMaze() {
-        MazeBuilder.buildRoom(ROOM_TEXT_1, myQuestionManager, null, 0, 0);
+        MazeBuilder.buildRoom(ROOM_TEXT, myQuestionManagerMock, null, 0, 0);
     }
     
     /**
@@ -109,7 +120,7 @@ public class MazeBuilderTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void testBuildRoomInvalidRoomStringLength() {
-        MazeBuilder.buildRoom("", myQuestionManager, myNullMaze, 0, 0);
+        MazeBuilder.buildRoom("", myQuestionManagerMock, myNullMaze, 0, 0);
     }
     
     /**
@@ -118,7 +129,7 @@ public class MazeBuilderTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void testBuildRoomNegativeRow() {
-        MazeBuilder.buildRoom(ROOM_TEXT_1, myQuestionManager, myNullMaze, -1, 0);
+        MazeBuilder.buildRoom(ROOM_TEXT, myQuestionManagerMock, myNullMaze, -1, 0);
     }
     
     /**
@@ -127,7 +138,7 @@ public class MazeBuilderTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void testBuildRoomNegativeCol() {
-        MazeBuilder.buildRoom(ROOM_TEXT_1, myQuestionManager, myNullMaze, 0, -1);
+        MazeBuilder.buildRoom(ROOM_TEXT, myQuestionManagerMock, myNullMaze, 0, -1);
     }
     
     // ***** test functionality of buildMaze method ******
@@ -136,7 +147,7 @@ public class MazeBuilderTest {
      * a 1x1 maze with no doors
      */
     @Test
-    public void testBuildRoom1x1NoDoors() throws FileNotFoundException {
+    public void testBuildMaze1x1NoDoors() throws FileNotFoundException {
         final Room[][] resultMaze = MazeBuilder.buildMaze(MAP_TEXT_1x1_NO_DOORS, myQuestionManagerMock);
         boolean result = true;
 
@@ -148,11 +159,11 @@ public class MazeBuilderTest {
         // check to ensure there aren't any doors on the room
         final Room room = resultMaze[0][0];
         if (room.hasNorthDoor() || room.hasSouthDoor() ||
-                room.hasEastDoor() || room.hasWestDoor() || room.isMyIsEndRoom()) {
+                room.hasEastDoor() || room.hasWestDoor() || room.isEndRoom()) {
             result = false;
         }
 
-        assertTrue("buildRoom method failed to build a 1x1 room with no doors.", result);
+        assertTrue("buildMaze method failed to build a 1x1 maze with a single room with no doors.", result);
     }
     
     /**
@@ -160,7 +171,7 @@ public class MazeBuilderTest {
      * a 1x1 maze with all doors
      */
     @Test
-    public void testBuildRoom1x1AllDoors() throws FileNotFoundException {
+    public void testBuildMaze1x1AllDoors() throws FileNotFoundException {
         final Room[][] resultMaze = MazeBuilder.buildMaze(MAP_TEXT_1x1_ALL_DOORS, myQuestionManagerMock);
         boolean result = true;
 
@@ -172,11 +183,12 @@ public class MazeBuilderTest {
         // check to ensure there aren't any doors on the room
         final Room room = resultMaze[0][0];
         if (!(room.hasNorthDoor() || room.hasSouthDoor() ||
-                room.hasEastDoor() || room.hasWestDoor() || room.isMyIsEndRoom())) {
+                room.hasEastDoor() || room.hasWestDoor() || room.isEndRoom())) {
             result = false;
         }
 
-        assertTrue("buildRoom method failed to build a 1x1 room with all doors.", result);
+        assertTrue("buildMaze method failed to build a 1x1 maze with a "
+                + "single room with all doors.", result);
     }
     
     /**
@@ -184,7 +196,7 @@ public class MazeBuilderTest {
      * a 2x2 maze with various different connecting rooms.
      */
     @Test
-    public void testBuildRoom2x2() throws FileNotFoundException {
+    public void testBuildMaze2x2() throws FileNotFoundException {
         final Room[][] resultMaze = MazeBuilder.buildMaze(MAP_TEXT_2x2, myQuestionManagerMock);
         boolean result = true;
         
@@ -221,70 +233,192 @@ public class MazeBuilderTest {
                 !tempRoom.hasEastDoor() && tempRoom.hasWestDoor())) {
             result = false;
         }
+        assertTrue("buildRoom failed to build a 2x2 maze", result);          
+    }
+    
+ 
+    // ***** test functionality of buildRoom method ******
+    
+    /**
+     * Tests the buildRoom method trying to build a room that has no doors.
+     */
+    @Test
+    public void testBuildRoomNoDoors() {
+        final String noDoorString = "NNNN";
+        final Room[][] tempMaze = new Room[1][1];
+        final Room resultRoom = MazeBuilder.buildRoom(noDoorString, 
+                myQuestionManagerMock, tempMaze, 0, 0);
+         
+        boolean result = true;
+        // check to ensure there aren't any doors in the room
+        if (resultRoom.hasNorthDoor() || resultRoom.hasSouthDoor() ||
+                resultRoom.hasEastDoor() || resultRoom.hasWestDoor() || resultRoom.isEndRoom()) {
+            result = false;
+        }
+        
+        assertTrue("buildRoom failed to build a room with no doors", result);
+    }
+    
+    /**
+     * Tests the buildRoom method trying to build
+     * a room that has only south and east doors. 
+     */
+    @Test
+    public void testBuildRoomSouthEastDoors() {
+        final String southEastRoomString = "NYNY";
+        final Room[][] tempMaze = new Room[1][1];
+        final Room resultRoom = MazeBuilder.buildRoom(southEastRoomString, 
+                myQuestionManagerMock, tempMaze, 0, 0);
+         
+        boolean result = true;
+        if (resultRoom.hasNorthDoor() || !resultRoom.hasSouthDoor() ||
+                !resultRoom.hasEastDoor() || resultRoom.hasWestDoor() || resultRoom.isEndRoom()) {
+            result = false;
+        }
+        
+        assertTrue("buildRoom failed to build a room with east and south doors.", result);
+    }
+    
+    /**
+     * Tests the buildRoom method trying to build
+     * a room that has a west door that shares a question with 
+     * its leftmost neighbor. 
+     */
+    @Test
+    public void testBuildRoomWestDoor() {
+        final String westDoorRoomString = "NNYN";
+        
+        // create the room that will be to the west of the door we want to create        
+        final Room westRoom = new Room(false, null, null, null,
+                new Door(Door.TYPE.EAST, myQuestionManagerMock.getRandomQuestion()));
+        
+        final Room[][] tempMaze = new Room[1][2];
+        tempMaze[0][0] = westRoom;
+        
+        final Room resultRoom = MazeBuilder.buildRoom(westDoorRoomString, 
+                myQuestionManagerMock, tempMaze, 0, 1);
+         
+        boolean result = true;
+        if (resultRoom.hasNorthDoor() || resultRoom.hasSouthDoor() ||
+                resultRoom.hasEastDoor() || !resultRoom.hasWestDoor()) {
+            result = false;
+        }
+
+        // make sure the two rooms share the same question 
+        if (result && !resultRoom.getWestDoor().getQuestion().equals(westRoom.getEastDoor().getQuestion())) {
+            result = false;
+        }
         
         
-        assertTrue("buildRoom failed to build a 2x2 room", result);
-                  
+        assertTrue("buildRoom failed to build a room with a west door.", result);
     }
     
     
-    
-    
-    
-    
-    
-    // ***** test functionality of buildRoom method ******
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    /**
+     * Tests the buildRoom method trying to build
+     * a room that has a north door that shares a question with 
+     * its northern neighbor. 
+     */
+    @Test
+    public void testBuildRoomNorthDoor() {
+        final String northDoorRoomString = "YNNN";
+        
+        // create the northern room
+        final Room northRoom = new Room(false, null, 
+                new Door(Door.TYPE.SOUTH, myQuestionManagerMock.getRandomQuestion()), null, null);
+        
+        final Room[][] tempMaze = new Room[2][1];
+        tempMaze[0][0] = northRoom;
+        
+        final Room resultRoom = MazeBuilder.buildRoom(northDoorRoomString, 
+                myQuestionManagerMock, tempMaze, 1, 0);
+       
+        boolean result = true;
+        if (!resultRoom.hasNorthDoor() || resultRoom.hasSouthDoor() ||
+                resultRoom.hasEastDoor() || resultRoom.hasWestDoor()) {
+            result = false;
+        }
 
+        // make sure the two rooms share the same question 
+        if (result && !resultRoom.getNorthDoor().getQuestion().equals(northRoom.getSouthDoor().getQuestion())) {
+            result = false;
+        }
+        
+        assertTrue("buildRoom failed to build a room with a north door.", result);
+    }
+    
+    /**
+     * Tests the buildRoom method trying to build 
+     * a room that has all doors. 
+     */
+    @Test
+    public void testBuildRoomAllDoors() {
+        final String allDoorRoomString = "YYYY";
+        
+        // create the northern room and western room that will share questions with the resultRoom
+        final Room northRoom = new Room(false, null, 
+                new Door(Door.TYPE.SOUTH, myQuestionManagerMock.getRandomQuestion()), null, null);
+        // create the room that will be to the west of the door we want to create        
+        final Room westRoom = new Room(false, null, null, null,
+                new Door(Door.TYPE.EAST, myQuestionManagerMock.getRandomQuestion()));
+        
+        final Room[][] tempMaze = new Room[2][2];
+        tempMaze[0][1] = northRoom;
+        tempMaze[1][0] = westRoom;
+        
+        final Room resultRoom = MazeBuilder.buildRoom(allDoorRoomString, 
+                myQuestionManagerMock, tempMaze, 1, 1);
+        
+
+        // ensure the result room has all doors
+        boolean result = true;
+        if (!resultRoom.hasNorthDoor() || !resultRoom.hasSouthDoor() ||
+                !resultRoom.hasEastDoor() || !resultRoom.hasWestDoor()) {
+            result = false;
+        }
+        
+        // ensure result room shares north question
+        if (result && !resultRoom.getNorthDoor().getQuestion().equals(northRoom.getSouthDoor().getQuestion())) {
+            result = false;
+        }
+        
+        // ensure result room shares west question
+        if (result && !resultRoom.getWestDoor().getQuestion().equals(westRoom.getEastDoor().getQuestion())) {
+            result = false;
+        }
+        
+        assertTrue("buildRoom failed to build a room with all doors.", result);
+        
+    }
+    
+    /**
+     * Tests the buildRoom method trying to build 
+     * an end room.
+     */
+    @Test
+    public void testBuildIsEndRoom() {
+        final String endRoomString = "$NNNN";
+        final Room[][] tempMaze = new Room[1][1];
+        final Room resultRoom = MazeBuilder.buildRoom(endRoomString, 
+                myQuestionManagerMock, tempMaze, 0, 0);
+         
+        boolean result = resultRoom.isEndRoom();
+        assertTrue("buildRoom failed to build an end room", result);
+    }
+    
+    /**
+     * Tests the buildRoom method trying to build 
+     * an end room.
+     */
+    @Test
+    public void testBuildIsNotEndRoom() {
+        final String noEndRoomString = "NNNN";
+        final Room[][] tempMaze = new Room[1][1];
+        final Room resultRoom = MazeBuilder.buildRoom(noEndRoomString, 
+                myQuestionManagerMock, tempMaze, 0, 0);
+         
+        boolean result = !resultRoom.isEndRoom();
+        assertTrue("buildRoom failed by building an end room when it shouldn't have.", result);
+    }
+    
 }
-
-
-/* METHODS TO BE TESTED: 
- * 
- * 1. buildMaze
- * -filenotfound from string DONE
- * -nullpointer from string DONE
- * -nullpointer questionmanager DONE
- * -check to ensure that a room matrix is built properly
- *          -1x1 room
- *          -2x2 rooms
- *          
- * 2. buildRoom
- * -theRoomString null DONE
- * -theMaze isnnull DONE
- * -theQmanager is null DONE
- * -theRoomString length < 4 DONE
- * -illegal args if theRow < 0 or theCol < 0
- * 
- * -test different room strings
- * -YYYY
- * -NNNN
- * -@YYYY
- * -$YYYY
- * -@YNYN
- * -$NYNY
- * 
- */
-
-
-
-
-
-
-
-
-
-
-
-
-

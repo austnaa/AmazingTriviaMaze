@@ -13,9 +13,6 @@ import java.util.Objects;
  */
 public class Room {
     
-    /** Whether or not this Room is the room the game starts in. */
-    private boolean myIsStartRoom;
-    
     /** Whether or not this Room is the room the game ends in. */
     private boolean myIsEndRoom;
     
@@ -64,11 +61,10 @@ public class Room {
      * @param theWestDoor     the Room located to the east  (null if there isn't a door)
      * @param theEastDoor     the Room located to the west  (null if there isn't a door)
      */
-    public Room(final boolean theRoomIsStart, final boolean theRoomIsEnd,
+    public Room(final boolean theRoomIsEnd,
             final Door theNorthDoor, final Door theSouthDoor,
             final Door theWestDoor, final Door theEastDoor) {
-        
-        myIsStartRoom = theRoomIsStart; 
+         
         myIsEndRoom = theRoomIsEnd;
         myHasBeenVisited = false;
         
@@ -164,51 +160,10 @@ public class Room {
      * Returns whether or not this is the last room.
      * @return whether or not this is the last room.
      */
-    public boolean isMyIsEndRoom() {
+    public boolean isEndRoom() {
         return myIsEndRoom;
     }
-    /**
-     * Returns a String representation of this room.
-     */
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Room: ");
-        stringBuilder.append(System.lineSeparator());
-        
-        // start room?
-        stringBuilder.append("Start room: " + myIsStartRoom);
-        stringBuilder.append(System.lineSeparator());        
-        
-        // end room?
-        stringBuilder.append("End room: " + myIsEndRoom);
-        stringBuilder.append(System.lineSeparator());
-
-        // doors
-        stringBuilder.append("Door status:");
-        stringBuilder.append(System.lineSeparator());
-        
-        stringBuilder.append("North: ");
-        stringBuilder.append(myNorthDoor != null);
-        stringBuilder.append(System.lineSeparator());
-        
-        stringBuilder.append("South: ");
-        stringBuilder.append(mySouthDoor != null);
-        stringBuilder.append(System.lineSeparator());
-        
-        stringBuilder.append("East: ");
-        stringBuilder.append(myEastDoor != null);
-        stringBuilder.append(System.lineSeparator());
-        
-        stringBuilder.append("West: ");
-        stringBuilder.append(myWestDoor != null);
-        stringBuilder.append(System.lineSeparator());
-        
-        
-        return stringBuilder.toString();
-    }
     
-  //TODO: DECIDE IF WE WANT GETTERS FOR THE OTHER TWO DOORS...
     /**
      * Returns this Room's southern door. 
      * Will return null if this Room does not have a southern door.
@@ -229,11 +184,60 @@ public class Room {
         return myEastDoor;
     }
     
+    /**
+     * Returns this Room's northern door. 
+     * Will return null if this Room does not have a northern door.
+     * 
+     * @return this Room's northern door if it exists, null otherwise.
+     */
     public Door getNorthDoor() {
         return myNorthDoor;
     }
     
-   public Door getWestDoor() {
+    /**
+     * Returns this Room's western door. 
+     * Will return null if this Room does not have a western door.
+     * 
+     * @return this Room's western door if it exists, null otherwise.
+     */
+    public Door getWestDoor() {
         return myWestDoor;
     }
+   
+   /**
+    * Returns a String representation of this room.
+    */
+   @Override
+   public String toString() {
+       StringBuilder stringBuilder = new StringBuilder();
+       stringBuilder.append("Room: ");
+       stringBuilder.append(System.lineSeparator());
+            
+       // end room?
+       stringBuilder.append("End room: " + myIsEndRoom);
+       stringBuilder.append(System.lineSeparator());
+
+       // doors
+       stringBuilder.append("Door status:");
+       stringBuilder.append(System.lineSeparator());
+       
+       stringBuilder.append("North: ");
+       stringBuilder.append(myNorthDoor != null);
+       stringBuilder.append(System.lineSeparator());
+       
+       stringBuilder.append("South: ");
+       stringBuilder.append(mySouthDoor != null);
+       stringBuilder.append(System.lineSeparator());
+       
+       stringBuilder.append("East: ");
+       stringBuilder.append(myEastDoor != null);
+       stringBuilder.append(System.lineSeparator());
+       
+       stringBuilder.append("West: ");
+       stringBuilder.append(myWestDoor != null);
+       stringBuilder.append(System.lineSeparator());
+       
+       
+       return stringBuilder.toString();
+   }
 }

@@ -77,6 +77,7 @@ public class DoorTest {
      */
     @Before
     public void setUp() {
+<<<<<<< HEAD
         myPlayer = new Player();
         myQuestion = new Dummy("This is for testing", Question.QuestionType.TRUE_FALSE);;
         myDoorNorth = new Door(Door.TYPE.NORTH, myQuestion);
@@ -90,6 +91,8 @@ public class DoorTest {
     @Test
     public void testPlayerNotNull() {
         assertNotNull(myPlayer);   
+=======
+>>>>>>> 0017fd2750813dc0a949bceb627f4145c33e5a6e
     }
     
     /**

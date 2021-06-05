@@ -49,7 +49,7 @@ public class PanelSheet extends SheetLoader {
      * @param thePlayer - the player
      */
     public void drawWinLosePanel(final Graphics2D theGraphics, final Room theRoom, final Player thePlayer) {
-        if (theRoom.isMyIsEndRoom()) {
+        if (theRoom.isEndRoom()) {
             theGraphics.drawImage(myWinImage, 0, 0, null);
             Sound.GAMEPLAY.stop();
             Sound.WIN.start();

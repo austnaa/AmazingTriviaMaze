@@ -57,7 +57,7 @@ public class ItemSheet extends SheetLoader {
      * @param theRoom
      */
     public void drawWinItem(final Graphics2D theGraphics, final Room theRoom) {
-        if (theRoom.isMyIsEndRoom()) {
+        if (theRoom.isEndRoom()) {
             theGraphics.drawImage(myWinItemImage, GameFrame.FRAME_HEIGHT/2, GameFrame.FRAME_WIDTH/2, null);
         }
     }

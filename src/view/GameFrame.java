@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 
 import model.MazeManager;
 import model.Sound;
+import model.question.QuestionManager;
 
 /**
  * The class for the Amazing Trivia Maze game frame.
@@ -53,7 +54,8 @@ public class GameFrame extends JFrame {
      */
     public GameFrame() {
         myStartPanel = new StartPanel();
-        myMazeManager = new MazeManager();
+        final QuestionManager questionManager = new QuestionManager();
+        myMazeManager = new MazeManager(questionManager);
         myGamePanel = new GamePanel(myMazeManager);
         setup();
     }
