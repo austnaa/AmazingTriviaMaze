@@ -20,28 +20,28 @@ import view.GameFrame;
 public class Door {
     
     /** The x position of a north door. */
-    private static final int NORTH_X = GameFrame.FRAME_WIDTH / 2;
+    public static final int NORTH_X = GameFrame.FRAME_WIDTH / 2;
     
     /** The y position of a north door. */
-    private static final int NORTH_Y = 0;
+    public static final int NORTH_Y = 0;
     
     /** The x position of a south door */
-    private static final int SOUTH_X = GameFrame.FRAME_WIDTH / 2;
+    public static final int SOUTH_X = GameFrame.FRAME_WIDTH / 2;
     
     /** The y position of a south door */
-    private static final int SOUTH_Y = GameFrame.FRAME_HEIGHT - 128;
+    public static final int SOUTH_Y = GameFrame.FRAME_HEIGHT - 128;
     
     /** The x position of a west door */
-    private static final int WEST_X = 0;
+    public static final int WEST_X = 0;
     
     /** The y position of a west door */
-    private static final int WEST_Y = GameFrame.FRAME_HEIGHT / 2;
+    public static final int WEST_Y = GameFrame.FRAME_HEIGHT / 2;
     
     /** The x position of an east door */
-    private static final int EAST_X = GameFrame.FRAME_WIDTH;
+    public static final int EAST_X = GameFrame.FRAME_WIDTH;
     
     /** The y position of an east door */
-    private static final int EAST_Y = GameFrame.FRAME_HEIGHT / 2;
+    public static final int EAST_Y = GameFrame.FRAME_HEIGHT / 2;
     
     /** The possible types of a door */
     public enum TYPE { NORTH, SOUTH, EAST, WEST };
@@ -94,7 +94,7 @@ public class Door {
      * @return whether or not the given Player is close enough to this door for interaction.
      * @throws NullPointerException if thePlayer is null
      */
-    private boolean isCloseEnough(final Player thePlayer) {
+    public boolean isCloseEnough(final Player thePlayer) {
         Objects.requireNonNull(thePlayer, "thePlayer can not be null");
         final int xDiff = Math.abs(thePlayer.getXPosition() - myX);
         final int yDiff = Math.abs(thePlayer.getYPosition() - myY);
