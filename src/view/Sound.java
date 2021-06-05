@@ -2,7 +2,7 @@
  * Amazing Trivia Maze
  * TCSS 360 Spring 2021
  */
-package model;
+package view;
 
 import java.io.File;
 import java.io.IOException;

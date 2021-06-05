@@ -22,7 +22,6 @@ import javax.swing.Timer;
 import model.Door;
 import model.MazeManager;
 import model.Player;
-import model.Sound;
 
 /**
  * The panel that paints the graphics of the program.

@@ -15,12 +15,12 @@ import javax.swing.JButton;
 import javax.swing.JRadioButton;
 
 import model.Player;
-import model.Sound;
 import model.question.MultipleChoiceQuestion;
 import model.question.Option;
 import model.question.Question;
 
 import view.GamePanel;
+import view.Sound;
 
 /**
  * A Panel that displays a multiple choice question.

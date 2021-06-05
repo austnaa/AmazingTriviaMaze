@@ -13,11 +13,11 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 import model.Player;
-import model.Sound;
 import model.question.FreeResponseQuestion;
 import model.question.Question;
 
 import view.GamePanel;
+import view.Sound;
 
 /**
  * The class for free response question panels.

@@ -12,7 +12,6 @@ import javax.sound.sampled.Clip;
 import javax.swing.JFrame;
 
 import model.MazeManager;
-import model.Sound;
 import model.question.QuestionManager;
 
 /**

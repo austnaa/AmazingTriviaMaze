@@ -7,6 +7,7 @@ import org.junit.Test;
 import model.Door;
 import model.Player;
 import model.question.Question;
+import tests.mock_objects.QuestionMock;
 
 /**
  * JUnit test class for the Room class.  
@@ -39,38 +40,11 @@ public class DoorTest {
      * The player of the game.
      */
     private Player myPlayer;
-
-    /**
-     * A child class that inherits abstract Question class.
-     * For testing purposes
-     * @author Chau Vu
-     * @version Spring 2021
-     */
-    public class Dummy extends Question
-    {
-        /**
-         * Dummy class constructor.
-         * @param theQuestion - the question 
-         * @param theType - the type of question
-         */
-        public Dummy(String theQuestion, QuestionType theType) {
-            super(theQuestion, theType); 
-        }
-        /**
-         * Overriding the answerQuestion method for testing purposes.
-         */
-        @Override
-        public void answerQuestion(final Player thePlayer) {
-            if (this.getType() == Question.QuestionType.TRUE_FALSE) {
-                setAnsweredAlready(true);
-            }
-        }
-    }
     
     /**
      * A child class that inherits abstract Question class.
      */
-    private Dummy myQuestion;
+    private QuestionMock myQuestion;
     
     /**
      * Set up method before tests.
@@ -78,7 +52,7 @@ public class DoorTest {
     @Before
     public void setUp() {
         myPlayer = new Player();
-        myQuestion = new Dummy("This is for testing", Question.QuestionType.TRUE_FALSE);;
+        myQuestion = new QuestionMock("This is for testing", Question.QuestionType.TRUE_FALSE);;
         myDoorNorth = new Door(Door.TYPE.NORTH, myQuestion);
         myDoorSouth = new Door(Door.TYPE.SOUTH, myQuestion);
         myDoorWest = new Door(Door.TYPE.WEST, myQuestion);
