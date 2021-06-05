@@ -34,11 +34,8 @@ public class MazeManager {
     /** The file name of maze 4. */
     private static final String MAZE_4 = "map4.txt";
     
-    /** A List of Room matrices that have not been used in the current program's execution. */
-    private List<Room[][]> myUnusedMazes;
-    
     /** A List of Room matrices that have been used in the current program's execution. */
-    private List<Room[][]> myUsedMazes;
+    private List<Room[][]> myMazes;
     
     /** The current Maze the game is displaying. */
     private Room[][] myCurrentMaze;
@@ -67,8 +64,7 @@ public class MazeManager {
         myQuestionManager = Objects.requireNonNull(theQuestionManager,
                 "theQuestionManager can not be null");
         
-        myUnusedMazes = new ArrayList<Room[][]>();
-        myUsedMazes = new ArrayList<Room[][]>();
+        myMazes = new ArrayList<Room[][]>();
         
         setupMazes();
         setNewMaze();
@@ -88,19 +84,19 @@ public class MazeManager {
             final Room[][] maze3 = MazeBuilder.buildMaze(MAZE_3, myQuestionManager);
             final Room[][] maze4 = MazeBuilder.buildMaze(MAZE_4, myQuestionManager);
             
-            myUnusedMazes.add(maze1);
-            myUnusedMazes.add(maze2);
-            myUnusedMazes.add(maze3);
-            myUnusedMazes.add(maze4);
+            myMazes.add(maze1);
+            myMazes.add(maze2);
+            myMazes.add(maze3);
+            myMazes.add(maze4);
             
             // shuffle the full list of unused mazes so when we pull from 
             // the list later the order in which we use mazes is randomized
-            Collections.shuffle(myUnusedMazes);
+            Collections.shuffle(myMazes);
             
         } catch (NullPointerException exception) {
-            System.out.println("a null pointer exception occurred while trying to create a maze");
+            System.out.println("A null pointer exception occurred while trying to create a maze");
         } catch (FileNotFoundException exception) {
-            System.out.println("a map file was not found");
+            System.out.println("A map file was not found");
         }
     }
     
@@ -109,19 +105,13 @@ public class MazeManager {
      */
     public void setNewMaze() {
         // get a maze from the unused list of mazes
-        Room[][] resultMaze = myUnusedMazes.remove(myUnusedMazes.size() - 1);
-        
-        // add the maze to the used maze list
-        myUsedMazes.add(resultMaze);
-        
+        Room[][] resultMaze = myMazes.remove(myMazes.size() - 1);
+         
         // if the unused maze list is empty, transfer the mazes
-        if (myUnusedMazes.size() == 0) {
-            moveUsedMazesToUnused();
+        if (myMazes.size() == 0) {
+            setupMazes();
         }
         
-        // TODO we may want to change this behavior to match the "start room" 
-        // mechanic we have in out map.txt files OR change our map mazes to always 
-        // start at (0, 0)
         myCurrentMaze = resultMaze;
         myMazeRow = 0;
         myMazeCol = 0;
@@ -138,10 +128,11 @@ public class MazeManager {
      * @param theDoorType the type of door the player moved through
      */
     public void moveRooms(final Door.TYPE theDoorType) {
+        Objects.requireNonNull(theDoorType, "theDoorType can not be null");
         if (theDoorType == Door.TYPE.NORTH) {
             myMazeRow = Math.max(myMazeRow - 1, 0);
         } else if (theDoorType == Door.TYPE.SOUTH) {
-            myMazeRow = Math.min(myMazeRow + 1, myCurrentMaze.length);
+            myMazeRow = Math.min(myMazeRow + 1, myCurrentMaze.length - 1);
         } else if (theDoorType == Door.TYPE.WEST) {
             myMazeCol = Math.max(myMazeCol - 1, 0);
         } else if (theDoorType == Door.TYPE.EAST) {
@@ -166,13 +157,5 @@ public class MazeManager {
     public Room getCurrentRoom() {
         return myCurrentRoom;
     }
-    
-    /** 
-     * Resets the UnusedMaze list so they can be asked. 
-     */
-    private void moveUsedMazesToUnused() {
-        while (myUsedMazes.size() > 0) {
-            myUnusedMazes.add(myUsedMazes.remove(0));
-        }
-    }
+
 }
