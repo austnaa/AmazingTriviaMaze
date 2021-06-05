@@ -2,18 +2,22 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
+
 package model;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import model.question.QuestionManager;
+import model.question.QuestionManagerInterface;
 
 /**
  * Builds and maintains the collection of possible mazes the game can pick 
  * from and the current maze that is being used in the current game.
+ * 
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -24,6 +28,12 @@ public class MazeManager {
     
     /** The file name of maze 2. */
     private static final String MAZE_2 = "map2.txt";
+    
+    /** The file name of maze 3. */
+    private static final String MAZE_3 = "map3.txt";
+    
+    /** The file name of maze 4. */
+    private static final String MAZE_4 = "map4.txt";
     
     /** A List of Room matrices that have not been used in the current program's execution. */
     private List<Room[][]> myUnusedMazes;
@@ -43,16 +53,19 @@ public class MazeManager {
     /** The 0-indexed column the current room is located at in the current maze. */
     private int myMazeCol;
     
-    /** TODO */
-    private QuestionManager myQuestionManager;
+    /** The QuestionManager for this MazeManager that contributes Questions. */
+    private QuestionManagerInterface myQuestionManager;
     
     /**
      * Constructs a new MazeManager that contains all mazes available to be played 
      * and sets the first maze.
+     * @param theQuestionManager the QuestionManager that provides Questions for the maze. 
+     * @throws NullPointerException if theQuestionManager is null
      */
-    public MazeManager() {
+    public MazeManager(final QuestionManagerInterface theQuestionManager) {
         
-        myQuestionManager = new QuestionManager();
+        myQuestionManager = Objects.requireNonNull(theQuestionManager,
+                "theQuestionManager can not be null");
         
         myUnusedMazes = new ArrayList<Room[][]>();
         myUsedMazes = new ArrayList<Room[][]>();
