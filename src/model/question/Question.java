@@ -20,7 +20,7 @@ import view.question_view.TrueFalseQuestionPanel;
  */
 public abstract class Question {
     
-    /** An enumerated type that specifies the questin type. */
+    /** An enumerated type that specifies the question type. */
     public enum QuestionType { MULTIPLE_CHOICE, TRUE_FALSE, FREE_RESPONSE };
     
     /** The question prompt. */

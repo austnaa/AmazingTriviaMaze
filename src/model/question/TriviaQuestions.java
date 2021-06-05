@@ -2,6 +2,7 @@
  * Amazing Trivia Maze
  * TCSS 360 Spring 2021
  */
+
 package model.question;
 
 import java.sql.Connection;
@@ -39,42 +40,46 @@ public final class TriviaQuestions {
      */
     public static List<Question> getTriviaQuestions() {
         Connection connection = null;
-        final List<Question> questions = new ArrayList<Question>();
+        final List<Question> questionsList = new ArrayList<Question>();
         try {
             // Create a database connection.
             // We are using jdbc for the Java database connection and SQLite ("jdbc:sqlite").
             // Then we are using the actual .db physical file that we want to connect to ("jdbc:sqlite:db_name.db").
-            final String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/src/model/question/TriviaQuestions.db";
+            final String url = "jdbc:sqlite:" + System.getProperty("user.dir") + 
+                    "/src/model/question/TriviaQuestions.db";
             connection = DriverManager.getConnection(url);
             final Statement statement = connection.createStatement();
             // Sets the timeout to 30 seconds (if the query takes too long - good practice).
             statement.setQueryTimeout(30);
 
-            final ResultSet mc = statement.executeQuery("SELECT * FROM MultipleChoice");
-            while (mc.next()) {
-                final Option answer = new Option(mc.getString(ANSWER), true);
-                final Option optionB = new Option(mc.getString("OptionB"), false);
-                final Option optionC = new Option(mc.getString("OptionC"), false);
-                final Option optionD = new Option(mc.getString("OptionD"), false);
-                final Question q = new MultipleChoiceQuestion(mc.getString(QUESTION), answer, optionB, optionC, optionD);
-                questions.add(q);
+            final ResultSet multipleChoiceSet = statement.executeQuery("SELECT * FROM MultipleChoice");
+            while (multipleChoiceSet.next()) {
+                final Option answer = new Option(multipleChoiceSet.getString(ANSWER), true);
+                final Option optionB = new Option(multipleChoiceSet.getString("OptionB"), false);
+                final Option optionC = new Option(multipleChoiceSet.getString("OptionC"), false);
+                final Option optionD = new Option(multipleChoiceSet.getString("OptionD"), false);
+                final Question question = new MultipleChoiceQuestion(multipleChoiceSet.getString(QUESTION),
+                        answer, optionB, optionC, optionD);
+                questionsList.add(question);
             }
 
-            final ResultSet tf = statement.executeQuery("SELECT * FROM TrueFalse");
-            while (tf.next()) {
-                final Option answer = new Option(mc.getString(ANSWER), true);
-                final Option incorrect = new Option(mc.getString("Incorrect"), false);
-                final Question q = new TrueFalseQuestion(tf.getString(QUESTION), answer, incorrect);
-                questions.add(q);
+            final ResultSet trueFalseSet = statement.executeQuery("SELECT * FROM TrueFalse");
+            while (trueFalseSet.next()) {
+                final Option answer = new Option(multipleChoiceSet.getString(ANSWER), true);
+                final Option incorrect = new Option(multipleChoiceSet.getString("Incorrect"), false);
+                final Question question = new TrueFalseQuestion(trueFalseSet.getString(QUESTION),
+                        answer, incorrect);
+                questionsList.add(question);
             }
 
-            final ResultSet fr = statement.executeQuery("SELECT * FROM FreeResponse");
-            while (tf.next()) {
-                final Question q = new FreeResponseQuestion(fr.getString(QUESTION), fr.getString(ANSWER));
-                questions.add(q);
+            final ResultSet freeResponseSet = statement.executeQuery("SELECT * FROM FreeResponse");
+            while (trueFalseSet.next()) {
+                final Question question = new FreeResponseQuestion(freeResponseSet.getString(QUESTION),
+                        freeResponseSet.getString(ANSWER));
+                questionsList.add(question);
             }
         }
-        catch (final SQLException e) {
+        catch (final SQLException exception) {
             System.out.println("The database file was not found!");
         }
         finally {
@@ -83,10 +88,10 @@ public final class TriviaQuestions {
                     connection.close();
                 }
             }
-            catch (final SQLException e) {
+            catch (final SQLException exception) {
                 System.out.println("Could not close the connection!");
             }
         }
-        return questions;
+        return questionsList;
     }
 }
