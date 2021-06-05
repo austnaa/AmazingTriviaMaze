@@ -64,6 +64,14 @@ public abstract class Question {
         return myAnsweredAlready;
     }
     
+    /**
+     * Gets the question type. 
+     * @return The question type.
+     */
+    public QuestionType getType() {
+        return myType;
+    }
+    
     
     // NOTE: this is view code and is not tested, we will refactor this 
     //       code out of this class if possible at a later date.
@@ -96,14 +104,6 @@ public abstract class Question {
      */
     protected void setAnsweredAlready(final boolean theAnsweredAlready) {
         myAnsweredAlready = theAnsweredAlready;
-    }
-    
-    /**
-     * Gets the question type. 
-     * @return The question type.
-     */
-    protected QuestionType getType() {
-        return myType;
     }
     
     /**

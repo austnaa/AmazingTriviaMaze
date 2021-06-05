@@ -35,15 +35,6 @@ public class QuestionMock extends Question {
     }
     
     /**
-     * Public getType method used for testing to ensure the getType method 
-     * works properly without breaking encapsulation.
-     */
-    @Override
-    public QuestionType getType() {
-        return super.getType();
-    }
-    
-    /**
      * Public setAnsweredAlready method for the superclass for testing purposes.
      */
     @Override
