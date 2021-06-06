@@ -26,17 +26,33 @@ public class TrueFalseQuestion extends Question {
     /** The ButtonGroup that contains the options. */
     private ButtonGroup myButtonGroup;
 
-    
     /**
      * Constructor the the free response trivia questions.
-     * @param theQuestion The question prompt.
-     * @param theAnswer The answer.
+     * 
+     * @param theQuestion The question prompt that represents the question being asked
+     * @param theAnswer the Option that represents the correct answer
+     * @param theIncorrectAnswer the Option that represents the incorrect answer
+     * @throws NullPointerException if theQuestion is null
+     * @throws NullPointerException if theAnswer is null
+     * @throws NullPointerException if theIncorrectAnswer is null
+     * @throws IllegalArgumentException if theAnswer is not a correct Option
+     * @throws IllegalArgumentException if theIncorrectAnswer is not an incorrect Option
      */
-    public TrueFalseQuestion(final String theQuestion, final Option theAnswer, final Option theIncorrectAnswer) {
-        super(theQuestion, QuestionType.TRUE_FALSE);
-        myAnswer = Objects.requireNonNull(theAnswer);
-        myIncorrectAnswer = Objects.requireNonNull(theIncorrectAnswer);
+    public TrueFalseQuestion(final String theQuestion, final Option theAnswer,
+            final Option theIncorrectAnswer) {
         
+        super(theQuestion, QuestionType.TRUE_FALSE);
+        myAnswer = Objects.requireNonNull(theAnswer, "theAnswer can not be null");
+        myIncorrectAnswer = Objects.requireNonNull(theIncorrectAnswer, 
+                "theIncorrectAnswer can not be null");
+        if (!myAnswer.isCorrectOption()) {
+            throw new IllegalArgumentException("theAnswer must be a correct Option!");
+        }
+        if (myIncorrectAnswer.isCorrectOption()) {
+            throw new IllegalArgumentException("theIncorrectAnswer must be an incorrect Option!");
+        }
+        
+        // add the Options to a button group so only one of them can be selected at a time
         myButtonGroup = new ButtonGroup();
         myButtonGroup.add(myAnswer);
         myButtonGroup.add(myIncorrectAnswer);
