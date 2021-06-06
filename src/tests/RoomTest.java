@@ -17,6 +17,7 @@ import model.question.TrueFalseQuestion;
 /**
  * Test class for maze rooms.
  * @author Daniel Jiang
+ * @author Chau Vu
  * @version Spring 2021
  */
 public class RoomTest {

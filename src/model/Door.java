@@ -64,8 +64,8 @@ public class Door {
      * Constructor that builds a door with default values.
      */
     public Door(final TYPE theType, final Question theQuestion) {
-        myType = theType;
-        myQuestion = theQuestion;
+        myType = Objects.requireNonNull(theType, "theType cannot be null");
+        myQuestion = Objects.requireNonNull(theQuestion, "theQuestion cannot be null");
         setXYPosition();
     }
     
@@ -75,6 +75,7 @@ public class Door {
      * Interact with this door if the player is close enough.  
      */
     public Door interact(final Player thePlayer) {
+        Objects.requireNonNull(thePlayer, "thePlayer cannot be null");
         // TODO: THIS CAN BE REFACTORED TO LOOK BETTER
         if (isCloseEnough(thePlayer)) {
             if (this.isLocked()) {

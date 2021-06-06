@@ -58,6 +58,47 @@ public class DoorTest {
         myDoorWest = new Door(Door.TYPE.WEST, myQuestion);
         myDoorEast = new Door(Door.TYPE.EAST, myQuestion);
     }
+    
+    /**
+     * expecting a null pointer exception if pass in a null door type.
+     */
+    @Test (expected = NullPointerException.class)
+    public void testTypeNullDoor() {
+        myDoorNorth = new Door(null, myQuestion);
+    }
+    
+    /**
+     * expecting a null pointer exception if pass in a null question
+     */
+    @Test (expected = NullPointerException.class)
+    public void testTypeNullQuestion() {
+        myDoorNorth = new Door(Door.TYPE.NORTH, null);
+    }
+    
+    /**
+     * expecting a null pointer exception if pass in a null question and door type.
+     */
+    @Test (expected = NullPointerException.class)
+    public void testTypeNullQuestionDoor() {
+        myDoorNorth = new Door(null, null);
+    }
+    
+    /**
+     * expecting a null pointer exception if pass in a null player.
+     */
+    @Test (expected = NullPointerException.class)
+    public void testInteractnullPlayer() {
+        myDoorNorth.interact(null);
+    }
+    
+    /**
+     * expecting a null pointer exception if pass in a null player.
+     */
+    @Test (expected = NullPointerException.class)
+    public void testIsCloseEnoughNull() {
+        myDoorNorth.isCloseEnough(null);
+    }
+    
     /**
      * Test if the player is not null.
      */
