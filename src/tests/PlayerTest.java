@@ -34,6 +34,14 @@ public class PlayerTest {
     }
     
     /**
+     * expecting a null pointer exception if pass in a null door type.
+     */
+    @Test (expected = NullPointerException.class)
+    public void testMoveRoomsNull() {
+        myPlayer.moveRooms(null);
+    }    
+    
+    /**
      * Test player cannot be null.
      */
     @Test

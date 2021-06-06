@@ -5,6 +5,8 @@
 package model;
 
 import java.awt.image.BufferedImage;
+import java.util.Objects;
+
 import view.GameFrame;
 import view.SpriteSheet;
 
@@ -281,6 +283,7 @@ public class Player {
      * @param theDoorType - The door position in its room (North/South/East/West).
      */
     public void moveRooms(final Door.TYPE theDoorType) {
+        Objects.requireNonNull(theDoorType, "theDoorType cannot be null");      
         if (theDoorType == Door.TYPE.NORTH) {
             myX = MAX_X / 2;
             myY = MAX_Y;
