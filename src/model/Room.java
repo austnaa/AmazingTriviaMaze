@@ -66,11 +66,12 @@ public class Room {
          
         myIsEndRoom = theRoomIsEnd;
         myHasBeenVisited = false;
+
+        myNorthDoor = theNorthDoor;
+        mySouthDoor = theSouthDoor;
+        myWestDoor = theWestDoor;
+        myEastDoor = theEastDoor;
         
-        myNorthDoor = Objects.requireNonNull(theNorthDoor, "The North Door cannot be null!");
-        mySouthDoor = Objects.requireNonNull(theSouthDoor, "The South Door cannot be null!");   
-        myWestDoor = Objects.requireNonNull(theWestDoor, "The West Door cannot be null!");
-        myEastDoor = Objects.requireNonNull(theEastDoor, "The East Door cannot be null!");
     }
     
     /**
