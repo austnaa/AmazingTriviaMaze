@@ -17,7 +17,7 @@ import model.question.Option;
 import model.question.Question;
 
 /**
- * Test class for TriviaQuestions.
+ * Test class for multiple choice questions.
  * @author Daniel Jiang
  * @version Spring 2021
  */
@@ -147,7 +147,7 @@ public class MultipleChoiceQuestionTest {
         sb.append(myOptionB);
         sb.append(myOptionC);
         sb.append(myOptionD);
-        assertEquals("The question has not the correct type!", myMultipleChoiceQuestion.toString(), sb.toString());
+        assertEquals("The question string is not correct!", myMultipleChoiceQuestion.toString(), sb.toString());
     }
     
     /**
@@ -226,7 +226,7 @@ public class MultipleChoiceQuestionTest {
     @Test
     public void testCheckAnswerOptionB() {
         myOptionB.setSelected(true);
-        assertEquals("This is the correct answer!", myMultipleChoiceQuestion.checkAnswer(), false);
+        assertEquals("This is not thecorrect answer!", myMultipleChoiceQuestion.checkAnswer(), false);
     }
     
     /**
@@ -235,7 +235,7 @@ public class MultipleChoiceQuestionTest {
     @Test
     public void testCheckAnswerOptionC() {
         myOptionC.setSelected(true);
-        assertEquals("This is the correct answer!", myMultipleChoiceQuestion.checkAnswer(), false);
+        assertEquals("This is not the correct answer!", myMultipleChoiceQuestion.checkAnswer(), false);
     }
     
     /**
@@ -244,6 +244,6 @@ public class MultipleChoiceQuestionTest {
     @Test
     public void testCheckAnswerOptionD() {
         myOptionD.setSelected(true);
-        assertEquals("This is the correct answer!", myMultipleChoiceQuestion.checkAnswer(), false);
+        assertEquals("This is not the correct answer!", myMultipleChoiceQuestion.checkAnswer(), false);
     }
 }
