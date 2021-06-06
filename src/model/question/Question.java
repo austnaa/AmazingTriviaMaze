@@ -102,7 +102,7 @@ public abstract class Question {
      * Sets the question is/isn't answered already.
      * @param theAnsweredAlready The question is/isn't answered already.
      */
-    protected void setAnsweredAlready(final boolean theAnsweredAlready) {
+    public void setAnsweredAlready(final boolean theAnsweredAlready) {
         myAnsweredAlready = theAnsweredAlready;
     }
     
