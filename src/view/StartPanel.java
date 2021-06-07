@@ -29,7 +29,7 @@ public class StartPanel extends JPanel {
     private static final int START_X = 214;
     
     /** The rightmost x position where the start buttons ends. */
-    private static final int END_X = 214;
+    private static final int END_X = 427;
     
     /** The upper y position where the start buttons starts. */
     private static final int START_Y = 485;
