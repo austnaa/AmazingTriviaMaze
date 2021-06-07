@@ -290,7 +290,7 @@ public class MazeBuilderTest {
         
         // create the room that will be to the west of the door we want to create        
         final Room westRoom = new Room(false, null, null, null,
-                new Door(Door.TYPE.EAST, myQuestionManagerMock.getRandomQuestion()));
+                new Door(Door.DoorType.EAST, myQuestionManagerMock.getRandomQuestion()));
         
         final Room[][] tempMaze = new Room[1][2];
         tempMaze[0][0] = westRoom;
@@ -325,7 +325,7 @@ public class MazeBuilderTest {
         
         // create the northern room
         final Room northRoom = new Room(false, null, 
-                new Door(Door.TYPE.SOUTH, myQuestionManagerMock.getRandomQuestion()), null, null);
+                new Door(Door.DoorType.SOUTH, myQuestionManagerMock.getRandomQuestion()), null, null);
         
         final Room[][] tempMaze = new Room[2][1];
         tempMaze[0][0] = northRoom;
@@ -357,10 +357,10 @@ public class MazeBuilderTest {
         
         // create the northern room and western room that will share questions with the resultRoom
         final Room northRoom = new Room(false, null, 
-                new Door(Door.TYPE.SOUTH, myQuestionManagerMock.getRandomQuestion()), null, null);
+                new Door(Door.DoorType.SOUTH, myQuestionManagerMock.getRandomQuestion()), null, null);
         // create the room that will be to the west of the door we want to create        
         final Room westRoom = new Room(false, null, null, null,
-                new Door(Door.TYPE.EAST, myQuestionManagerMock.getRandomQuestion()));
+                new Door(Door.DoorType.EAST, myQuestionManagerMock.getRandomQuestion()));
         
         final Room[][] tempMaze = new Room[2][2];
         tempMaze[0][1] = northRoom;

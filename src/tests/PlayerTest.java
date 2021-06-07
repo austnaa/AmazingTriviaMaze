@@ -207,7 +207,7 @@ public class PlayerTest {
     @Test
     public void testMoveRoomNorthX() {
         final int location = Player.MAX_X / 2;
-        myPlayer.moveRooms(Door.TYPE.NORTH);
+        myPlayer.moveRooms(Door.DoorType.NORTH);
         assertEquals("Location is not updated properly", myPlayer.getXPosition(), location);
     }
     /**
@@ -217,7 +217,7 @@ public class PlayerTest {
     @Test
     public void testMoveRoomNorthY() {
         final int location = Player.MAX_Y;
-        myPlayer.moveRooms(Door.TYPE.NORTH);
+        myPlayer.moveRooms(Door.DoorType.NORTH);
         assertEquals("Location is not updated properly", myPlayer.getYPosition(), location);
     }
     /**
@@ -227,7 +227,7 @@ public class PlayerTest {
     @Test
     public void testMoveRoomSouthX() {
         final int location = Player.MAX_X / 2;
-        myPlayer.moveRooms(Door.TYPE.SOUTH);
+        myPlayer.moveRooms(Door.DoorType.SOUTH);
         assertEquals("Location is not updated properly", myPlayer.getXPosition(), location);
     }
     /**
@@ -237,7 +237,7 @@ public class PlayerTest {
     @Test
     public void testMoveRoomSouthY() {
         final int location = Player.MIN_Y;
-        myPlayer.moveRooms(Door.TYPE.SOUTH);
+        myPlayer.moveRooms(Door.DoorType.SOUTH);
         assertEquals("Location is not updated properly", myPlayer.getYPosition(), location);
     }
     /**
@@ -247,7 +247,7 @@ public class PlayerTest {
     @Test
     public void testMoveRoomEastX() {
         final int location = Player.MIN_X;
-        myPlayer.moveRooms(Door.TYPE.EAST);
+        myPlayer.moveRooms(Door.DoorType.EAST);
         assertEquals("Location is not updated properly", myPlayer.getXPosition(), location);
     }
     /**
@@ -257,7 +257,7 @@ public class PlayerTest {
     @Test
     public void testMoveRoomEastY() {
         final int location = Player.MAX_Y / 2;
-        myPlayer.moveRooms(Door.TYPE.EAST);
+        myPlayer.moveRooms(Door.DoorType.EAST);
         assertEquals("Location is not updated properly", myPlayer.getYPosition(), location);
     }
     /**
@@ -267,7 +267,7 @@ public class PlayerTest {
     @Test
     public void testMoveRoomWestX() {
         final int location = Player.MAX_X;
-        myPlayer.moveRooms(Door.TYPE.WEST);
+        myPlayer.moveRooms(Door.DoorType.WEST);
         assertEquals("Location is not updated properly", myPlayer.getXPosition(), location);
     }
     /**
@@ -277,7 +277,7 @@ public class PlayerTest {
     @Test
     public void testMoveRoomWestY() {
         final int location = Player.MAX_Y / 2;
-        myPlayer.moveRooms(Door.TYPE.WEST);
+        myPlayer.moveRooms(Door.DoorType.WEST);
         assertEquals("Location is not updated properly", myPlayer.getYPosition(), location);
     }
     /**

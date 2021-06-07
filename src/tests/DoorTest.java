@@ -53,10 +53,10 @@ public class DoorTest {
     public void setUp() {
         myPlayer = new Player();
         myQuestion = new QuestionMock("This is for testing", Question.QuestionType.TRUE_FALSE);;
-        myDoorNorth = new Door(Door.TYPE.NORTH, myQuestion);
-        myDoorSouth = new Door(Door.TYPE.SOUTH, myQuestion);
-        myDoorWest = new Door(Door.TYPE.WEST, myQuestion);
-        myDoorEast = new Door(Door.TYPE.EAST, myQuestion);
+        myDoorNorth = new Door(Door.DoorType.NORTH, myQuestion);
+        myDoorSouth = new Door(Door.DoorType.SOUTH, myQuestion);
+        myDoorWest = new Door(Door.DoorType.WEST, myQuestion);
+        myDoorEast = new Door(Door.DoorType.EAST, myQuestion);
     }
     
     /**
@@ -72,7 +72,7 @@ public class DoorTest {
      */
     @Test (expected = NullPointerException.class)
     public void testTypeNullQuestion() {
-        myDoorNorth = new Door(Door.TYPE.NORTH, null);
+        myDoorNorth = new Door(Door.DoorType.NORTH, null);
     }
     
     /**
@@ -131,7 +131,7 @@ public class DoorTest {
      */
     @Test
     public void testIsCloseEnoughSouth() {
-        myPlayer.moveRooms(Door.TYPE.SOUTH);
+        myPlayer.moveRooms(Door.DoorType.SOUTH);
         assertEquals("There's no door near", true, myDoorNorth.isCloseEnough(myPlayer));    
     }
     /**
@@ -139,7 +139,7 @@ public class DoorTest {
      */
     @Test
     public void testIsCloseEnougNorth() {
-        myPlayer.moveRooms(Door.TYPE.NORTH);
+        myPlayer.moveRooms(Door.DoorType.NORTH);
         assertEquals("There's no door near", true, myDoorSouth.isCloseEnough(myPlayer));    
     }
     
@@ -148,7 +148,7 @@ public class DoorTest {
      */
     @Test
     public void testIsCloseEnoughEast() {
-        myPlayer.moveRooms(Door.TYPE.EAST);
+        myPlayer.moveRooms(Door.DoorType.EAST);
         assertEquals("There's no door near", true, myDoorWest.isCloseEnough(myPlayer));    
     }
     
@@ -157,7 +157,7 @@ public class DoorTest {
      */
     @Test
     public void testIsCloseEnoughWest() {
-        myPlayer.moveRooms(Door.TYPE.WEST);
+        myPlayer.moveRooms(Door.DoorType.WEST);
         assertEquals("There's no door near", true, myDoorEast.isCloseEnough(myPlayer));    
     }
     
@@ -166,7 +166,7 @@ public class DoorTest {
      */
     @Test
     public void testSetXPositionWest() {
-        myPlayer.moveRooms(Door.TYPE.WEST);
+        myPlayer.moveRooms(Door.DoorType.WEST);
         assertEquals("Wrong location for door!", myDoorWest.getX(), Door.WEST_X);
     }
     
@@ -175,7 +175,7 @@ public class DoorTest {
      */
     @Test
     public void testSetXPositionEast() {
-        myPlayer.moveRooms(Door.TYPE.EAST);
+        myPlayer.moveRooms(Door.DoorType.EAST);
         assertEquals("Wrong location for door!", myDoorEast.getX(), Door.EAST_X);
     }
     
@@ -184,7 +184,7 @@ public class DoorTest {
      */
     @Test
     public void testSetXPositionSouth() {
-        myPlayer.moveRooms(Door.TYPE.SOUTH);
+        myPlayer.moveRooms(Door.DoorType.SOUTH);
         assertEquals("Wrong location for door!", myDoorSouth.getX(), Door.SOUTH_X);
     }
     
@@ -193,7 +193,7 @@ public class DoorTest {
      */
     @Test
     public void testSetXPositionNorth() {
-        myPlayer.moveRooms(Door.TYPE.NORTH);
+        myPlayer.moveRooms(Door.DoorType.NORTH);
         assertEquals("Wrong location for door!", myDoorNorth.getX(), Door.NORTH_X);
     }
     
@@ -202,7 +202,7 @@ public class DoorTest {
      */
     @Test
     public void testSetYPositionWest() {
-        myPlayer.moveRooms(Door.TYPE.WEST);
+        myPlayer.moveRooms(Door.DoorType.WEST);
         assertEquals("Wrong location for door!", myDoorWest.getY(), Door.WEST_Y);
     }
     
@@ -211,7 +211,7 @@ public class DoorTest {
      */
     @Test
     public void testSetYPositionEast() {
-        myPlayer.moveRooms(Door.TYPE.EAST);
+        myPlayer.moveRooms(Door.DoorType.EAST);
         assertEquals("Wrong location for door!", myDoorEast.getY(), Door.EAST_Y);
     }
     
@@ -220,7 +220,7 @@ public class DoorTest {
      */
     @Test
     public void testSetYPositionSouth() {
-        myPlayer.moveRooms(Door.TYPE.SOUTH);
+        myPlayer.moveRooms(Door.DoorType.SOUTH);
         assertEquals("Wrong location for door!", myDoorSouth.getY(), Door.SOUTH_Y);
     }
     
@@ -229,7 +229,7 @@ public class DoorTest {
      */
     @Test
     public void testSetYPositionNorth() {
-        myPlayer.moveRooms(Door.TYPE.NORTH);
+        myPlayer.moveRooms(Door.DoorType.NORTH);
         assertEquals("Wrong location for door!", myDoorNorth.getY(), Door.NORTH_Y);
     }
     
@@ -272,7 +272,7 @@ public class DoorTest {
      */
     @Test
     public void testInteractDoorLocked() {
-        myPlayer.moveRooms(Door.TYPE.SOUTH);
+        myPlayer.moveRooms(Door.DoorType.SOUTH);
         myDoorNorth.interact(myPlayer);
         myQuestion.answerQuestion(myPlayer);
         assertEquals("MyQuestion isn't answered", myQuestion.getAnsweredAlready(), true);
@@ -293,7 +293,7 @@ public class DoorTest {
     @Test
     public void testInteractDoorNotLocked() {
         myQuestion.answerQuestion(myPlayer);    
-        myPlayer.moveRooms(Door.TYPE.SOUTH);
+        myPlayer.moveRooms(Door.DoorType.SOUTH);
         myDoorNorth.isCloseEnough(myPlayer);
         assertEquals("interact() isn't working", myDoorNorth, myDoorNorth.interact(myPlayer));
     }

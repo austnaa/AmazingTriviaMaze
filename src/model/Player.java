@@ -2,6 +2,7 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
+
 package model;
 
 import java.awt.image.BufferedImage;
@@ -196,15 +197,10 @@ public class Player {
     public BufferedImage getImage() {
         return myPlayerImage;
     }
-
+ 
     /**
-     * Returns (basic english)
-     * @return (field name )
-     */
-    
-    /**
-     * Returns myBrainsRemaining
-     * @return 
+     * Returns the number of brains this player has remaining.
+     * @return the number of brains this player has remaining.
      */
     public int getBrainsremaining() {
         return myBrainsRemaining;
@@ -282,24 +278,24 @@ public class Player {
      * 
      * @param theDoorType - The door position in its room (North/South/East/West).
      */
-    public void moveRooms(final Door.TYPE theDoorType) {
+    public void moveRooms(final Door.DoorType theDoorType) {
         Objects.requireNonNull(theDoorType, "theDoorType cannot be null");      
-        if (theDoorType == Door.TYPE.NORTH) {
+        if (theDoorType == Door.DoorType.NORTH) {
             myX = MAX_X / 2;
             myY = MAX_Y;
         }
         
-        if (theDoorType == Door.TYPE.SOUTH) {
+        if (theDoorType == Door.DoorType.SOUTH) {
             myX = MAX_X / 2;
             myY = MIN_Y;
         }
         
-        if (theDoorType == Door.TYPE.EAST) {
+        if (theDoorType == Door.DoorType.EAST) {
             myX = MIN_X;
             myY = MAX_Y / 2; 
         }
         
-        if (theDoorType == Door.TYPE.WEST) {
+        if (theDoorType == Door.DoorType.WEST) {
             myX = MAX_X;
             myY = MAX_Y / 2;
         }

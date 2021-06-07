@@ -62,10 +62,10 @@ public class RoomTest {
         myQuestionText = "Question";
         myTrueFalseQuestion = new TrueFalseQuestion(myQuestionText, myAnswer, myIncorrectOption);
         
-        myNorthDoor = new Door(Door.TYPE.NORTH, myTrueFalseQuestion);
-        mySouthDoor = new Door(Door.TYPE.SOUTH, myTrueFalseQuestion);
-        myWestDoor = new Door(Door.TYPE.WEST, myTrueFalseQuestion);
-        myEastDoor = new Door(Door.TYPE.EAST, myTrueFalseQuestion);
+        myNorthDoor = new Door(Door.DoorType.NORTH, myTrueFalseQuestion);
+        mySouthDoor = new Door(Door.DoorType.SOUTH, myTrueFalseQuestion);
+        myWestDoor = new Door(Door.DoorType.WEST, myTrueFalseQuestion);
+        myEastDoor = new Door(Door.DoorType.EAST, myTrueFalseQuestion);
         
         myRoom = new Room(false, myNorthDoor, mySouthDoor, myWestDoor, myEastDoor);
     }

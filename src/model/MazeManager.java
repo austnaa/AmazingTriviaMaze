@@ -71,6 +71,63 @@ public class MazeManager {
     }
     
     /**
+     * Sets this MazeManager's current maze to a new one. 
+     */
+    public void setNewMaze() {
+        // get a maze from the unused list of mazes
+        Room[][] resultMaze = myMazes.remove(myMazes.size() - 1);
+         
+        // if the unused maze list is empty, transfer the mazes
+        if (myMazes.size() == 0) {
+            setupMazes();
+        }
+        
+        myCurrentMaze = resultMaze;
+        myMazeRow = 0;
+        myMazeCol = 0;
+        myCurrentRoom = myCurrentMaze[myMazeRow][myMazeCol];
+        myCurrentRoom.setVisited();
+    }
+    
+    /**
+     * Changes the current room to the correct room depending on the
+     * type of door that is given. The given door is the type of door that
+     * the player just moved through.
+     * 
+     * @param theDoorType the type of door the player moved through
+     */
+    public void moveRooms(final Door.DoorType theDoorType) {
+        Objects.requireNonNull(theDoorType, "theDoorType can not be null");
+        if (theDoorType == Door.DoorType.NORTH) {
+            myMazeRow = Math.max(myMazeRow - 1, 0);
+        } else if (theDoorType == Door.DoorType.SOUTH) {
+            myMazeRow = Math.min(myMazeRow + 1, myCurrentMaze.length - 1);
+        } else if (theDoorType == Door.DoorType.WEST) {
+            myMazeCol = Math.max(myMazeCol - 1, 0);
+        } else if (theDoorType == Door.DoorType.EAST) {
+            myMazeCol = Math.min(myMazeCol + 1, myCurrentMaze[0].length - 1);
+        }
+        myCurrentRoom = myCurrentMaze[myMazeRow][myMazeCol];
+        myCurrentRoom.setVisited();
+    }
+    
+    /**
+     * Returns this MazeManager's current maze.
+     * @return his MazeManager's current maze.
+     */
+    public Room[][] getCurrentMaze() {
+        return myCurrentMaze;
+    }
+    
+    /**
+     * Returns the current room the maze is on.
+     * @return the current room the maze is on.
+     */
+    public Room getCurrentRoom() {
+        return myCurrentRoom;
+    }
+    
+    /**
      * Populates the list of unused mazes so they can be used in the current program. 
      * 
      * @throws NullPointerException if there is an issue with creating mazes.
@@ -98,63 +155,6 @@ public class MazeManager {
         } catch (FileNotFoundException exception) {
             System.out.println("A map file was not found");
         }
-    }
-    
-    /**
-     * Sets this MazeManager's current maze to a new one. 
-     */
-    public void setNewMaze() {
-        // get a maze from the unused list of mazes
-        Room[][] resultMaze = myMazes.remove(myMazes.size() - 1);
-         
-        // if the unused maze list is empty, transfer the mazes
-        if (myMazes.size() == 0) {
-            setupMazes();
-        }
-        
-        myCurrentMaze = resultMaze;
-        myMazeRow = 0;
-        myMazeCol = 0;
-        myCurrentRoom = myCurrentMaze[myMazeRow][myMazeCol];
-        myCurrentRoom.setVisited();
-    }
-    
-    /**
-     * Changes the current room to the correct room depending on the
-     * type of door that is given. The given door is the type of door that
-     * the player just moved through.
-     * 
-     * @param theDoorType the type of door the player moved through
-     */
-    public void moveRooms(final Door.TYPE theDoorType) {
-        Objects.requireNonNull(theDoorType, "theDoorType can not be null");
-        if (theDoorType == Door.TYPE.NORTH) {
-            myMazeRow = Math.max(myMazeRow - 1, 0);
-        } else if (theDoorType == Door.TYPE.SOUTH) {
-            myMazeRow = Math.min(myMazeRow + 1, myCurrentMaze.length - 1);
-        } else if (theDoorType == Door.TYPE.WEST) {
-            myMazeCol = Math.max(myMazeCol - 1, 0);
-        } else if (theDoorType == Door.TYPE.EAST) {
-            myMazeCol = Math.min(myMazeCol + 1, myCurrentMaze[0].length - 1);
-        }
-        myCurrentRoom = myCurrentMaze[myMazeRow][myMazeCol];
-        myCurrentRoom.setVisited();
-    }
-    
-    /**
-     * Returns this MazeManager's current maze.
-     * @return his MazeManager's current maze.
-     */
-    public Room[][] getCurrentMaze() {
-        return myCurrentMaze;
-    }
-    
-    /**
-     * Returns the current room the maze is on.
-     * @return the current room the maze is on.
-     */
-    public Room getCurrentRoom() {
-        return myCurrentRoom;
     }
 
 }

@@ -135,8 +135,8 @@ public class MazeManagerTest {
         final Room expectedRoom = myMazeManager.getCurrentMaze()[0][0];
         
         // move down so we are able to move back up and test that movement.
-        myMazeManager.moveRooms(Door.TYPE.SOUTH);
-        myMazeManager.moveRooms(Door.TYPE.NORTH);
+        myMazeManager.moveRooms(Door.DoorType.SOUTH);
+        myMazeManager.moveRooms(Door.DoorType.NORTH);
         
         assertEquals("the moveRooms method failed to move the current room north",
                 expectedRoom, myMazeManager.getCurrentRoom());
@@ -150,7 +150,7 @@ public class MazeManagerTest {
     public void testMoveRoomsSouth() {
         final Room expectedRoom = myMazeManager.getCurrentMaze()[1][0];
         
-        myMazeManager.moveRooms(Door.TYPE.SOUTH);
+        myMazeManager.moveRooms(Door.DoorType.SOUTH);
         
         assertEquals("the moveRooms method failed to move the current room south",
                 expectedRoom, myMazeManager.getCurrentRoom());
@@ -165,8 +165,8 @@ public class MazeManagerTest {
         final Room expectedRoom = myMazeManager.getCurrentMaze()[0][0];
         
         // move east so we are able to go back to where we started and test moving west.
-        myMazeManager.moveRooms(Door.TYPE.EAST);
-        myMazeManager.moveRooms(Door.TYPE.WEST);
+        myMazeManager.moveRooms(Door.DoorType.EAST);
+        myMazeManager.moveRooms(Door.DoorType.WEST);
         
         assertEquals("the moveRooms method failed to move the current room west", expectedRoom, myMazeManager.getCurrentRoom());
         
@@ -180,7 +180,7 @@ public class MazeManagerTest {
     public void testMoveRoomsEast() {
         final Room expectedRoom = myMazeManager.getCurrentMaze()[0][1];
         
-        myMazeManager.moveRooms(Door.TYPE.EAST);
+        myMazeManager.moveRooms(Door.DoorType.EAST);
         
         assertEquals("the moveRooms method failed to move the current room east",
                 expectedRoom, myMazeManager.getCurrentRoom());
@@ -194,7 +194,7 @@ public class MazeManagerTest {
     @Test
     public void testMoveRoomsOutOfBoundsNorth() {
         final Room expectedRoom = myMazeManager.getCurrentRoom();
-        myMazeManager.moveRooms(Door.TYPE.NORTH);
+        myMazeManager.moveRooms(Door.DoorType.NORTH);
         assertEquals("the moveRooms method did not prohibit a northern out of bounds movement", 
                 expectedRoom, myMazeManager.getCurrentRoom());
     }
@@ -208,11 +208,11 @@ public class MazeManagerTest {
     public void testMoveRoomsOutOfBoundsSouth() {
         final int numRows = myMazeManager.getCurrentMaze().length;
         for (int i = 0; i < numRows - 1; i++) {
-            myMazeManager.moveRooms(Door.TYPE.SOUTH);
+            myMazeManager.moveRooms(Door.DoorType.SOUTH);
         }
         
         final Room expectedRoom = myMazeManager.getCurrentRoom();
-        myMazeManager.moveRooms(Door.TYPE.SOUTH);
+        myMazeManager.moveRooms(Door.DoorType.SOUTH);
         assertEquals("the moveRooms method did not prohibit a southern out of bounds movement", 
                 expectedRoom, myMazeManager.getCurrentRoom());
     }
@@ -225,7 +225,7 @@ public class MazeManagerTest {
     @Test
     public void testMoveRoomsOutOfBoundsWest() {
         final Room expectedRoom = myMazeManager.getCurrentRoom();
-        myMazeManager.moveRooms(Door.TYPE.WEST);
+        myMazeManager.moveRooms(Door.DoorType.WEST);
         assertEquals("the moveRooms method did not prohibit a western out of bounds movement", 
                 expectedRoom, myMazeManager.getCurrentRoom());
     }
@@ -239,11 +239,11 @@ public class MazeManagerTest {
     public void testMoveRoomsOutOfBoundsEast() {
         final int numCols = myMazeManager.getCurrentMaze()[0].length;
         for (int i = 0; i < numCols - 1; i++) {
-            myMazeManager.moveRooms(Door.TYPE.EAST);
+            myMazeManager.moveRooms(Door.DoorType.EAST);
         }
         
         final Room expectedRoom = myMazeManager.getCurrentRoom();
-        myMazeManager.moveRooms(Door.TYPE.EAST);
+        myMazeManager.moveRooms(Door.DoorType.EAST);
         assertEquals("the moveRooms method did not prohibit a eastern out of bounds movement", 
                 expectedRoom, myMazeManager.getCurrentRoom());
     }
@@ -261,29 +261,29 @@ public class MazeManagerTest {
         }
         
         // check move east
-        myMazeManager.moveRooms(Door.TYPE.EAST);
+        myMazeManager.moveRooms(Door.DoorType.EAST);
         if (!myMazeManager.getCurrentRoom().isVisited()) {
             result = false;            
         }
         
         // check move south
-        myMazeManager.moveRooms(Door.TYPE.SOUTH);
+        myMazeManager.moveRooms(Door.DoorType.SOUTH);
         if (!myMazeManager.getCurrentRoom().isVisited()) {
             result = false;            
         }
         
         // check move west
-        myMazeManager.moveRooms(Door.TYPE.WEST);
+        myMazeManager.moveRooms(Door.DoorType.WEST);
         if (!myMazeManager.getCurrentRoom().isVisited()) {
             result = false;            
         }
         
         // check move north (move the current room to a location where
         // moving north results in moving into a previously unvisited room)
-        myMazeManager.moveRooms(Door.TYPE.SOUTH);
-        myMazeManager.moveRooms(Door.TYPE.EAST);
-        myMazeManager.moveRooms(Door.TYPE.EAST);
-        myMazeManager.moveRooms(Door.TYPE.NORTH);
+        myMazeManager.moveRooms(Door.DoorType.SOUTH);
+        myMazeManager.moveRooms(Door.DoorType.EAST);
+        myMazeManager.moveRooms(Door.DoorType.EAST);
+        myMazeManager.moveRooms(Door.DoorType.NORTH);
         if (!myMazeManager.getCurrentRoom().isVisited()) {
             result = false;            
         }

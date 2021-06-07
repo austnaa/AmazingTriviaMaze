@@ -125,22 +125,22 @@ public class MazeBuilder {
         Door northDoor = null;
         if (theRoomString.charAt(0) == 'Y' && theRow > 0) {
             final Question question = theMaze[theRow - 1][theCol].getSouthDoor().getQuestion();
-            northDoor = new Door(Door.TYPE.NORTH, question);
+            northDoor = new Door(Door.DoorType.NORTH, question);
         } 
         
         // the west door will share a question with the room to the left of it
         Door westDoor = null;
         if (theRoomString.charAt(2) == 'Y' && theCol > 0) {
             final Question question = theMaze[theRow][theCol - 1].getEastDoor().getQuestion();
-            westDoor = new Door(Door.TYPE.WEST, question);
+            westDoor = new Door(Door.DoorType.WEST, question);
         }
         
         // we know that the doors to the south and east have not been created yet, so create them.
         final Door southDoor = theRoomString.charAt(1) == 'Y' ? 
-                new Door(Door.TYPE.SOUTH, theQuestionManager.getRandomQuestion()) : null;
+                new Door(Door.DoorType.SOUTH, theQuestionManager.getRandomQuestion()) : null;
         
         final Door eastDoor = theRoomString.charAt(3) == 'Y'  ? 
-                new Door(Door.TYPE.EAST, theQuestionManager.getRandomQuestion()) : null;
+                new Door(Door.DoorType.EAST, theQuestionManager.getRandomQuestion()) : null;
         
                 
         final Room newRoom = new Room(isEndRoom, 

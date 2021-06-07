@@ -12,7 +12,8 @@ import model.question.Question;
 import view.GameFrame;
 
 /**
- * Contains state and behavior appropriate for a Door.
+ * Contains state and behavior for a Door.
+ * 
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -43,10 +44,16 @@ public class Door {
     public static final int EAST_Y = GameFrame.FRAME_HEIGHT / 2;
     
     /** The possible types of a door */
-    public enum TYPE { NORTH, SOUTH, EAST, WEST };
+    public enum DoorType { NORTH, SOUTH, EAST, WEST };
     
     /** The type of this door. */
-    private TYPE myType;
+    private DoorType myType;
+    
+    /**
+     * The Question assigned to this door. Is used when the user 
+     * needs to answer a question to unlock the door.
+     */
+    private Question myQuestion;
     
     /** The x position of this door. */
     private int myX;
@@ -55,28 +62,30 @@ public class Door {
     private int myY;
     
     /**
-     * The Question assigned to this door. Is used when the user 
-     * needs to answer a question to unlock the door.
+     * Constructor that builds a door with the given DoorType and Question.
+     *
+     * @param theType the DoorType of this door.
+     * @param theQuestion the Question required to answer to unlock this door.
+     * @throws NullPointerException if theType is null
+     * @throws NullPointerException if theQuestion is null
      */
-    private Question myQuestion;
-    
-    /**
-     * Constructor that builds a door with default values.
-     */
-    public Door(final TYPE theType, final Question theQuestion) {
+    public Door(final DoorType theType, final Question theQuestion) {
         myType = Objects.requireNonNull(theType, "theType cannot be null");
         myQuestion = Objects.requireNonNull(theQuestion, "theQuestion cannot be null");
         setXYPosition();
     }
-    
-
 
     /**
-     * Interact with this door if the player is close enough.  
+     * Interact with this door if the player is close enough. 
+     * Creates the popup frame for the question
+     * if the question is not answered and the player is close enough.
+     * 
+     * @param thePlayer the Player interacting with this door.
+     * @return this door if the question was answered correctly, null otherwise.
+     * @throws NullPointerException if thePlayer is null
      */
     public Door interact(final Player thePlayer) {
         Objects.requireNonNull(thePlayer, "thePlayer cannot be null");
-        // TODO: THIS CAN BE REFACTORED TO LOOK BETTER
         if (isCloseEnough(thePlayer)) {
             if (this.isLocked()) {
                 // creates the popup question frame
@@ -90,16 +99,18 @@ public class Door {
     
     /**
      * Returns whether or not the given Player is close enough to this door for interaction.
+     * 
      * @param thePlayer the Player trying to interact with this door.
      * @return whether or not the given Player is close enough to this door for interaction.
      * @throws NullPointerException if thePlayer is null
      */
     public boolean isCloseEnough(final Player thePlayer) {
         Objects.requireNonNull(thePlayer, "thePlayer can not be null");
+        final int closeEnoughDistance = 150;
         final int xDiff = Math.abs(thePlayer.getXPosition() - myX);
         final int yDiff = Math.abs(thePlayer.getYPosition() - myY);
         
-        return xDiff < 150 && yDiff < 150;
+        return xDiff < closeEnoughDistance && closeEnoughDistance < 150;
     }
     
     /**
@@ -130,8 +141,16 @@ public class Door {
      * Returns the type of this door.
      * @return the type of this door.
      */
-    public TYPE getType() {
+    public DoorType getType() {
         return myType;
+    }
+    
+    /**
+     * Returns the Question this Door contains.
+     * @return the Question this Door contains.
+     */
+    public Question getQuestion() {
+        return myQuestion;
     }
     
     /**
@@ -139,14 +158,6 @@ public class Door {
      */
     public String toString() {
         return "I am a door, type: " + myType;
-    }
-    
-    /**
-     * TODO
-     * @return
-     */
-    public Question getQuestion() {
-        return myQuestion;
     }
     
     /**
