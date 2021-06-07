@@ -35,7 +35,7 @@ public class SheetLoader {
     public static final int IMAGE_SCALAR = 4;
     
     /** The image that contains the rows and columns of images. */
-    private BufferedImage mySpriteSheet;
+    private BufferedImage mySheet;
     
     /**
      * Constructs a new SheetLoader object that operates on the image
@@ -46,7 +46,7 @@ public class SheetLoader {
     public SheetLoader(final String theFileName) {
         Objects.requireNonNull(theFileName, "theFileName can not be null");
         final String path = System.getProperty("user.dir") + "/assets/" + theFileName;
-        mySpriteSheet = loadImage(path);
+        mySheet = loadImage(path);
     }
     
     /**
@@ -105,7 +105,7 @@ public class SheetLoader {
         final int imageX = (theColumn * IMAGE_DIMENSION) - IMAGE_DIMENSION;
         final int imageY = (theRow * IMAGE_DIMENSION) - IMAGE_DIMENSION;
         
-        BufferedImage image = mySpriteSheet.getSubimage(imageX, imageY, IMAGE_DIMENSION, IMAGE_DIMENSION); 
+        BufferedImage image = mySheet.getSubimage(imageX, imageY, IMAGE_DIMENSION, IMAGE_DIMENSION); 
         image = resizeImage(image, IMAGE_SCALAR * IMAGE_DIMENSION, IMAGE_SCALAR * IMAGE_DIMENSION);
         
         return image;
@@ -130,7 +130,7 @@ public class SheetLoader {
         final int imageX = (theColumn * IMAGE_DIMENSION) - IMAGE_DIMENSION;
         final int imageY = (theRow * IMAGE_DIMENSION) - IMAGE_DIMENSION;
         
-        BufferedImage image = mySpriteSheet.getSubimage(imageX, imageY, IMAGE_DIMENSION, IMAGE_DIMENSION); 
+        BufferedImage image = mySheet.getSubimage(imageX, imageY, IMAGE_DIMENSION, IMAGE_DIMENSION); 
 
         return image;
     }
@@ -156,7 +156,7 @@ public class SheetLoader {
         final int imageX = (theColumn * imageSize) - imageSize;
         final int imageY = (theRow * imageSize) - imageSize;
         
-        BufferedImage image = mySpriteSheet.getSubimage(imageX, imageY, imageSize, imageSize); 
+        BufferedImage image = mySheet.getSubimage(imageX, imageY, imageSize, imageSize); 
         image = resizeImage(image, GameFrame.FRAME_WIDTH, GameFrame.FRAME_HEIGHT);
 
         return image;

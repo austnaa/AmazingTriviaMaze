@@ -177,6 +177,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 myPlayer.moveRight();
                 break;
             case KeyEvent.VK_SPACE: // interaction
+                myPlayer.stopMovingX();
+                myPlayer.stopMovingY();
                 interact();           
                 break;       
         }
