@@ -110,7 +110,7 @@ public class Door {
         final int xDiff = Math.abs(thePlayer.getXPosition() - myX);
         final int yDiff = Math.abs(thePlayer.getYPosition() - myY);
         
-        return xDiff < closeEnoughDistance && closeEnoughDistance < 150;
+        return xDiff < closeEnoughDistance && yDiff < closeEnoughDistance;
     }
     
     /**
