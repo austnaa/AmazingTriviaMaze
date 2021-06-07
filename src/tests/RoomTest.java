@@ -10,9 +10,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import model.Door;
+import model.Player;
 import model.Room;
 import model.question.Option;
+import model.question.Question;
 import model.question.TrueFalseQuestion;
+import tests.mock_objects.QuestionMock;
 
 /**
  * Test class for maze rooms.
@@ -37,115 +40,368 @@ public class RoomTest {
     /** The East door. */
     private Door myEastDoor;
     
+    /**
+     * the Player of the game.
+     */
+    private Player myPlayer;
+    /**
+     * the interacted door.
+     */
+    private Door myInteractedDoor;
+    
     /** The room. */
     private Room myRoom;
     
-    /** The question text. */
-    private String myQuestionText;
-    
-    /** The answer option. */
-    private Option myAnswer;
-    
-    /** The incorrect option. */
-    private Option myIncorrectOption;
-    
-    /** True/False question. */
-    private TrueFalseQuestion myTrueFalseQuestion;
+    /**
+     * A child class that inherits abstract Question class.
+     */
+    private QuestionMock myQuestion;
     
     /**
      * Set up for the test class.
      */
     @Before
     public void setUp() {
+        myPlayer = new Player();
+        myInteractedDoor = null;
         myHasBeenVisited = false;
-        
-        myQuestionText = "Question";
-        myTrueFalseQuestion = new TrueFalseQuestion(myQuestionText, myAnswer, myIncorrectOption);
-        
-        myNorthDoor = new Door(Door.TYPE.NORTH, myTrueFalseQuestion);
-        mySouthDoor = new Door(Door.TYPE.SOUTH, myTrueFalseQuestion);
-        myWestDoor = new Door(Door.TYPE.WEST, myTrueFalseQuestion);
-        myEastDoor = new Door(Door.TYPE.EAST, myTrueFalseQuestion);
+        myQuestion = new QuestionMock("This is for testing", Question.QuestionType.TRUE_FALSE);;
+        myNorthDoor = new Door(Door.TYPE.NORTH, myQuestion);
+        mySouthDoor = new Door(Door.TYPE.SOUTH, myQuestion);
+        myWestDoor = new Door(Door.TYPE.WEST, myQuestion);
+        myEastDoor = new Door(Door.TYPE.EAST, myQuestion);
         
         myRoom = new Room(false, myNorthDoor, mySouthDoor, myWestDoor, myEastDoor);
     }
     
-//	/**
-//	 * Tests a null North door.
-//	 */
-//	@Test(expected = NullPointerException.class)
-//	public void testNullNorthDoor() {
-//		myRoom = new Room(false, null, mySouthDoor, myWestDoor, myEastDoor);
-//	}
-
+    /**
+     * Test if the true/false question object is not null.
+     */
     @Test
-    public void testRoom() {
-        fail("Not yet implemented");
+    public void testQuestionNotNull() {
+        assertNotNull(myQuestion);
+    }
+    
+    /**
+     * Test if the north door is not null.
+     */
+    @Test
+    public void testNorthDoorNotNull() {
+        assertNotNull(myNorthDoor);
     }
 
+    /**
+     * Test if the West door is not null.
+     */
     @Test
-    public void testInteract() {
-        fail("Not yet implemented");
+    public void testWestDoorNotNull() {
+        assertNotNull(myWestDoor);
+    }
+    
+    /**
+     * Test if the south door is not null.
+     */
+    @Test
+    public void testSouthDoorNotNull() {
+        assertNotNull(mySouthDoor);
+    }
+    
+    /**
+     * Test if the east door is not null.
+     */
+    @Test
+    public void testEastDoorNotNull() {
+        assertNotNull(myEastDoor);
+    }
+    
+    /**
+     * Test if the player is not null.
+     */
+    @Test
+    public void testPlayerNotNull() {
+        assertNotNull(myPlayer);
     }
 
+    /**
+     * expecting a null pointer exception when passing in a null player.
+     */
+    @Test (expected = NullPointerException.class)
+    public void testInteractPlayerNotNull() {
+        myNorthDoor.interact(null);
+    }
+    
+    /**
+     * Testing if the interact method returns the North door.
+     */
+    @Test
+    public void testInteractNorthDoor() {
+        myQuestion.answerQuestion(myPlayer);    
+        myPlayer.moveRooms(Door.TYPE.SOUTH);
+        myNorthDoor.isCloseEnough(myPlayer);;
+        myInteractedDoor = myRoom.interact(myPlayer);
+        assertNotNull(myInteractedDoor);
+        assertEquals("Interact() method isn't working", myInteractedDoor, myRoom.interact(myPlayer));
+    }
+    
+    /**
+     * Testing if the interact method returns the South door.
+     */
+    @Test
+    public void testInteractSouthDoor() {
+        myQuestion.answerQuestion(myPlayer);    
+        myPlayer.moveRooms(Door.TYPE.NORTH);
+        mySouthDoor.isCloseEnough(myPlayer);;
+        myInteractedDoor = myRoom.interact(myPlayer);
+        assertNotNull(myInteractedDoor);
+        assertEquals("Interact() method isn't working", myInteractedDoor, myRoom.interact(myPlayer));
+    }
+      
+    /**
+     * Testing if the interact method returns the West door.
+     */
+    @Test
+    public void testInteractWestDoor() {
+        myQuestion.answerQuestion(myPlayer);    
+        myPlayer.moveRooms(Door.TYPE.EAST);
+        myWestDoor.isCloseEnough(myPlayer);;
+        myInteractedDoor = myRoom.interact(myPlayer);
+        assertNotNull(myInteractedDoor);
+        assertEquals("Interact() method isn't working", myInteractedDoor, myRoom.interact(myPlayer));
+    }
+    
+    /**
+     * Testing if the interact method returns the East door.
+     */
+    @Test
+    public void testInteractEastDoor() {
+        myQuestion.answerQuestion(myPlayer);    
+        myPlayer.moveRooms(Door.TYPE.WEST);
+        myEastDoor.isCloseEnough(myPlayer);;
+        myInteractedDoor = myRoom.interact(myPlayer);
+        assertNotNull(myInteractedDoor);
+        assertEquals("Interact() method isn't working", myInteractedDoor, myRoom.interact(myPlayer));
+    }
+    
+    /**
+     * Testing if the interact method returns the East door.
+     */
+    @Test
+    public void testInteractNullDoor() {
+        assertNull(myInteractedDoor);
+        assertEquals("Interact() method isn't working", myInteractedDoor, myRoom.interact(myPlayer));
+    } 
+    
+    /**
+     * Testing if the room has a north door.
+     */
     @Test
     public void testHasNorthDoor() {
-        fail("Not yet implemented");
+        assertEquals("hasNorthDoor() method isn't working", true, myRoom.hasNorthDoor());
     }
 
+    /**
+     * Testing if the room has a south door.
+     */
     @Test
     public void testHasSouthDoor() {
-        fail("Not yet implemented");
+        assertEquals("hasSouthDoor() method isn't working", true, myRoom.hasSouthDoor());
     }
 
+    /**
+     * Testing if the room has a west door.
+     */
     @Test
     public void testHasWestDoor() {
-        fail("Not yet implemented");
+        assertEquals("hasWestDoor() method isn't working", true, myRoom.hasWestDoor());
     }
 
+    /**
+     * Testing if the room has an east door.
+     */
     @Test
     public void testHasEastDoor() {
-        fail("Not yet implemented");
+        assertEquals("hasEastDoor() method isn't working", true, myRoom.hasEastDoor());
+    }
+    
+    /**
+     * Testing if the room has an North door.
+     * false condition.
+     */
+    @Test
+    public void testHasNorthDoorNull() {
+        myRoom = new Room(false, null, mySouthDoor, myWestDoor, myEastDoor);
+        assertEquals("hasNorthDoor() method isn't working", false, myRoom.hasNorthDoor());
+    }
+    
+    /**
+     * Testing if the room has an South door.
+     * false condition.
+     */
+    @Test
+    public void testHasSouthDoorNull() {
+        myRoom = new Room(false, myNorthDoor, null, myWestDoor, myEastDoor);
+        assertEquals("hasSouthDoor() method isn't working", false, myRoom.hasSouthDoor());
+    }
+    
+    /**
+     * Testing if the room has an East door.
+     * false condition.
+     */
+    @Test
+    public void testHasEastDoorNull() {
+        myRoom = new Room(false, myNorthDoor, mySouthDoor, myWestDoor, null);
+        assertEquals("hasEastDoor() method isn't working", false, myRoom.hasEastDoor());
+    }
+    
+    /**
+     * Testing if the room has an West door.
+     * false condition.
+     */
+    @Test
+    public void testHasWestDoorNull() {
+        myRoom = new Room(false, myNorthDoor, mySouthDoor, null, myEastDoor);
+        assertEquals("hasWestDoor() method isn't working", false, myRoom.hasWestDoor());
     }
 
+    /**
+     * Testing if the room is visited.
+     */
     @Test
     public void testSetVisited() {
-        fail("Not yet implemented");
+        myRoom.setVisited();
+        assertEquals("setVisited() method isn't working", true, myRoom.isVisited());
+        
     }
-
+    
+    /**
+     * Testing if the room is visited.
+     */
     @Test
     public void testIsVisited() {
-        fail("Not yet implemented");
+        assertEquals("isVisited() method isn't working", false, myRoom.isVisited());
+        
     }
-
+    
+    /**
+     * Testing if this is the end room false.
+     */
+    @Test
+    public void testIsNotEndRoom() {
+        assertEquals("isEndRoom() method isn't working", false, myRoom.isEndRoom());
+    }
+    
+    /**
+     * Testing if this is the end room true.
+     */
     @Test
     public void testIsEndRoom() {
-        fail("Not yet implemented");
+        myRoom = new Room(true, myNorthDoor, mySouthDoor, null, myEastDoor);
+        assertEquals("isEndRoom() method isn't working", true, myRoom.isEndRoom());
     }
-
+    
+    /**
+     * Test getter method for South door.
+     */
     @Test
     public void testGetSouthDoor() {
-        fail("Not yet implemented");
+        assertEquals("getSouthDoor() method isn't working", mySouthDoor, myRoom.getSouthDoor());
     }
 
+    /**
+     * Test getter method for East door.
+     */
     @Test
     public void testGetEastDoor() {
-        fail("Not yet implemented");
+        assertEquals("getEastDoor() method isn't working", myEastDoor, myRoom.getEastDoor());
     }
 
+    /**
+     * Test getter method for North door.
+     */
     @Test
     public void testGetNorthDoor() {
-        fail("Not yet implemented");
+        assertEquals("getNorthDoor() method isn't working", myNorthDoor, myRoom.getNorthDoor());
     }
 
+    /**
+     * Test getter method for West door.
+     */
     @Test
     public void testGetWestDoor() {
-        fail("Not yet implemented");
+        assertEquals("getWestDoor() method isn't working", myWestDoor, myRoom.getWestDoor());
     }
 
+    /**
+     * Test the toString method for this class.
+     */
     @Test
     public void testToString() {
-        fail("Not yet implemented");
+        assertEquals("toString() isn't working", myRoom.toString(), "Room: \n"
+                + "End room: false\n"
+                + "Door status: \n"
+                + "North: true\n"
+                + "South: true\n"
+                + "East: true\n"
+                + "West: true\n");
     }
 
+    /**
+     * Test the toString method for this class.
+     */
+    @Test
+    public void testToStringNullNorthDoor() {
+        myRoom = new Room(false, null, mySouthDoor, myWestDoor, myEastDoor);
+        assertEquals("toString() isn't working", myRoom.toString(), "Room: \n"
+                + "End room: false\n"
+                + "Door status: \n"
+                + "North: false\n"
+                + "South: true\n"
+                + "East: true\n"
+                + "West: true\n");
+    }
+    
+    /**
+     * Test the toString method for this class.
+     */
+    @Test
+    public void testToStringNullSouthDoor() {
+        myRoom = new Room(false, myNorthDoor, null, myWestDoor, myEastDoor);
+        assertEquals("toString() isn't working", myRoom.toString(), "Room: \n"
+                + "End room: false\n"
+                + "Door status: \n"
+                + "North: true\n"
+                + "South: false\n"
+                + "East: true\n"
+                + "West: true\n");
+    }
+    
+    /**
+     * Test the toString method for this class.
+     */
+    @Test
+    public void testToStringNullEastDoor() {
+        myRoom = new Room(false, myNorthDoor, mySouthDoor, myWestDoor, null);
+        assertEquals("toString() isn't working", myRoom.toString(), "Room: \n"
+                + "End room: false\n"
+                + "Door status: \n"
+                + "North: true\n"
+                + "South: true\n"
+                + "East: false\n"
+                + "West: true\n");
+    }
+    
+    /**
+     * Test the toString method for this class.
+     */
+    @Test
+    public void testToStringNullWestDoor() {
+        myRoom = new Room(false, myNorthDoor, mySouthDoor, null, myEastDoor);
+        assertEquals("toString() isn't working", myRoom.toString(), "Room: \n"
+                + "End room: false\n"
+                + "Door status: \n"
+                + "North: true\n"
+                + "South: true\n"
+                + "East: true\n"
+                + "West: false\n");
+    }
 }

@@ -209,33 +209,34 @@ public class Room {
     */
    @Override
    public String toString() {
+       final String newLine = "\n";
        StringBuilder stringBuilder = new StringBuilder();
        stringBuilder.append("Room: ");
-       stringBuilder.append(System.lineSeparator());
+       stringBuilder.append(newLine);
             
        // end room?
        stringBuilder.append("End room: " + myIsEndRoom);
-       stringBuilder.append(System.lineSeparator());
+       stringBuilder.append(newLine);
 
        // doors
-       stringBuilder.append("Door status:");
-       stringBuilder.append(System.lineSeparator());
+       stringBuilder.append("Door status: ");
+       stringBuilder.append(newLine);
        
        stringBuilder.append("North: ");
        stringBuilder.append(myNorthDoor != null);
-       stringBuilder.append(System.lineSeparator());
+       stringBuilder.append(newLine);
        
        stringBuilder.append("South: ");
        stringBuilder.append(mySouthDoor != null);
-       stringBuilder.append(System.lineSeparator());
+       stringBuilder.append(newLine);
        
        stringBuilder.append("East: ");
        stringBuilder.append(myEastDoor != null);
-       stringBuilder.append(System.lineSeparator());
+       stringBuilder.append(newLine);
        
        stringBuilder.append("West: ");
        stringBuilder.append(myWestDoor != null);
-       stringBuilder.append(System.lineSeparator());
+       stringBuilder.append(newLine);
        
        
        return stringBuilder.toString();
