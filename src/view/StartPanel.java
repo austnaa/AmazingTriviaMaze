@@ -37,8 +37,6 @@ public class StartPanel extends JPanel {
     /** The lower y position where the start buttons ends. */
     private static final int END_Y = 534;
     
-    
-    
     /** The image that represent the background. */
     private BufferedImage myBackgroundImage;
     
