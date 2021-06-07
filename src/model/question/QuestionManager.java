@@ -10,14 +10,15 @@ import java.util.Random;
 
 /**
  * Creates and manages the list of available questions that can be accessed to build 
- * instances of the Trivia Maze game.  
+ * instances of the Trivia Maze game. 
+ *  
  * @author Austn Attaway
  * @version Spring 2021
  */
 public class QuestionManager implements QuestionManagerInterface {
     
     /** 
-     * The List of questions that will be copied each time we set up a new game. 
+     * The List of Questions that will be copied each time we set up a new game. 
      */
     private List<Question> myQuestionList;
     
@@ -29,6 +30,7 @@ public class QuestionManager implements QuestionManagerInterface {
         setupQuestionList();
     }
     
+    @Override
     public Question getRandomQuestion() {
         
         if (myQuestionList.size() == 0) {

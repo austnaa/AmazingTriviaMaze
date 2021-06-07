@@ -15,7 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A utility class for retrieving trivia questions  from the trivia questions database.
+ * A utility class for retrieving trivia questions from the trivia questions database.
+ * 
  * @author Daniel Jiang
  * @version Spring 2021
  */

@@ -26,6 +26,7 @@ public class Option extends JRadioButton {
      * Constructor for the options for the multiple choice questions and true/false questions.
      * @param theOptionText The text of the option.
      * @param theCorrectOption The correctness of the option.
+     * @throws NullPointerException if theOptionText is null
      */
     public Option(final String theOptionText, final boolean theCorrectOption) {
         super(Objects.requireNonNull(theOptionText, "theOptionText can not be null"));

@@ -76,6 +76,8 @@ public class Room {
     
     /**
      * Allows the given player to interact with this Room.
+     * 
+     * @param thePlayer the Player that interacted with this Room.
      * @throws NullPointerException if thePlayer is null
      */
     public Door interact(final Player thePlayer) {

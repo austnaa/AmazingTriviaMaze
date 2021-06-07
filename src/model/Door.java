@@ -67,6 +67,7 @@ public class Door {
      * @param theType the DoorType of this door.
      * @param theQuestion the Question required to answer to unlock this door.
      * @throws NullPointerException if theType is null
+     * @throws NullPointerException if theType is null
      * @throws NullPointerException if theQuestion is null
      */
     public Door(final DoorType theType, final Question theQuestion) {

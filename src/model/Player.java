@@ -108,7 +108,6 @@ public class Player {
         myPlayerImage = mySpriteSheet.grabImage(mySpriteCol, mySpriteRow);    
         
         myBrainsRemaining = START_BRAINS;
-        // TODO: put it in a method.
     }
 
     /**
@@ -272,11 +271,11 @@ public class Player {
         myPlayerImage = mySpriteSheet.grabImage(mySpriteCol, mySpriteRow);    
     }
 
-    // TODO null enums check?
     /**
      * Updates the Player's current position as the Players interact with the door to move rooms.
      * 
      * @param theDoorType - The door position in its room (North/South/East/West).
+     * @throws NullPointerException if theDoorType is null
      */
     public void moveRooms(final Door.DoorType theDoorType) {
         Objects.requireNonNull(theDoorType, "theDoorType cannot be null");      

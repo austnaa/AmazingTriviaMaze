@@ -11,7 +11,7 @@ import java.util.Objects;
 import javax.swing.ButtonGroup;
 
 /**
- * Multiple choice trivia questions.
+ * Multiple choice trivia question state and behavior.
  * @author Daniel Jiang
  * @version Spring 2021
  */
@@ -30,15 +30,21 @@ public class MultipleChoiceQuestion extends Question {
     private Option myOptionD;
     
     /** The ButtonGroup that contains the options. */
-    public ButtonGroup myButtonGroup;
+    private ButtonGroup myButtonGroup;
 
     /**
      * Constructor for the multiple choice trivia questions.
+     * 
      * @param theQuestion The question prompt.
      * @param theAnswer The answer.
      * @param theOptionB The second option.
      * @param theOptionC The third option.
      * @param theOptionD The fourth option.
+     * @throws NullPointerException if theQuestion is null
+     * @throws NullPointerException if theAnswer is null
+     * @throws NullPointerException if theOptionB is null
+     * @throws NullPointerException if theOptionC is null
+     * @throws NullPointerException if theOptionB is null
      */
     public MultipleChoiceQuestion(final String theQuestion, final Option theAnswer, final Option theOptionB, final Option theOptionC, final Option theOptionD) {
         super(theQuestion, QuestionType.MULTIPLE_CHOICE);

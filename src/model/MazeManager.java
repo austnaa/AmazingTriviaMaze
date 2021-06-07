@@ -95,6 +95,7 @@ public class MazeManager {
      * the player just moved through.
      * 
      * @param theDoorType the type of door the player moved through
+     * @throws NullPointerException when theDoorType is null
      */
     public void moveRooms(final Door.DoorType theDoorType) {
         Objects.requireNonNull(theDoorType, "theDoorType can not be null");
