@@ -23,10 +23,10 @@ public class SheetLoader {
     /** The number of images for an animation in a particular direction.
      * NOTE: CHANGES TO THIS AFFECT PLAYER ANIMATION
      */
-    public static int NUM_COLS = 4;
+    public static final int NUM_COLS = 4;
     
     /** The number of rows of images. */
-    public static int NUM_ROWS = 9;
+    public static final int NUM_ROWS = 9;
     
     /** The width and height of the images in the sprite sheet in pixels. */
     public static final int IMAGE_DIMENSION = 32;
@@ -44,13 +44,50 @@ public class SheetLoader {
      * @throws NullPointerException if theFileName is null
      */
     public SheetLoader(final String theFileName) {
-        Objects.requireNonNull(theFileName);
+        Objects.requireNonNull(theFileName, "theFileName can not be null");
         final String path = System.getProperty("user.dir") + "/assets/" + theFileName;
         mySpriteSheet = loadImage(path);
     }
     
     /**
-     * Grabs and cropping the specified image from this sheet.
+     * Returns the given image scaled up to the given width and height. 
+     * LINK: https://www.baeldung.com/java-resize-image
+     * @param theOriginalImage the image to be scaled 
+     * @param theNewHeight   the new width of the image
+     * @param theNewWidth  the new width of the image
+     * @return the scaled image
+     * @throws NullPointerException if theOriginalImage is null
+     */
+    public static BufferedImage resizeImage(final BufferedImage theOriginalImage, final int theNewHeight, final int theNewWidth) {
+        Objects.requireNonNull(theOriginalImage);
+        
+        final BufferedImage resizedImage = new BufferedImage(theNewHeight, theNewWidth, BufferedImage.TYPE_INT_ARGB);
+        final Graphics2D graphics2D = resizedImage.createGraphics();
+        graphics2D.drawImage(theOriginalImage, 0, 0, theNewHeight, theNewWidth, null);
+        graphics2D.dispose();
+        return resizedImage;
+    }
+    
+    /**
+     * Returns the loaded image specified from the filepath.
+     * 
+     * @param thePath - the path of the image file
+     * @return the BufferedImage of the given image file name
+     * @throws NullPointerException if thePath is null
+     */
+    public static BufferedImage loadImage(final String thePath) {
+        Objects.requireNonNull(thePath, "thePath can not be null");
+        BufferedImage resultImage = null;
+        try {
+            resultImage = ImageIO.read(new File(thePath));
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+        return resultImage;
+    }  
+    
+    /**
+     * Grabs and crops the specified image from this sheet.
      * @param theColumn the column the image returned is located at
      * @param theRow    the row the image returned is located at
      * @return the image 
@@ -125,37 +162,5 @@ public class SheetLoader {
         return image;
     }
     
-    /**
-     * Returns the given image scaled up to the given width and height. 
-     * LINK: https://www.baeldung.com/java-resize-image
-     * @param theOriginalImage the image to be scaled 
-     * @param theNewHeight   the new width of the image
-     * @param theNewWidth  the new width of the image
-     * @return the scaled image
-     * @throws NullPointerException if theOriginalImage is null
-     */
-    public static BufferedImage resizeImage(final BufferedImage theOriginalImage, final int theNewHeight, final int theNewWidth) {
-        Objects.requireNonNull(theOriginalImage);
-        
-        final BufferedImage resizedImage = new BufferedImage(theNewHeight, theNewWidth, BufferedImage.TYPE_INT_ARGB);
-        final Graphics2D graphics2D = resizedImage.createGraphics();
-        graphics2D.drawImage(theOriginalImage, 0, 0, theNewHeight, theNewWidth, null);
-        graphics2D.dispose();
-        return resizedImage;
-    }
     
-    /**
-     * TODO
-     * @param thePath
-     * @return
-     */
-    private BufferedImage loadImage(final String thePath) {
-        BufferedImage resultImage = null;
-        try {
-            resultImage = ImageIO.read(new File(thePath));
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        }
-        return resultImage;
-    }
 }

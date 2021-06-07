@@ -6,6 +6,7 @@ package view;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -62,10 +63,15 @@ public final class Sound {
     }
     
     /**
-     * The background music for the menu.
+     * Returns an audio Clip object based on the given .wav music file.
+     * 
      * @return Background music for the menu.
+     * @param thePath the file path
+     * @param theVolume the volume the clip should play at
+     * @throws NullPointerException if thePath is null
      */
     public static Clip sound(final String thePath, final double theVolume) {
+        Objects.requireNonNull(thePath, "thePath can not be null");
         Clip clip = null;
         try {
             final File file = new File(thePath);
@@ -76,13 +82,13 @@ public final class Sound {
             final FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             volume.setValue(20f * (float) Math.log(theVolume));
         }
-        catch (final IOException e) {
+        catch (final IOException exception) {
             System.out.println("Unexpected input/output!");
         }
-        catch (final UnsupportedAudioFileException e) {
+        catch (final UnsupportedAudioFileException exception) {
             System.out.println("Audio file is not supported (.wav only)!");
         }
-        catch (final LineUnavailableException e) {
+        catch (final LineUnavailableException exception) {
             System.out.println("Audio line unavailable!");
         }
         return clip;

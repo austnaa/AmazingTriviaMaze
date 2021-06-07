@@ -2,6 +2,7 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
+
 package view;
 
 import java.awt.event.ActionEvent;
@@ -13,6 +14,7 @@ import javax.swing.JMenuItem;
 
 /**
  * The menu bar that is used with the Trivial Maze GameFrame.
+ * 
  * @author Austn Attaway
  * @author Chau Vu
  * @version Spring 2021
@@ -21,7 +23,6 @@ public class MenuBar extends JMenuBar {
 
     /** An auto-generated serial version UID for object Serialization */
     private static final long serialVersionUID = -111659266189879540L;
-    
     
     /**
      * Constructor that sets up a new menu bar.

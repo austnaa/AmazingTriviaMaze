@@ -32,17 +32,15 @@ public class FreeResponseQuestionPanel extends AbstractQuestionPanel {
     /** The free response questions that this panel is displaying. */
     private FreeResponseQuestion myQuestion;
     
-
     /** The Player object that could be affected from answering this panel's Question incorrectly. */
-
-    /** The player will lose a brain for answering the question incorrectly. */
-
     private Player myPlayer;
     
     /**
      * The question panel for free response questions.
      * @param thePlayer The player.
      * @param theQuestion The free response question.
+     * @throws NullPointerException if thePlayer is null.
+     * @throws NullPointerException if theQuestion is null.
      */
     public FreeResponseQuestionPanel(final Player thePlayer, final Question theQuestion) {
         super();

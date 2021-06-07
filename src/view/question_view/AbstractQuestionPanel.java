@@ -12,6 +12,7 @@ import javax.swing.JTextArea;
 
 /**
  * Provides general implementations for question panels.
+ * 
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -23,24 +24,37 @@ public abstract class AbstractQuestionPanel extends JPanel {
     /** The frame that contains this panel. */
     protected JFrame myFrame;
     
-    // constructor
     /**
-     * TODO
+     * Sets default values for a Question panel.
      */
     protected AbstractQuestionPanel() {
         this.setLayout(null);
     }
     
-    // sets the text area for the question prompt
     /**
-     * TODO
-     * @param theQuestionPrompt
+     * Sets the Frame for this panel. Important to use this method
+     * before trying to use this panel.
+     * 
+     * @param theFrame theFrame that contains this panel
+     * @throws NullPointerException when theFrame is null
+     */
+    public void setupFrame(final JFrame theFrame) {
+        Objects.requireNonNull(theFrame, "theFrame can not be null");
+        myFrame = Objects.requireNonNull(theFrame, "theFrame can not be null");
+    }
+    
+    /**
+     * Sets and displays the given question prompt on the panel.
+     * 
+     * @param theQuestionPrompt the given question prompt
+     * @throws NullPointerException if theQuestionPrompt is null
      */
     protected void setQuestionPrompt(final String theQuestionPrompt) {
         Objects.requireNonNull(theQuestionPrompt, "theQuestionPrompt can not be null");
         // Adds the question label
         final JTextArea questionPromptArea = new JTextArea();
         questionPromptArea.setText(theQuestionPrompt);
+        // NOTE: could change these magic numbers into variables
         questionPromptArea.setBounds(30, 20, 350, 50);
         questionPromptArea.setWrapStyleWord(true);
         questionPromptArea.setLineWrap(true);
@@ -51,13 +65,4 @@ public abstract class AbstractQuestionPanel extends JPanel {
         add(questionPromptArea);
     }
 
-    /**
-     * Sets the Frame for this panel. Important to use this method
-     * before trying to use this panel.
-     * @param theFrame theFrame that contains this panel
-     * @throws NullPointerException when theFrame is null
-     */
-    public void setupFrame(final JFrame theFrame) {
-        myFrame = Objects.requireNonNull(theFrame, "theFrame can not be null");
-    }
 }

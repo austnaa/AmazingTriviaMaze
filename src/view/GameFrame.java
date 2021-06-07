@@ -100,7 +100,7 @@ public class GameFrame extends JFrame {
      * and adding it to this panel. Also ensures the MazeManager sets 
      * a new maze. 
      */
-    void setNewGamePanel() {
+    private void setNewGamePanel() {
         // stop the timer on the current game panel
         myGamePanel.disable();
         myGamePanel.setVisible(false);
@@ -114,11 +114,4 @@ public class GameFrame extends JFrame {
         myGamePanel.grabFocus();
     }
     
-    /**
-     * Starts the game frame.
-     * @param theArgs The argument.
-     */
-    public static void main(final String[] theArgs) {
-        new GameFrame();
-    }
 }

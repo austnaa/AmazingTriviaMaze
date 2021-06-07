@@ -33,26 +33,26 @@ import model.Player;
  */
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
     
-    /** An auto-generated serial version UID for object Serialization */
-    private static final long serialVersionUID = 86445190678492115L;
-    
     /** The delay between each game tick. */
     private static final int TICK_DELAY = 30;
     
-    /** 
-     * The internal game timer.
-     */
-    final Timer myGameTimer;
-
+    /** An auto-generated serial version UID for object Serialization */
+    private static final long serialVersionUID = 86445190678492115L;
+    
     /** 
      * This Panel's Player 
      */ 
     private static Player myPlayer;
-
+    
     /** 
      * The MazeManager that keeps track of the available Mazes and the current maze. 
      */
     private static MazeManager myMazeManager;
+    
+    /** 
+     * The internal game timer.
+     */
+    private final Timer myGameTimer;
     
     /**
      * The ItemSheet for this GamePanel responsible for drawing the items like brains.
@@ -102,6 +102,23 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     }
     
     /**
+     * Completes the interaction between the player and the interactable objects in the room
+     */
+    public static void interact() {
+        // get the door we are trying to interact with. If there isn't a door near us
+        // then the interacted door will be null
+        final Door interactedDoor = myMazeManager.getCurrentRoom().interact(myPlayer);
+        
+        // if the door isn't null or it isn't locked move through the door
+        if (interactedDoor != null && !interactedDoor.isLocked()) {
+            myMazeManager.moveRooms(interactedDoor.getType());
+            myPlayer.moveRooms(interactedDoor.getType());
+            final Clip openDoor = Sound.sound(Sound.DOOR_OPEN_SOUND, 0.5);
+            openDoor.start();
+        } 
+    }
+    
+    /**
      * Ensures that the state of this GamePanel is disabled so it can no longer be used.
      */
     public void disable() {
@@ -139,11 +156,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         myPlayer.updatePlayerTick();
         repaint();    
     }
-
     
     /**
      * Handles the player movement with WASD on key press.
-     * TODO - Later also handles the player interact between doors and items.
+     *
      * @param theKeyEvent The key event that is being listened for.
      */
     public void keyPressed(final KeyEvent theKeyEvent) {
@@ -183,26 +199,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 break;
         }
     }
-    
 
-    /**
-     * Completes the interaction between the player and the interactable objects in the room
-     */
-    public static void interact() {
-        // get the door we are trying to interact with. If there isn't a door near us
-        // then the interacted door will be null
-        final Door interactedDoor = myMazeManager.getCurrentRoom().interact(myPlayer);
-        
-        // if the door isn't null or it isn't locked move through the door
-        if (interactedDoor != null && !interactedDoor.isLocked()) {
-            myMazeManager.moveRooms(interactedDoor.getType());
-            myPlayer.moveRooms(interactedDoor.getType());
-            final Clip openDoor = Sound.sound(Sound.DOOR_OPEN_SOUND, 0.5);
-            openDoor.start();
-        } 
-    }
-
-    
     /**
      * Unused (required for implement KeyListener)
      */
@@ -210,15 +207,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         // unused
     }
     
-    
     /**
      * Draws the player image on the screen.
      * @param theGraphics - the 2D Graphics
+     * @throws NullPointerException if theGraphics is null
      */
     private void drawPlayerImage(final Graphics2D theGraphics) {
+        Objects.requireNonNull(theGraphics, "theGraphics can not be null");
         theGraphics.drawImage(myPlayer.getImage(), myPlayer.getXPosition(), 
                 myPlayer.getYPosition(), this);
     }
-    
     
 }

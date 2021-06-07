@@ -12,6 +12,7 @@ import model.Room;
 
 /**
  * Utility class providing functionality for drawing a mini-map on a panel.
+ * 
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -46,10 +47,12 @@ public class MiniMap {
     }
     
     /**
-     * TODO
-     * @param theGraphics
-     * @param theMaze
-     * @param theCurrentRoom
+     * Draws the mini map at the desired location based on the state of the given maze.
+     * The color of the current room is highlighted a different color than the other rooms.
+     * 
+     * @param theGraphics the Graphics used for drawing
+     * @param theMaze the matrix of Rooms used to determine which room and doors to draw
+     * @param theCurrentRoom the current Room, important for drawing it a different color
      * @throws NullPointerException if theGraphics is null
      * @throws NullPointerException if theMaze is null
      * @throws NullPointerException if theCurrentRoom is null

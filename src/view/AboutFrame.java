@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 /**
  * About Frame that pops up when users click on the
  * about button in the menubar.
+ * 
  * @author Chau Vu
  * @version Spring 2021
  */
@@ -28,7 +29,7 @@ public class AboutFrame extends JFrame {
         setTitle("About");
         final JLabel label = new JLabel();
         final String path = System.getProperty("user.dir") + "/assets/About.png";
-        final BufferedImage img = BufferedImageLoader.loadImage(path);  
+        final BufferedImage img = SheetLoader.loadImage(path);  
         label.setIcon(new ImageIcon(SheetLoader.resizeImage(img, GameFrame.FRAME_WIDTH, GameFrame.FRAME_HEIGHT)));
         add(label);
         setResizable(false);

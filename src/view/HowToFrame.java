@@ -23,11 +23,11 @@ public class HowToFrame extends JFrame {
     /**
      * How To Play Frame constructor that sets up the frame.
      */
-    public HowToFrame(){
+    public HowToFrame() {
         setTitle("How To Play");
         final JLabel label = new JLabel();
         final String path = System.getProperty("user.dir") + "/assets/HowToPlay.png";
-        final BufferedImage img = BufferedImageLoader.loadImage(path);       
+        final BufferedImage img = SheetLoader.loadImage(path);       
         label.setIcon(new ImageIcon(SheetLoader.resizeImage(img, GameFrame.FRAME_WIDTH, GameFrame.FRAME_HEIGHT)));
         add(label);  
         setResizable(false);

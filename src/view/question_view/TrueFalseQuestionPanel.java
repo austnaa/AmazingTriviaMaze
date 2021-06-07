@@ -45,6 +45,8 @@ public class TrueFalseQuestionPanel extends AbstractQuestionPanel {
      * The question panel for multiple choice questions.
      * @param thePlayer The player.
      * @param theQuestion The multiple choice question.
+     * @throws NullPointerException if thePlayer is null
+     * @throws NullPointerException if theQuestion is null
      */
     public TrueFalseQuestionPanel(final Player thePlayer, final Question theQuestion) {
         super();

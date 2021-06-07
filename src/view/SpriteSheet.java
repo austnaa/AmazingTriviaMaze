@@ -19,31 +19,31 @@ package view;
 public class SpriteSheet extends SheetLoader {
    
     /** The row that contains images for upwards sprite animation. */
-    public static int UP_MOVEMENT_ROW = 1;
+    public static final int UP_MOVEMENT_ROW = 1;
     
     /** The row that contains images for downwards sprite animation. */
-    public static int DOWN_MOVEMENT_ROW = 2;
+    public static final int DOWN_MOVEMENT_ROW = 2;
     
     /** The row that contains images for leftwards sprite animation. */
-    public static int LEFT_MOVEMENT_ROW = 3;
+    public static final int LEFT_MOVEMENT_ROW = 3;
     
     /** The row that contains images for rightwards sprite animation. */
-    public static int RIGHT_MOVEMENT_ROW = 4;
+    public static final int RIGHT_MOVEMENT_ROW = 4;
     
     /** The row that contains images for up-leftwards sprite animation. */
-    public static int UP_LEFT_MOVEMENT_ROW = 5;
+    public static final int UP_LEFT_MOVEMENT_ROW = 5;
     
     /** The row that contains images for up-rightwards sprite animation. */
-    public static int UP_RIGHT_MOVEMENT_ROW = 6;
+    public static final int UP_RIGHT_MOVEMENT_ROW = 6;
     
     /** The row that contains images for down-rightwards sprite animation. */
-    public static int DOWN_RIGHT_MOVEMENT_ROW = 7;
+    public static final int DOWN_RIGHT_MOVEMENT_ROW = 7;
     
     /** The row that contains images for down-leftwards sprite animation. */
-    public static int DOWN_LEFT_MOVEMENT_ROW = 8;
+    public static final int DOWN_LEFT_MOVEMENT_ROW = 8;
     
     /** The column that contains images for a player that is standing still. */
-    public static int NO_MOVEMENT_COL = 1;
+    public static final int NO_MOVEMENT_COL = 1;
     
     /** The name of the sprite sheet image located in the assets folder. */
     private static final String FILE_NAME = "sprite_sheet.png";
