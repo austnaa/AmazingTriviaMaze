@@ -2,7 +2,6 @@
  * Amazing Trivia Maze
  * TCSS 360 Spring 2021
  */
-
 package model.question;
 
 import java.util.ArrayList;
@@ -29,15 +28,14 @@ public class TrueFalseQuestion extends Question {
 
     /**
      * Constructor the the free response trivia questions.
-     * 
      * @param theQuestion The question prompt that represents the question being asked
      * @param theAnswer the Option that represents the correct answer
      * @param theIncorrectAnswer the Option that represents the incorrect answer
-     * @throws NullPointerException if theQuestion is null
-     * @throws NullPointerException if theAnswer is null
-     * @throws NullPointerException if theIncorrectAnswer is null
-     * @throws IllegalArgumentException if theAnswer is not a correct Option
-     * @throws IllegalArgumentException if theIncorrectAnswer is not an incorrect Option
+     * @throws NullPointerException If the quesiton is null.
+     * @throws NullPointerException If the answer is null.
+     * @throws NullPointerException If the incorrect answer is null.
+     * @throws IllegalArgumentException If the answer is not a valid option.
+     * @throws IllegalArgumentException If the incorrect answer is not a valid option.
      */
     public TrueFalseQuestion(final String theQuestion, final Option theAnswer,
             final Option theIncorrectAnswer) {
@@ -53,7 +51,7 @@ public class TrueFalseQuestion extends Question {
             throw new IllegalArgumentException("theIncorrectAnswer must be an incorrect Option!");
         }
         
-        // add the Options to a button group so only one of them can be selected at a time
+        // Adds the options to a button group so only one of them can be selected at a time.
         myButtonGroup = new ButtonGroup();
         myButtonGroup.add(myAnswer);
         myButtonGroup.add(myIncorrectAnswer);
@@ -88,7 +86,7 @@ public class TrueFalseQuestion extends Question {
     /**
      * Returns true if the currently selected option is the correct option.
      * Updates the state of this question to be answered.
-     * @return Whether or not this question was answered correctly.
+     * @return If this question was answered correctly.
      */
     public boolean checkAnswer() {
         boolean result = myAnswer.isSelected();
@@ -100,8 +98,8 @@ public class TrueFalseQuestion extends Question {
     }
     
     /**
-     * Creates a String representation of true/false questions.
-     * @return The String representation of true/false questions.
+     * Creates a string representation of true/false questions.
+     * @return The string representation of true/false questions.
      */
     @Override
     public String toString() {

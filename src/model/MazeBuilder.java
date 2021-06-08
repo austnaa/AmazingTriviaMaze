@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package model;
 
 import java.io.File;
@@ -14,9 +13,8 @@ import model.question.Question;
 import model.question.QuestionManagerInterface;
 
 /**
- * A utility class that provides functionality for creating a 2D matrix of Room objects
- * based of off a given text file.
- * 
+ * A utility class that provides functionality for creating a
+ * 2D matrix of room objects based of off a given text file.
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -46,10 +44,10 @@ public class MazeBuilder {
      * Following any special symbols are 4 characters, all either 'Y' or 'N' which represent 
      * whether or not a door is located at the north, south, west, and east sides respectively. 
      * 
-     * @param theFileName the name of the file that contains the map generation information
-     * @throws NullPointerException if theFileName is null
-     * @throws NullPointerException if theQuestionManager is null
-     * @throws FileNotFoundException if theFileName is not found
+     * @param theFileName The name of the map file.
+     * @throws NullPointerException If the file name is null.
+     * @throws NullPointerException If the question manager is null.
+     * @throws FileNotFoundException If the file name is not found.
      */
     public static Room[][] buildMaze(final String theFileName, final QuestionManagerInterface theQuestionManager) 
             throws NullPointerException, FileNotFoundException {
@@ -64,38 +62,33 @@ public class MazeBuilder {
         final int numCols = fileScanner.nextInt();
         final Room[][] resultMaze = new Room[numRows][numCols];
         
-        // go line by line filling in the maze corresponding to each group of characters
+        // Go line by line filling in the maze corresponding to each group of characters.
         for (int i = 0; i < numRows; i++) {
-            
             for (int j = 0; j < numCols; j++) {
-                
                 final String roomString = fileScanner.next();
                 resultMaze[i][j] = buildRoom(roomString, theQuestionManager, resultMaze, i, j);
-                
             }
         }
         fileScanner.close();
         return resultMaze;
-    }  
-        
-    //NOTE: this method could be private but is public for testing purposes.
+    }
+
     /**
-     * Returns a new Room that is built according to the given room String input.
+     * Returns a new room that is built according to the given room string input.
+     * @param theRoomString The input string that contains Y or N values.
+     * @param theQuestionManager The question manager that supplies random questions.
+     * @param theMaze The 2D array of rooms that have been created up until the row and column number.
+     * @param theRow The row the returned room will be located at in the maze.
+     * @param theCol The columns the returned room will be located at in the maze.
      * 
-     * @param theRoomString the input string that contains Y or N values.
-     * @param theQuestionManager the QuestionManager that supplies random questions.
-     * @param theMaze the 2D array of rooms that have been created up until theRow and theCol.
-     * @param theRow the row the returned room will be located at in theMaze
-     * @param theCol the columns the returned room will be located at in theMaze.
+     * @return The room that corresponds to the given room string input.
      * 
-     * @return the Room that corresponds to the given room string input
-     * 
-     * @throws NullPointerException if theRoomString is null
-     * @throws NullPointerException if theQuestionManager is null
-     * @throws NullPointerException if theMaze is null
-     * @throws IllegalArgumentException if theRoomString length is less than 4
-     * @throws IllegalArgumentException if theRow is less than 0
-     * @throws IllegalArgumentException if theCol is less than 0
+     * @throws NullPointerException If the room string is null.
+     * @throws NullPointerException If the question manager is null.
+     * @throws NullPointerException If the maze is null.
+     * @throws IllegalArgumentException If the room string length is less than 4.
+     * @throws IllegalArgumentException If the row number is less than 0.
+     * @throws IllegalArgumentException If the column number is less than 0.
      */
     public static Room buildRoom(String theRoomString, final QuestionManagerInterface theQuestionManager,
             final Room[][] theMaze, final int theRow, final int theCol) {
@@ -113,29 +106,29 @@ public class MazeBuilder {
             throw new IllegalArgumentException("theCol can not be less than 0");
         }
         
-        // if the length of the room string is 5, we know that there is an extra character at
-        // the beginning that tells us it is a special room (start or end room)
+        // If the length of the room string is 5, we know that there is an extra character at
+        // the beginning that tells us it is a special room (start or end room).
         boolean isEndRoom = false;
         if (theRoomString.length() == 5) {
             isEndRoom   = theRoomString.charAt(0) == '$';
             theRoomString = theRoomString.substring(1);
         }  
         
-        // the north door will share a question with the room above it
+        // The North door will share a question with the room above it.
         Door northDoor = null;
         if (theRoomString.charAt(0) == 'Y' && theRow > 0) {
             final Question question = theMaze[theRow - 1][theCol].getSouthDoor().getQuestion();
             northDoor = new Door(Door.DoorType.NORTH, question);
         } 
         
-        // the west door will share a question with the room to the left of it
+        // The West door will share a question with the room to the left of it.
         Door westDoor = null;
         if (theRoomString.charAt(2) == 'Y' && theCol > 0) {
             final Question question = theMaze[theRow][theCol - 1].getEastDoor().getQuestion();
             westDoor = new Door(Door.DoorType.WEST, question);
         }
         
-        // we know that the doors to the south and east have not been created yet, so create them.
+        // We know that the doors to the South and East have not been created yet, so we create them.
         final Door southDoor = theRoomString.charAt(1) == 'Y' ? 
                 new Door(Door.DoorType.SOUTH, theQuestionManager.getRandomQuestion()) : null;
         

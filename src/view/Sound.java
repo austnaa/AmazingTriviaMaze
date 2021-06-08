@@ -63,8 +63,7 @@ public final class Sound {
     }
     
     /**
-     * Returns an audio Clip object based on the given .wav music file.
-     * 
+     * Returns an audio clip object based on the given .wav music file.
      * @return Background music for the menu.
      * @param thePath the file path
      * @param theVolume the volume the clip should play at

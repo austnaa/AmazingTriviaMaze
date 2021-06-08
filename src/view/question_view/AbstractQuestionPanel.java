@@ -12,7 +12,6 @@ import javax.swing.JTextArea;
 
 /**
  * Provides general implementations for question panels.
- * 
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -25,18 +24,17 @@ public abstract class AbstractQuestionPanel extends JPanel {
     protected JFrame myFrame;
     
     /**
-     * Sets default values for a Question panel.
+     * Sets default values for question panels.
      */
     protected AbstractQuestionPanel() {
         this.setLayout(null);
     }
     
     /**
-     * Sets the Frame for this panel. Important to use this method
-     * before trying to use this panel.
-     * 
-     * @param theFrame theFrame that contains this panel
-     * @throws NullPointerException when theFrame is null
+     * Sets the frame for this panel.
+     * It's important to use this method before trying to use this panel.
+     * @param theFrame The frame that contains this panel.
+     * @throws NullPointerException If the frame is null.
      */
     public void setupFrame(final JFrame theFrame) {
         Objects.requireNonNull(theFrame, "theFrame can not be null");
@@ -45,16 +43,15 @@ public abstract class AbstractQuestionPanel extends JPanel {
     
     /**
      * Sets and displays the given question prompt on the panel.
-     * 
-     * @param theQuestionPrompt the given question prompt
-     * @throws NullPointerException if theQuestionPrompt is null
+     * @param theQuestionPrompt The given question prompt.
+     * @throws NullPointerException If the question prompt is null.
      */
     protected void setQuestionPrompt(final String theQuestionPrompt) {
         Objects.requireNonNull(theQuestionPrompt, "theQuestionPrompt can not be null");
-        // Adds the question label
+        // Adds the question label.
         final JTextArea questionPromptArea = new JTextArea();
         questionPromptArea.setText(theQuestionPrompt);
-        // NOTE: could change these magic numbers into variables
+        // Could change these magic numbers into variables later.
         questionPromptArea.setBounds(30, 20, 350, 50);
         questionPromptArea.setWrapStyleWord(true);
         questionPromptArea.setLineWrap(true);
@@ -64,5 +61,4 @@ public abstract class AbstractQuestionPanel extends JPanel {
 
         add(questionPromptArea);
     }
-
 }

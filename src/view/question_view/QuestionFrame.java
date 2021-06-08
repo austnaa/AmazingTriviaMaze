@@ -9,7 +9,7 @@ import java.util.Objects;
 import javax.swing.JFrame;
 
 /**
- * A frame build particularly for containing QuestionPanel objects. 
+ * A frame build particularly for containing question panel objects. 
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -19,9 +19,9 @@ public class QuestionFrame extends JFrame {
     private static final long serialVersionUID = -8649295778935069382L;
 
     /**
-     * Constructs a new QuestionFrame that contains the given AbstractQuestionPanel 
-     * @param thePanel the AbstractQuestionPanel that this frame will contain
-     * @throws NullPointerException if thePanel is null
+     * Constructs a new question frame that contains the given abstract question panel.
+     * @param thePanel The abstract question panel that this frame will contain.
+     * @throws NullPointerException If the panel is null.
      */
     public QuestionFrame(final AbstractQuestionPanel thePanel) {
         super();
@@ -33,7 +33,6 @@ public class QuestionFrame extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         setAlwaysOnTop(true);
-        // requestFocus();
         thePanel.setupFrame(this);
     }
 }

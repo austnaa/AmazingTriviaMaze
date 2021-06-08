@@ -15,8 +15,7 @@ import java.util.Objects;
 import javax.swing.JPanel;
 
 /**
- * The panel that paints the start
- * images at the beginning.
+ * The panel that paints the start images at the beginning.
  * @author Chau Vu
  * @version Spring 2021
  */
@@ -78,9 +77,8 @@ public class StartPanel extends JPanel {
     
     /**
      * Draw the background image for the panel.
-     * 
-     * @param theGraphics the Graphics2D object used for painting.
-     * @throws NullPointerException if theGraphics is null
+     * @param theGraphics The graphics object used for painting
+     * @throws NullPointerException If the graphics are null.
      */
     public void drawBackgroundImage(final Graphics2D theGraphics) {
         Objects.requireNonNull(theGraphics, "theGraphics can not be null");

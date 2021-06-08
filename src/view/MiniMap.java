@@ -12,7 +12,6 @@ import model.Room;
 
 /**
  * Utility class providing functionality for drawing a mini-map on a panel.
- * 
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -49,13 +48,12 @@ public class MiniMap {
     /**
      * Draws the mini map at the desired location based on the state of the given maze.
      * The color of the current room is highlighted a different color than the other rooms.
-     * 
-     * @param theGraphics the Graphics used for drawing
-     * @param theMaze the matrix of Rooms used to determine which room and doors to draw
-     * @param theCurrentRoom the current Room, important for drawing it a different color
-     * @throws NullPointerException if theGraphics is null
-     * @throws NullPointerException if theMaze is null
-     * @throws NullPointerException if theCurrentRoom is null
+     * @param theGraphics The graphics used for drawing.
+     * @param theMaze The matrix of rooms used to determine which rooms and doors to draw.
+     * @param theCurrentRoom The current room, for drawing it a different color.
+     * @throws NullPointerException The the graphics are null.
+     * @throws NullPointerException If the maze is null.
+     * @throws NullPointerException If the current room is null.
      */
     public static void drawMiniMap(final Graphics theGraphics, final Room[][] theMaze,
             final Room theCurrentRoom) {
@@ -72,10 +70,10 @@ public class MiniMap {
                 
                 if (tempRoom.isVisited()) { 
  
-                    // Draw the connections to other rooms if the door exists and
-                    // the adjacent room has been visited. By nature of the loop system
-                    // that moves left to right, top to bottom, we only need to draw 
-                    // south and east doors
+                    // Draws the connections to other rooms if the door exists and
+                    // the adjacent room has been visited.
+                    // By nature of the loop system that moves left to right,
+                    // top to bottom, we only need to draw the South and East doors.
                     
                     theGraphics.setColor(DOOR_COLOR);
                     if (tempRoom.hasSouthDoor() && theMaze[i + 1][j].isVisited()) {
@@ -85,7 +83,7 @@ public class MiniMap {
                         theGraphics.fillRect(tempXPosition, tempYPosition + 8, ROOM_OFFSET, ROOM_WIDTH / 4);
                     }
                     
-                    // draw the room after the walls to the room color is in the foreground
+                    // Draws the room after the walls to the room color is in the foreground.
                     theGraphics.setColor(ROOM_COLOR);
                     if (tempRoom.equals(theCurrentRoom)) {
                         theGraphics.setColor(CURR_ROOM_COLOR);

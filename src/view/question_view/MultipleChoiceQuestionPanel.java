@@ -23,7 +23,7 @@ import view.GamePanel;
 import view.Sound;
 
 /**
- * A Panel that displays a multiple choice question.
+ * A panel that displays multiple choice questions.
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -32,21 +32,21 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
     /** An auto-generated serial version UID for object Serialization */
     private static final long serialVersionUID = -2729044720547678473L;
     
-    /** The MultipleChoiceQuestion that this panel is displaying. */
+    /** The multiple choice question that this panel is displaying. */
     private MultipleChoiceQuestion myQuestion;
     
     /** The options available for this multiple choice question. */
     private List<Option> myOptions;
     
-    /** The Player object that could be affected from answering this panel's Question incorrectly. */
+    /** The player that could be affected from answering this panel's question incorrectly. */
     private Player myPlayer;
     
     /**
-     * Constructs a new MultipleChoiceQuestionPanel with the given Player and Question.
-     * @param thePlayer the Player that could be affected by answering the given Question incorrectly.
-     * @param theQuestion the MultipleChoiceQuestion this panel is displaying
-     * @throws NullPointerException if thePlayer is null
-     * @throws NullPointerException if theQuestion is null
+     * Constructs a new multiple choice question panel with the given player and question.
+     * @param thePlayer The player affected by answering the question correctly/incorrectly.
+     * @param theQuestion The multiple choice question this panel is dispalying.
+     * @throws NullPointerException If the player is null.
+     * @throws NullPointerException If the question is null.
      */
     public MultipleChoiceQuestionPanel(final Player thePlayer, final Question theQuestion) {
         super();
@@ -56,7 +56,7 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
         myOptions = myQuestion.getAllOptions();
         Collections.shuffle(myOptions);
         
-        // set up the question prompt text and the buttons 
+        // Sets up the question text and option buttons.
         super.setQuestionPrompt(myQuestion.getQuestionPrompt());
         setupButtons();
         
@@ -68,7 +68,7 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
      * Sets up and adds the buttons to this panel. 
      */
     private void setupButtons() {
-        // set up the radio buttons
+        // Sets up the radio buttons.
         final JRadioButton button1 = myOptions.get(0);
         button1.setBounds(30, 60, 150, 20);
         
@@ -86,39 +86,35 @@ public class MultipleChoiceQuestionPanel extends AbstractQuestionPanel {
         this.add(button3);
         this.add(button4);
         
-        // ensure that none of the options are selected 
+        // Ensures that none of the options are selected beforehand.
         myQuestion.clearButtons();
         
-        // setup the submit button
+        // Sets up the submit button.
         final JButton submitButton = new JButton("Submit");
         submitButton.setBounds(150, 160, 90, 20);
         submitButton.setFocusPainted(false);
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent theEvent) {
-                // update the state of the question based on if the selected 
-                // option is correct or not
+                // Checks the answer from the player.
                 myQuestion.checkAnswer();
                 
-                // if the question was answered correctly close the question
-                // frame and move through the door
+                // If the question was answered correctly.
                 if (myQuestion.getAnsweredAlready()) {
                     GamePanel.interact();
                     final Clip openDoor = Sound.sound(Sound.DOOR_OPEN_SOUND, 0.5);
                     openDoor.start();
                 } 
-                // if the question was not answered correctly, 
-                // decrement the number of brains remaining and close this question frame.
+                // If the question was answered incorrectly.
                 else {
                     myPlayer.setBrains(myPlayer.getBrainsremaining() - 1);
                     final Clip loseBrain = Sound.sound(Sound.LOSE_BRAIN_SOUND, 0.5);
                     loseBrain.start();
                 }
-                // close the frame once the submit button has been pressed.
+                // Closes the frame once the submit button has been pressed.
                 if (myFrame != null) {
                     myFrame.dispose();
                 }
-                
             }
         });
         this.add(submitButton);

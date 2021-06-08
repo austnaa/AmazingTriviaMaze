@@ -2,7 +2,6 @@
  * Amazing Trivia Maze
  * TCSS 360 Spring 2021
  */
-
 package tests;
 
 import static org.junit.Assert.*;
@@ -17,8 +16,7 @@ import model.question.TrueFalseQuestion;
 import model.question.Question.QuestionType;
 
 /**
- * A JUnit test class for the TrueFalseQuestion class.
- * 
+ * A JUnit test class for the true/false question class.
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -276,5 +274,4 @@ public class TrueFalseQuestionTest {
         myOptionCorrect.setSelected(true);
         myTrueFalseQuestion.checkAnswer();
     }
-
 }

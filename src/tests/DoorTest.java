@@ -1,3 +1,7 @@
+/**
+ * Amazing Trivia Maze 
+ * TCSS 360 Spring 2021
+ */
 package tests;
 
 import static org.junit.Assert.*;
@@ -10,44 +14,32 @@ import model.question.Question;
 import tests.mock_objects.QuestionMock;
 
 /**
- * JUnit test class for the Room class.  
+ * JUnit test class for the room class.  
  * @author Chau Vu
  * @version Spring 2021
  */
 public class DoorTest {
 
-    /**
-     * The North Door of the Room.
-     */
+    /** The North door of the room. */
     private Door myDoorNorth;
     
-    /**
-     * The South Door of the Room.
-     */
+    /** The South door of the room. */
     private Door myDoorSouth;
     
-    /**
-     * The West Door of the Room.
-     */
+    /** The West door of the room. */
     private Door myDoorWest;
     
-    /**
-     * The East Door of the Room.
-     */
+    /** The East door of the room. */
     private Door myDoorEast;
     
-    /**
-     * The player of the game.
-     */
+    /** The player of the game. */
     private Player myPlayer;
     
-    /**
-     * A child class that inherits abstract Question class.
-     */
+    /** A child class that inherits the abstract question class. */
     private QuestionMock myQuestion;
     
     /**
-     * Set up method before tests.
+     * The setup method before tests.
      */
     @Before
     public void setUp() {
@@ -60,7 +52,7 @@ public class DoorTest {
     }
     
     /**
-     * expecting a null pointer exception if pass in a null door type.
+     * Expects a null pointer exception if pass in a null door type.
      */
     @Test (expected = NullPointerException.class)
     public void testTypeNullDoor() {
@@ -68,7 +60,7 @@ public class DoorTest {
     }
     
     /**
-     * expecting a null pointer exception if pass in a null question
+     * Expects a null pointer exception if pass in a null question.
      */
     @Test (expected = NullPointerException.class)
     public void testTypeNullQuestion() {
@@ -76,7 +68,7 @@ public class DoorTest {
     }
     
     /**
-     * expecting a null pointer exception if pass in a null question and door type.
+     * Expects a null pointer exception if pass in a null question and door type.
      */
     @Test (expected = NullPointerException.class)
     public void testTypeNullQuestionDoor() {
@@ -84,7 +76,7 @@ public class DoorTest {
     }
     
     /**
-     * expecting a null pointer exception if pass in a null player.
+     * Expects a null pointer exception if pass in a null player.
      */
     @Test (expected = NullPointerException.class)
     public void testInteractnullPlayer() {
@@ -92,7 +84,7 @@ public class DoorTest {
     }
     
     /**
-     * expecting a null pointer exception if pass in a null player.
+     * Expects a null pointer exception if pass in a null player.
      */
     @Test (expected = NullPointerException.class)
     public void testIsCloseEnoughNull() {
@@ -100,7 +92,7 @@ public class DoorTest {
     }
     
     /**
-     * Test if the player is not null.
+     * Tests if the player is not null.
      */
     @Test
     public void testPlayerNotNull() {
@@ -108,7 +100,7 @@ public class DoorTest {
     }
     
     /**
-     * Test if the question is not null.
+     * Tests if the question is not null.
      */
     @Test
     public void testQuestioNotNul() {
@@ -116,7 +108,7 @@ public class DoorTest {
     }
     
     /**
-     * Test if the doors is not null.
+     * Tests if the doors is not null.
      */
     @Test
     public void testDoorNotNull() {
@@ -127,7 +119,7 @@ public class DoorTest {
     }
     
     /**
-     * Test if Player is near South door.
+     * Tests if the player is near the South door.
      */
     @Test
     public void testIsCloseEnoughSouth() {
@@ -135,7 +127,7 @@ public class DoorTest {
         assertEquals("There's no door near", true, myDoorNorth.isCloseEnough(myPlayer));    
     }
     /**
-     * Test if Player is near North door.
+     * Tests if the player is near the North door.
      */
     @Test
     public void testIsCloseEnougNorth() {
@@ -144,7 +136,7 @@ public class DoorTest {
     }
     
     /**
-     * Test if Player is near East door.
+     * Tests if the player is near the East door.
      */
     @Test
     public void testIsCloseEnoughEast() {
@@ -153,7 +145,7 @@ public class DoorTest {
     }
     
     /**
-     * Test if Player is near West door.
+     * Tests if the player is near the West door.
      */
     @Test
     public void testIsCloseEnoughWest() {
@@ -162,7 +154,7 @@ public class DoorTest {
     }
     
     /**
-     * Test the X position of the Door West. 
+     * Test the x position of the West door. 
      */
     @Test
     public void testSetXPositionWest() {
@@ -171,7 +163,7 @@ public class DoorTest {
     }
     
     /**
-     * Test the X position of the Door East
+     * Test the x position of the East door.
      */
     @Test
     public void testSetXPositionEast() {
@@ -180,7 +172,7 @@ public class DoorTest {
     }
     
     /**
-     * Test the X position of the Door South. 
+     * Test the x position of the South door.
      */
     @Test
     public void testSetXPositionSouth() {
@@ -189,7 +181,7 @@ public class DoorTest {
     }
     
     /**
-     * Test the X position of the Door North. 
+     * Test the x position of the North door.
      */
     @Test
     public void testSetXPositionNorth() {
@@ -198,7 +190,7 @@ public class DoorTest {
     }
     
     /**
-     * Test the Y position of the Door West. 
+     * Test the y position of the West door.
      */
     @Test
     public void testSetYPositionWest() {
@@ -207,7 +199,7 @@ public class DoorTest {
     }
     
     /**
-     * Test the Y position of the Door East
+     * Test the y position of the Eest door.
      */
     @Test
     public void testSetYPositionEast() {
@@ -216,7 +208,7 @@ public class DoorTest {
     }
     
     /**
-     * Test the Y position of the Door South. 
+     * Test the y position of the South door.
      */
     @Test
     public void testSetYPositionSouth() {
@@ -225,7 +217,7 @@ public class DoorTest {
     }
     
     /**
-     * Test the Y position of the Door North. 
+     * Test the y position of the North door.
      */
     @Test
     public void testSetYPositionNorth() {
@@ -234,7 +226,7 @@ public class DoorTest {
     }
     
     /**
-     * Test toString method for Door class.
+     * Tests the to string method of the door.
      */
     @Test
     public void testToString() {
@@ -242,7 +234,7 @@ public class DoorTest {
     }
     
     /**
-     * Test the getter method for question.
+     * Tests the getter method for the question.
      */
     @Test
     public void testGetQuestion() {
@@ -250,7 +242,7 @@ public class DoorTest {
     }
     
     /**
-     * Test if the door is locked.
+     * Tests if the door is locked.
      */
     @Test
     public void testIsLockedTrue() {
@@ -258,8 +250,7 @@ public class DoorTest {
     }
     
     /**
-     * Test if the door is locked. 
-     * False case.
+     * Tests if the door is locked.
      */
     @Test
     public void testIsLockedFalse() {
@@ -268,7 +259,7 @@ public class DoorTest {
     }
     
     /**
-     * Test interact method when door is locked.
+     * Tests the interact method when door is locked.
      */
     @Test
     public void testInteractDoorLocked() {
@@ -280,7 +271,7 @@ public class DoorTest {
     }
     
     /**
-     * Test interact method when door is not close enough.
+     * Tests the interact method when door is not close enough.
      */
     @Test
     public void testInteractDoorNull() {
@@ -288,7 +279,7 @@ public class DoorTest {
     }
     
     /**
-     * Test interact method when door is not locked.
+     * Tests the interact method when door is not locked.
      */
     @Test
     public void testInteractDoorNotLocked() {
@@ -298,4 +289,3 @@ public class DoorTest {
         assertEquals("interact() isn't working", myDoorNorth, myDoorNorth.interact(myPlayer));
     }
 }
-    

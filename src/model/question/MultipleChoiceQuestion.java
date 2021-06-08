@@ -34,17 +34,16 @@ public class MultipleChoiceQuestion extends Question {
 
     /**
      * Constructor for the multiple choice trivia questions.
-     * 
      * @param theQuestion The question prompt.
      * @param theAnswer The answer.
      * @param theOptionB The second option.
      * @param theOptionC The third option.
      * @param theOptionD The fourth option.
-     * @throws NullPointerException if theQuestion is null
-     * @throws NullPointerException if theAnswer is null
-     * @throws NullPointerException if theOptionB is null
-     * @throws NullPointerException if theOptionC is null
-     * @throws NullPointerException if theOptionB is null
+     * @throws NullPointerException If the question is null.
+     * @throws NullPointerException If the answer is null.
+     * @throws NullPointerException If option B is null.
+     * @throws NullPointerException If option C is null.
+     * @throws NullPointerException If option D is null.
      */
     public MultipleChoiceQuestion(final String theQuestion, final Option theAnswer, final Option theOptionB, final Option theOptionC, final Option theOptionD) {
         super(theQuestion, QuestionType.MULTIPLE_CHOICE);
@@ -70,7 +69,7 @@ public class MultipleChoiceQuestion extends Question {
 
     /**
      * Returns an ArrayList of the options that aren't the answer.
-     * @return ArrayList of the options that aren't the answer.
+     * @return An ArrayList of the options that aren't the answer.
      */
     public List<Option> getOptionsOnly() {
         List<Option> optionsOnly = new ArrayList<Option>();
@@ -104,7 +103,7 @@ public class MultipleChoiceQuestion extends Question {
     /**
      * Returns true if the currently selected option is the correct option.
      * Updates the state of this question to be answered.
-     * @return Whether or not this question was answered correctly.
+     * @return If this question was answered correctly.
      */
     public boolean checkAnswer() {
         boolean result = myAnswer.isSelected();
@@ -116,8 +115,8 @@ public class MultipleChoiceQuestion extends Question {
     }
 
     /**
-     * Creates a String representation of multiple choice questions.
-     * @return The String representation of multiple choice questions.
+     * Creates a string representation of multiple choice questions.
+     * @return The string representation of multiple choice questions.
      */
     @Override
     public String toString() {

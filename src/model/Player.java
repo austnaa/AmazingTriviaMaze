@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package model;
 
 import java.awt.image.BufferedImage;
@@ -12,7 +11,7 @@ import view.GameFrame;
 import view.SpriteSheet;
 
 /**
- * Provides state and functionality for a Player sprite including movement and animation.
+ * Provides state and functionality for a player sprite including movement and animation.
  * 
  * Reference: https://www.youtube.com/watch?v=Yem67dViGSw
  * 
@@ -36,8 +35,8 @@ public class Player {
     public static final int MAX_Y = 475;
     
     /**
-     * The value for the player's speed. Represents how many pixels the 
-     * player will move each game tick.
+     * The value for the player's speed.
+     * Represents how many pixels the player will move each game tick.
      */
     public static final int MOVE_SPEED = 4;
     
@@ -57,14 +56,15 @@ public class Player {
     private static final int START_Y = GameFrame.FRAME_HEIGHT / 2 - 100;
      
     /**
-     * A value used to delay animations. Larger values will result in larger delays.
+     * A value used to delay animations.
+     * Larger values will result in larger delays.
      */
     private static final int ANIMATION_DELAY = 4;
 
-    /** This Player's x current x position. */
+    /** This player's x current x position. */
     private int myX;
     
-    /** This Player's x current x position. */
+    /** This player's x current x position. */
     private int myY;
        
     /** The velocity of the player along the x axis. */
@@ -73,7 +73,7 @@ public class Player {
     /** The velocity of the player along the y axis. */
     private int myVelocityY;
     
-    /** The SpriteSheet for this player. */
+    /** The sprite sheet for this player. */
     private SpriteSheet mySpriteSheet;
     
     /** The current image of the player shown on the screen. */
@@ -92,7 +92,7 @@ public class Player {
     private int myBrainsRemaining;
      
     /**
-     * Constructs a new Player with default values.
+     * Constructs a new player with default values.
      */
     public Player() {  
         
@@ -111,10 +111,11 @@ public class Player {
     }
 
     /**
-     * Updates this Player's game state. Should be called after each game tick.
+     * Updates the player's game state.
+     * Should be called after each game tick.
      */
     public void updatePlayerTick() {
-        // update the tick count (for use in animation)
+        // Updates the tick count (for use in animation).
         myTickCount++;
         if (myTickCount > Integer.MAX_VALUE) {
             myTickCount = 0;
@@ -123,8 +124,8 @@ public class Player {
         myX += myVelocityX; 
         myY += myVelocityY;
         
-        // ensures the x and y position of the player
-        // stays within the bounds
+        // Ensures the x and y position of the player
+        // stays within the bounds.
         myX = Math.max(Math.min(myX,  MAX_X), MIN_X);
         myY = Math.max(Math.min(myY, MAX_Y), MIN_Y);
         
@@ -132,16 +133,16 @@ public class Player {
     }    
     
     /**
-     * Returns the x position of this player.
-     * @return the x position
+     * Returns the x position of the player.
+     * @return The x position of the player.
      */
     public int getXPosition() {
         return myX;
     }   
     
     /**
-     * Returns the y position of this player.
-     * @return the y position
+     * Returns the y position of the player.
+     * @return The y position of the player.
      */
     public int getYPosition() {
         return myY;
@@ -176,22 +177,22 @@ public class Player {
     }
     
     /**
-     * Halts the Player's movement along the x axis.
+     * Halts the player's movement along the x axis.
      */
     public void stopMovingX() {
         myVelocityX = NO_SPEED;
     }
     
     /**
-     * Halts the Player's movement along the y axis.
+     * Halts the player's movement along the y axis.
      */
     public void stopMovingY() {
         myVelocityY = NO_SPEED;
     }
       
     /**
-     * return the image of the player.
-     * @return
+     * Gets the image of the player.
+     * @return The image of the player.
      */
     public BufferedImage getImage() {
         return myPlayerImage;
@@ -204,19 +205,17 @@ public class Player {
     public int getBrainsremaining() {
         return myBrainsRemaining;
     }
-    
-    // TODO create a guard against negative brains?
+
     /**
-     * Sets myBrainsRemaining to theNumBrains if the sum is less than Max_Brains.
-     * @param theNumBrains
+     * Sets the remaining brains to the number of brains if the sum is less than the max number of brains.
+     * @param theNumBrains The number of brains of the player.
      */
     public void setBrains(final int theNumBrains) {
         myBrainsRemaining = Math.min(MAX_BRAINS, theNumBrains);   
     }
-    
-    // could move to a PlayerView class
+
     /**
-     * Updates the Player's sprite image depending on the game tick and 
+     * Updates the player's sprite image depending on the game tick and 
      * the direction the character is moving.
      */
     private void updatePlayerImage() {
@@ -224,47 +223,47 @@ public class Player {
             mySpriteCol = myTickCount / ANIMATION_DELAY % SpriteSheet.NUM_COLS + 1;
         }
 
-        // moving left
+        // Moving left.
         if (myVelocityX < NO_SPEED) {
             mySpriteRow = SpriteSheet.LEFT_MOVEMENT_ROW; 
         }
-        // moving right
+        // Moving right.
         else if (myVelocityX > NO_SPEED) {
             mySpriteRow = SpriteSheet.RIGHT_MOVEMENT_ROW;
         }
         
-        // moving up
+        // Moving up.
         if (myVelocityY < NO_SPEED) {
             mySpriteRow = SpriteSheet.UP_MOVEMENT_ROW;
         }
-        // moving down 
+        // Moving down.
         else if (myVelocityY > NO_SPEED) {
             mySpriteRow = SpriteSheet.DOWN_MOVEMENT_ROW;
         } 
         
-        // moving down right
+        // Moving down right.
         if ( myVelocityY > NO_SPEED && myVelocityX > NO_SPEED) {
             mySpriteRow = SpriteSheet.DOWN_RIGHT_MOVEMENT_ROW;
         }
         
-        // moving down left
+        // Moving down left.
         if ( myVelocityY > NO_SPEED && myVelocityX < NO_SPEED ) {
             mySpriteRow = SpriteSheet.DOWN_LEFT_MOVEMENT_ROW;
         }
 
-        // moving up right
+        // Moving up right.
         if ( myVelocityY < NO_SPEED && myVelocityX > NO_SPEED) {
             mySpriteRow = SpriteSheet.UP_RIGHT_MOVEMENT_ROW;
         }
         
-        // moving up left
+        // Moving up left.
         if ( myVelocityY < NO_SPEED && myVelocityX < NO_SPEED ) {
             mySpriteRow = SpriteSheet.UP_LEFT_MOVEMENT_ROW;
         }
         
-        // stopped moving, so update the image to the stationary position
+        // Stopped moving, so update the image to the stationary position.
         if (myVelocityX == 0 && myVelocityY == 0) {
-            //myPlayerImage = mySpriteSheet.grabImage(SpriteSheet.NO_MOVEMENT_COL, mySpriteRow);
+            // myPlayerImage = mySpriteSheet.grabImage(SpriteSheet.NO_MOVEMENT_COL, mySpriteRow);
             mySpriteCol = SpriteSheet.NO_MOVEMENT_COL;
         }
         
@@ -272,10 +271,9 @@ public class Player {
     }
 
     /**
-     * Updates the Player's current position as the Players interact with the door to move rooms.
-     * 
-     * @param theDoorType - The door position in its room (North/South/East/West).
-     * @throws NullPointerException if theDoorType is null
+     * Updates the player's current position as the players interact with the door to move rooms.
+     * @param theDoorType The door position in its room (North/South/East/West).
+     * @throws NullPointerException If the door type is null.
      */
     public void moveRooms(final Door.DoorType theDoorType) {
         Objects.requireNonNull(theDoorType, "theDoorType cannot be null");      

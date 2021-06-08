@@ -2,7 +2,6 @@
  * Amazing Trivia Maze
  * TCSS 360 Spring 2021
  */
-
 package model.question;
 
 import java.sql.Connection;
@@ -16,7 +15,6 @@ import java.util.List;
 
 /**
  * A utility class for retrieving trivia questions from the trivia questions database.
- * 
  * @author Daniel Jiang
  * @version Spring 2021
  */
@@ -53,7 +51,7 @@ public final class TriviaQuestions {
             // Sets the timeout to 30 seconds (if the query takes too long - good practice).
             statement.setQueryTimeout(30);
 
-            // add the multiple choice questions to the question list
+            // Adds the multiple choice questions to the question list.
             final ResultSet multipleChoiceSet = statement.executeQuery("SELECT * FROM MultipleChoice");
             while (multipleChoiceSet.next()) {
                 final Option answer = new Option(multipleChoiceSet.getString(ANSWER), true);
@@ -65,7 +63,7 @@ public final class TriviaQuestions {
                 questionsList.add(question);
             }
 
-            // add the true/false questions to the question list
+            // Adds the true/false questions to the question list.
             final ResultSet trueFalseSet = statement.executeQuery("SELECT * FROM TrueFalse");
             while (trueFalseSet.next()) {
                 final Option answer = new Option(multipleChoiceSet.getString(ANSWER), true);
@@ -75,7 +73,7 @@ public final class TriviaQuestions {
                 questionsList.add(question);
             }
 
-            // add the free response questions to the questions list 
+            // Adds the free response questions to the questions list.
             final ResultSet freeResponseSet = statement.executeQuery("SELECT * FROM FreeResponse");
             while (trueFalseSet.next()) {
                 final Question question = new FreeResponseQuestion(freeResponseSet.getString(QUESTION),

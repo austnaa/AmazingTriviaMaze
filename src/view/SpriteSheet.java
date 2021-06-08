@@ -5,8 +5,7 @@
 package view;
 
 /**
- * Class contains a method that
- * grabs the specific image from 
+ * Class contains a method that grabs the specific image from 
  * a spritesheet.
  * 
  * References: https://www.youtube.com/watch?v=jedilHUPO7c

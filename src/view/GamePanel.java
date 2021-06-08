@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package view;
 
 import java.awt.Graphics;
@@ -25,7 +24,6 @@ import model.Player;
 
 /**
  * The panel that paints the graphics of the program.
- * 
  * @author Daniel Jiang
  * @author Austn Attaway
  * @author Chau Vu
@@ -39,43 +37,31 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     /** An auto-generated serial version UID for object Serialization */
     private static final long serialVersionUID = 86445190678492115L;
     
-    /** 
-     * This Panel's Player 
-     */ 
+    /** The player. */ 
     private static Player myPlayer;
     
-    /** 
-     * The MazeManager that keeps track of the available Mazes and the current maze. 
-     */
+    /** The maze manager that keeps track of the available mazes and the current maze. */
     private static MazeManager myMazeManager;
     
-    /** 
-     * The internal game timer.
-     */
+    /** The internal game timer. */
     private final Timer myGameTimer;
     
-    /**
-     * The ItemSheet for this GamePanel responsible for drawing the items like brains.
-     */
+    /** he item sheet responsible for drawing items. */
     private ItemSheet myItemSheet;
     
-    /**
-     * The BackgroundSheet for this GamePanel responsible for drawing the background.
-     */
+    /** The background sheet for drawing the background. */
     private BackgroundSheet myBackgroundSheet;
     
-    /**
-     * The PanelSheet for this GamePanel responsible for drawing win/lose panels.
-     */
+    /** The panel sheet used for drawing the win/lose panels. */
     private PanelSheet myPanelSheet;
     
     /**
-     * Constructs a new GamePanel instance that corresponds to the current maze
-     * in the given MazeManager. Adds a key listener to the player movement and starts the game timer.
+     * Constructs a new game panel instance that corresponds to the current maze
+     * in the given maze manager.
+     * This adds a key listener to the player movement and starts the game timer.
      * 
-     * @param theMazeManager the MazeManager that helps keep track of
-     *        the current maze for this game instance.
-     * @throws NullPointerException if theMazeManager is null
+     * @param theMazeManager The maze manager that tracks the current maze for the game instance.
+     * @throws NullPointerException If the maze manager is null.
      */
     public GamePanel(final MazeManager theMazeManager) {
         myMazeManager = Objects.requireNonNull(theMazeManager, "theMazeManager can not be null");
@@ -91,7 +77,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         addKeyListener(this);
         setFocusable(true);
        
-        // mouse listener that ensures this panel is focused when it is pressed
+        // Mouse listener that ensures the panel is focused on mouse click.
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(final MouseEvent theEvent) {
@@ -102,11 +88,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     }
     
     /**
-     * Completes the interaction between the player and the interactable objects in the room
+     * Completes the interaction between the player and the interactable objects in the room.
      */
     public static void interact() {
-        // get the door we are trying to interact with. If there isn't a door near us
-        // then the interacted door will be null
+        // Gets the door we are trying to interact with.
+        // If there is no nearby door, then the interaction will be null.
         final Door interactedDoor = myMazeManager.getCurrentRoom().interact(myPlayer);
         
         // if the door isn't null or it isn't locked move through the door
@@ -119,31 +105,31 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     }
     
     /**
-     * Ensures that the state of this GamePanel is disabled so it can no longer be used.
+     * Ensures that the state of the game panel is disabled so it can no longer be used.
      */
     public void disable() {
         myGameTimer.stop();
     }
 
     /**
-     * Draws the game onto this GamePanel
-     * @param theGraphics the Graphics object used for painting
+     * Draws the game onto the game panel.
+     * @param theGraphics The graphics used for drawing.
      */
     @Override
     public void paintComponent(final Graphics theGraphics) {
         super.paintComponent(theGraphics);
         final Graphics2D g2d = (Graphics2D) theGraphics;
         
-        // draw the background and the player
+        // Draws the background and the player.
         myBackgroundSheet.drawBackground(g2d, myMazeManager.getCurrentRoom()); 
         drawPlayerImage(g2d); 
         myBackgroundSheet.drawBottomRowTransparent(g2d, myMazeManager.getCurrentRoom());
         
-        // draw the brains and the minimap
+        // Draws the brains and minimap.
         myItemSheet.drawBrainsList(g2d, myPlayer);
         MiniMap.drawMiniMap(g2d, myMazeManager.getCurrentMaze(), myMazeManager.getCurrentRoom());
         
-        // draw win lose panel IF the state of the game makes sense.
+        // Draws the win/lose panels if the state of the game makes sense.
         myPanelSheet.drawWinLosePanel(g2d, myMazeManager.getCurrentRoom(), myPlayer);
         Toolkit.getDefaultToolkit().sync();
     }
@@ -159,24 +145,23 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     
     /**
      * Handles the player movement with WASD on key press.
-     *
      * @param theKeyEvent The key event that is being listened for.
      */
     public void keyPressed(final KeyEvent theKeyEvent) {
         switch(theKeyEvent.getKeyCode()) {
-            case KeyEvent.VK_W: // Up
+            case KeyEvent.VK_W: // Up.
                 myPlayer.moveUp();
                 break;
-            case KeyEvent.VK_S: // Down
+            case KeyEvent.VK_S: // Down.
                 myPlayer.moveDown();
                 break;
-            case KeyEvent.VK_A: // Left
+            case KeyEvent.VK_A: // Left.
                 myPlayer.moveLeft();
                 break;
-            case KeyEvent.VK_D: // Right
+            case KeyEvent.VK_D: // Right.
                 myPlayer.moveRight();
                 break;
-            case KeyEvent.VK_SPACE: // interaction
+            case KeyEvent.VK_SPACE: // Interaction.
                 myPlayer.stopMovingX();
                 myPlayer.stopMovingY();
                 interact();           
@@ -203,21 +188,20 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     }
 
     /**
-     * Unused (required for implement KeyListener)
+     * Unused (required method for implementing KeyListener).
      */
     public void keyTyped(final KeyEvent theKeyEvent) {
-        // unused
+        
     }
     
     /**
      * Draws the player image on the screen.
-     * @param theGraphics - the 2D Graphics
-     * @throws NullPointerException if theGraphics is null
+     * @param theGraphics The graphics used for drawing.
+     * @throws NullPointerException If the graphics are null.
      */
     private void drawPlayerImage(final Graphics2D theGraphics) {
         Objects.requireNonNull(theGraphics, "theGraphics can not be null");
         theGraphics.drawImage(myPlayer.getImage(), myPlayer.getXPosition(), 
                 myPlayer.getYPosition(), this);
     }
-    
 }

@@ -2,7 +2,6 @@
  * Amazing Trivia Maze
  * TCSS 360 Spring 2021
  */
-
 package model.question;
 
 import java.util.Objects;
@@ -16,7 +15,6 @@ import view.question_view.TrueFalseQuestionPanel;
 
 /**
  * Provides basic functionalities for all types of questions.
- * 
  * @author Daniel Jiang
  * @version Spring 2021
  */
@@ -36,11 +34,10 @@ public abstract class Question {
 
     /**
      * Sets up a Question with the given text (prompt) and question type.
-     *  
-     * @param theQuestionText the String representation of this question/
-     * @param theType the QuestionType this question is.
-     * @throws NullPointerException if theQuestionText is null
-     * @throws NullPointerException if theType is null
+     * @param theQuestionText The string representation of this question.
+     * @param theType The type of question this is.
+     * @throws NullPointerException If the question text is null.
+     * @throws NullPointerException If the question type is null.
      */
     public Question(final String theQuestionText, final QuestionType theType) {
         myQuestionPrompt = Objects.requireNonNull(theQuestionText, "theQuestionText can not be null");
@@ -72,13 +69,10 @@ public abstract class Question {
         return myType;
     }
     
-    
-    // NOTE: this is view code and is not tested, we will refactor this 
-    //       code out of this class if possible at a later date.
     /**
      * Creates an appropriate frame and panel that pops up so this question can be answered.
-     * @param thePlayer the Player that this question is being answered by.
-     * @throws NullPointerException if thePlayer is null
+     * @param thePlayer The player that is answering the question.
+     * @throws NullPointerException If the player is null.
      */
     public void answerQuestion(final Player thePlayer) {
         Objects.requireNonNull(thePlayer, "thePlayer can not be null");
@@ -107,8 +101,8 @@ public abstract class Question {
     }
     
     /**
-     * Creates a String representation of questions.
-     * @return The String representation of questions.
+     * Creates a string representation of questions.
+     * @return The string representation of questions.
      */
     @Override
     public String toString() {

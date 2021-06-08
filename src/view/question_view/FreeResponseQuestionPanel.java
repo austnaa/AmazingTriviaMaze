@@ -32,15 +32,15 @@ public class FreeResponseQuestionPanel extends AbstractQuestionPanel {
     /** The free response questions that this panel is displaying. */
     private FreeResponseQuestion myQuestion;
     
-    /** The Player object that could be affected from answering this panel's Question incorrectly. */
+    /** The player that could be affected from answering this panel's wuestion incorrectly. */
     private Player myPlayer;
     
     /**
      * The question panel for free response questions.
      * @param thePlayer The player.
      * @param theQuestion The free response question.
-     * @throws NullPointerException if thePlayer is null.
-     * @throws NullPointerException if theQuestion is null.
+     * @throws NullPointerException If the player is null.
+     * @throws NullPointerException If the question is null.
      */
     public FreeResponseQuestionPanel(final Player thePlayer, final Question theQuestion) {
         super();
@@ -60,11 +60,11 @@ public class FreeResponseQuestionPanel extends AbstractQuestionPanel {
      */
     private void setupComponents() {
         
-        // set up the text area where the user can enter text
+        // Sets up the text area where the user answers.
         final JTextField textField = new JTextField();
         textField.setBounds(30, 60, 200, 20);
         
-        // set up the submit button
+        // Sets up the submit button.
         final JButton submitButton = new JButton("Submit");
         submitButton.setBounds(150, 100, 90, 20);
         submitButton.addActionListener(new ActionListener() {
@@ -72,25 +72,24 @@ public class FreeResponseQuestionPanel extends AbstractQuestionPanel {
             public void actionPerformed(final ActionEvent theEvent) {
                 myQuestion.checkAnswer(textField.getText());
                 
-                // question was answered correctly
+                // If the question was answered correctly.
                 if (myQuestion.getAnsweredAlready()) {
                     GamePanel.interact();
                     final Clip openDoor = Sound.sound(Sound.DOOR_OPEN_SOUND, 0.5);
                     openDoor.start();
                 } 
-                // question was answered incorrectly
+                // If the question was answered incorrectly.
                 else {
                     myPlayer.setBrains(myPlayer.getBrainsremaining() - 1);
                     final Clip loseBrain = Sound.sound(Sound.LOSE_BRAIN_SOUND, 0.5);
                     loseBrain.start();
                 }
-                // close the frame after the submit button is pressed
+                // Closes the frame once the submit button has been pressed.
                 if (myFrame != null) {
                     myFrame.dispose();
                 }
             }
         });
-        
         this.add(submitButton);
         this.add(textField);           
     }

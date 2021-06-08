@@ -36,15 +36,14 @@ public class PanelSheet extends SheetLoader {
     }
     
     /**
-     * Draws the Win panel if the current room is the end room.
-     * Draws the Lose panel if the number of brains remaining for the player is 0.
-     * 
-     * @param theGraphics the Graphics used to draw
-     * @param theRoom - the current room 
-     * @param thePlayer - the player
-     * @throws NullPointerException if theGraphics is null
-     * @throws NullPointerException if theRoom is null
-     * @throws NullPointerException if thePlayer is null
+     * Draws the win panel if the current room is the end room.
+     * Draws the lose panel if the number of brains remaining for the player is 0.
+     * @param theGraphics The graphics used to draw.
+     * @param theRoom The current room.
+     * @param thePlayer The player
+     * @throws NullPointerException If the graphics is null.
+     * @throws NullPointerException If the room is null.
+     * @throws NullPointerException If the player is null.
      */
     public void drawWinLosePanel(final Graphics2D theGraphics, final Room theRoom, final Player thePlayer) {
         Objects.requireNonNull(theGraphics, "theGraphics can not be null");
@@ -62,11 +61,10 @@ public class PanelSheet extends SheetLoader {
     }
     
     /**
-     * Grab the images from the PanelSheet.
+     * Grab the images from the panel sheet.
      */
     private void setUpImages() {
        myWinImage = this.grabPanelImage(3, 1);
        myLoseImage = this.grabPanelImage(4, 1);
-    } 
-    
+    }
 }

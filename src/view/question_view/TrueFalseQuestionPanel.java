@@ -32,21 +32,21 @@ public class TrueFalseQuestionPanel extends AbstractQuestionPanel {
     /** An auto-generated serial version UID for object Serialization */
     private static final long serialVersionUID = 5105930508290698162L;
     
-    /** The MultipleChoiceQuestion that this panel is displaying. */
+    /** The true/false question that this panel is displaying. */
     private TrueFalseQuestion myQuestion;
     
     /** The options available for this true/false question. */
     private List<Option> myOptions;
     
-    /** The Player object that could be affected from answering this panel's Question incorrectly. */
+    /** The player that could be affected from answering this panel's question incorrectly. */
     private Player myPlayer;
     
     /**
      * The question panel for multiple choice questions.
      * @param thePlayer The player.
      * @param theQuestion The multiple choice question.
-     * @throws NullPointerException if thePlayer is null
-     * @throws NullPointerException if theQuestion is null
+     * @throws NullPointerException If the player is null.
+     * @throws NullPointerException If the question is null.
      */
     public TrueFalseQuestionPanel(final Player thePlayer, final Question theQuestion) {
         super();
@@ -68,7 +68,7 @@ public class TrueFalseQuestionPanel extends AbstractQuestionPanel {
      */
     private void setupButtons() {
 
-        // set up the radio buttons      
+        // Sets up the radio buttons.  
         final JRadioButton button1 = myOptions.get(0);
         button1.setBounds(30, 60, 150, 20);
         
@@ -78,10 +78,10 @@ public class TrueFalseQuestionPanel extends AbstractQuestionPanel {
         this.add(button1);
         this.add(button2);
         
-        // ensure that none of the options are selected 
+        // Ensures that none of the options are selected beforehand.
         myQuestion.clearButtons();
         
-        // setup the submit button
+        // Sets up the submit button.
         final JButton submitButton = new JButton("Submit");
         submitButton.setBounds(150, 160, 90, 20);
         submitButton.addActionListener(new ActionListener() {
@@ -89,19 +89,19 @@ public class TrueFalseQuestionPanel extends AbstractQuestionPanel {
             public void actionPerformed(final ActionEvent theEvent) {
                 myQuestion.checkAnswer();
 
-                // question was answered correctly
+                // If the question was answered correctly.
                 if (myQuestion.getAnsweredAlready()) {
                     GamePanel.interact();
                     final Clip openDoor = Sound.sound(Sound.DOOR_OPEN_SOUND, 0.5);
                     openDoor.start();
                 } 
-                // question was answered incorrectly
+                // If the question was answered incorrectly.
                 else {
                     myPlayer.setBrains(myPlayer.getBrainsremaining() - 1);
                     final Clip loseBrain = Sound.sound(Sound.LOSE_BRAIN_SOUND, 0.5);
                     loseBrain.start();
                 }
-                // close the frame once the submit button has been pressed.
+                // Closes the frame once the submit button has been pressed.
                 if (myFrame != null) {
                     myFrame.dispose();
                 }

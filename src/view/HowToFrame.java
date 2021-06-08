@@ -10,8 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /**
- * How to play Frame that pops up when users click on the
- * How to play button in the menu bar.
+ * The "How to Play" frame that pops up when users click
+ * on the "How to Play" button in the menu bar.
  * @author Chau Vu
  * @version Spring 2021
  */
@@ -21,7 +21,7 @@ public class HowToFrame extends JFrame {
     private static final long serialVersionUID = -981295503148408992L;
 
     /**
-     * How To Play Frame constructor that sets up the frame.
+     * The "How to Play" frame constructor that sets up the frame.
      */
     public HowToFrame() {
         setTitle("How To Play");

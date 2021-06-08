@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package view;
 
 import java.awt.event.MouseAdapter;
@@ -15,8 +14,7 @@ import model.MazeManager;
 import model.question.QuestionManager;
 
 /**
- * The class for the Amazing Trivia Maze game frame.
- * 
+ * The class for the amazing trivia maze game frame.
  * @author Daniel Jiang
  * @author Austn Attaway
  * @author Chau Vu
@@ -33,20 +31,14 @@ public class GameFrame extends JFrame {
     /** The height of the frame in pixels. */
     public static final int FRAME_HEIGHT = 5*32*4+45;
     
-    /**
-     * The StartPanel this frame displays at the beginning of the game.
-     */
+    /** The start panel displayed at the beginning of the game. */
     private StartPanel myStartPanel;
     
-    /**
-     * The GamePanel this frame displays while the user is playing the game.
-     */
+    /** The game panel displayed while the user is playing the game. */
     private GamePanel myGamePanel;
     
-    /**
-     * The MazeManager that helps manage the current game's and future games' mazes.
-     */
-    private MazeManager myMazeManager; //added
+    /** The maze manager that helps manage the current game's and future games' mazes. */
+    private MazeManager myMazeManager;
 
     /**
      * Creates the game frame.
@@ -68,16 +60,15 @@ public class GameFrame extends JFrame {
         this.setTitle("Amazing Trivia Maze");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
-//        this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setVisible(true);  
         this.setJMenuBar(new MenuBar());
         
-        // start menu sound
+        // Starts the menu sound.
         Sound.MENU.start();
         Sound.MENU.loop(Clip.LOOP_CONTINUOUSLY);
         
-        // add listener to the start panel that allows the user to click the start button
+        // Adds a mouse listener to the start panel that checks if the user clicks the start button.
         myStartPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(final MouseEvent theEvent) {
@@ -96,16 +87,15 @@ public class GameFrame extends JFrame {
     }
     
     /**
-     * Sets up a new game instance by setting up a new GamePanel 
-     * and adding it to this panel. Also ensures the MazeManager sets 
-     * a new maze. 
+     * Sets up a new game instance by setting up a new game panel and adds.
+     * it to this panel and ensures that the maze manager sets a new maze.
      */
     private void setNewGamePanel() {
-        // stop the timer on the current game panel
+        // Stops the timer on the current game panel.
         myGamePanel.disable();
         myGamePanel.setVisible(false);
 
-        // create a new game panel
+        // Creates a new game panel.
         myMazeManager.setNewMaze();
         myGamePanel = new GamePanel(myMazeManager);
         myGamePanel.setVisible(true);
@@ -113,5 +103,4 @@ public class GameFrame extends JFrame {
         add(myGamePanel);
         myGamePanel.grabFocus();
     }
-    
 }

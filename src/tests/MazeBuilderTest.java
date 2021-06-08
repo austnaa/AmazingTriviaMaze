@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package tests;
 
 import static org.junit.Assert.*;
@@ -18,14 +17,13 @@ import model.Room;
 import tests.mock_objects.QuestionManagerMock;
 
 /**
- * JUnit test class for the model.MazeBuilder class.
- * 
+ * JUnit test class for the maze builder class.
  * @author Austn Attaway
  * @version Spring 2021
  */
 public class MazeBuilderTest {
     
-    /** A String used when creating rooms when you don't want any doors. */ 
+    /** A string used when creating rooms when you don't want any doors. */ 
     private static final String ROOM_TEXT = "NNNN";
     
     /** The file name for a map with a 1x1 maze with a single room with no doors. */
@@ -37,14 +35,10 @@ public class MazeBuilderTest {
     /** The file name for a map with a 2x2 maze with varying rooms. */
     private static final String MAP_TEXT_2x2 = "test_map3.txt";
     
-    /**
-     * A Mock QuestionManager used for testing.
-     */
+    /** A mock question manager used for testing. */
     private QuestionManagerMock myQuestionManagerMock;
     
-    /**
-     * An instantiated empty maze used for testing.
-     */
+    /** An instantiated empty maze used for testing. */
     private Room[][] myNullMaze;
     
     /**

@@ -11,8 +11,7 @@ import java.util.Objects;
 import model.Player;
 
 /**
- * Class contains a method that
- * grabs the specific image from 
+ * The class contains a method that grabs the specific image from 
  * an item sheet.
  * 
  * References: https://www.youtube.com/watch?v=jedilHUPO7c
@@ -35,7 +34,7 @@ public class ItemSheet extends SheetLoader {
     /** The starting y location for drawing the brains. */
     private static final int Y_LOCATION = 10;
      
-    /** The Brains Image. */
+    /** The brains image. */
     private BufferedImage myBrainsImage;
     
     /**
@@ -48,10 +47,10 @@ public class ItemSheet extends SheetLoader {
     
     /**
      * Draws the list of brains. 
-     * @param theGraphics the Graphics that does the drawing
-     * @param thePlayer the Player that whos state is important for drawing the brains
-     * @throws NullPointerException if theGraphics is null
-     * @throws NullPointerException if thePlayer is null  
+     * @param theGraphics The graphics used for drawing.
+     * @param thePlayer The player's state for drawing the brains.
+     * @throws NullPointerException If the graphics are null.
+     * @throws NullPointerException If the player is null.
      */
     public void drawBrainsList(final Graphics2D theGraphics, final Player thePlayer) {
         Objects.requireNonNull(theGraphics, "theGraphics can not be null");
@@ -64,7 +63,7 @@ public class ItemSheet extends SheetLoader {
     }
     
     /**
-     * Grab the images from the ItemSheet.
+     * Grab the images from the item sheet.
      */
     private void setUpImages() {
         myBrainsImage = this.grabIcon(1, 1);

@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package model;
 
 import java.util.Objects;
@@ -13,7 +12,6 @@ import view.GameFrame;
 
 /**
  * Contains state and behavior for a Door.
- * 
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -50,8 +48,8 @@ public class Door {
     private DoorType myType;
     
     /**
-     * The Question assigned to this door. Is used when the user 
-     * needs to answer a question to unlock the door.
+     * The Question assigned to this door.
+     * Used when the user needs to answer a question to unlock the door.
      */
     private Question myQuestion;
     
@@ -63,12 +61,10 @@ public class Door {
     
     /**
      * Constructor that builds a door with the given DoorType and Question.
-     *
-     * @param theType the DoorType of this door.
-     * @param theQuestion the Question required to answer to unlock this door.
-     * @throws NullPointerException if theType is null
-     * @throws NullPointerException if theType is null
-     * @throws NullPointerException if theQuestion is null
+     * @param theType The type of door.
+     * @param theQuestion The question assigned to this door.
+     * @throws NullPointerException If the door type is null.
+     * @throws NullPointerException If the question is null.
      */
     public Door(final DoorType theType, final Question theQuestion) {
         myType = Objects.requireNonNull(theType, "theType cannot be null");
@@ -77,19 +73,18 @@ public class Door {
     }
 
     /**
-     * Interact with this door if the player is close enough. 
-     * Creates the popup frame for the question
-     * if the question is not answered and the player is close enough.
-     * 
-     * @param thePlayer the Player interacting with this door.
-     * @return this door if the question was answered correctly, null otherwise.
-     * @throws NullPointerException if thePlayer is null
+     * Interacts with this door if the player is close enough. 
+     * Creates the popup frame for the question if the question has not
+     * been answered yet and the player within the vicinity.
+     * @param thePlayer The player interacting with the door.
+     * @return If this door was answered correctly, null otherwise.
+     * @throws NullPointerException If the player is null.
      */
     public Door interact(final Player thePlayer) {
         Objects.requireNonNull(thePlayer, "thePlayer cannot be null");
         if (isCloseEnough(thePlayer)) {
             if (this.isLocked()) {
-                // creates the popup question frame
+                // Creates the popup question frame.
                 myQuestion.answerQuestion(thePlayer);  
             } else {
                 return this;
@@ -99,11 +94,10 @@ public class Door {
     }
     
     /**
-     * Returns whether or not the given Player is close enough to this door for interaction.
-     * 
-     * @param thePlayer the Player trying to interact with this door.
-     * @return whether or not the given Player is close enough to this door for interaction.
-     * @throws NullPointerException if thePlayer is null
+     * Returns if the player is close enough to this door for interaction.
+     * @param thePlayer The player interacting with the door.
+     * @return If the player is close enough to the door for interaction.
+     * @throws NullPointerException If the player is null.
      */
     public boolean isCloseEnough(final Player thePlayer) {
         Objects.requireNonNull(thePlayer, "thePlayer can not be null");
@@ -115,8 +109,8 @@ public class Door {
     }
     
     /**
-     * Returns whether or not this door is locked
-     * @return whether or not this door is locked
+     * Returns whether this door is locked or not.
+     * @return Whether this door is locked or not.
      */
     public boolean isLocked() {
         return !myQuestion.getAnsweredAlready();
@@ -124,7 +118,7 @@ public class Door {
     
     /**
      * Returns the x position of this door.
-     * @return the x position of this door.
+     * @return The x position of this door.
      */
     public int getX() {
         return myX;
@@ -132,7 +126,7 @@ public class Door {
     
     /**
      * Returns the y position of this door.
-     * @return the y position of this door.
+     * @return The y position of this door.
      */
     public int getY() {
         return myY;
@@ -140,29 +134,30 @@ public class Door {
     
     /**
      * Returns the type of this door.
-     * @return the type of this door.
+     * @return The type of this door.
      */
     public DoorType getType() {
         return myType;
     }
     
     /**
-     * Returns the Question this Door contains.
-     * @return the Question this Door contains.
+     * Returns the question this door contains.
+     * @return The question this door contains.
      */
     public Question getQuestion() {
         return myQuestion;
     }
     
     /**
-     * Returns a String representation of a door.
+     * Returns a string representation of a door.
+     * @return A string representation of a door.
      */
     public String toString() {
         return "I am a door, type: " + myType;
     }
     
     /**
-     * Sets the x and y position depending on the type this door is.
+     * Sets the x and y position depending on the type of door.
      */
     private void setXYPosition() {
         switch (myType) {

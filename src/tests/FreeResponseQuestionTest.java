@@ -2,7 +2,6 @@
  * Amazing Trivia Maze
  * TCSS 360 Spring 2021
  */
-
 package tests;
 
 import static org.junit.Assert.*;
@@ -14,21 +13,20 @@ import model.question.FreeResponseQuestion;
 import model.question.Question.QuestionType;
 
 /**
- * A JUnit test class for the FreeResponseQuestion class.
- * 
+ * A JUnit test class for the free response question class.
  * @author Austn Attaway
  * @version Spring 2021
  */
 public class FreeResponseQuestionTest {
     
-    /** The question text passed into test FreeResponseQuestions. */ 
+    /** The question text passed into test free response questions. */ 
     private static final String QUESTION = "question";
     
-    /** The answer text passed into test FreeResponseQuestions. */
+    /** The answer text passed into test free response questions. */
     private static final String ANSWER = "answer";
     
     /**
-     * A FreeResponseQuestion used for testing.
+     * A free response question used for testing.
      */
     private FreeResponseQuestion myFreeResponseQuestion;
     
@@ -41,7 +39,7 @@ public class FreeResponseQuestionTest {
     }
 
     /**
-     * Tests the FreeResponseQuestion constructor for a
+     * Tests the free response question constructor for a
      * NullPointerException given a null question string.
      */
     @Test(expected = NullPointerException.class)
@@ -51,7 +49,7 @@ public class FreeResponseQuestionTest {
     
     
     /**
-     * Tests the FreeResponseQuestion constructor for a
+     * Tests the free response question constructor for a
      * NullPointerException given a null answer string.
      */
     @Test(expected = NullPointerException.class)
@@ -60,8 +58,8 @@ public class FreeResponseQuestionTest {
     }
     
     /**
-     * Tests the FreeResponseQuestion constructor to 
-     * properly set the answer String
+     * Tests the free response question constructor to 
+     * properly set the answer string.
      */
     @Test
     public void testFreeResponseQuestionConstructorAnswerTextSetting() {
@@ -70,7 +68,7 @@ public class FreeResponseQuestionTest {
     }
     
     /**
-     * Tests the FreeResponseQuestion constructor to 
+     * Tests the free response question constructor to 
      * ensure it properly sets the questions's type to be 
      * a free response question.
      */
@@ -82,8 +80,8 @@ public class FreeResponseQuestionTest {
     }
     
     /**
-     * Tests the getAnswer method to make sure it returns 
-     * the correct String
+     * Tests the get answer method to make sure it returns 
+     * the correct string.
      */
     @Test
     public void testGetAnswer() {
@@ -93,19 +91,19 @@ public class FreeResponseQuestionTest {
     
     
     /**
-     * Tests the checkAnswer method with an invalid answer to ensure
-     * the question's is not answered afterwards and false is returned.  
+     * Tests the check answer method with an invalid answer to ensure
+     * the question's state is not answered afterwards and false is returned.  
      */
     @Test
     public void testCheckAnswerIncorrectAnswer() {
         final boolean methodResult = myFreeResponseQuestion.checkAnswer("not a correct answer");
         boolean result = true;
         
-        // make sure false was returned
+        // Make sure false is returned.
         if (methodResult != false) {
             result = false;
         }
-        // make sure the question's state is still unanswered
+        // Make sure the question's state is still unanswered.
         if (myFreeResponseQuestion.getAnsweredAlready()) {
             result = false;
         }
@@ -115,19 +113,19 @@ public class FreeResponseQuestionTest {
     }
     
     /**
-     * Tests the checkAnswer method with a perfectly correct input. Makes sure the
-     * method returns true and also updates the state of the question to be answered.
+     * Tests the check answer method with a perfectly correct input.
+     * Makes sure the method returns true and also updates the state of the question to be answered.
      */
     @Test
     public void testCheckAnswerPerfectCorrectAnswer() {
         final boolean methodResult = myFreeResponseQuestion.checkAnswer(ANSWER);
         boolean result = true;
         
-        // make sure false was returned
+        // Make sure false is returned.
         if (methodResult == false) {
             result = false;
         }
-        // make sure the question's state is still unanswered
+        // Make sure the question's state is still unanswered.
         if (!myFreeResponseQuestion.getAnsweredAlready()) {
             result = false;
         }
@@ -138,7 +136,7 @@ public class FreeResponseQuestionTest {
     
     
     /**
-     * Tests the checkAnswer method with a correct input with whitespace
+     * Tests the check answer method with a correct input with whitespace
      * in front and after the answer to ensure the whitespace trim works.
      * Makes sure the method returns true and also updates the state of 
      * the question to be answered.
@@ -148,11 +146,11 @@ public class FreeResponseQuestionTest {
         final boolean methodResult = myFreeResponseQuestion.checkAnswer("  " + ANSWER + "  ");
         boolean result = true;
         
-        // make sure false was returned
+        // Make sure false is returned.
         if (methodResult == false) {
             result = false;
         }
-        // make sure the question's state is still unanswered
+        // Make sure the question's state is still unanswered.
         if (!myFreeResponseQuestion.getAnsweredAlready()) {
             result = false;
         }
@@ -162,14 +160,14 @@ public class FreeResponseQuestionTest {
     }
     
     /**
-     * Tests the checkAnswer method with a correct input with varying
+     * Tests the check answer method with a correct input with varying
      * uppercase and lowercase letters to ensure that case does not matter.
      * Makes sure the method returns true and also updates the state of 
      * the question to be answered.
      */
     @Test
     public void testCheckAnswerCorrectAnswerVaryingCapitalization() {
-        // test string is "AnswER"
+        // Test string is "AnswER".
         final String varyingCapitalizationSubstring = Character.toUpperCase(ANSWER.charAt(0)) 
                 + ANSWER.substring(1, ANSWER.length() - 2) 
                 + ANSWER.substring(ANSWER.length() - 2).toUpperCase();
@@ -177,11 +175,11 @@ public class FreeResponseQuestionTest {
         final boolean methodResult = myFreeResponseQuestion.checkAnswer(varyingCapitalizationSubstring);
         boolean result = true;
         
-        // make sure false was returned
+        // Make sure false is returned.
         if (methodResult == false) {
             result = false;
         }
-        // make sure the question's state is still unanswered
+        // Make sure the question's state is still unanswered.
         if (!myFreeResponseQuestion.getAnsweredAlready()) {
             result = false;
         }
@@ -191,7 +189,7 @@ public class FreeResponseQuestionTest {
     }
     
     /**
-     * Tests the toString method for an unanswered question.
+     * Tests the to string method for an unanswered question.
      */
     @Test
     public void testToStringUnansweredQuestion() {
@@ -201,7 +199,7 @@ public class FreeResponseQuestionTest {
     }
     
     /**
-     * Tests the toString method for an answered question.
+     * Tests the to string method for an answered question.
      */
     @Test
     public void testToStringAnsweredQuestion() {
@@ -210,5 +208,4 @@ public class FreeResponseQuestionTest {
         assertEquals("the toString method failed on an answered question", 
                 expected, myFreeResponseQuestion.toString());
     }
-
 }

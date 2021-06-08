@@ -20,26 +20,26 @@ public class Room {
     private boolean myHasBeenVisited;
 
     /**
-     * The Door that is located at to the North of the room.
-     * Is null if the Door does not exist. 
+     * The door that is located at to the North of the room.
+     * Is null if the door doesn't exist. 
      */
     private Door myNorthDoor;
     
     /**
-     * The Door that is located to the South of the room.
-     * Is null if the Door does not exist.
+     * The door that is located to the South of the room.
+     * Is null if the door doesn't exist.
      */
     private Door mySouthDoor;
     
     /**
-     * The Door that is located to the West of the room.
-     * Is null if the Door does not exist.
+     * The door that is located to the West of the room.
+     * Is null if the door doesn't exist.
      */
     private Door myWestDoor;
     
     /**
-     * The Door that is located to the East of the room.
-     * Is null if the Door does not exist.
+     * The door that is located to the East of the room.
+     * Is null if the door doesn't exist.
      */
     private Door myEastDoor;
     
@@ -51,14 +51,13 @@ public class Room {
     }
     
     /**
-     * Constructor that builds a Room corresponding to the given input.
-     * 
-     * @param theRoomIsStart  whether or not this room is the starting room.
-     * @param theRoomIsFinish whether or not this room is the finish room.
-     * @param theNorthDoor    the Room located to the north (null if there isn't a door)
-     * @param theSouthDoor    the Room located to the south (null if there isn't a door)
-     * @param theWestDoor     the Room located to the east  (null if there isn't a door)
-     * @param theEastDoor     the Room located to the west  (null if there isn't a door)
+     * Constructor that builds a room corresponding to the given input.
+     * @param theRoomIsStart  If this room is the starting room.
+     * @param theRoomIsFinish If this room is the finish room.
+     * @param theNorthDoor    The room located to the North (null if there isn't a door).
+     * @param theSouthDoor    The room located to the South (null if there isn't a door).
+     * @param theWestDoor     The room located to the East  (null if there isn't a door).
+     * @param theEastDoor     The room located to the West  (null if there isn't a door).
      */
     public Room(final boolean theRoomIsEnd,
             final Door theNorthDoor, final Door theSouthDoor,
@@ -75,15 +74,14 @@ public class Room {
     }
     
     /**
-     * Allows the given player to interact with this Room.
-     * 
-     * @param thePlayer the Player that interacted with this Room.
-     * @throws NullPointerException if thePlayer is null
+     * Allows the given player to interact with this room.
+     * @param thePlayer The player that interacts with the room.
+     * @throws NullPointerException If the player is null.
      */
     public Door interact(final Player thePlayer) {
         Objects.requireNonNull(thePlayer, "thePlayer can not be null");
         Door interactedDoor = null;
-        // try and interact with all of the available doors
+        // Tries to interact with all of the available doors.
         
         if (myNorthDoor != null) {
             final Door temp = myNorthDoor.interact(thePlayer);
@@ -113,101 +111,93 @@ public class Room {
     }
     
     /**
-     * Returns whether or not this room has a north door.
-     * @return whether or not this room has a north door.
+     * Returns if this room has a North door.
+     * @return If this room has a North door.
      */
     public boolean hasNorthDoor() {
         return myNorthDoor != null;
     }
     
     /**
-     * Returns whether or not this room has a south door.
-     * @return whether or not this room has a south door.
+     * Returns if this room has a South door.
+     * @return If this room has a South door.
      */
     public boolean hasSouthDoor() {
         return mySouthDoor != null;
     }
     
     /**
-     * Returns whether or not this room has a west door.
-     * @return whether or not this room has a west door.
+     * Returns if this room has a West door.
+     * @return if this room has a West door.
      */
     public boolean hasWestDoor() {
         return myWestDoor != null;
     }
     
     /**
-     * Returns whether or not this room has a east door.
-     * @return whether or not this room has a east door.
+     * Returns if this room has a East door.
+     * @return If this room has a East door.
      */
     public boolean hasEastDoor() {
         return myEastDoor != null;
     }
     
     /**
-     * Update this Room's state to indicate it has been visited.
+     * Update this room's state to indicate it has been visited.
      */
     public void setVisited() {
         myHasBeenVisited = true;
     }
     
     /**
-     * Returns whether or not this room has been visited.
-     * @return whether or not this room has been visited.
+     * Returns if this room has been visited.
+     * @return If this room has been visited.
      */
     public boolean isVisited() {
         return myHasBeenVisited;
     }
     /**
-     * Returns whether or not this is the last room.
-     * @return whether or not this is the last room.
+     * Returns if this is the last room.
+     * @return If this is the last room.
      */
     public boolean isEndRoom() {
         return myIsEndRoom;
     }
     
     /**
-     * Returns this Room's southern door. 
-     * Will return null if this Room does not have a southern door.
-     * 
-     * @return this Room's southern door if it exists, null otherwise.
+     * Returns this room's South door, null otherwise.
+     * @return This room's South door, null otherwise.
      */
     public Door getSouthDoor() {
         return mySouthDoor;
     }
     
     /**
-     * Returns this Room's eastern door. 
-     * Will return null if this Room does not have a eastern door.
-     * 
-     * @return this Room's western door if it exists, null otherwise.
+     * Returns this room's East door, null otherwise.
+     * @return This room's East door, null otherwise.
      */
     public Door getEastDoor() {
         return myEastDoor;
     }
     
     /**
-     * Returns this Room's northern door. 
-     * Will return null if this Room does not have a northern door.
-     * 
-     * @return this Room's northern door if it exists, null otherwise.
+     * Returns this room's North door, null otherwise.
+     * @return This room's North door, null otherwise.
      */
     public Door getNorthDoor() {
         return myNorthDoor;
     }
     
     /**
-     * Returns this Room's western door. 
-     * Will return null if this Room does not have a western door.
-     * 
-     * @return this Room's western door if it exists, null otherwise.
+     * Returns this room's West door, null otherwise.
+     * @return This room's West door, null otherwise.
      */
     public Door getWestDoor() {
         return myWestDoor;
     }
    
    /**
-    * Returns a String representation of this room.
+    * Returns a string representation of rooms.
     */
    @Override
    public String toString() {
@@ -216,11 +206,11 @@ public class Room {
        stringBuilder.append("Room: ");
        stringBuilder.append(newLine);
             
-       // end room?
+       // End room.
        stringBuilder.append("End room: " + myIsEndRoom);
        stringBuilder.append(newLine);
 
-       // doors
+       // Doors.
        stringBuilder.append("Door status: ");
        stringBuilder.append(newLine);
        
@@ -239,7 +229,6 @@ public class Room {
        stringBuilder.append("West: ");
        stringBuilder.append(myWestDoor != null);
        stringBuilder.append(newLine);
-       
        
        return stringBuilder.toString();
    }

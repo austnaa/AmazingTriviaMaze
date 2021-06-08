@@ -11,8 +11,7 @@ import java.util.Objects;
 import model.Room;
 
 /**
- * Manages drawing the background of the GamePanel.
- * 
+ * Manages drawing the background for the game panel.
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -85,7 +84,7 @@ public class BackgroundSheet extends SheetLoader {
     private BufferedImage myLowerRightCornerTransparentImage;
     
     /**
-     * Sets up a new BackgroundSheet.
+     * Sets up a new background sheet.
      */
     public BackgroundSheet() {
         super(FILE_NAME);
@@ -94,11 +93,10 @@ public class BackgroundSheet extends SheetLoader {
     
     /**
      * Draws a bottom row of tiles that is transparent.
-     * 
-     * @param theGraphics the graphics object used for drawing.
-     * @param theRoom the Room that is being drawn.
-     * @throws NullPointerException if theGraphics is null
-     * @throws NullPointerException if theRoom is null
+     * @param theGraphics The graphics object used for drawing.
+     * @param theRoom The room being drawn.
+     * @throws NullPointerException If the graphics are null.
+     * @throws NullPointerException If the room is null.
      */
     public void drawBottomRowTransparent(final Graphics2D theGraphics, final Room theRoom) {
         Objects.requireNonNull(theGraphics, "theGraphics can not be null");
@@ -107,7 +105,7 @@ public class BackgroundSheet extends SheetLoader {
         final int row = 4 * INCREMENT;
         int col = 0;
         
-        // draw the bottom row
+        // Draws the bottom row.
         theGraphics.drawImage(myLowerLeftCornerTransparentImage, col, row, null);
         col += INCREMENT;
         theGraphics.drawImage(myLowerWallTransparentImage, col, row, null);
@@ -130,12 +128,11 @@ public class BackgroundSheet extends SheetLoader {
     }
     
     /**
-     * Draws the background of the panel according to the given room
-     * 
-     * @param theGraphics the graphics object used to paint.
-     * @param theRoom the room that is being drawn.
-     * @throws NullPointerException if theGraphics is null
-     * @throws NullPointerException if theRoom is null
+     * Draws the background of the panel according to the given room.
+     * @param theGraphics The graphics object used for drawing.
+     * @param theRoom The room being drawn.
+     * @throws NullPointerException If the graphics are null.
+     * @throws NullPointerException If the room is null.
      */
     public void drawBackground(final Graphics2D theGraphics, final Room theRoom) {
         Objects.requireNonNull(theGraphics, "theGraphics can not be null");
@@ -148,7 +145,7 @@ public class BackgroundSheet extends SheetLoader {
     }
  
     /**
-     * Sets up the BufferedImages for this BackgroundSheet
+     * Sets up the buffered images for the background sheet.
      */
     private void setupImages() {
         myUpperLeftCornerImage = this.grabImage(1, 1);
@@ -174,17 +171,16 @@ public class BackgroundSheet extends SheetLoader {
         myLowerDoorLockedTransparentImage = this.grabImage(3, 4);
         myLowerDoorUnlockedTransparentImage = this.grabImage(4, 6);
         myLowerRightCornerTransparentImage = this.grabImage(4, 4);
-        
     }
     
     /**
-     * Draws the top row of the game panel. Draws a door if the given room contains
-     * a northern door, otherwise draws a wall in its place.
-     * 
-     * @param theGraphics the graphics object used to paint.
-     * @param theRoom the room that is being drawn.
-     * @throws NullPointerException if theGraphics is null
-     * @throws NullPointerException if theRoom is null
+     * Draws the top row of the game panel.
+     * Draws a door if the given room contains
+     * a North door, otherwise draws a wall in its place.
+     * @param theGraphics The graphics object used for drawing.
+     * @param theRoom The room being drawn.
+     * @throws NullPointerException If the graphics are null.
+     * @throws NullPointerException If the room is null.
      */
     private void drawTopRow(final Graphics2D theGraphics, final Room theRoom) {
         Objects.requireNonNull(theGraphics, "theGraphics can not be null");
@@ -217,10 +213,9 @@ public class BackgroundSheet extends SheetLoader {
     
     /**
      * Draws a generic row at the desired row that has a normal walls and blank floor tiles.
-     * 
-     * @param theGraphics the Graphics object used for painting
-     * @param theRow the row the generic row should be painted at
-     * @throws NullPointerException if theGraphics is null
+     * @param theGraphics The graphics object used for drawing.
+     * @param theRow The row that should be painted at.
+     * @throws NullPointerException If the graphics are null.
      */
     private void drawGenericRow(final Graphics2D theGraphics, final int theRow) {
         Objects.requireNonNull(theGraphics, "theGraphics can not be null");
@@ -240,12 +235,11 @@ public class BackgroundSheet extends SheetLoader {
     
     /**
      * Draws a row of tiles that has doors on either side 
-     * depending on the state of the given Room.
-     * 
-     * @param theGraphics the graphics object used for drawing.
-     * @param theRoom the Room that is being drawn.
-     * @throws NullPointerException if theGraphics is null
-     * @throws NullPointerException if theRoom is null
+     * depending on the state of the given room.
+     * @param theGraphics The graphics object used for drawing.
+     * @param theRoom The room being drawn.
+     * @throws NullPointerException If the graphics are null.
+     * @throws NullPointerException If the room is null.
      */
     private void drawDoorRow(final Graphics2D theGraphics, final Room theRoom) {
         Objects.requireNonNull(theGraphics, "theGraphics can not be null");
@@ -285,11 +279,10 @@ public class BackgroundSheet extends SheetLoader {
 
     /**
      * Draws a bottom row of tiles that has a door if one exists in the given room. 
-     * 
-     * @param theGraphics the graphics object used for drawing.
-     * @param theRoom the Room that is being drawn.
-     * @throws NullPointerException if theGraphics is null
-     * @throws NullPointerException if theRoom is null
+     * @param theGraphics The graphics object used for drawing.
+     * @param theRoom The room being drawn.
+     * @throws NullPointerException If the graphics are null.
+     * @throws NullPointerException If the room is null.
      */
     private void drawBottomRow(final Graphics2D theGraphics, final Room theRoom) {
         Objects.requireNonNull(theGraphics, "theGraphics can not be null");
@@ -302,7 +295,7 @@ public class BackgroundSheet extends SheetLoader {
         theGraphics.drawImage(myLowerWallImage, col, row, null);
         col += INCREMENT;
         
-        // draw floor background since the foreground will be drawn on top 
+        // Draws the floor background since the foreground will be drawn on top.
         theGraphics.drawImage(myFloorTileImage, col, row, null);     
         
         col += INCREMENT;
@@ -310,5 +303,4 @@ public class BackgroundSheet extends SheetLoader {
         col += INCREMENT;
         theGraphics.drawImage(myLowerRightCornerImage, col, row, null);
     }
-    
 }

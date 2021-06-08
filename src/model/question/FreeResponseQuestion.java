@@ -2,14 +2,12 @@
  * Amazing Trivia Maze
  * TCSS 360 Spring 2021
  */
-
 package model.question;
 
 import java.util.Objects;
 
 /**
  * A class providing state and functionality for a free response question.
- * 
  * @author Daniel Jiang
  * @version Spring 2021
  */
@@ -20,11 +18,10 @@ public class FreeResponseQuestion extends Question {
 
     /**
      * Constructor the the free response trivia questions.
-     * 
      * @param theQuestion The string representation of the question being asked.
-     * @param theAnswer the String representation to the answer of this question
-     * @throws NullPointerException if theQuestion is null
-     * @throws NullPointerException if theAnswer is null
+     * @param theAnswer The string representation to the answer of this question.
+     * @throws NullPointerException If the question is null.
+     * @throws NullPointerException If the answer is null.
      */
     public FreeResponseQuestion(final String theQuestion, final String theAnswer) {
         super(theQuestion, QuestionType.FREE_RESPONSE);
@@ -42,10 +39,9 @@ public class FreeResponseQuestion extends Question {
     /**
      * Returns whether or not this question was answered correctly.
      * Updates the state of this question if the question is answered correctly.
-     * 
-     * @param theUsersAnswer the String representation of what the user answered.
-     * @return whether or not the given answer is the correct answer 
-     * @throws NullPointerException if theUsersAnswer is null
+     * @param theUsersAnswer The string representation of the user's answers.
+     * @return If the user's answer is the correct.
+     * @throws NullPointerException If the users' answer is null.
      */
     public boolean checkAnswer(final String theUsersAnswer) {
         Objects.requireNonNull(theUsersAnswer, "theUsersAnswer can not be null");
@@ -57,8 +53,8 @@ public class FreeResponseQuestion extends Question {
     }
 
     /**
-     * Creates a String representation of free response questions.
-     * @return The String representation of free response questions.
+     * Creates a string representation of free response questions.
+     * @return The string representation of free response questions.
      */
     @Override
     public String toString() {

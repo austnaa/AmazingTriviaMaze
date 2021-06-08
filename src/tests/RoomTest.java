@@ -12,9 +12,7 @@ import org.junit.Test;
 import model.Door;
 import model.Player;
 import model.Room;
-import model.question.Option;
 import model.question.Question;
-import model.question.TrueFalseQuestion;
 import tests.mock_objects.QuestionMock;
 
 /**
@@ -24,9 +22,6 @@ import tests.mock_objects.QuestionMock;
  * @version Spring 2021
  */
 public class RoomTest {
-    
-    /** Whether or not the current room has been visited before. */
-    private boolean myHasBeenVisited;
     
     /** The North door. */
     private Door myNorthDoor;
@@ -64,7 +59,6 @@ public class RoomTest {
     public void setUp() {
         myPlayer = new Player();
         myInteractedDoor = null;
-        myHasBeenVisited = false;
         myQuestion = new QuestionMock("This is for testing", Question.QuestionType.TRUE_FALSE);;
         myNorthDoor = new Door(Door.DoorType.NORTH, myQuestion);
         mySouthDoor = new Door(Door.DoorType.SOUTH, myQuestion);

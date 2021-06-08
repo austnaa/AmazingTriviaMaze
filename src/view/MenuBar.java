@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package view;
 
 import java.awt.event.ActionEvent;
@@ -13,8 +12,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 /**
- * The menu bar that is used with the Trivial Maze GameFrame.
- * 
+ * The menu bar that is used with the trivia maze game frame.
  * @author Austn Attaway
  * @author Chau Vu
  * @version Spring 2021
@@ -37,13 +35,13 @@ public class MenuBar extends JMenuBar {
      * Sets up and adds the "File" menu to this menu bar. 
      */
     private void setupFileMenu() {
-        // initialize components
+        // Initialzes components.
         final JMenu fileMenu = new JMenu("File");
         final JMenuItem saveItem = new JMenuItem("Save");
         final JMenuItem loadItem = new JMenuItem("Load");
         final JMenuItem exitItem = new JMenuItem("Exit to Start");
         
-        // add action listeners
+        // Adds action listeners.
         saveItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent theEvent) {
@@ -64,7 +62,7 @@ public class MenuBar extends JMenuBar {
             } 
         });
         
-        // add the components to the menu bar
+        // Adds components to the menu bar.
         fileMenu.add(saveItem);
         fileMenu.add(loadItem);
         fileMenu.add(exitItem);
@@ -76,12 +74,12 @@ public class MenuBar extends JMenuBar {
      * Sets up and adds the "Help" menu to this menu bar. 
      */
     private void setupHelpMenu() {
-        // initialize components
+        // Initialzes components.
         final JMenu helpMenu = new JMenu("Help");
         final JMenuItem aboutItem = new JMenuItem("About");
         final JMenuItem howToPlayItem = new JMenuItem("How To Play");
         
-        // add action listeners
+        // Adds action listeners.
         aboutItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent theEvent) {
@@ -97,7 +95,7 @@ public class MenuBar extends JMenuBar {
             }
         });
         
-        // add components to menu bar
+        // Adds components to the menu bar.
         helpMenu.add(aboutItem);
         helpMenu.add(howToPlayItem);
         

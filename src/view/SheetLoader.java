@@ -20,8 +20,9 @@ import javax.imageio.ImageIO;
  */
 public class SheetLoader {
     
-    /** The number of images for an animation in a particular direction.
-     * NOTE: CHANGES TO THIS AFFECT PLAYER ANIMATION
+    /**
+     * The number of images for an animation in a particular direction.
+     * NOTE: CHANGES TO THIS AFFECT PLAYER ANIMATION.
      */
     public static final int NUM_COLS = 4;
     
@@ -38,10 +39,10 @@ public class SheetLoader {
     private BufferedImage mySheet;
     
     /**
-     * Constructs a new SheetLoader object that operates on the image
+     * Constructs a new sheet loader object that operates on the image
      * specified by the given file name. 
-     * @param theFileName the file name of the image.
-     * @throws NullPointerException if theFileName is null
+     * @param theFileName The file name of the image.
+     * @throws NullPointerException If the file name is null.
      */
     public SheetLoader(final String theFileName) {
         Objects.requireNonNull(theFileName, "theFileName can not be null");
@@ -50,13 +51,15 @@ public class SheetLoader {
     }
     
     /**
-     * Returns the given image scaled up to the given width and height. 
+     * Returns the given image scaled up to the given width and height.
+     * 
      * LINK: https://www.baeldung.com/java-resize-image
-     * @param theOriginalImage the image to be scaled 
-     * @param theNewHeight   the new width of the image
-     * @param theNewWidth  the new width of the image
-     * @return the scaled image
-     * @throws NullPointerException if theOriginalImage is null
+     * 
+     * @param theOriginalImage The image to be scaled.
+     * @param theNewHeight The new height of the image.
+     * @param theNewWidth The new width of the image.
+     * @return The scaled image.
+     * @throws NullPointerException If the original image is null.
      */
     public static BufferedImage resizeImage(final BufferedImage theOriginalImage, final int theNewHeight, final int theNewWidth) {
         Objects.requireNonNull(theOriginalImage);
@@ -69,11 +72,10 @@ public class SheetLoader {
     }
     
     /**
-     * Returns the loaded image specified from the filepath.
-     * 
-     * @param thePath - the path of the image file
-     * @return the BufferedImage of the given image file name
-     * @throws NullPointerException if thePath is null
+     * Returns the loaded image specified from the file path.
+     * @param thePath The path of the image file.
+     * @return The buffered iamge of the given image file.
+     * @throws NullPointerException If the path of the image file is null.
      */
     public static BufferedImage loadImage(final String thePath) {
         Objects.requireNonNull(thePath, "thePath can not be null");
@@ -88,11 +90,11 @@ public class SheetLoader {
     
     /**
      * Grabs and crops the specified image from this sheet.
-     * @param theColumn the column the image returned is located at
-     * @param theRow    the row the image returned is located at
-     * @return the image 
-     * @throws IllegalArgumentException if theColumn is less than 1 or greater than 4
-     * @throws IllegalArgumentException if theRow is less than 1 or greater than 4
+     * @param theColumn The column the image is located at.
+     * @param theRow The row the image is located at.
+     * @return The image.
+     * @throws IllegalArgumentException If the column is less than 1 or greated than 4.
+     * @throws IllegalArgumentException If the row is less than 1 or greater than 4.
      */
     public BufferedImage grabImage(final int theColumn, final int theRow) {
         if (theColumn < 1 || theColumn > NUM_COLS) {
@@ -112,12 +114,12 @@ public class SheetLoader {
     }
     
     /**
-     * Grabs and cropping the specified image from this sheet.
-     * @param theColumn the column the image returned is located at
-     * @param theRow    the row the image returned is located at
-     * @return the image 
-     * @throws IllegalArgumentException if theColumn is less than 1 or greater than 4
-     * @throws IllegalArgumentException if theRow is less than 1 or greater than 4
+     * Grabs and cropping the specified icon from this sheet.
+     * @param theColumn The column the image is located at.
+     * @param theRow The row the image is located at.
+     * @return The image.
+     * @throws IllegalArgumentException If the column is less than 1 or greated than 4.
+     * @throws IllegalArgumentException If the row is less than 1 or greater than 4.
      */
     public BufferedImage grabIcon(final int theColumn, final int theRow) {
         if (theColumn < 1 || theColumn > NUM_COLS) {
@@ -137,11 +139,11 @@ public class SheetLoader {
     
     /**
      * Grabs and cropping the specified image from this sheet.
-     * @param theColumn the column the image returned is located at
-     * @param theRow    the row the image returned is located at
-     * @return the image 
-     * @throws IllegalArgumentException if theColumn is less than 1 or greater than 4
-     * @throws IllegalArgumentException if theRow is less than 1 or greater than 4
+     * @param theColumn The column the image is located at.
+     * @param theRow The row the image is located at.
+     * @return The image.
+     * @throws IllegalArgumentException If the column is less than 1 or greated than 4.
+     * @throws IllegalArgumentException If the row is less than 1 or greater than 4.
      */
     public BufferedImage grabPanelImage(final int theColumn, final int theRow) {
         if (theColumn < 1 || theColumn > NUM_COLS) {
@@ -161,6 +163,4 @@ public class SheetLoader {
 
         return image;
     }
-    
-    
 }

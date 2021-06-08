@@ -11,9 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /**
- * About Frame that pops up when users click on the
- * about button in the menubar.
- * 
+ * The "About Us" frame that pops up when users click on the
+ * "About Us" button in the menu bar.
  * @author Chau Vu
  * @version Spring 2021
  */
