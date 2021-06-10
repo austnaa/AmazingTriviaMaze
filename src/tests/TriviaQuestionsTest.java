@@ -15,7 +15,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test class for TriviaQuestions.
+ * Test class for trivia questions.
  * @author Daniel Jiang
  * @version Spring 2021
  */
@@ -33,7 +33,7 @@ public class TriviaQuestionsTest {
 	}
 
 	/**
-     * Test method for {@link model.question.TriviaQuestions#getTriviaQuestions()}.
+     * Test method for getting the trivia questions.
      */
 	@Test
 	public void testGetTriviaQuestions() {

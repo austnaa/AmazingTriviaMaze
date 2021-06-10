@@ -22,28 +22,22 @@ import model.question.Question.QuestionType;
  */
 public class TrueFalseQuestionTest {
     
-    /** The String used as the question text for the test questions. */
+    /** The string used as the question text for the test questions. */
     private static final String QUESTION = "question";
     
-    /** The String for the correct answer test Options. */
+    /** The string for the correct answer test options. */
     private static final String ANSWER = "answer";
     
-    /** The String for the incorrect answer test Options. */
+    /** The string for the incorrect answer test options. */
     private static final String INCORRECT = "incorrect";
     
-    /**
-     * A correct Option used for testing.
-     */
+    /** A correct option used for testing. */
     private Option myOptionCorrect;
     
-    /**
-     * An incorrect Option used for testing.
-     */
+    /** An incorrect option used for testing. */
     private Option myOptionIncorrect;
     
-    /**
-     * A TrueFalseQuestion used for testing.
-     */
+    /** A true/false question used for testing. */
     private TrueFalseQuestion myTrueFalseQuestion;
     
     /**
@@ -57,8 +51,8 @@ public class TrueFalseQuestionTest {
     }
 
     /**
-     * Tests the TrueFalseQuestion constructor for a NullPointerException
-     * when passed a null question String. 
+     * Tests true/false question constructor for a NullPointerException
+     * when passed a null question string. 
      */
     @Test(expected = NullPointerException.class)
     public void testTrueFalseQuestionConstructorNullQuestion() {
@@ -66,8 +60,8 @@ public class TrueFalseQuestionTest {
     }
     
     /**
-     * Tests the TrueFalseQuestion constructor for a NullPointerException
-     * when passed a null answer Option. 
+     * Tests the true/false question constructor for a NullPointerException
+     * when passed a null answer option. 
      */
     @Test(expected = NullPointerException.class)
     public void testTrueFalseQuestionConstructorNullAnswerOption() {
@@ -75,7 +69,7 @@ public class TrueFalseQuestionTest {
     }
     
     /**
-     * Tests the TrueFalseQuestion constructor for a NullPointerException
+     * Tests the true/false question constructor for a NullPointerException
      * when passed a null incorrect answer option.
      */
     @Test(expected = NullPointerException.class)
@@ -84,8 +78,8 @@ public class TrueFalseQuestionTest {
     }
     
     /**
-     * Tests the TrueFalseQuestion constructor for an IllegalArgumentException
-     * if it is passed an answer Option that does not have a state of correct.
+     * Tests the true/false question constructor for an IllegalArgumentException
+     * if it is passed an answer option that does not have a state of correct.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testTrueFalseQuestionConstructorIllegalAnswerOption() {
@@ -93,8 +87,8 @@ public class TrueFalseQuestionTest {
     }
     
     /**
-     * Tests the TrueFalseQuestion constructor for an IllegalArgumentException
-     * if it is passed an incorrect answer Option that does not have a state of incorrect.
+     * Tests the true/false question constructor for an IllegalArgumentException
+     * if it is passed an incorrect answer option that does not have a state of incorrect.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testTrueFalseQuestionConstructorIllegalIncorrectAnswerOption() {
@@ -102,8 +96,8 @@ public class TrueFalseQuestionTest {
     }
     
     /**
-     * Tests the TrueFalseQuestion constructor to make sure the 
-     * given question String is set correctly.
+     * Tests the true/false question constructor to make sure the 
+     * given question string is set correctly.
      */
     @Test
     public void testTrueFalseQuestionConstructorSetQuestionString() {
@@ -113,8 +107,8 @@ public class TrueFalseQuestionTest {
     }
     
     /**
-     * Tests the TrueFalseQuestion constructor to make sure the type of the question
-     * is set to be a true/false question
+     * Tests the true/false question constructor to make sure the type of the question
+     * is set to be a true/false question.
      */
     @Test
     public void testTrueFalseQuestionConstructorSetsCorrectType() {
@@ -123,7 +117,7 @@ public class TrueFalseQuestionTest {
     }
     
     /**
-     * Tests the clearButtons method to ensure that none of the Options 
+     * Tests the clear buttons method to ensure that none of the options
      * are selected afterwards.
      */
     @Test
@@ -138,8 +132,8 @@ public class TrueFalseQuestionTest {
     }
     
     /**
-     * Tests the getAllOptions method to ensure it returns the two expected Options. 
-     * We expect both the answer option and the incorrect answer option to be returned in the List.
+     * Tests the get all options method to ensure it returns the two expected options.
+     * We expect both the answer option and the incorrect answer option to be returned in the list.
      */
     @Test
     public void testGetAllOptions() {
@@ -150,7 +144,7 @@ public class TrueFalseQuestionTest {
     }
     
     /**
-     * Tests the getAnswer method to ensure that it returns the correct answer Option.
+     * Tests the get answer method to ensure that it returns the correct answer option.
      */
     @Test
     public void testGetAnswer() {
@@ -159,7 +153,7 @@ public class TrueFalseQuestionTest {
     }
     
     /**
-     * Tests the checkAnswer method when the correct Option is selected to ensure that
+     * Tests the check answer method when the correct option is selected to ensure that
      * true is returned.
      */
     @Test
@@ -170,8 +164,8 @@ public class TrueFalseQuestionTest {
     }
     
     /** 
-     * Tests the checkAnswer method when the correct Option is selected to ensure that 
-     * the state of the question is set to answered
+     * Tests the check answer method when the correct option is selected to ensure that 
+     * the state of the question is set to answered.
      */
     @Test
     public void testCheckAnswerCorrectSelectedForCorrectAnsweredState() {
@@ -181,7 +175,7 @@ public class TrueFalseQuestionTest {
     }
     
     /**
-     * Tests the checkAnswer method when the correct Option is selected to ensure that
+     * Tests the check answer method when the correct option is selected to ensure that
      * all of the buttons are cleared.
      */
     @Test
@@ -192,7 +186,7 @@ public class TrueFalseQuestionTest {
     }
     
     /**
-     * Tests the checkAnswer method when the incorrect Option is selected to ensure that
+     * Tests the check answer method when the incorrect option is selected to ensure that
      * false is returned.
      */
     @Test
@@ -203,8 +197,8 @@ public class TrueFalseQuestionTest {
     }
       
     /** 
-     * Tests the checkAnswer method when the incorrect Option is selected to ensure that 
-     * the state of the question is not to answered (if it was originally unanswered)
+     * Tests the check answer method when the incorrect option is selected to ensure that
+     * the state of the question is not to answered (if it was originally unanswered).
      */
     @Test
     public void testCheckAnswerIncorrectSelectedForUnansweredState() {
@@ -215,7 +209,7 @@ public class TrueFalseQuestionTest {
     }
     
     /** 
-     * Tests the checkAnswer method when the incorrect Option is selected and the 
+     * Tests the check answer method when the incorrect option is selected and the 
      * question is already answered to ensure that the state of the question is still set to answered.
      */
     @Test
@@ -228,7 +222,7 @@ public class TrueFalseQuestionTest {
     }
     
     /**
-     * Tests the checkAnswer method when the incorrect Option is selected to ensure that
+     * Tests the check answer method when the incorrect option is selected to ensure that
      * all of the buttons are cleared.
      */
     @Test
@@ -241,7 +235,7 @@ public class TrueFalseQuestionTest {
     }
     
     /**
-     * Tests the toString method with a question that is answered.
+     * Tests the to string method with a question that is answered.
      */
     @Test
     public void testToStringAnswered() {
@@ -255,7 +249,7 @@ public class TrueFalseQuestionTest {
     }
     
     /**
-     * Tests the toString method with a question that is not answered.
+     * Tests the to string method with a question that is not answered.
      */
     @Test
     public void testToStringNotAnswered() {
@@ -268,7 +262,7 @@ public class TrueFalseQuestionTest {
     }
     
     /**
-     * Helper method that sets myTrueFalseQuestion to be answered.
+     * Helper method that sets my true/false question to be answered.
      */
     private void answerQuestionCorrectly() {
         myOptionCorrect.setSelected(true);

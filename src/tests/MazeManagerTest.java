@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package tests;
 
 import static org.junit.Assert.*;
@@ -19,21 +18,16 @@ import model.Room;
 import tests.mock_objects.QuestionManagerMock;
 
 /**
- * A JUnit test class for the MazeManager class.
- * 
+ * A JUnit test class for the maze manager class.
  * @author Austn Attaway
  * @version Spring 2021
  */
 public class MazeManagerTest {
     
-    /**
-     * The mock QuestionManager used for testing.
-     */
+    /** The mock question manager used for testing. */
     private QuestionManagerMock myQuestionManagerMock;
     
-    /**
-     * The MazeManager used for testing. 
-     */
+    /** The maze manager used for testing. */
     private MazeManager myMazeManager;
     
     /**
@@ -46,9 +40,9 @@ public class MazeManagerTest {
     }
     
     /**
-     * Tests the MazeManager constructor to throw a
+     * Tests the maze manager constructor to throw a
      * NullPointerException if the given
-     * QuestionManagerInterface is null.
+     * question manager interface is null.
      */
     @Test(expected = NullPointerException.class)
     public void testMazeManagerNullQuestionManager() {
@@ -56,7 +50,7 @@ public class MazeManagerTest {
     }
     
     /**
-     * Tests the MazeManager constructor to populate
+     * Tests the maze manager constructor to populate
      * the maze list properly and set an initial maze.
      */
     @Test
@@ -78,7 +72,7 @@ public class MazeManagerTest {
     }
     
     /**
-     * Tests the setNewMaze method to ensure that it sets 
+     * Tests the set new maze method to ensure that it sets 
      * up to 3 new mazes (4 total unique mazes) before 
      * looping back on itself.
      */
@@ -98,7 +92,7 @@ public class MazeManagerTest {
     }
     
     /**
-     * Tests the MazeManager to ensure that new mazes created after all 
+     * Tests the maze manager to ensure that new mazes created after all 
      * mazes have been used will be new objects.
      */
     @Test
@@ -118,8 +112,8 @@ public class MazeManagerTest {
     }
     
     /**
-     * Tests the moveRooms method for a NullPointerException 
-     * when a null Door type is passed
+     * Tests the move rooms method for a NullPointerException 
+     * when a null door type is passed.
      */
     @Test(expected = NullPointerException.class)
     public void testMoveRoomsNullDoorType() {
@@ -127,14 +121,14 @@ public class MazeManagerTest {
     }
     
     /**
-     * Tests the moveRooms method to ensure that 
-     * it is possible to move north.
+     * Tests the move rooms method to ensure that 
+     * it is possible to move North.
      */
     @Test
     public void testMoveRoomsNorth() {
         final Room expectedRoom = myMazeManager.getCurrentMaze()[0][0];
         
-        // move down so we are able to move back up and test that movement.
+        // Move down so we are able to move back up and test that movement.
         myMazeManager.moveRooms(Door.DoorType.SOUTH);
         myMazeManager.moveRooms(Door.DoorType.NORTH);
         
@@ -143,8 +137,8 @@ public class MazeManagerTest {
     }
     
     /**
-     * Tests the moveRooms method to ensure that it 
-     * is possible to move south.
+     * Tests the move rooms method to ensure that it 
+     * is possible to move South.
      */
     @Test
     public void testMoveRoomsSouth() {
@@ -157,14 +151,14 @@ public class MazeManagerTest {
     }
     
     /**
-     * Tests the moveRooms method to ensure that it 
-     * is possible to move west.
+     * Tests the move rooms method to ensure that it 
+     * is possible to move West.
      */
     @Test
     public void testMoveRoomsWest() {
         final Room expectedRoom = myMazeManager.getCurrentMaze()[0][0];
         
-        // move east so we are able to go back to where we started and test moving west.
+        // Move East so we are able to go back to where we started and test moving West.
         myMazeManager.moveRooms(Door.DoorType.EAST);
         myMazeManager.moveRooms(Door.DoorType.WEST);
         
@@ -173,8 +167,8 @@ public class MazeManagerTest {
     }
     
     /**
-     * Tests the moveRooms method to ensure that it 
-     * is possible to move east.
+     * Tests the move rooms method to ensure that it 
+     * is possible to move East.
      */
     @Test
     public void testMoveRoomsEast() {
@@ -187,7 +181,7 @@ public class MazeManagerTest {
     }
      
     /**
-     * Tests the moveRooms method to ensure that it does
+     * Tests the move rooms method to ensure that it does
      * not allow us to move north when it will result in 
      * going out of bounds. 
      */
@@ -200,7 +194,7 @@ public class MazeManagerTest {
     }
     
     /**
-     * Tests the moveRooms method to ensure that it does
+     * Tests the move rooms method to ensure that it does
      * not allow us to move south when it will result in 
      * going out of bounds. 
      */     
@@ -218,7 +212,7 @@ public class MazeManagerTest {
     }
     
     /**
-     * Tests the moveRooms method to ensure that it does
+     * Tests the move rooms method to ensure that it does
      * not allow us to move west when it will result in 
      * going out of bounds. 
      */
@@ -231,7 +225,7 @@ public class MazeManagerTest {
     }
     
     /**
-     * Tests the moveRooms method to ensure that it does
+     * Tests the move rooms method to ensure that it does
      * not allow us to move east when it will result in 
      * going out of bounds. 
      */
@@ -255,31 +249,31 @@ public class MazeManagerTest {
     public void testMoveRoomsSetCurrentRoomsVisited() {
         boolean result = true;
 
-        // check initial
+        // Check initial.
         if (!myMazeManager.getCurrentRoom().isVisited()) {
             result = false;            
         }
         
-        // check move east
+        // Check move East.
         myMazeManager.moveRooms(Door.DoorType.EAST);
         if (!myMazeManager.getCurrentRoom().isVisited()) {
             result = false;            
         }
         
-        // check move south
+        // Check move South.
         myMazeManager.moveRooms(Door.DoorType.SOUTH);
         if (!myMazeManager.getCurrentRoom().isVisited()) {
             result = false;            
         }
         
-        // check move west
+        // Check move West.
         myMazeManager.moveRooms(Door.DoorType.WEST);
         if (!myMazeManager.getCurrentRoom().isVisited()) {
             result = false;            
         }
         
-        // check move north (move the current room to a location where
-        // moving north results in moving into a previously unvisited room)
+        // Check move North (move the current room to a location where
+        // moving North results in moving into a previously unvisited room).
         myMazeManager.moveRooms(Door.DoorType.SOUTH);
         myMazeManager.moveRooms(Door.DoorType.EAST);
         myMazeManager.moveRooms(Door.DoorType.EAST);
@@ -291,8 +285,4 @@ public class MazeManagerTest {
         assertTrue("the moveRooms method failed to set the rooms it moved to visited.",
                 result);
     }
-    
-    // NOTE: could add more explicit tests for the getCurrentMaze and getCurrent room
-    //       but they are already extensively used in other tests.
-   
 }

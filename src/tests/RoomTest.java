@@ -35,21 +35,16 @@ public class RoomTest {
     /** The East door. */
     private Door myEastDoor;
     
-    /**
-     * the Player of the game.
-     */
+    /** The player of the game. */
     private Player myPlayer;
-    /**
-     * the interacted door.
-     */
+
+    /** The interacted door. */
     private Door myInteractedDoor;
     
     /** The room. */
     private Room myRoom;
     
-    /**
-     * A child class that inherits abstract Question class.
-     */
+    /** A child class that inherits abstract question class. */
     private QuestionMock myQuestion;
     
     /**
@@ -77,7 +72,7 @@ public class RoomTest {
     }
     
     /**
-     * Test if the north door is not null.
+     * Test if the North door is not null.
      */
     @Test
     public void testNorthDoorNotNull() {
@@ -93,7 +88,7 @@ public class RoomTest {
     }
     
     /**
-     * Test if the south door is not null.
+     * Test if the South door is not null.
      */
     @Test
     public void testSouthDoorNotNull() {
@@ -101,7 +96,7 @@ public class RoomTest {
     }
     
     /**
-     * Test if the east door is not null.
+     * Test if the East door is not null.
      */
     @Test
     public void testEastDoorNotNull() {
@@ -117,7 +112,7 @@ public class RoomTest {
     }
 
     /**
-     * expecting a null pointer exception when passing in a null player.
+     * Expects a null pointer exception when passing in a null player.
      */
     @Test (expected = NullPointerException.class)
     public void testInteractPlayerNotNull() {
@@ -186,7 +181,7 @@ public class RoomTest {
     } 
     
     /**
-     * Testing if the room has a north door.
+     * Testing if the room has a North door.
      */
     @Test
     public void testHasNorthDoor() {
@@ -194,7 +189,7 @@ public class RoomTest {
     }
 
     /**
-     * Testing if the room has a south door.
+     * Testing if the room has a South door.
      */
     @Test
     public void testHasSouthDoor() {
@@ -202,7 +197,7 @@ public class RoomTest {
     }
 
     /**
-     * Testing if the room has a west door.
+     * Testing if the room has a West door.
      */
     @Test
     public void testHasWestDoor() {
@@ -210,7 +205,7 @@ public class RoomTest {
     }
 
     /**
-     * Testing if the room has an east door.
+     * Testing if the room has an East door.
      */
     @Test
     public void testHasEastDoor() {
@@ -219,7 +214,7 @@ public class RoomTest {
     
     /**
      * Testing if the room has an North door.
-     * false condition.
+     * False condition.
      */
     @Test
     public void testHasNorthDoorNull() {
@@ -229,7 +224,7 @@ public class RoomTest {
     
     /**
      * Testing if the room has an South door.
-     * false condition.
+     * False condition.
      */
     @Test
     public void testHasSouthDoorNull() {
@@ -239,7 +234,7 @@ public class RoomTest {
     
     /**
      * Testing if the room has an East door.
-     * false condition.
+     * False condition.
      */
     @Test
     public void testHasEastDoorNull() {
@@ -249,7 +244,7 @@ public class RoomTest {
     
     /**
      * Testing if the room has an West door.
-     * false condition.
+     * False condition.
      */
     @Test
     public void testHasWestDoorNull() {
@@ -294,7 +289,7 @@ public class RoomTest {
     }
     
     /**
-     * Test getter method for South door.
+     * Tests the getter method for South door.
      */
     @Test
     public void testGetSouthDoor() {
@@ -302,7 +297,7 @@ public class RoomTest {
     }
 
     /**
-     * Test getter method for East door.
+     * Tests the getter method for East door.
      */
     @Test
     public void testGetEastDoor() {
@@ -310,7 +305,7 @@ public class RoomTest {
     }
 
     /**
-     * Test getter method for North door.
+     * Tests the getter method for North door.
      */
     @Test
     public void testGetNorthDoor() {
@@ -318,7 +313,7 @@ public class RoomTest {
     }
 
     /**
-     * Test getter method for West door.
+     * Tests the getter method for West door.
      */
     @Test
     public void testGetWestDoor() {
@@ -326,7 +321,7 @@ public class RoomTest {
     }
 
     /**
-     * Test the toString method for this class.
+     * Test the to string method for this class.
      */
     @Test
     public void testToString() {
@@ -340,7 +335,7 @@ public class RoomTest {
     }
 
     /**
-     * Test the toString method for this class.
+     * Test the to string method for this class.
      */
     @Test
     public void testToStringNullNorthDoor() {
@@ -355,7 +350,7 @@ public class RoomTest {
     }
     
     /**
-     * Test the toString method for this class.
+     * Test the to string method for this class.
      */
     @Test
     public void testToStringNullSouthDoor() {
@@ -370,7 +365,7 @@ public class RoomTest {
     }
     
     /**
-     * Test the toString method for this class.
+     * Test the to string method for this class.
      */
     @Test
     public void testToStringNullEastDoor() {
@@ -385,7 +380,7 @@ public class RoomTest {
     }
     
     /**
-     * Test the toString method for this class.
+     * Test the to string method for this class.
      */
     @Test
     public void testToStringNullWestDoor() {

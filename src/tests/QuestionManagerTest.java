@@ -2,7 +2,6 @@
  * Amazing Trivia Maze 
  * TCSS 360 Spring 2021
  */
-
 package tests;
 
 import static org.junit.Assert.*;
@@ -20,7 +19,7 @@ import model.question.QuestionManager;
 import model.question.TrueFalseQuestion;
 
 /**
- * A JUnit test class for the QuestionManager class. 
+ * A JUnit test class for the question manager class. 
  * @author Austn Attaway
  * @version Spring 2021
  */
@@ -38,9 +37,7 @@ public class QuestionManagerTest {
     /** The total number of free response questions in the database. */
     private static final int NUM_FREE_RESPONSE = 10;
     
-    /**
-     * A QuestionManager used for testing.
-     */
+    /** A question manager used for testing. */
     private QuestionManager myQuestionManager;
 
     /**
@@ -51,12 +48,11 @@ public class QuestionManagerTest {
         myQuestionManager = new QuestionManager();
     }
     
-    
     /**
-     * Tests the QuestionManager constructor to ensure that
-     * it creates a list of Question objects.
+     * Tests the question manager constructor to ensure that
+     * it creates a list of question objects.
      *
-     * Indirectly tests the setupQuestionList method
+     * Indirectly tests the setup question list method
      * since it is the only thing that happens inside the constructor.
      */
     @Test
@@ -74,7 +70,7 @@ public class QuestionManagerTest {
     }
     
     /**
-     * Tests the getRandomQuestion method to see if 
+     * Tests the get random question method to see if 
      * it returns the correct number of multiple choice questions out of 
      * the total number of questions.
      */
@@ -91,9 +87,8 @@ public class QuestionManagerTest {
                 NUM_MULTIPLE_CHOICE, multipleChoiceQuestionCount);
     }
     
-    
     /**
-     * Tests the getRandomQuestion method to see if 
+     * Tests the get random question method to see if 
      * it returns the correct number of true false questions out of 
      * the total number of questions.
      */
@@ -110,9 +105,8 @@ public class QuestionManagerTest {
                 NUM_TRUE_FALSE, trueFalseQuestionCount);
     }
     
-    
     /**
-     * Tests the getRandomQuestion method to see if 
+     * Tests the get random question method to see if 
      * it returns the correct number of true false questions out of 
      * the total number of questions.
      */
@@ -130,9 +124,9 @@ public class QuestionManagerTest {
     }
     
     /**
-     * Tests the getRandomQuestion method to see if 
-     * it returns new Question objects after it has used 
-     * all Questions from the database once.
+     * Tests the get random question method to see if 
+     * it returns new question objects after it has used 
+     * all questions from the database once.
      */
     @Test
     public void testGetRandomQuestionRepopulation() {
@@ -142,7 +136,5 @@ public class QuestionManagerTest {
         }
         assertEquals("getRandomQuestion failed to populate the question list after it was empty", 
                 NUM_QUESTIONS * 2, questionSet.size());
-        
     }
-
 }

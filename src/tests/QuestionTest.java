@@ -2,7 +2,6 @@
  * Amazing Trivia Maze
  * TCSS 360 Spring 2021
  */
-
 package tests;
 
 import static org.junit.Assert.*;
@@ -14,29 +13,23 @@ import model.question.Question.QuestionType;
 import tests.mock_objects.QuestionMock;
 
 /**
- * A JUnit test class for the Question abstract class. 
+ * A JUnit test class for the question abstract class. 
  * 
  * @author Austn Attaway
  * @version Spring 2021
  */
 public class QuestionTest {
 
-    /** A default String used for the question string text. */
+    /** A default string used for the question string text. */
     private static final String QUESTION_TEXT = "question";
     
-    /**
-     * A mock multiple choice question for testing.
-     */
+    /** A mock multiple choice question for testing. */
     private QuestionMock myMultipleChoiceQuestionMock;
     
-    /**
-     * A mock true/false question for testing.
-     */
+    /** A mock true/false question for testing. */
     private QuestionMock myTrueFalseQuestionMock;
     
-    /**
-     * A mock free response question for testing.
-     */
+    /** A mock free response question for testing. */
     private QuestionMock myFreeResponseQuestionMock;
     
     /**
@@ -50,7 +43,7 @@ public class QuestionTest {
     }
     
     /**
-     * Tests the Question constructor for a NullPointerException when the passed
+     * Tests the question constructor for a NullPointerException when the passed
      * question text is null.
      */
     @Test(expected = NullPointerException.class)
@@ -59,8 +52,8 @@ public class QuestionTest {
     }
     
     /**
-     * Tests the Question constructor for a NullPointerException when the passed
-     * QuestionType is null.
+     * Tests the question constructor for a NullPointerException when the passed
+     * question type is null.
      */
     @Test(expected = NullPointerException.class)
     public void testQuestionConstructorNullType() {
@@ -68,7 +61,7 @@ public class QuestionTest {
     }
     
     /**
-     * Tests the Question constructor to ensure that the question text is set properly.
+     * Tests the question constructor to ensure that the question text is set properly.
      */
     @Test
     public void testQuestionConstructorText() {
@@ -78,7 +71,7 @@ public class QuestionTest {
     
     
     /**
-     * Tests the Question constructor to ensure that the QuestionType is set properly
+     * Tests the question constructor to ensure that the question type is set properly
      * with a multiple choice question.
      */
     @Test
@@ -89,7 +82,7 @@ public class QuestionTest {
     }
     
     /**
-     * Tests the Question constructor to ensure that the QuestionType is set properly
+     * Tests the question constructor to ensure that the question type is set properly
      * with a true/false question.
      */
     @Test
@@ -101,7 +94,7 @@ public class QuestionTest {
     }
     
     /**
-     * Tests the Question constructor to ensure that the QuestionType is set properly
+     * Tests the question constructor to ensure that the question type is set properly
      * with a free response question.
      */
     @Test
@@ -112,7 +105,7 @@ public class QuestionTest {
     }
     
     /**
-     * Tests the Question constructor to ensure that the question is initially set to 
+     * Tests the question constructor to ensure that the question is initially set to 
      * not be answered yet.
      */
     @Test
@@ -122,7 +115,7 @@ public class QuestionTest {
     }
     
     /**
-     * Tests the getQuestionPrompt method to ensure it returns the correct String.
+     * Tests the get question prompt method to ensure it returns the correct string.
      */
     @Test
     public void testGetQuestionPrompt() {
@@ -131,7 +124,7 @@ public class QuestionTest {
     }
     
     /**
-     * Tests the getAnsweredAlready method with a Question that has not been answered.
+     * Tests the get answered already method with a question that has not been answered.
      */
     @Test
     public void testgetAnsweredAlreadyNotAnswered() {
@@ -141,7 +134,7 @@ public class QuestionTest {
     }
     
     /**
-     * Tests the getAnsweredAlready method with a Question that has been answered.
+     * Tests the get answered already method with a question that has been answered.
      */
     @Test
     public void testgetAnsweredAlreadyAnswered() {
@@ -152,7 +145,7 @@ public class QuestionTest {
     }
     
     /**
-     * Tests the setAnsweredAlready method setting the question to not be answered.
+     * Tests the set answered already method setting the question to not be answered.
      */
     @Test
     public void testSetAnsweredAlreadyNotAnswered() {
@@ -162,7 +155,7 @@ public class QuestionTest {
     }
     
     /**
-     * Tests the setAnsweredAlready method setting the question to be answered.
+     * Tests the set answered already method setting the question to be answered.
      */
     @Test
     public void testSetAnsweredAlreadyAnswered() {
@@ -172,7 +165,7 @@ public class QuestionTest {
     }
     
     /**
-     * Tests the getType method with a MultipleChoiceQuestion
+     * Tests the get type method with a multiple choice question.
      */
     @Test
     public void testGetTypeMultipleChoiceQuestion() {
@@ -181,7 +174,7 @@ public class QuestionTest {
     }
     
     /**
-     * Tests the getType method with a TrueFalseQuestion
+     * Tests the get type method with a true/false question.
      */
     @Test
     public void testGetTypeTrueFalseQuestion() {
@@ -190,7 +183,7 @@ public class QuestionTest {
     }
     
     /**
-     * Tests the getType method with a FreeResponseQuestion
+     * Tests the get type method with a free response question.
      */
     @Test
     public void testGetTypeFreeResponseQuestion() {
@@ -199,7 +192,7 @@ public class QuestionTest {
     }
     
     /**
-     * Tests the toString method on a Question that is not answered yet.
+     * Tests the to string method on a question that is not answered yet.
      */
     @Test
     public void testToStringNotAnswered() {
@@ -209,7 +202,7 @@ public class QuestionTest {
     }
     
     /**
-     * Tests the toString method on a Question that is answered.
+     * Tests the to string method on a question that is answered.
      */
     @Test
     public void testToStringAnswered() {
@@ -218,5 +211,4 @@ public class QuestionTest {
         assertEquals("the toString method failed with an unanswered question", 
                 expected, myMultipleChoiceQuestionMock.toString());
     }
-
 }

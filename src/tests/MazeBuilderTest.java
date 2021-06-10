@@ -51,10 +51,10 @@ public class MazeBuilderTest {
     }
 
 
-    // ***** test for exceptions from the buildMaze method *****
+    // ***** Tests for exceptions from the build maze method. *****
     /**
-     * Tests the MazeBuilder buildMaze method for a 
-     * NullPointerException given a null fileName String
+     * Tests the maze builder build maze method for a 
+     * NullPointerException given a null file name string.
      */
     @Test(expected = NullPointerException.class)
     public void testBuildMazeNullFileName() throws NullPointerException, FileNotFoundException {
@@ -62,8 +62,8 @@ public class MazeBuilderTest {
     }
     
     /**
-     * Tests the MazeBuilder buildMaze method for a 
-     * NullPointerException given a null QuestionManager
+     * Tests the maze builder build maze method for a 
+     * NullPointerException given a null question manager
      */
     @Test(expected = NullPointerException.class)
     public void testBuildMazeNullQuestionManager() throws NullPointerException, FileNotFoundException {
@@ -71,7 +71,7 @@ public class MazeBuilderTest {
     }
     
     /**
-     * Tests the MazeBuilder buildMaze method for a 
+     * Tests the maze builder build maze method for a 
      * FileNotFoundException given a file name that does not exist
      */
     @Test(expected = FileNotFoundException.class)
@@ -80,9 +80,9 @@ public class MazeBuilderTest {
     }
     
     
-    // ***** test for exceptions from the buildRoom method *****
+    // ***** test for exceptions from the build room method *****
     /**
-     * Tests to ensure that the MazeManager buildMaze method throws a NullPointerException
+     * Tests to ensure that the maze builder build maze method throws a NullPointerException
      * given a room string that is null.
      */
     @Test(expected = NullPointerException.class)
@@ -91,8 +91,8 @@ public class MazeBuilderTest {
     }
     
     /**
-     * Tests to ensure that the MazeManager buildMaze method throws a NullPointerException
-     * given a QuestionManager that is null.
+     * Tests to ensure that the maze builder build maze method throws a NullPointerException
+     * given a question manager that is null.
      */
     @Test(expected = NullPointerException.class)
     public void testBuildRoomNullQuestionManager() {
@@ -100,8 +100,8 @@ public class MazeBuilderTest {
     }
     
     /**
-     * Tests to ensure that the MazeManager buildMaze method throws a NullPointerException
-     * given a Maze that is null.
+     * Tests to ensure that the maze builder build maze method throws a NullPointerException
+     * given a maze that is null.
      */
     @Test(expected = NullPointerException.class)
     public void testBuildRoomNullMaze() {
@@ -109,7 +109,7 @@ public class MazeBuilderTest {
     }
     
     /**
-     * Tests to ensure that the MazeManager buildMaze method throws an IllegalArgumentException
+     * Tests to ensure that the maze builder build maze method throws an IllegalArgumentException
      * given an invalid room string.
      */
     @Test(expected = IllegalArgumentException.class)
@@ -118,7 +118,7 @@ public class MazeBuilderTest {
     }
     
     /**
-     * Tests to ensure that the MazeManager buildMaze method throws an IllegalArgumentException
+     * Tests to ensure that the maze builder build maze method throws an IllegalArgumentException
      * given a negative row value.
      */
     @Test(expected = IllegalArgumentException.class)
@@ -127,7 +127,7 @@ public class MazeBuilderTest {
     }
     
     /**
-     * Tests to ensure that the MazeManager buildMaze method throws an IllegalArgumentException
+     * Tests to ensure that the maze builder build maze method throws an IllegalArgumentException
      * given a negative column value.
      */
     @Test(expected = IllegalArgumentException.class)
@@ -135,9 +135,10 @@ public class MazeBuilderTest {
         MazeBuilder.buildRoom(ROOM_TEXT, myQuestionManagerMock, myNullMaze, 0, -1);
     }
     
-    // ***** test functionality of buildMaze method ******
+
+    // ***** Tests functionality of build maze method. ******
     /**
-     * Tests the buildMaze method with the test_map1.txt file that builds 
+     * Tests the build maze method with the test_map1.txt file that builds 
      * a 1x1 maze with no doors
      */
     @Test
@@ -145,12 +146,12 @@ public class MazeBuilderTest {
         final Room[][] resultMaze = MazeBuilder.buildMaze(MAP_TEXT_1x1_NO_DOORS, myQuestionManagerMock);
         boolean result = true;
 
-        // check for the expected size
+        // Checks for the expected size.
         if (resultMaze.length != 1 || resultMaze[0].length != 1) {
             result = false;
         }
         
-        // check to ensure there aren't any doors on the room
+        // Checks to ensure there aren't any doors on the room.
         final Room room = resultMaze[0][0];
         if (room.hasNorthDoor() || room.hasSouthDoor() ||
                 room.hasEastDoor() || room.hasWestDoor() || room.isEndRoom()) {
@@ -161,7 +162,7 @@ public class MazeBuilderTest {
     }
     
     /**
-     * Tests the buildMaze method with the test_map2.txt file that builds 
+     * Tests the build maze method with the test_map2.txt file that builds 
      * a 1x1 maze with all doors
      */
     @Test
@@ -169,12 +170,12 @@ public class MazeBuilderTest {
         final Room[][] resultMaze = MazeBuilder.buildMaze(MAP_TEXT_1x1_ALL_DOORS, myQuestionManagerMock);
         boolean result = true;
 
-        // check for the expected size
+        // Checks for the expected size.
         if (resultMaze.length != 1 || resultMaze[0].length != 1) {
             result = false;
         }
         
-        // check to ensure there aren't any doors on the room
+        // Checks to ensure there aren't any doors on the room.
         final Room room = resultMaze[0][0];
         if (!(room.hasNorthDoor() || room.hasSouthDoor() ||
                 room.hasEastDoor() || room.hasWestDoor() || room.isEndRoom())) {
@@ -186,7 +187,7 @@ public class MazeBuilderTest {
     }
     
     /**
-     * Tests the buildMaze method with the test_map3.txt file that builds 
+     * Tests the build maze method with the test_map3.txt file that builds 
      * a 2x2 maze with various different connecting rooms.
      */
     @Test
@@ -194,34 +195,34 @@ public class MazeBuilderTest {
         final Room[][] resultMaze = MazeBuilder.buildMaze(MAP_TEXT_2x2, myQuestionManagerMock);
         boolean result = true;
         
-        // check maze for expected size
+        // Checks maze for expected size.
         if (resultMaze.length != 2 || resultMaze[0].length != 2) {
             result = false;
         }
         
-        // check to ensure that each room is as expected
-        // check the top left room (should have only a south and east door)
+        // Checks to ensure that each room is as expected.
+        // Checks the top left room (should have only a South and East door).
         Room tempRoom = resultMaze[0][0];
         if (!(!tempRoom.hasNorthDoor() && tempRoom.hasSouthDoor() &&
                 tempRoom.hasEastDoor() && !tempRoom.hasWestDoor())) {
             result = false;
         }
         
-        // check the top right room (should only have a east and west door)
+        // Checks the top right room (should only have a East and West door).
         tempRoom = resultMaze[0][1];
         if (!(!tempRoom.hasNorthDoor() && !tempRoom.hasSouthDoor() &&
                 tempRoom.hasEastDoor() && tempRoom.hasWestDoor())) {
             result = false;
         }
         
-        // check the bottom left room (should have north, south, and east doors)
+        // Checks the bottom left room (should have North, South, and East doors).
         tempRoom = resultMaze[1][0];
         if (!(tempRoom.hasNorthDoor() && tempRoom.hasSouthDoor() && 
                 tempRoom.hasEastDoor() && !tempRoom.hasWestDoor())) {
             result = false;
         }
         
-        // check bottom right room (only west and north doors
+        // Check bottom right room (only West and North doors).
         tempRoom = resultMaze[1][1];
         if (!(!tempRoom.hasNorthDoor() && tempRoom.hasSouthDoor() && 
                 !tempRoom.hasEastDoor() && tempRoom.hasWestDoor())) {
@@ -231,10 +232,10 @@ public class MazeBuilderTest {
     }
     
  
-    // ***** test functionality of buildRoom method ******
+    // ***** Tests functionality of build room method. ******
     
     /**
-     * Tests the buildRoom method trying to build a room that has no doors.
+     * Tests the build room method trying to build a room that has no doors.
      */
     @Test
     public void testBuildRoomNoDoors() {
@@ -244,7 +245,7 @@ public class MazeBuilderTest {
                 myQuestionManagerMock, tempMaze, 0, 0);
          
         boolean result = true;
-        // check to ensure there aren't any doors in the room
+        // Checks to ensure there aren't any doors in the room.
         if (resultRoom.hasNorthDoor() || resultRoom.hasSouthDoor() ||
                 resultRoom.hasEastDoor() || resultRoom.hasWestDoor() || resultRoom.isEndRoom()) {
             result = false;
@@ -254,8 +255,8 @@ public class MazeBuilderTest {
     }
     
     /**
-     * Tests the buildRoom method trying to build
-     * a room that has only south and east doors. 
+     * Tests the build room method trying to build
+     * a room that has only South and East doors. 
      */
     @Test
     public void testBuildRoomSouthEastDoors() {
@@ -274,8 +275,8 @@ public class MazeBuilderTest {
     }
     
     /**
-     * Tests the buildRoom method trying to build
-     * a room that has a west door that shares a question with 
+     * Tests the build room method trying to build
+     * a room that has a West door that shares a question with 
      * its leftmost neighbor. 
      */
     @Test
@@ -298,26 +299,24 @@ public class MazeBuilderTest {
             result = false;
         }
 
-        // make sure the two rooms share the same question 
+        // Makes sure the two rooms share the same question.
         if (result && !resultRoom.getWestDoor().getQuestion().equals(westRoom.getEastDoor().getQuestion())) {
             result = false;
         }
-        
-        
         assertTrue("buildRoom failed to build a room with a west door.", result);
     }
     
     
     /**
-     * Tests the buildRoom method trying to build
-     * a room that has a north door that shares a question with 
+     * Tests the build room method trying to build
+     * a room that has a North door that shares a question with 
      * its northern neighbor. 
      */
     @Test
     public void testBuildRoomNorthDoor() {
         final String northDoorRoomString = "YNNN";
         
-        // create the northern room
+        // Creates the Northern room.
         final Room northRoom = new Room(false, null, 
                 new Door(Door.DoorType.SOUTH, myQuestionManagerMock.getRandomQuestion()), null, null);
         
@@ -333,7 +332,7 @@ public class MazeBuilderTest {
             result = false;
         }
 
-        // make sure the two rooms share the same question 
+        // Make sure the two rooms share the same question.
         if (result && !resultRoom.getNorthDoor().getQuestion().equals(northRoom.getSouthDoor().getQuestion())) {
             result = false;
         }
@@ -342,17 +341,17 @@ public class MazeBuilderTest {
     }
     
     /**
-     * Tests the buildRoom method trying to build 
+     * Tests the build room method trying to build 
      * a room that has all doors. 
      */
     @Test
     public void testBuildRoomAllDoors() {
         final String allDoorRoomString = "YYYY";
         
-        // create the northern room and western room that will share questions with the resultRoom
+        // Creates the Northern room and Western room that will share questions with the result room.
         final Room northRoom = new Room(false, null, 
                 new Door(Door.DoorType.SOUTH, myQuestionManagerMock.getRandomQuestion()), null, null);
-        // create the room that will be to the west of the door we want to create        
+        // Creates the room that will be to the West of the Door we want to create.   
         final Room westRoom = new Room(false, null, null, null,
                 new Door(Door.DoorType.EAST, myQuestionManagerMock.getRandomQuestion()));
         
@@ -362,31 +361,29 @@ public class MazeBuilderTest {
         
         final Room resultRoom = MazeBuilder.buildRoom(allDoorRoomString, 
                 myQuestionManagerMock, tempMaze, 1, 1);
-        
 
-        // ensure the result room has all doors
+        // Ensure the result room has all doors.
         boolean result = true;
         if (!resultRoom.hasNorthDoor() || !resultRoom.hasSouthDoor() ||
                 !resultRoom.hasEastDoor() || !resultRoom.hasWestDoor()) {
             result = false;
         }
         
-        // ensure result room shares north question
+        // Ensures result room shares North question.
         if (result && !resultRoom.getNorthDoor().getQuestion().equals(northRoom.getSouthDoor().getQuestion())) {
             result = false;
         }
         
-        // ensure result room shares west question
+        // Ensures result room shares West question.
         if (result && !resultRoom.getWestDoor().getQuestion().equals(westRoom.getEastDoor().getQuestion())) {
             result = false;
         }
         
         assertTrue("buildRoom failed to build a room with all doors.", result);
-        
     }
     
     /**
-     * Tests the buildRoom method trying to build 
+     * Tests the build room method trying to build 
      * an end room.
      */
     @Test
@@ -401,7 +398,7 @@ public class MazeBuilderTest {
     }
     
     /**
-     * Tests the buildRoom method trying to build 
+     * Tests the build room method trying to build 
      * an end room.
      */
     @Test
@@ -414,5 +411,4 @@ public class MazeBuilderTest {
         boolean result = !resultRoom.isEndRoom();
         assertTrue("buildRoom failed by building an end room when it shouldn't have.", result);
     }
-    
 }

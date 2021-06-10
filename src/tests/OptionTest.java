@@ -2,7 +2,6 @@
  * Amazing Trivia Maze
  * TCSS 360 Spring 2021
  */
-
 package tests;
 
 import static org.junit.Assert.*;
@@ -13,23 +12,19 @@ import org.junit.Test;
 import model.question.Option;
 
 /**
- * A JUnit test class for the Option class.
+ * A JUnit test class for the option class.
  * @author Austn Attaway
  * @version Spring 2021
  */
 public class OptionTest {
     
-    /** Text to be used when creating options; */
+    /** Text to be used when creating options. */
     private static final String OPTION_TEXT = "option text!";
     
-    /**
-     * A correct option for testing. 
-     */
+    /** A correct option for testing. */
     private Option myCorrectOption;
     
-    /**
-     * An incorrect option for testing. 
-     */
+    /** An incorrect option for testing. */
     private Option myIncorrectOption;
     
     /**
@@ -41,9 +36,8 @@ public class OptionTest {
         myIncorrectOption = new Option(OPTION_TEXT, false);
     }
     
-    
     /**
-     * Tests the Option constructor to make sure it throws
+     * Tests the option constructor to make sure it throws
      * a NullPointerException when the given option text is null. 
      */
     @Test(expected = NullPointerException.class)
@@ -52,7 +46,7 @@ public class OptionTest {
     }
     
     /**
-     * Tests the Option constructor to make sure it sets
+     * Tests the option constructor to make sure it sets
      * the text properly.
      */
     @Test
@@ -62,8 +56,8 @@ public class OptionTest {
     }
     
     /**
-     * Tests the Option constructor to make sure the passed theCorrectOption
-     * sets the state of the Option correctly.
+     * Tests the option constructor to make sure the passed the correct option
+     * sets the state of the option correctly.
      */
     @Test
     public void testOptionConstructorOptionCorrectPassing() {
@@ -73,8 +67,8 @@ public class OptionTest {
     }
     
     /**
-     * Tests the Option constructor to make sure it sets 
-     * the Option to not be focusable.
+     * Tests the option constructor to make sure it sets 
+     * the option to not be focusable.
      */
     @Test
     public void testOptionConstructorNotFocusable() {
@@ -83,7 +77,7 @@ public class OptionTest {
     }
     
     /**
-     * Tests the isCorrectOption method for a correct Option.
+     * Tests the is correct option method for a correct option.
      */
     @Test
     public void testIsCorrectOptionWithCorrectOption() {
@@ -92,7 +86,7 @@ public class OptionTest {
     }
     
     /**
-     * Tests the isCorrectOption method for an incorrect Option.
+     * Tests the is correct option method for an incorrect option.
      */
     @Test
     public void testIsCorrectOptionWithIncorrectOption() {
@@ -101,7 +95,7 @@ public class OptionTest {
     }
     
     /**
-     * Tests the toString method for a correct Option.
+     * Tests the to string method for a correct option.
      */
     @Test
     public void testToStringCorrectOption() {
@@ -111,7 +105,7 @@ public class OptionTest {
     }
     
     /**
-     * Tests the toString method for an incorrect Option.
+     * Tests the to string method for an incorrect option.
      */
     @Test
     public void testToStringIncorrectOption() {
@@ -119,5 +113,4 @@ public class OptionTest {
         assertEquals("the toString method failed on an incorrect Option", 
                 expected, myIncorrectOption.toString());
     }
-
 }

@@ -1,3 +1,7 @@
+/**
+ * Amazing Trivia Maze 
+ * TCSS 360 Spring 2021
+ */
 package tests;
 
 import static org.junit.Assert.*;
@@ -8,20 +12,16 @@ import model.Door;
 import model.Player;
 
 /**
- * JUnit test class for the Player class. 
+ * JUnit test class for the player class. 
  * @author Chau Vu
  * @version Spring 2021
  */
 public class PlayerTest {
 
-    /**
-     * The player of the game. 
-     */
+    /** The player of the game. */
     private Player myPlayer;
     
-    /**
-     * The tickCount that we're using to test updated location.
-     */
+    /** The tick count that we're using to test updated location. */
     private int myTickCount;
     
     /**
@@ -34,7 +34,7 @@ public class PlayerTest {
     }
     
     /**
-     * expecting a null pointer exception if pass in a null door type.
+     * Expects a null pointer exception if pass in a null door type.
      */
     @Test (expected = NullPointerException.class)
     public void testMoveRoomsNull() {
@@ -186,6 +186,7 @@ public class PlayerTest {
         }
         assertEquals("Location is not updated properly", myPlayer.getXPosition(), locationX);
     }
+    
     /**
      * Testing if location is updated based on tick.
      * When player stop moving y direction.
@@ -202,7 +203,7 @@ public class PlayerTest {
     
     /**
      * Testing if the location is updated when player move room.
-     * When moved to NORTH door x location.
+     * When moved to North door x location.
      */
     @Test
     public void testMoveRoomNorthX() {
@@ -210,9 +211,10 @@ public class PlayerTest {
         myPlayer.moveRooms(Door.DoorType.NORTH);
         assertEquals("Location is not updated properly", myPlayer.getXPosition(), location);
     }
+    
     /**
      * Testing if the location is updated when player move room.
-     * When moved to NORTH door y location.
+     * When moved to North door y location.
      */
     @Test
     public void testMoveRoomNorthY() {
@@ -220,9 +222,10 @@ public class PlayerTest {
         myPlayer.moveRooms(Door.DoorType.NORTH);
         assertEquals("Location is not updated properly", myPlayer.getYPosition(), location);
     }
+
     /**
      * Testing if the location is updated when player move room.
-     * When moved to SOUTH door x location.
+     * When moved to South door x location.
      */
     @Test
     public void testMoveRoomSouthX() {
@@ -230,9 +233,10 @@ public class PlayerTest {
         myPlayer.moveRooms(Door.DoorType.SOUTH);
         assertEquals("Location is not updated properly", myPlayer.getXPosition(), location);
     }
+
     /**
      * Testing if the location is updated when player move room.
-     * When moved to SOUTH door y location.
+     * When moved to South door y location.
      */
     @Test
     public void testMoveRoomSouthY() {
@@ -240,9 +244,10 @@ public class PlayerTest {
         myPlayer.moveRooms(Door.DoorType.SOUTH);
         assertEquals("Location is not updated properly", myPlayer.getYPosition(), location);
     }
+
     /**
      * Testing if the location is updated when player move room.
-     * When moved to EAST door x location.
+     * When moved to East door x location.
      */
     @Test
     public void testMoveRoomEastX() {
@@ -250,9 +255,10 @@ public class PlayerTest {
         myPlayer.moveRooms(Door.DoorType.EAST);
         assertEquals("Location is not updated properly", myPlayer.getXPosition(), location);
     }
+
     /**
      * Testing if the location is updated when player move room.
-     * When moved to EAST door y location.
+     * When moved to East door y location.
      */
     @Test
     public void testMoveRoomEastY() {
@@ -260,9 +266,10 @@ public class PlayerTest {
         myPlayer.moveRooms(Door.DoorType.EAST);
         assertEquals("Location is not updated properly", myPlayer.getYPosition(), location);
     }
+
     /**
      * Testing if the location is updated when player move room.
-     * When moved to WEST door x location.
+     * When moved to West door x location.
      */
     @Test
     public void testMoveRoomWestX() {
@@ -270,9 +277,10 @@ public class PlayerTest {
         myPlayer.moveRooms(Door.DoorType.WEST);
         assertEquals("Location is not updated properly", myPlayer.getXPosition(), location);
     }
+
     /**
      * Testing if the location is updated when player move room.
-     * When moved to WEST door y location.
+     * When moved to West door y location.
      */
     @Test
     public void testMoveRoomWestY() {
@@ -280,6 +288,7 @@ public class PlayerTest {
         myPlayer.moveRooms(Door.DoorType.WEST);
         assertEquals("Location is not updated properly", myPlayer.getYPosition(), location);
     }
+
     /**
      * Test get method for brains.
      */
@@ -296,6 +305,7 @@ public class PlayerTest {
         myPlayer.setBrains(5);
         assertEquals("Value for brain isn't updated", myPlayer.getBrainsremaining(), 5);
     }
+
     /**
      * Test set method for brains max value.
      */
@@ -304,5 +314,4 @@ public class PlayerTest {
         myPlayer.setBrains(12);
         assertEquals("Value for brain isn't updated", myPlayer.getBrainsremaining(), Player.MAX_BRAINS);
     }
- 
 }
